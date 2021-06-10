@@ -15,7 +15,8 @@ you can signup for a developer account here https://dev.meeco.me/signup
 
 ```curl
 
-curl -d -i -v -X POST "https://sandbox.meeco.me/exchange/dids/hedera" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -d -i -v -X POST "https://sandbox.meeco.me/exchange/dids/hedera" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 
 ```
 
@@ -63,7 +64,8 @@ Retrieve a list of credential types that can be issued by the exchange.
 
 ```curl
 
-curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/types" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/types" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
 Response
@@ -111,7 +113,10 @@ replace `subjectDid` in following request with earlier created holder DID
 
 ```curl
 
-curl -i -v -X POST "https://sandbox.meeco.me/exchange/credentials/types/LearningRecordCredential" -H "Content-Type: application/json" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key" -d '{"subjectDid": "did:hedera:testnet:5ZpDhGKtHb1LAnQE1ry2bw1YTkm3KWbru7TsYkfYEdq9;hedera:testnet:fid=0.0.78464","claims": {"status": "compliant","grade": "95","completionDate": "2021-01-02T00:00:00+00:00","course": {"id": "122345","courseCode": "ws101","name": "WorkSafe Basic Training Module","version": "2021-01-01T00:00:00+00:00","provider": "WorkPro Training"}},"expiration": "2025-01-01T00:00:00Z"}'
+curl -i -v -X POST "https://sandbox.meeco.me/exchange/credentials/types/LearningRecordCredential" \
+-H "Content-Type: application/json" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key" \
+-d '{"subjectDid": "did:hedera:testnet:5ZpDhGKtHb1LAnQE1ry2bw1YTkm3KWbru7TsYkfYEdq9;hedera:testnet:fid=0.0.78464","claims": {"status": "compliant","grade": "95","completionDate": "2021-01-02T00:00:00+00:00","course": {"id": "122345","courseCode": "ws101","name": "WorkSafe Basic Training Module","version": "2021-01-01T00:00:00+00:00","provider": "WorkPro Training"}},"expiration": "2025-01-01T00:00:00Z"}'
 
 ```
 
@@ -172,7 +177,8 @@ note down id of credential `urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2`
 An Issuer can issue credentials to be held by a particular DID, These are stored encrypted by the subject's public key, and can be downloaded by the wallet.
 
 ```curl
-curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/stored/did%3Ahedera%3Atestnet%3AES6uGn1298qRYpM9Y6n5aj8DtPnpZHZXasdfedfeere%3Bhedera%3Atestnet%3Afid%3D0.0.78464" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/stored/did%3Ahedera%3Atestnet%3AES6uGn1298qRYpM9Y6n5aj8DtPnpZHZXasdfedfeere%3Bhedera%3Atestnet%3Afid%3D0.0.78464" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
 returns encrypted JWT Verifiable credentials that can be decrypted by the holder's private key and store in a wallet.
@@ -195,7 +201,8 @@ Response
 use previously noded cred id to retrieve the current status of issued credentials
 
 ```curl
-curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
 Response
@@ -213,7 +220,8 @@ Response
 Issuers can only revoke credentials they have issued
 
 ```crul
-curl -i -v -X DELETE "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -i -v -X DELETE "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
 Response
@@ -231,7 +239,8 @@ Accepted
 use previously noded cred id to retrieve the current status of issued credentials
 
 ```curl
-curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -i -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" \
+-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
 Response
