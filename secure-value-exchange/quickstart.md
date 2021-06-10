@@ -5,58 +5,68 @@ This guide aims to get you up and running and familiar with the Exchange API in 
 - create and manage DID
 - issue and revoke Verifiable Credentials
 
-**_NOTE:_** It assumes you already have an approved account in dev.meeco.me portal and subscription key to access exchange API
+**_NOTE:_** It assumes you already have an approved account in dev.meeco.me portal and subscription key to access exchange API.
+
+you can signup for a developer account here https://dev.meeco.me/signup
 
 ---
 
-## Create a DID for holder
+## Create a DID for a holder
 
 ```curl
 
-curl -v -X POST "https://sandbox.meeco.me/exchange/dids/hedera"-H "Cache-Control: no-cache"-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X POST "https://sandbox.meeco.me/exchange/dids/hedera" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 
 ```
 
-```json
+Response header
 
-HTTP/1.1 201 Created
-
-header
-
+```http
+...
 exchange-private-key: 302e020100300506032b657004220420f4011a192ba599b54adca7f95dfbd73c22dca
 000000000000000000000000000
-
-body
-
-{
-    "@context": "https://www.w3.org/ns/did/v1",
-    "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464",
-    "publicKey": [{
-        "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key",
-        "type": "Ed25519VerificationKey2018",
-        "controller": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464",
-        "publicKeyBase58": "EKQfP6GMyhWuzZYw4QNTnrM4EgRPgccQViSAMPEsX7wz"
-    }],
-    "authentication": ["did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key"],
-    "assertionMethod": ["did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key"]
-}
-
+...
 ```
 
-Above request generates key and DID document for a new DID. Also registers the DID on Hedera when using the "hedera" method. The new private key used to create DID is returned in the header.
+Response body
+
+```json
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464",
+  "publicKey": [
+    {
+      "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464",
+      "publicKeyBase58": "EKQfP6GMyhWuzZYw4QNTnrM4EgRPgccQViSAMPEsX7wz"
+    }
+  ],
+  "authentication": [
+    "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key"
+  ],
+  "assertionMethod": [
+    "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464#did-root-key"
+  ]
+}
+```
+
+The above request generates a key and DID document for a new DID. Also registers the DID on Hedera when using the "hedera" method. The new private key used to create DID is returned in the header.
 
 Note down DID `did:hedera:testnet:example;hedera:testnet:fid=0.0.78464`
 
 ---
 
-## Issue Learning Credentails for Holder DID
+## Issue Learning Credentials for Holder DID
 
-Retrive a list of credential types that are able to be issued by the exchange.
+Retrieve a list of credential types that can be issued by the exchange.
 
 ```curl
 
-curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/types"-H "Cache-Control: no-cache"-H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/types" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
+
+Response
 
 ```json
 {
@@ -103,7 +113,7 @@ replace `subjectDid` in following request with earlier created holder DID
 
 curl -v -X POST "https://sandbox.meeco.me/exchange/credentials/types/LearningRecordCredential"
 -H "Content-Type: application/json"
--H "Cache-Control: no-cache"
+
 -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 --data-raw '{
     "subjectDid": "replace-with-holder-did-created-earlier",
@@ -126,47 +136,49 @@ curl -v -X POST "https://sandbox.meeco.me/exchange/credentials/types/LearningRec
 
 The new credential is signed by the exchange's issuer key will be return
 
+Response
+
 ```json
-
-HTTP/1.1 201 Created
-
 {
-    "credential": {
-        "@context": ["https://vc-schemas.meeco.me/credentials/learningRecord/1.0/context.json", "https://www.w3.org/2018/credentials/v1"],
-        "type": ["VerifiableCredential"],
-        "issuer": {
-            "id": "did:hedera:testnet:3UehyMhjQNDVWSPHEcpBRfPB5gYLtRxukHfJgV2sdfew;hedera:testnet:fid=0.0.78464"
-        },
-        "credentialSubject": {
-            "completionDate": "2021-01-02T00:00:00+00:00",
-            "course": {
-                "courseCode": "ws101",
-                "id": "122345",
-                "name": "WorkSafe Basic Training Module",
-                "provider": "WorkPro Training",
-                "version": "2021-01-01T00:00:00+00:00"
-            },
-            "grade": "95",
-            "status": "compliant",
-            "type": "LearningRecordCredential",
-            "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464"
-        },
-        "proof": {
-            "type": "Ed25519Signature2018",
-            "proofPurpose": "assertionMethod",
-            "created": "2021-06-10T03:29:57.000Z",
-            "verificationMethod": "did:hedera:testnet:3UehyMhjQNDVWSPHEcpBRfPB5gYLtRxukHfJgV2sdfew;hedera:testnet:fid=0.0.78464#did-root-key",
-            "jws": "Iy0SNzS6tRWz__nIt8Fb4qwkEntuY0sZm6j8osEHsAhCJGog84aVRVqOaflcwW3L1NJnofqex-wQbFugWonEBA"
-        },
-        "issuanceDate": "2021-06-10T03:29:57.000Z",
-        "id": "urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2",
-        "expirationDate": "2025-01-01T00:00:00.000Z",
-        "credentialSchema": {
-            "id": "https://vc-schemas.meeco.me/credentials/learningRecord/1.0/schema.json",
-            "type": "JSONSchemaValidator2019"
-        }
+  "credential": {
+    "@context": [
+      "https://vc-schemas.meeco.me/credentials/learningRecord/1.0/context.json",
+      "https://www.w3.org/2018/credentials/v1"
+    ],
+    "type": ["VerifiableCredential"],
+    "issuer": {
+      "id": "did:hedera:testnet:3UehyMhjQNDVWSPHEcpBRfPB5gYLtRxukHfJgV2sdfew;hedera:testnet:fid=0.0.78464"
     },
-    "credentialHash": "2fPrkyXhHmEXDFVkAPLj621e5sLBktPvZPDMBnroTRsZ"
+    "credentialSubject": {
+      "completionDate": "2021-01-02T00:00:00+00:00",
+      "course": {
+        "courseCode": "ws101",
+        "id": "122345",
+        "name": "WorkSafe Basic Training Module",
+        "provider": "WorkPro Training",
+        "version": "2021-01-01T00:00:00+00:00"
+      },
+      "grade": "95",
+      "status": "compliant",
+      "type": "LearningRecordCredential",
+      "id": "did:hedera:testnet:example;hedera:testnet:fid=0.0.78464"
+    },
+    "proof": {
+      "type": "Ed25519Signature2018",
+      "proofPurpose": "assertionMethod",
+      "created": "2021-06-10T03:29:57.000Z",
+      "verificationMethod": "did:hedera:testnet:3UehyMhjQNDVWSPHEcpBRfPB5gYLtRxukHfJgV2sdfew;hedera:testnet:fid=0.0.78464#did-root-key",
+      "jws": "Iy0SNzS6tRWz__nIt8Fb4qwkEntuY0sZm6j8osEHsAhCJGog84aVRVqOaflcwW3L1NJnofqex-wQbFugWonEBA"
+    },
+    "issuanceDate": "2021-06-10T03:29:57.000Z",
+    "id": "urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2",
+    "expirationDate": "2025-01-01T00:00:00.000Z",
+    "credentialSchema": {
+      "id": "https://vc-schemas.meeco.me/credentials/learningRecord/1.0/schema.json",
+      "type": "JSONSchemaValidator2019"
+    }
+  },
+  "credentialHash": "2fPrkyXhHmEXDFVkAPLj621e5sLBktPvZPDMBnroTRsZ"
 }
 ```
 
@@ -174,57 +186,56 @@ note down id of cred `urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2`
 
 ---
 
-## Retrive credentials issued for a DID
+## Retrieve credentials issued for a DID
 
 An Issuer can issue credentials to be held by a particular DID, These are stored encrypted by the subject's public key, and can be downloaded by the wallet.
 
 ```curl
-curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/stored/did%3Ahedera%3Atestnet%3AES6uGn1298qRYpM9Y6n5aj8DtPnpZHZXasdfedfeere%3Bhedera%3Atestnet%3Afid%3D0.0.78464"
--H "Cache-Control: no-cache"
--H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/stored/did%3Ahedera%3Atestnet%3AES6uGn1298qRYpM9Y6n5aj8DtPnpZHZXasdfedfeere%3Bhedera%3Atestnet%3Afid%3D0.0.78464" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
-returns encrypted JWT Verifiable credentails that can be decrepted by holder private key and store in wallet.
+returns encrypted JWT Verifiable credentials that can be decrypted by the holder's private key and store in a wallet.
+
+Response
 
 ```json
-HTTP/1.1 200 OK
-
-[{
+[
+  {
     "vc": "mkCF7XbWuojmO4wXkt1IliGUQ4K3FIZHK9eOfzTdfIG9csfk065Gt1ZJbITQSJRjN0UJ+thI4aKHErA5tWsVhKR8Lf9bQhwe48FgnMMjy8kv/...",
     "nonce": "BxM5p+PfTlsDKx2+2jCrSlf73bOB9Vg4"
-}]
+  }
+]
 ```
 
 ---
 
-## Retrives status of issued credentials
+## Retrieves the status of issued credentials
 
-use previously noded cred id to retrive curent status of issued credentials
+use previously noded cred id to retrieve the current status of issued credentials
 
 ```curl
-curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2"
--H "Cache-Control: no-cache"
--H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
+Response
+
 ```json
-HTTP/1.1 200 OK
 {
-    "status": "ACTIVE"
+  "status": "ACTIVE"
 }
 ```
 
 ---
 
-## Revoke issued Credentails
+## Revoke issued Credentials
 
-Issuers can only revoke their own credentials
+Issuers can only revoke their credentials
 
 ```crul
-curl -v -X DELETE "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2"
--H "Cache-Control: no-cache"
--H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X DELETE "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
+
+Response
 
 ```http
 HTTP/1.1 202 Accepted
@@ -236,17 +247,16 @@ Accepted
 
 ## Verify credentials status after revoking
 
-use previously noded cred id to retrive curent status of issued credentials
+use previously noded cred id to retrieve the current status of issued credentials
 
 ```curl
-curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2"
--H "Cache-Control: no-cache"
--H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
+curl -v -X GET "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
 ```
 
+Response
+
 ```json
-HTTP/1.1 200 OK
 {
-    "status": "REVOKED"
+  "status": "REVOKED"
 }
 ```
