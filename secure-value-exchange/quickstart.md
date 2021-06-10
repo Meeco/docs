@@ -134,7 +134,7 @@ curl -v -X POST "https://sandbox.meeco.me/exchange/credentials/types/LearningRec
 
 ```
 
-The new credential is signed by the exchange's issuer key will be return
+The new credential signed by the issuer's key will be returned
 
 Response
 
@@ -182,7 +182,7 @@ Response
 }
 ```
 
-note down id of cred `urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2`
+note down id of credential `urn:uuid:c8402ffe-14b4-4ff9-857c-1763459f17d2`
 
 ---
 
