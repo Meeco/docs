@@ -210,7 +210,7 @@ Response
 
 ## Revoke issued Credentials
 
-Issuers can only revoke their credentials
+Issuers can only revoke credentials they have issued
 
 ```crul
 curl -i -v -X DELETE "https://sandbox.meeco.me/exchange/credentials/urn%3Auuid%3Ac8402ffe-14b4-4ff9-857c-1763459f17d2" -H "Meeco-Subscription-Key: replace-it-with-your-subscription-key"
