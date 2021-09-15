@@ -56,6 +56,8 @@ Next Homer accepts Riker's KEK, decrypting it with his private key, then storing
 # meeco delegations:accept-kek <CONNECTION_OWN_ID> -a .homer.yaml
 meeco delegations:accept-kek 099ebb9b-b49f-4c20-8606-b92b7dcc8ea6 -a .homer.yaml
 ```
+**NOTE:**
+In the above commands <OTHER_USER_CONNECTION_ID> is an ID under ".delegation-connection.yaml" file as the ID of "the_other_user" and the term <CONNECTION_OWN_ID> term is referring to the ID of the "reader" in the same file as "ID of own"
 
 ### Reading User data as a delegate user
 
