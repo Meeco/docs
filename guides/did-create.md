@@ -387,12 +387,6 @@ _decode base64 serializedPayload payload from above resonse_
 echo "<-- base64 encoded -->"|base64 -d >payload
 ```
 
-_sign payload with Transaction Endorser private key_
-
-```bash
-openssl pkeyutl -sign -rawin -in payload -inkey privkey -keyform DER| base64| tr -d '\n' >signature
-```
-
 _sign payload with DID controller private key_
 
 ```bash

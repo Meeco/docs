@@ -10,7 +10,7 @@ _Guide using the Meeco API_
 
 ### API request
 
-Call DID Deactivate API with following payload to create new DID WEB
+Call DID Deactivate API with following payload to deactivate existing DID WEB
 
 _Request with did identifier_
 
