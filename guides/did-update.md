@@ -121,15 +121,35 @@ const newDidDocument = '{put_updated_did_document}';
 const did: DIDWeb = new DIDWeb(keyPair);
 did.didDocument = newDidDocument;
 
-const environment = {}; //set sandbox env
+const environment = new Environment({
+  vault: {
+    url: '',
+    subscription_key: '',
+  },
+  keystore: {
+    url: '',
+    subscription_key: '',
+    provider_api_key: '',
+  },
+  identityNetwork: {
+    url: '{identity-network-url}',
+    subscription_key: '{subsription-key}',
+  },
+});
 const api = new DIDManagementService(environment);
-const UpdatedDIDResult = await api.update({}, did);
+const UpdatedDIDResult = await api.update(
+  { identity_network_access_token: '{access-token}' },
+  did
+);
 ```
 
 Try Resolving Updated DID
 
 ```js
-const result = await api.resolve({}, identifier);
+const result = await api.resolve(
+  { identity_network_access_token: '{access-token}' },
+  identifier
+);
 console.log(result);
 ```
 
@@ -294,14 +314,34 @@ const newDidDocument = '{put_updated_did_document}';
 const did: DIDIndy = new DIDIndy(keyPair);
 did.didDocument = newDidDocument;
 
-const environment = {}; //set sandbox env
+const environment = new Environment({
+  vault: {
+    url: '',
+    subscription_key: '',
+  },
+  keystore: {
+    url: '',
+    subscription_key: '',
+    provider_api_key: '',
+  },
+  identityNetwork: {
+    url: '{identity-network-url}',
+    subscription_key: '{subsription-key}',
+  },
+});
 const api = new DIDManagementService(environment);
-const UpdatedDIDResult = await api.update({}, did);
+const UpdatedDIDResult = await api.update(
+  { identity_network_access_token: '{access-token}' },
+  did
+);
 ```
 
 Try Resolving Updated DID
 
 ```js
-const result = await api.resolve({}, identifier);
+const result = await api.resolve(
+  { identity_network_access_token: '{access-token}' },
+  identifier
+);
 console.log(result);
 ```

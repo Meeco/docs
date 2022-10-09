@@ -72,15 +72,35 @@ const identifier = '{existing_did_web_identifier}';
 const did: DIDWeb = new DIDWeb(keyPair);
 did.didDocument.id = identifier;
 
-const environment = {}; //set sandbox env
+const environment = new Environment({
+  vault: {
+    url: '',
+    subscription_key: '',
+  },
+  keystore: {
+    url: '',
+    subscription_key: '',
+    provider_api_key: '',
+  },
+  identityNetwork: {
+    url: '{identity-network-url}',
+    subscription_key: '{subsription-key}',
+  },
+});
 const api = new DIDManagementService(environment);
-const deactivatedDIDResult = await api.deactivate({}, did);
+const deactivatedDIDResult = await api.deactivate(
+  { identity_network_access_token: '{access-token}' },
+  did
+);
 ```
 
 Try Resolving Deactivated DID
 
 ```js
-const result = await api.resolve({}, identifier);
+const result = await api.resolve(
+  { identity_network_access_token: '{access-token}' },
+  identifier
+);
 console.log(result);
 ```
 
@@ -216,14 +236,34 @@ const identifier = '{existing_did_web_identifier}';
 const did: DIDWeb = new DIDIndy(keyPair);
 did.didDocument.id = identifier;
 
-const environment = {}; //set sandbox env
+const environment = new Environment({
+  vault: {
+    url: '',
+    subscription_key: '',
+  },
+  keystore: {
+    url: '',
+    subscription_key: '',
+    provider_api_key: '',
+  },
+  identityNetwork: {
+    url: '{identity-network-url}',
+    subscription_key: '{subsription-key}',
+  },
+});
 const api = new DIDManagementService(environment);
-const deactivatedDIDResult = await api.deactivate({}, did);
+const deactivatedDIDResult = await api.deactivate(
+  { identity_network_access_token: '{access-token}' },
+  did
+);
 ```
 
 Try Resolving Deactivated DID
 
 ```js
-const result = await api.resolve({}, identifier);
+const result = await api.resolve(
+  { identity_network_access_token: '{access-token}' },
+  identifier
+);
 console.log(result);
 ```
