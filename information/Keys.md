@@ -6,7 +6,7 @@
 
 Meeco’s encryption key management service enables users to generate, manage and deploy keys to encrypt and protect data at rest, in transit and when exchanged. Our data and key architecture is designed for non-correlation, with all attributes encrypted with a Universally Unique Identifier (UUID). Provisioning UUIDs provides the foundation for Web3 applications where business rules and value drivers can be aligned to single identifiers.
 
-##Overview##
+## Overview ##
 
 With a strong focus on privacy and security around the management and exchange of data, Meeco understands the importance of data encryption. With this in mind, we provide a key management service called the Keystore that enables users to easily access their data whilst ensuring it remains secure and protected. To do this we employ multiple cryptographic key types, all of which serve a purpose:
 
@@ -33,3 +33,5 @@ Meeco does not store a user’s passphrase directly, we do however offer a Passp
 
 
 We use the term “passphrase” to distinguish it from a password that can be reset.
+
+![Hierarchy keys](../.gitbook/assets/keys.png) 
