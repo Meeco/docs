@@ -4,7 +4,9 @@
 
 * Why are (encryption) keys important in this industry?
 
-Meeco’s encryption key management service enables users to generate, manage and deploy keys to encrypt and protect data at rest, in transit and when exchanged. Our data and key architecture is designed for non-correlation, with all attributes encrypted with a Universally Unique Identifier (UUID). Provisioning UUIDs provides the foundation for Web3 applications where business rules and value drivers can be aligned to single identifiers.
+The key management service enables users to store and retrieve keys used to encrypt and sign data and other keys at rest, in transit and when exchanged. Cryptographic keys are an essential primitive used in operations such as, encrypting personal data, controlling a DID or signing a Verifiable Credential, to name a few.
+
+As a rule of thumb, ALL encryption and signing happens on the client side and keys are _never_ visible to the platform. Therefore, users can choose to use this component or bring their own (existing) key management solution.
 
 ## Overview
 
