@@ -16,7 +16,7 @@ Master Encryption Key (MEK): a derived key (created from a passphrase) that encr
 
 Key Encryption Key (KEK): encrypts all other keys.
 
-Keypair: controls a DID.
+**Keypair** – used to ensure integrity (signing/verifying) and exchanging keys between users
 
 Data Encryption Key (DEK): used to encrypt data that goes into the Vault (i.e. Items).There are two types of DEKs:​
 
