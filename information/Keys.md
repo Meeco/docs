@@ -10,7 +10,7 @@ As a rule of thumb, ALL encryption and signing happens on the client side and ke
 
 ## Overview
 
-With a strong focus on privacy and security around the management and exchange of data, Meeco understands the importance of data encryption. With this in mind, we provide a key management service called the Keystore that enables users to easily access their data whilst ensuring it remains secure and protected. To do this we employ multiple cryptographic key types, all of which serve a purpose:
+With a strong focus on privacy and security around the management and exchange of data, Meeco understands the importance of data encryption. With this in mind, we provide a key management service (KMS) that enables users to easily access their data whilst ensuring it remains secure and protected. To do this we employ multiple cryptographic key types, all of which serve a purpose:
 
 Master Encryption Key (MEK): a derived key (created from a passphrase) that encrypts the KEK. It is held by each endpoint (user), and it is never shared.
 
@@ -24,7 +24,7 @@ DEK for personal data is used to encrypt and decrypt data exchanged with the Va
 
 DEK for sharing data is used to encrypt and decrypt data exchanged with another user.
 
-These keys can be setup, stored and accessed via our Keystore service. The Keystore enables users to store and retrieve their DEKs and Keypairs. An advantage of using the Keystore is that users can use the same keys to securely log into systems they are authorised to do so from different devices. Before a user sends their keys to the Keystore for safe keeping, they are encrypted to ensure only the user can read them.
+These keys can be setup, stored and accessed via KMS. The key management system enables users to store and retrieve their DEKs and Keypairs. An advantage of using the KMS is that users can use the same keys to securely log into systems they are authorised to do so from different devices. Before a user sends their keys to the KMS for safe keeping, they are encrypted to ensure only the user can read them.
 
 When organising and managing a user’s keys, a key hierarchy is employed. Key hierarchy is a tiered approach to gaining access to encrypted data. Without the next key in the hierarchy, accessing encrypted data is not possible. For example, when data is securely stored, first a DEK and a Keypair are required. To encrypt the keys (DEK and the Private Key of the Keypair), a new symmetric key is generated, this is referred to as the KEK.
 
