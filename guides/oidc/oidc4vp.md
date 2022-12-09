@@ -1,7 +1,7 @@
 # OpenID Connect for Verifiable Presentation
 
-[OpenID Connect (OIDC)](https://openid.net/connect/) is an open authentication protocol which is used for authentication Wallet Holders accros Wallet without having to store and manage passwords file. 
-OpenID for Verifiable Presentation allows to request and deliver Verifiable Presentations un combination with independant OpenID providers and traditional OpenID providers.
+[OpenID Connect (OIDC)](https://openid.net/connect/) is an open authentication protocol which is used for authentication Wallet Holders across Wallet without having to store and manage passwords file.
+OpenID for Verifiable Presentation allows requesting and delivering Verifiable Presentations in combination with independent and traditional OpenID providers
 ## Prerequisites
 
 - [DID](dids/did-methods.md)
