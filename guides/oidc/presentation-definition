@@ -73,7 +73,7 @@ Presentation definition can be archived and restored, and status of it affects t
 **Endpoint**
 
 ```bash
-PATCH /presentation_definitions/{id}
+PUT /presentation_definitions/{id}
 ```
 **Request**
 
