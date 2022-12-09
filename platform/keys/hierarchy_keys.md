@@ -34,5 +34,5 @@ Meeco does not store a user’s passphrase directly, we do however offer a Passp
 
 We use the term “passphrase” to distinguish it from a password that can be reset.
 
-![Hierarchy keys](../.gitbook/assets/keys.png) 
+![keys](../.gitbook/assets/keys.png) 
 
