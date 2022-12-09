@@ -1,5 +1,7 @@
 # OpenID Connect for Verifiable Presentation
 
+[OpenID Connect (OIDC)](https://openid.net/connect/) is an open authentication protocol which is used for authentication Wallet Holders accros Wallet without having to store and manage passwords file. 
+OpenID for Verifiable Presentation allows to request and deliver Verifiable Presentations un combination with independant OpenID providers and traditional OpenID providers.
 ## Prerequisites
 
 - [DID](dids/did-methods.md)
@@ -11,7 +13,7 @@ Used by holder and verifier in a verification flow using the OpenID Connect prot
 
 ## Create Presentation Request
 
-
+Register Presentation Request for organisation
 
 **Endpoint**
 
@@ -21,7 +23,7 @@ POST /oidc/presentations/requests
 
 **Request**
 
-*
+* Organisation (header)
 
 **Responses**
 
@@ -29,7 +31,7 @@ The presentation request object that includes an unsigned JWT. The client callin
 
 ## Update Presentation Request
 
-
+Update existed presentation request object for thу particular organisation.
 
 **Endpoint**
 
@@ -40,6 +42,7 @@ PUT /oidc/presentations/requests/{id}
 **Request**
 
 * Request ID
+* Organisation (header)
 
 **Responses**
 
@@ -61,11 +64,11 @@ GET /oidc/presentations/requests/{id}/jwt
 
 **Responses**
 
-The presentation request JWT.
+Signed presentation request JWT token.
 
 ## Verify Presentation Request
 
-Verify a (signed) presentation request JWT.
+Verification of SIOP token signature and extract the verifiable presentation, than verification of verifiable presentation structure, signatures and if data provided match presentation definition.
 
 **Endpoint**
 
@@ -83,7 +86,7 @@ The result of the verification, either true or false.
 
 ## Create Presentation Response
 
-
+Generate id_token for request submission based on the Wallet information and the verifiable presentation token
 
 **Endpoint**
 
@@ -93,7 +96,7 @@ POST /oidc/presentations/token
 
 **Request**
 
-*
+* Presentation Request JWT
 
 **Responses**
 
