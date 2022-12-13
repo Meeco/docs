@@ -1,0 +1,76 @@
+The Meeco Vault is a secure storage service where users can store any type of data including attributes, documents, verifiable credentials (VCs), and digital media. The Meeco Vault is built with privacy and security at its forefront and it ensures that all data is end-to-end encrypted in transit and at rest. The Meeco Vault automatically assigns unique cryptographic keys to each Vault. The keys are used in the background to provide extra levels of security when Vault users Share their data. To enable the sharing of data, the Meeco Vault comprises of four key elements: Slots, Items, Connections and Shares. Together, these elements provide users with flexibility, customisation and control of their data. Below is an introduction to these elements, for further details see our [Vault API documentation](https://docs.meeco.me/guides/vault)..
+
+
+## Slots
+
+Slots are the smallest data entity in the Vault. Each Slot represents a field that is seen by Vault users when creating an Item. Each Slot has a name (machine-readable non-empty string), a label, and a value, for example:
+
+* Name: `policy_number`
+
+* Label: Policy number
+
+* Value: Numerical
+
+Note that Values can be strings, dates, or numbers, but also binaries like images or documents. Values are always encrypted.
+
+
+## Items
+
+Items form the basis for every set of data stored in the Vault. In order for a user to store data (text, a document, an image etc.) they must first select an Item Template from the available options. These templates are made available by the ecosystem facilitator and will appear in user Vaults that are associated with the ecosystem. Templates allow users to categorise, sort and manage the data they store. After selecting an Item Template, the Vault user can add descriptive information about the data being stored, for example:
+
+* their house insurance policy number, and
+
+* the date the policy is due to expire
+
+They also have the option to attach files and assign tags for ease of filtering. Once saved, the user will have a new Item appear in their Vault.
+
+
+## Connections
+
+In order for Vault users to Share their Items, they must establish Connections with other Vault users. A Connection is established via a simple invitation flow which requires both Vault users to verify their identity and provide consent to the Connection being made. Connections can be cancelled at any time by either Vault user.
+
+
+## Shares
+
+The sharing of data occurs when a Vault user creates a Share and defines the following parameters:
+
+* Which Item will be shared
+
+* Whether all or specific Slots within an Item will be shared
+
+* The Connection who will receive the share
+
+* The length of time the Item will be shared
+
+* Whether the Item can be On-Shared
+
+When a Share is initiated by a Vault user, the recipient (Connection) must give consent to receiving the Share. This consent-based data sharing model ensures Vault users are not involuntarily receiving data from other users.
+
+An additional feature to Shares is On-Shares where Vault users can specify if the recipient of a Share can then On-Share the Item with another Vault user. A key feature of On-Sharing is that the original Item owner maintains the Share parameters and any changes they make will filter down through any On-Shares.
+
+
+# Account Delegation
+
+The Account Delegation feature enables Vault users to provide full access to their data to a trusted individual. An example where this feature may be employed is when a Vault user (a child or an elderly parent) requires assistance when managing or exchanging their data with other parties. With the Meeco Vault, they are able to ask a trusted individual to be a delegate of their Vault.
+
+Note that in almost all cases we recommend using Shares and On-Shares to give access to other users as it gives much more granular control over the data shared to another user. However, there are circumstances where Account Delegation is more practical, consider the use case(s) that you are developing when selecting different features.
+
+
+# Implementation and Integration
+
+Our Vault technology can be embedded in existing applications such as mobile banking apps, web portals or back-up services, with Authentication via an OIDC provider.
+
+
+## End-user Vault
+
+An end-user Vault is accessed, managed and controlled by one single user. End-user Vaults can be made available to participants within an ecosystem including, but not limited to: customers of a bank, students of an education institute, or members of an association, or, individuals can manage their own Vault and establish Connections without being part of an established ecosystem.
+
+
+## Enterprise Vault
+
+An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. _Enterprise_ refers to any entity, for example a company, government, or association. For further details on the EV, see the [Enterprise Vault information page](https://docs.meeco.me/platform/vault/enterprise-portal).
+
+
+## Standards and Compliance
+
+For all European Union customers, data is hosted in EU and GDPR compliant. Speak to us about data sovereignty in other jurisdictions.
