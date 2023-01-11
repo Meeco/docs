@@ -1,6 +1,6 @@
 # Issue Credentials
 
-Issue credential is the first operation in the lifecycle of a [Verifiable Credential](https://www.w3.org/TR/vc-data-model/#lifecycle-details). It assists the Issuer in creating the credential so it can be delivered to the subject of the credential.
+Issue a credential is the first operation in the lifecycle of a [Verifiable Credential](https://www.w3.org/TR/vc-data-model/#lifecycle-details). It assists the Issuer in creating the credential so it can be delivered to the subject of the credential.
 
 The supported modes are:
 * Generating credential – generates an (unsigned) credential that requires signing.
