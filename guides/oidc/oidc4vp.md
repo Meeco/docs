@@ -1,8 +1,8 @@
-# OpenID Connect for Verifiable Presentation
+# OpenID Connect for Verifiable Presentations
 
-List of endpoints that assist holder wallet and verifier to participate in the [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) protocol. Built on top of OAuth 2.0, it allows a client (wallet) to present claims in the form of [W3C Verifiable Credentials](https://www.w3.org/TR/vc-data-model/). Currently, credentials and presentations in JWT format (vc-jwt, vp-jwt) are supported.
+Below is a list of endpoints that assist a Holder wallet and a Verifier to participate in the [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) protocol. Built on top of OAuth 2.0, it allows a client (wallet) to present claims in the form of [W3C Verifiable Credentials](https://www.w3.org/TR/vc-data-model/). Currently, credentials and presentations in JWT format (vc-jwt, vp-jwt) are supported.
 
-The endpoints provided are to support the following high-level verification flow.
+The endpoints provided are to support the following high-level verification flow:
 
 ```mermaid
 sequenceDiagram
@@ -27,16 +27,16 @@ sequenceDiagram
   V-->>W: Acknowledgement
 ```
 
-The flow centers around the creation and exchange of a Request and a Response object, by the verifier and holder (wallet) respectively. The endpoints are categorised under these two headings.
+The flow centres around the creation and exchange of a Request and a Response object, by the Verifier and Holder (wallet) respectively. The endpoints are categorised under these two headings.
 
 ## Prerequisites
 
 - [DID](dids/did-methods.md)
 - [Presentation](../presentations.md)
 
-## Who can use this?
+## Who can undertake this operation?
 
-Used by organisations (verifiers) and users (holders) in a verification flow using the OpenID Connect protocol.
+Organisations (Verifiers) and users (Holders) in a verification flow using the OpenID Connect protocol.
 
 ## Request
 
@@ -55,16 +55,16 @@ POST /oidc/presentations/requests
 **Request**
 
 * Organisation (header, optional)
-* Name – title string
-* Description – explains the purpose for which the request is created
+* Name – Title string
+* Description – Explains the purpose for which the request is created
 * Verifier
   * [DID](../dids/did-methods.md)
   * Name
-* Expiration Date – timestamp the request token expires
+* Expiration Date – Timestamp the request token expires
 * Redirect Base URI
 * [Presentation Definition](../presentation-definitions.md)
 
-**Responses**
+**Response**
 
 The presentation request object that includes an unsigned JWT. The client calling this endpoint (e.g. verifier system) is responsible for adding the signature.
 
@@ -72,7 +72,7 @@ The presentation request object that includes an unsigned JWT. The client callin
 
 Update an existing presentation request by ID.
 
-One of the options is to use the platform to host the (signed) request (see [here](#read-presentation-request-jwt)). The request parameters itself can't be updated, only the signed request JWT.
+One of the options is to use the platform to host the (signed) request (see [here](#read-presentation-request-jwt)). The request parameters can't be updated, only the signed request JWT.
 
 **Endpoint**
 
@@ -86,13 +86,13 @@ PUT /oidc/presentations/requests/{id}
 * Organisation (header, optional)
 * Signed request JWT
 
-**Responses**
+**Response**
 
 The updated presentation request object.
 
 ### Read Presentation Request JWT
 
-Public endpoint that returns the (signed) presentation request JWT.
+A public endpoint that returns the (signed) presentation request JWT.
 
 **Endpoint**
 
@@ -104,7 +104,7 @@ GET /oidc/presentations/requests/{id}/jwt
 
 * Request ID
 
-**Responses**
+**Response**
 
 Signed presentation request JWT token.
 
@@ -112,10 +112,10 @@ Signed presentation request JWT token.
 
 Verification of the SIOP token. The steps performed during this verification are:
 
-- Resolve verifier DID
-- Verify request signature
-- Extract the presentation definition uri
-  - Verify presentation definition structure
+1. Resolve Verifier DID
+2. Verify request signature
+3. Extract the presentation definition URI
+   - Verify presentation definition structure
 
 **Endpoint**
 
@@ -137,7 +137,7 @@ List of endpoints to help create and verify the [Response](https://openid.net/sp
 
 ### Create Presentation Response
 
-Generate id_token for request submission based on the Wallet information and the verifiable presentation token
+Generate id_token for request submission based on the wallet information and the verifiable presentation token.
 
 **Endpoint**
 
@@ -149,18 +149,17 @@ POST /oidc/presentations/token
 
 * Presentation Request JWT
 
-**Responses**
+**Response**
 
-The presentation response object that includes two unsigned JWT, `id_token` and `vp_token`. The client calling this endpoint (e.g. holder wallet) is responsible for adding the signatures for each token.
+The presentation response object that includes two unsigned JWTs, `id_token` and `vp_token`. The client calling this endpoint (e.g. Holder wallet) is responsible for adding the signatures for each token.
 
 ### Verify Presentation Response
 
 Verify the presentation response to a given request. The steps performed are:
-
-- Verify ID Token
-- Verify VP Token
-  - [Verify presentation](../presentations.md)
-- Verify if the response is valid for the given request, i.e. if it matches the presentation definition from the request
+1. Verify ID Token
+2. Verify VP Token
+   - [Verify presentation](../presentations.md)
+3. Verify if the response is valid for the given request, i.e. if it matches the presentation definition from the request
 
 **Endpoint**
 
@@ -174,6 +173,6 @@ POST /oidc/presentations/response/verify
 * Signed ID Token
 * Signed VP Token
 
-**Responses**
+**Response**
 
 The result of the verification, either true or false. In case of false, all errors are provided, with an explanation.
