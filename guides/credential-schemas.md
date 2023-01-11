@@ -1,13 +1,12 @@
 # Credential Schemas
 
-Credential schemas are used to define the structure for the claims of a verifiable credential. It uses the [Data Schema](https://www.w3.org/TR/vc-data-model/#data-schemas) property of a credential. Schemas use the [Verifiable Credentials JSON Schema 2022](https://w3c-ccg.github.io/vc-json-schemas/) specification, published by the W3C Credentials WG.
+Credential schemas are used to define the structure of the claims of a verifiable credential (VC) and are associated with the [Data Schema](https://www.w3.org/TR/vc-data-model/#data-schemas) property of a credential. Schemas use the [Verifiable Credentials JSON Schema 2022](https://w3c-ccg.github.io/vc-json-schemas/) specification, published by the W3C Credentials Working Group.
 
-Using schemas allows tenants, organisations and users to
-
+Using schemas in the credential workflow allows Tenants, Organisations and users to:
 - Agree on the structure of data and facilitate data exchange
 - Extract information from the schema
 
-It is possible to create a credential without specifying a schema via the API, but the Enterprise Portal makes this step mandatory. In the portal, the schema is used to render an input form when creating a credential via the UI.
+It is possible to create a credential without specifying a schema via the API, however, when using Meeco's Enterprise Portal to create credentials, this step is mandatory. In the Enterprise Portal, a user is required to upload a schema file which is then visually displayed as a form.
 
 A credential schema, once published, is versioned and made available via a public URL. This allows anyone to validate it at any point in time.
 
@@ -17,17 +16,15 @@ A credential schema, once published, is versioned and made available via a publi
 
 ### Verifiable Credential JSON Schema
 
-Each JSON Schema consists of the following mandatory attributes:
+Each JSON schema consists of the following mandatory attributes:
+- type (e.g. JsonSchemaValidator2018) - The specific type definition determines the content of each data schema.
+- id - A URI that identifies the schema file.
 
-- type (e.g. JsonSchemaValidator2018). The specific type definition determines the content of each data schema.
-- id (a URI that identifies the schema file)
-Credential schema upload is available to Tenant Administrators and must comply with the following rules:
-- A plain JSON object.
-- The structure is later checked based on the specification: JSON Schema
+JSON schemas uploaded via the Enterprise Portal:
+- Must be a plain JSON object.
+- Will have the structure checked based on the specification: JSON Schema
 
-All the attributes in the example are required, but values could be different, e.g. URL address of Schema, name, description etc.
-
-Below is an example JSON schema.
+Below is an example JSON schema. Note that all the attributes contained within a JSON schema will be used to form a credential. Attributes can be customised, and those that appear in the example below are indicative of possible options.
 
 ```bash
 {
@@ -46,11 +43,11 @@ Below is an example JSON schema.
 }
 ```
 
-## Who can use this?
+## Who can undertake this operation?
 
-Credential schemas are managed by a tenant administrator. They assign it to an organisation.
+Credential schemas are created and managed by Tenant Administrators who can assign them to Organisations.
 
-An organisation can list the credential schemas that are assigned to them.
+An Organisation can list the credential schemas that are assigned to them.
 
 Anyone can read the JSON schema (via a separate endpoint) that is part of the credential schema object.
 
@@ -66,19 +63,19 @@ POST /schemas
 
 **Request**
 
-* Name – name of the credential schema
+* Name – Name of the credential schema
 * JSON Schema - JSON schema file
-* List of organisations - organisations where this credential schema can be used (optional)
+* List of organisations - Organisations where this credential schema can be used (optional)
 
-**Responses**
+**Response**
 
-The credential schema object that is created. Upon creation, version `1.0` is assigned.
+The response received is a credential schema object. Upon creation, version `1.0` is assigned.
 
 ## Read Credential Schemas
 
 Retrieve a list of credential schemas.
 
-**Request**
+**Endpoint**
 
 ```bash
 GET /schemas
@@ -88,11 +85,11 @@ GET /schemas
 
 * Organisation (header)
 
-**Responses**
+**Response**
 
-List of credential schema objects available to the user.
+A list of credential schema objects available to the user.
 
-In the context of an organisation, the `organization_ids` attribute contains only one item - caller organisation ID.
+In the context of an Organisation, the `organization_ids` attribute contains only one item: caller organisation ID.
 
 ## Update Credential Schema
 
@@ -107,17 +104,17 @@ PUT /schemas/{id}
  ```
 **Request**
 
-* ID of Credential Schema
-* Name – name of the credential schema
-* List of organisations - organisations where this credential schema can be used (optional)
+* The ID of the credential schema
+* Name – Name of the credential schema
+* List of organisations - Organisations where this credential schema can be used (optional)
 
-**Responses**
+**Response**
 
 The updated credential schema object.
 
 ## Read Verifiable Credential JSON Schema
 
-Public endpoint that returns the JSON schema file. No authentication necessary.
+A public endpoint that returns the JSON schema file. No authentication necessary.
 
 **Endpoint**
 
@@ -128,8 +125,8 @@ GET /schemas/{id}/{version}/schema.json
 **Request**
 
 * Id – ID of the Credential Schema
-* Version – Version of the Credential Schema
+* Version – Version of the credential schema
 
-**Responses**
+**Response**
 
-Returns JSON schema for a credential schema
+Returns JSON schema for a credential schema.
