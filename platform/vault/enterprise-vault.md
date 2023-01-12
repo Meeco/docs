@@ -33,10 +33,10 @@ There are multiple ways to interact with and manage an EV, including:
 The Enterprise Portal is an application that enables Organisation Administrators to onboard, invite additional Organisation Administrators, and begin accessing Meeco's Vault API via a low-code interface. When using the EV via the Enterprise Portal, Administrators can create, view, and manage [Items](docs/guides/vault/items-and-slots.md), [Connections](docs/guides/vault/connections-and-sharing.md) and [Shares](docs/guides/vault/connections-and-sharing.md). It also provides a view of the end-users and other third-party services that the Organisation is connected to.
 
 **SVX API**
-All functionality is available using the SVX API to connect services.
+All functionality is available using the [SVX API](https://dev.meeco.me/api-details#api=meeco-vault-api&operation=put-delegation_invitations-id-accept) to connect services.
 
 **Command Line Interface (CLI)**
-Meeco provides a CLI to facilitate interactation with the EV.
+Meeco provides a [CLI](docs/tools/meeco-cli.md) to facilitate interactation with the EV.
 
 **Onboarding to an Enterprise Vault**
 To set up an EV, an authorised user must first create an Organisation. Note that setting up an Organisation will require either approval via the creation of a Meeco Licence, or via an ecosystem's Tenant Administrator.
