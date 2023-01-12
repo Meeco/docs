@@ -1,36 +1,42 @@
 # Enterprise Vault
 
-An Enterprise Vault is a secure service like an end-user Vault with added functionalities tailored to enterprises.
-
-Enterprise refers to any entity, for example a company, a government, or a club. The term “Organisation” is used as the entity that controls the Enterprise Vault.
+An Enterprise Vault (EV) is a secure service similar to an end-user Vault with added functionality tailored to enterprises. _Enterprise_ refers to any entity, for example a company, government, or association. In the context of an EV, an “Organisation” is the entity that controls and manages their own EV.
 
 ## Functionalities
 
 The key functionalities of an Enterprise Vault are as follows:
+- [Items](docs/guides/vault/items-and-slots.md), [Slots](docs/guides/vault/items-and-slots.md), [Connections](docs/guides/vault/connections-and-sharing.md), [Sharing](docs/guides/vault/connections-and-sharing.md), [Classifications](docs/guides/vault/classification-hierarchies.md), [Attachments](docs/guides/vault/attachments.md) (as per an end-user Vault).
+- The Organisation that manages an EV can have one or more Administrators who are authorised to onboard and manage other Administrators.
+- The Administrator(s) of an EV can manage and deploy additional services that work harmoniously with the EV's features and functions.
+- All Administrators have access to [Items](docs/guides/vault/items-and-slots.md), [Connections](docs/guides/vault/connections-and-sharing.md) and [Shares](docs/guides/vault/connections-and-sharing.md) in the EV.
+- An Organisation can connect to any user or other Organisation via a Vault-to-Vault conenction in order to undertake various workflows.
+- Fined-grained consent capabilities to manage the sharing of data with end users.
+- Organisation Administrators have the ability to onboard third-party services (associated with the Organisation) to act on behalf of that Organisation. This enables third-party services access to [Items](docs/guides/vault/items-and-slots.md), [Connections](docs/guides/vault/connections-and-sharing.md) and [Shares](docs/guides/vault/connections-and-sharing.md) within the EV in a secure, controlled way.
 
-- Items, Slots, Connections, Sharing, Classifications, Attachments as per an end-user Vault.
-- The Organisation that manages an Enterprise Vault can have one or more Administrators (Admins), who are authorised to invite and manage other Admins and deploy Services. The (Organisation) Admins and Services all have access to Items in the Enterprise Vault.
-- Admins can be assigned fine grained permissions (see ATOM > Security Rights), in line with the roles within the authorised Organisation, to allow different access rights to Items within the Vault.
-- An Organisation can connect to any user or other organisation Vaults to provide services.
-- Fined-grained consent to manage the sharing of data with end users.
-- The Organisation Admin also has the ability to on-board third-party services, associated with the Organisation, to act on behalf of that Organisation and access Items, Connections and Shares in the Enterprise Vault.
+## Services executed via an Enterprise Vault
 
-## Services
+The following are examples of services the EV offers:
+- _Secure data storage_ - This data includes, but is not limited to:
+  - raw data
+  - structured data
+  - verifiable data
+  - self-attested data
+  - semantic data
+- _Secure sharing_ - Structured data shared in a persistent or on-off way, for example: a document or attachment. Shared data can also include a business rule that determines if the data can be edited/updated, or locked to prevent editing by the Organisation or other parties.
+  - A specific implementation of secure sharing is the creation of an Item pushed via a secure API to an end-user Vault, without storing the item in the EV. This allows the secure sharing of sensitive data from other systems without the need to maintain the Item in the EV.
+- _Securely receiving_ - Structured data from any authorised party (end-user or third party) within an EV ecosystem. This enables easy integrations with other services.
 
-Typical Services that are executed on behalf of an Enterprise Vault are:
+## Interacting with the Enterprise Vault
 
-Storing sensitive personal data that needs to be shared with other users. For example, verifiable credentials that are issued, or receiving verifiable credentials for verification purposes.
+There are multiple ways to interact with and manage an EV, including:
+**Meeco's Enterprise Portal**
+The Enterprise Portal is an application that enables Organisation Administrators to onboard, invite additional Organisation Administrators, and begin accessing Meeco's Vault API via a low-code interface. When using the EV via the Enterprise Portal, Administrators can create, view, and manage [Items](docs/guides/vault/items-and-slots.md), [Connections](docs/guides/vault/connections-and-sharing.md) and [Shares](docs/guides/vault/connections-and-sharing.md). It also provides a view of the end-users and other third-party services that the Organisation is connected to.
 
-Securely sharing (structured) data in a persistent or one-off way. This data can be plain text, a document (e.g. verifiable credential) or an attachment (e.g. pdf). A specific implementation is the creation of an Item pushed via a secure API to an end-user Vault, without storing the item in the Enterprise Vault. This allows the secure sharing of sensitive data from other systems without the need to maintain the Item in the Enterprise Vault.
+**SVX API**
+All functionality is available using the SVX API to connect services.
 
-Securely receiving (structured) data from any authorised party (end-user or third party) within an Enterprise Vault ecosystem. This enables easy integrations with other services
+**Command Line Interface (CLI)**
+Meeco provides a CLI to facilitate interactation with the EV.
 
-## Management of the Enterprise Vault
-
-An Enterprise Vault is managed via:
-
-**Enterprise Portal** – The Enterprise Portal is an application that enables Organisation Admins to login and create other Admins, Item Schemas and Items, along with viewing Items created by the Organisation. It also provides a view of the end-users and other third-party services the Organisation is connected to, including the outgoing and incoming shares to and from these these parties.
-
-**API** – All functionality is available using the SVX API to connect services.
-
-**CLI** – Command line interface to interact with the Enterprise Vault.
+**Onboarding to an Enterprise Vault**
+To set up an EV, an authorised user must first create an Organisation. Note that setting up an Organisation will require either approval via the creation of a Meeco Licence, or via an ecosystem's Tenant Administrator.
