@@ -1,6 +1,6 @@
 # Presentation Definitions
 
-Presentation definitions define which credential(s) a Verifier requests and for what purpose. Each selected credential is comprised of a [credential schema](https://docs.meeco.me/guides/credential-schemas) and the associated Issuer. The resulting object is conformant with the [W3C Presentation Exchange 1.0](https://identity.foundation/presentation-exchange/spec/v1.0.0/) specification and is used when generating a [Verification Request](oidc4vp.md).
+Presentation definitions define which credential(s) a Verifier requests and for what purpose. Each selected credential is comprised of a [credential schema](credential-schemas.md) and the associated Issuer. The resulting object is conformant with the [W3C Presentation Exchange 1.0](https://identity.foundation/presentation-exchange/spec/v1.0.0/) specification and is used when generating a [Verification Request](oidc4vp.md).
 
 ## Prerequisites
 

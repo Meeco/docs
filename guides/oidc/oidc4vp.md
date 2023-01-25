@@ -32,7 +32,7 @@ The flow centres around the creation and exchange of a Request and a Response ob
 ## Prerequisites
 
 - [DID](dids/did-methods.md)
-- [Presentation](../presentations.md)
+- [Presentation](../credentials/presentations.md)
 
 ## Who can undertake this operation?
 
@@ -62,7 +62,7 @@ POST /oidc/presentations/requests
   * Name
 * Expiration Date – Timestamp the request token expires
 * Redirect Base URI
-* [Presentation Definition](../presentation-definitions.md)
+* [Presentation Definition](../credentials/presentation-definitions.md)
 
 **Response**
 
@@ -158,7 +158,7 @@ The presentation response object that includes two unsigned JWTs, `id_token` and
 Verify the presentation response to a given request. The steps performed are:
 1. Verify ID Token
 2. Verify VP Token
-   - [Verify presentation](../presentations.md)
+   - [Verify presentation](../credentials/presentations.md)
 3. Verify if the response is valid for the given request, i.e. if it matches the presentation definition from the request
 
 **Endpoint**

@@ -12,8 +12,8 @@ The outcome of both of these options is a JSON formatted VC with a system-genera
 
 The following items are required in order for a credential to be created and issued:
 
-* [Credential Schema](../credential-schemas.md) – the [data schema](https://www.w3.org/TR/vc-data-model/#data-schemas) of the credential
-* [Credential Type](../credential-types.md)
+* [Credential Schema](credential-schemas.md) – the [data schema](https://www.w3.org/TR/vc-data-model/#data-schemas) of the credential
+* [Credential Type](credential-types.md)
 * [DID](../dids/did-methods.md)
 
 ## Who can undertake this operation?

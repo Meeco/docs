@@ -12,14 +12,16 @@
 
 - [Secure Value Exchange](platform/overview.md)
 - Vault
-  - [Enterprise Vault](platform/vault/enterprise-portal.md)
+  - [Enterprise Vault](platform/vault/enterprise-vault.md)
 
 ## Guides
 
-- [Credential Schemas](guides/credential-schemas.md)
-- [Credential Types](guides/credential-types.md)
 - Credentials
+  - [Credential Schemas](guides/credentials/credential-schemas.md)
+  - [Credential Types](guides/credentials/credential-types.md)
   - [Issue Credentials](guides/credentials/issue-credentials.md)
+  - [Presentation Definitions](guides/credentials/presentation-definitions.md)
+  - [Presentations](guides/credentials/presentations.md)
 
 - DIDs
   - [DID Resolver](guides/dids/did-resolution.md)
@@ -33,8 +35,6 @@
 
 - OpenID Connect
   - [For Verifiable Presentation](guides/oidc/oidc4vp.md)
-- [Presentations](guides/presentations.md)
-- [Presentation Definitions](guides/presentation-definitions.md)
 
 - Vault
   - [Setting up Access](guides/vault/setting-up-access.md)
