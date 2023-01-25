@@ -13,6 +13,7 @@
 - [Secure Value Exchange](platform/overview.md)
 - Vault
   - [Enterprise Vault](platform/vault/enterprise-vault.md)
+- [Supported Standards](platform/supported-standards.md)
 
 ## Guides
 
