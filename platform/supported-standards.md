@@ -13,7 +13,7 @@ Meeco is actively following and where possible contributing in standardisation e
 
 ## Standards
 
-| Component | Open Specifications / Standards | |
+| Component | Open Specifications / Standards | Standard Body |
 | --- | --- | --- |
 | Credential Data Model | [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model) | W3C, IETF |
 | Credential Data Format | [JSON Web Token VC (JWT-VC)](https://www.w3.org/TR/vc-data-model/#json-web-token) - signed as JWS ([RFC7515](https://datatracker.ietf.org/doc/html/rfc7515)) | W3C, IETF |
