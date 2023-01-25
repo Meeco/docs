@@ -16,24 +16,25 @@ A credential schema, once published, is versioned and made available via a publi
 
 ### Verifiable Credential JSON Schema
 
-Each JSON schema consists of the following mandatory attributes:
-- type (e.g. JsonSchemaValidator2018) - The specific type definition determines the content of each data schema.
-- id - A URI that identifies the schema file.
+Each VC JSON Schema consists of the following mandatory attributes:
+- Name - A locally unique identifier to address the VC schema.
+- JSON Schema – Object that describes the schema the credential is validated against.
 
-JSON schemas uploaded via the Enterprise Portal:
-- Must be a plain JSON object.
-- Will have the structure checked based on the specification: JSON Schema
+[JSON schemas](https://json-schema.org/) are plain JSON objects that cosist of following mandatory attributes (at the top level):
+- `$schema` - The schema specification used (e.g. `https://json-schema.org/draft/2019-09/schema`)
+- `required` – Array of required properties. Array MUST include `id`.
+- `additionalProperties` – MUST be `false`
+- `type` – MUST be `object`
 
 Below is an example JSON schema. Note that all the attributes contained within a JSON schema will be used to form a credential. Attributes can be customised, and those that appear in the example below are indicative of possible options.
 
 ```bash
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "name": "Example",
+  "title": "Example",
   "description": "Example",
   "type": "object",
   "properties": {
-
     "id": {
       "type": "string",
     }
@@ -42,6 +43,10 @@ Below is an example JSON schema. Note that all the attributes contained within a
   "additionalProperties": false,
 }
 ```
+
+Note that the `$id` property of the JSON Schema is set by the platform. When one is present in the schema, it will be overridden.
+
+Also note that `https://json-schema.org/draft/2020-12/schema` is not supported at this point in time.
 
 ## Who can undertake this operation?
 
