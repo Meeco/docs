@@ -24,7 +24,7 @@ The following are examples of services the EV offers:
   - semantic data
   - verifiable and verified data (including Verifiable Credential)
   - documents
-- _Secure sharing_ - Structured data shared in a persistent or on-off way, for example: a document or attachment. Shared data can also include a business rule that determines if the data can be edited/updated, or locked to prevent editing by the Organisation or other parties.
+- _Secure sharing_ - Structured data shared in a persistent or one-off way, for example: a document or attachment. Shared data can also include a business rule that determines if the data can be edited/updated, or locked to prevent editing by the Organisation or other parties.
   - A specific implementation of secure sharing is the creation of an Item pushed via a secure API to an end-user Vault, without storing the item in the EV. This allows the secure sharing of sensitive data from other systems without the need to maintain the Item in the EV.
 - _Securely receiving_ - Structured data from any authorised party (end-user or third party) within an EV ecosystem. This enables easy integrations with other services.
 
