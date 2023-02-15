@@ -54,4 +54,4 @@ When using Meeco’s set of components, these deliverables can be easily achieve
  
 
 ## Get Started!
-To improve your business' identity, data management and digital asset processes and offerings, onboard to Meeco’s Secure Value Exchange today. It only takes a few minutes [to sign up and get started](https://dev.meeco.me/)!
+To improve your business' identity, data management and digital asset processes and offerings, onboard to Meeco’s Secure Value Exchange today. It only takes a few minutes [to sign up and get started!](https://dev.meeco.me/)
