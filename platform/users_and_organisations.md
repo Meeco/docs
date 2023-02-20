@@ -1,12 +1,10 @@
 # Users and Organisations
 
-## Introduction
-
 Within Meeco’s SVX Platform, different roles have been developed for different purposes. These roles have been associated with a number of individual users and organisations. Understanding the difference between these users and organisations is important, as it will help you to understand the responsibilities of each entity and how to identify the right role for the entities in your use cases.
 
 Firstly, it is worth noting that regardless of whether you are using Meeco’s APIs, or if you are interacting via our Enterprise Portal, the different users and organisations are consistent across both.
 
-## Users and Organisations explained
+## Role in the Ecosystem
 
 Please note that the term ‘Organisation’ is occasionally used throughout our documentation as a cover-all term for any enterprise, company, group, or association. When utilising our platform, ‘Organisation’ refers to a specific role played by an enterprise, company, group, or association undertaking actions within a Tenancy.
 
