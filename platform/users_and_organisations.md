@@ -6,13 +6,9 @@ Within Meeco’s SVX Platform, different roles have been developed for different
 
 Firstly, it is worth noting that regardless of whether you are using Meeco’s APIs, or if you are interacting via our Enterprise Portal, the different users and organisations are consistent across both.
 
-
-
 ## Users and Organisations explained
 
 Please note that the term ‘Organisation’ is occasionally used throughout our documentation as a cover-all term for any enterprise, company, group, or association. When utilising our platform, ‘Organisation’ refers to a specific role played by an enterprise, company, group, or association undertaking actions within a Tenancy.
-
-
 
 | Ecosystem Participant   | Role  | 
 |-------------|--------|
@@ -22,7 +18,5 @@ Please note that the term ‘Organisation’ is occasionally used throughout our
 | Organisation     | An organisation participating in the ecosystem will typically take the role of a credential Issuer, Verifier, or both. The Tenant onboards organisations and sets the rights associated with an organisation (i.e.. allowing it to issue or verify credentials) and its administrators. | 
 | Organisation Administrator | An individual (user) who has administrator access and permissions within an organisation. An Organisation Administrator is responsible for the actions that take place within their Organisation, including issuing and/or verifying credentials and management of their lifecycle. |
 | End User | End users are invited to a Tenancy and benefit from services offered by Issuers and Verifiers.  |
-
-
 
 For more information on how users and organisations form an ecosystem, see our [Ecosystems](ecosystems.md) page.
