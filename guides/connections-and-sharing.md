@@ -160,6 +160,8 @@ In steps 5 and 6,
 
 After step 7 the Vault sends an invitation email to User 2.
 
+Note that the Vault service will expire the inviation after a certain time, currently the expiry time is set to 14 days.
+
 ### Accepting Invitation
 
 In this section we'll describe the scenario when User 2 accepts the invitation from User 1.
@@ -170,7 +172,7 @@ This process can be described in the following sequence diagram:
 
 Most of these steps are the the same steps of User 1 in the previous section: just like User 1, User 2 generates a Keypair for this connection \(step 9\), encrypts it and stores in the Keystore \(steps 10-12\), and publishes the Public Key in the Vault \(steps 13-14\).
 
-The most important step is a call to create a connection as step 13. The parameters of the call are the invitation ID and the invitation token.
+The most important step is a call to create a connection as step 13. The parameters of the call are the invitation ID and the invitation token. If the incviation has expired before the call to create the connection is made, the service will respond with a HTTP 403 Forbidden response status code.
 
 The most important results after these two sections are as follows:
 
