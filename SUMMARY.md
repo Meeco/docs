@@ -8,6 +8,10 @@
 - [Quickstart](getting-started/quickstart.md)
 - [Terminology](/concepts/terminology.md)
 
+## Concepts
+- [Digital Identity](/concepts/digital-identity.md)
+
+
 ## Platform
 
 - [Secure Value Exchange](platform/overview.md)
