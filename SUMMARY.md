@@ -8,6 +8,10 @@
 - [Quickstart](getting-started/quickstart.md)
 - [Terminology](/concepts/terminology.md)
 
+## Concepts
+
+- [Personal Data Attributes](/concepts/personal-data-attributes.md)
+
 ## Platform
 
 - [Secure Value Exchange](platform/overview.md)
