@@ -10,6 +10,7 @@
 
 ## Concepts
 
+- [Digital Identity and Why It's Important](concepts/digital-identity-and-why-it's-important)
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
