@@ -11,6 +11,7 @@
 ## Concepts
 
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
+- [Privacy- and Security-by-design](concepts/privacy-and-security-by-design.md)
 
 ## Platform
 
