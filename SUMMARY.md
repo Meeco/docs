@@ -10,7 +10,7 @@
 
 ## Concepts
 
-- [Digital Wallets and Wallet Services](concepts/digital-wallets-and-wallet-services)
+- [Digital Wallets and Wallet Services](concepts/digital-wallets-and-wallet-services.md)
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
