@@ -1,5 +1,5 @@
 ## Privacy-by-design
-Privacy-by-design (PbD) is a framework that was developed in the 1990s by Dr Ann Cavoukian and has since been adopted by the Global Privacy Assembly. PbD’s purpose is to protect data, the data owners, data custodians, and those who exchange data in digital environments. It is build on seven principles:
+Privacy-by-design (PbD) is a framework that was developed in the 1990s by Dr Ann Cavoukian and has since been adopted by the Global Privacy Assembly. PbD’s purpose is to protect data, the data owners, data custodians, and those who exchange data in digital environments. It is built on seven principles:
 1. Proactive not reactive, preventative not remedial
 2. Privacy as a default setting
 3. Privacy embedded into design
