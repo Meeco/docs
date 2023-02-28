@@ -10,6 +10,7 @@
 
 ## Concepts
 
+- [Personal Data & Attributes](concepts/personal-data-&-attributes.md)
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
