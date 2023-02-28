@@ -10,6 +10,7 @@
 
 ## Concepts
 
+- [Verifiable Credentials](concepts/verifiable-credentials.md)
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
