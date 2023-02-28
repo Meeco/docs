@@ -1,0 +1,26 @@
+Decentralised identifiers (DIDs) are a type of digital identifier that can be associated with any subject. Examples of DIDs include: a person, device, organisation or object. Whatever type of subject the DID is linked to, it is the subject that controls the DID. The difference between other commonly used identifiers and DIDs is that DIDs enable their subject to control their verifiable decentralised digital identity. Subjects can do this by associating their DID with a DID document. It is only by allowing third parties access to their DID and DID document can information related to the subject be discovered.
+
+A DID may have one or more DID controllers who contribute to changes made to a DID document. Meeco's framework doesn't prohibit the usage of any property in the DID document by the DID controller, this is to aid future extensibility and versatility.
+
+Key characteristics of a DID include:
+- decentralised: they are not managed or issued by a central service
+- persistent: they don’t rely on an organisation to manage them
+- cryptographically verifiable: it’s possible to prove control of the DID
+- resolvable: associated metadata can be discovered
+
+See [Use Cases and Requirements for Decentralized Identifiers, W3C](https://www.w3.org/TR/did-use-cases/) for more information.
+
+## DID Methods
+There are many DID methods in use today. Determining which DID method is used at any one time generally depends on which verifiable data registry has been employed. DID method specifications are developed to define DID methods, including specific operations. These operations include how the DIDs and DID documents are created, resolved, updated, and deactivated.
+
+### Universal Resolver
+Meeco supports DID resolving for various DID methods via the Universal Resolver (UR). The UR has been designed and is managed by the DIF Identifiers & Discovery Working Group and can be contributed to by individuals working in the discipline. The UR enables systems to resolve DIDs across many different DID methods. This allows system implementers to be DID-agnostic and provide seamless workflows between ecosystems.
+
+In addition to the UR, Meeco offers native support for the following methods:
+- Hedera DID method specification
+- Ethereum DID method specification
+
+## How are DIDs used?
+While DIDs are used to identify a particular subject, personally identifiable information (PII) is not generally associated with the DID or associated DID document. Keeping in mind that a DID is a combination of letters and numbers, a subject’s DID does not include the subject’s name, location or other attributes. It is advised by W3C that, when PII associated with a subject needs to be managed or shared it should be done so via a Verifiable Credential (VC) or service endpoints controlled by the DID subject. This process ensures that the privacy of the subject is maintained and the control over data sharing and exposure remains with the subject itself. Items such as VCs can be associated with DIDs to ensure the subject can maintain and manage their PII, however only the subject can read the data inside the VC. The subject can always share the VC with another party, and in that transaction the subject will grant access to the party to read their associated DID document.
+
+For detailed information on Meeco’s DID implementations see our [DID API documentation](https://docs.meeco.me/v/tech-preview/guides/dids).
