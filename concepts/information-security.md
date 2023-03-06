@@ -56,8 +56,6 @@ To protect our data, Meeco use data encryption at rest, in transit, and in cloud
   * Identifies users in the Vault (used for login)​
   * RSA-4096​
 
-For more information about the Key ceremonies at Meeco, please read the [SVX Key section](https://meecosystem.atlassian.net/wiki/spaces/MPD/pages/2454224911/Overview).
-
 #### 3. Microsoft Azure Security Tools <a href="#3.-microsoft-azure-security-tools" id="3.-microsoft-azure-security-tools"></a>
 
 Our data security is managed in Azure via:
