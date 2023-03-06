@@ -5,7 +5,7 @@ Meeco’s SVX supplies the building blocks to implement an interoperable data ec
 * [decentralised identity](../guides/dids/)
 * [verifiable credentials](../guides/credentials/)
 * privacy-by-design, and
-* [security-by-design](https://meecosystem.atlassian.net/l/cp/nuk9q9v0).
+* security-by-design.
 
 ## Types of Ecosystems
 
