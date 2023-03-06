@@ -1,7 +1,5 @@
 # Ecosystems
 
-## Introduction
-
 Meeco’s SVX supplies the building blocks to implement an interoperable data ecosystem, designed around your enterprise use cases. In Web3, those use cases unlock the power of permissioned personal data and lay the foundation to create Personal Identity Ecosystems ([PIE’s](ecosystems.md#types-of-ecosystems)). This new paradigm vastly increases user experience, privacy and security for your organisation and its end-users. Enterprises can explore radically new business opportunities built on digital trust, or, upgrade existing successful Web2 apps to Web3 by embracing trends such as:
 
 * [decentralised identity](../guides/dids/)

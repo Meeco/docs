@@ -12,6 +12,7 @@
 
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 * [Ecosystems](concepts/ecosystems.md)
+* [Information Security](concepts/information-security.md)
 
 ## Platform
 
