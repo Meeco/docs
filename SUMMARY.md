@@ -10,7 +10,7 @@
 
 ## Concepts
 
-- [Secure Data Storage](/concepts/secure-storage.md)
+- [Secure Data Storage](/concepts/secure-data-storage.md)
 - [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
