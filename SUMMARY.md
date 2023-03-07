@@ -10,9 +10,10 @@
 
 ## Concepts
 
-* [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 * [Ecosystems](concepts/ecosystems.md)
 * [Information Security](concepts/information-security.md)
+* [Secure Data Storage](/concepts/secure-data-storage.md)
+* [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
 ## Platform
 
