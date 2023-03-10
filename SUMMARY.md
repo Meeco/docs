@@ -15,6 +15,7 @@
 * [Personal Data & Attributes](concepts/personal-data-and-attributes.md)
 * [Secure Data Storage](/concepts/secure-data-storage.md)
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
+* [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
 
 ## Platform
 
