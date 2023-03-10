@@ -2,7 +2,7 @@
 
 This guide contains step by step instructions on how to create user accounts for the _**Vault**_ and the _**Keystore**_.
 
-![Create User with SRP](../.gitbook/assets/srp_create_user.svg)
+![Create User with SRP](/.gitbook/assets/srp_create_user.svg)
 
 * The _**Keystore**_ is where a users stores their secrets and encryption keys.
 * The _**Vault**_ is where users store their encrypted user data. User data cannot be decrypted and read by anyone but the user.
@@ -27,7 +27,7 @@ The CLI uses a Secret Key in combination with your user entered passphrase to ge
 
 Below is a diagram that explains the flow.
 
-![](../.gitbook/assets/hwo_the_secret_key_is_built.png)
+![](/.gitbook/assets/hwo_the_secret_key_is_built.png)
 
 ### Creating a User with the Secret Key Flow
 
