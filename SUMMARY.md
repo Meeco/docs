@@ -12,6 +12,7 @@
 
 * [Ecosystems](concepts/ecosystems.md)
 * [Information Security](concepts/information-security.md)
+* [Personal Data & Attributes](concepts/personal-data-and-attributes.md)
 * [Secure Data Storage](/concepts/secure-data-storage.md)
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 
