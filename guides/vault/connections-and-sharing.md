@@ -119,12 +119,12 @@ item:
   ...
 ```
 
-Running `meeco shares:list -a .bob.yaml` will show all the shares information that Bob has received, even from other users. 
+Running `meeco shares:list -a .bob.yaml` will show all the shares information that Bob has received, even from other users.
 
 `meeco shares:list -t outgoing -a .alice.yaml` will show all the shares that are outgoing from Alice to other users.
 
 If you're looking for a way to delete the share, you can do that as either user with `meeco shares:delete -a .alice.yaml <SHARE_ID>` or `meeco shares:delete -a .bob.yaml <SHARE_ID>`
- 
+
 Well done - you've now created a connection between two users, and shared an item!
 
 ## Sharing Items Between Users - In Depth
@@ -135,7 +135,7 @@ However, the Meeco platform makes it possible for one user to share items with a
 
 In summary, the sharer will generate a DEK \(data encryption key\) specifically for the purpose of this share and re-encrypt the shared item with this key. In order to share the DEK, Public Key cryptography is used: the sharer will encrypt the DEK with a Public Key of the share recipient, so only the share recipient can decrypt the DEK with their Private Key, and then use the DEK to decrypt the item.
 
-![](../.gitbook/assets/section3.png)
+![](/.gitbook/assets/section3.png)
 
 Let's dive into it.
 
@@ -145,7 +145,7 @@ Before anything can be shared, 2 Users need to establish a _**connection**_. In 
 
 The process can be described in the following sequence diagram:
 
-![](../.gitbook/assets/send_invitation.png)
+![](/.gitbook/assets/send_invitation.png)
 
 At step \(1\) User 1 generates a Keypair which will be used for inviting another user, and later for the key exchange.
 
@@ -166,7 +166,7 @@ In this section we'll describe the scenario when User 2 accepts the invitation f
 
 This process can be described in the following sequence diagram:
 
-![](../.gitbook/assets/accept_invitation.png)
+![](/.gitbook/assets/accept_invitation.png)
 
 Most of these steps are the the same steps of User 1 in the previous section: just like User 1, User 2 generates a Keypair for this connection \(step 9\), encrypts it and stores in the Keystore \(steps 10-12\), and publishes the Public Key in the Vault \(steps 13-14\).
 
@@ -184,7 +184,7 @@ In this section, to create a share, User 1 will generate a DEK dedicated to this
 
 Creation of a share can be described in the following sequence diagram:
 
-![](../.gitbook/assets/create_share.png)
+![](/.gitbook/assets/create_share.png)
 
 At step 19 User 1 generates a DEK. This DEK will be used to encrypt the shared item. We also need to have the key readable by User 2, so at step 20 we encrypt the same DEK with the Public Key of User 2.
 
@@ -199,7 +199,7 @@ The main results of these steps are as follows:
 
 Reading of the share can be described in the following sequence diagram:
 
-![](../.gitbook/assets/read_share.png)
+![](/.gitbook/assets/read_share.png)
 
 First in step 24 User 2 retrieves a list of all items both his own and shared incoming.
 
