@@ -16,6 +16,7 @@
 * [Secure Data Storage](/concepts/secure-data-storage.md)
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 * [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
+* [Verifiable Credentials](concepts/verifiable-credentials.md)
 
 ## Platform
 
