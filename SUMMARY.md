@@ -21,6 +21,7 @@
 ## Platform
 
 * [Secure Value Exchange](platform/overview.md)
+* [Decentralised Identifiers (DIDs)](platform/did.md)
 * [Vault](platform/vault/overview.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Supported Standards](platform/supported-standards.md)
