@@ -15,9 +15,10 @@ Meeco is actively following and where possible contributing in standardisation e
 
 | Component | Open Specifications / Standards | Standard Body |
 | --- | --- | --- |
-| Credential Data Model | [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model) | W3C, IETF |
+| Credential Data Model | [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model) | W3C |
 | Credential Data Format | [JSON Web Token VC (JWT-VC)](https://www.w3.org/TR/vc-data-model/#json-web-token) - signed as JWS ([RFC7515](https://datatracker.ietf.org/doc/html/rfc7515)) | W3C, IETF |
 | Credential Presentation | [Presentation Exchange v2](https://identity.foundation/presentation-exchange/spec/v2.0.0/) | DIF |
+| Credential Presentation <br/>Transfer Protocol | [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | OIDF |
 | Credential JSON Schema | [Verifiable Credentials JSON Schema 2022](https://w3c-ccg.github.io/vc-json-schemas/) | W3C |
 | DID Authentication | [Self-Issued OpenID Provider v2](https://openid.net/specs/openid-connect-self-issued-v2-1_0.html) | OIDF |
 | Identifier Data Model | [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/) | W3C |
@@ -41,7 +42,7 @@ Following key types are supported for JWS verification.
 
 ### Master Encryption Key Algorithms
 
-Following algorithms are supported when generating derived keys.
+Following algorithms are supported when generating derived keys. Used as defined in [NIST - Master Key](https://csrc.nist.gov/glossary/term/master_key).
 
 | Key Type |
 | --- |
@@ -49,7 +50,7 @@ Following algorithms are supported when generating derived keys.
 
 ### Key Encryption Algorithms
 
-Following algorithms are supported when encrypting other keys at rest and in transit.
+Following algorithms are supported when encrypting other keys at rest and in transit. Used as defined in [NIST - Key-Encryption-Key](https://csrc.nist.gov/glossary/term/key_encryption_key).
 
 | Key Type |
 | --- |
@@ -57,7 +58,7 @@ Following algorithms are supported when encrypting other keys at rest and in tra
 
 ### Keypairs
 
-Following keypair algorithms are supported for exchanging keys between parties.
+Following keypair algorithms are supported for exchanging keys between parties. Used as defined in [NIST - Key pair](https://csrc.nist.gov/glossary/term/key_pair).
 
 | Key Type |
 | --- |
@@ -65,7 +66,7 @@ Following keypair algorithms are supported for exchanging keys between parties.
 
 ### Data Encryption Algorithms
 
-Following algorithms are supported when encrypting data at rest and in transit.
+Following algorithms are supported when encrypting data at rest and in transit. Used as defined in [NIST - Data Encryption Key](https://csrc.nist.gov/glossary/term/data_encryption_key).
 
 | Key Type |
 | --- |
