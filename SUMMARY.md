@@ -23,6 +23,7 @@
 
 ## Platform
 
+* [Authorisation, Tenant & Organisation Manager (ATOM)](platform/ATOM.md)
 * [Secure Value Exchange](platform/overview.md)
 * [Credential Service](platform/credential-service.md)
 * [Decentralised Identifiers (DIDs)](platform/did.md)
