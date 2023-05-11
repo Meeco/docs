@@ -15,7 +15,7 @@
 ## Platform
 
 - [Secure Value Exchange](platform/overview.md)
-- [Authorisation, Tenant & Organisation Manager (ATOM)](platform/authorisation,-tenant-&-organisation-manager-(ATOM).md)
+- [Authorisation, Tenant & Organisation Manager (ATOM)](platform/ATOM.md)
 - [Vault](platform/vault/overview.md)
   - [Enterprise Vault](platform/vault/enterprise-vault.md)
 - [Supported Standards](platform/supported-standards.md)
