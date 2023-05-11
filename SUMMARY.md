@@ -10,7 +10,7 @@
 
 ## Concepts
 
-* [Digital Wallets and Wallet Services](concepts/digital-wallets-and-wallet-services.md)
+* [Digital Wallets](concepts/digital-wallets.md)
 * [Ecosystems](concepts/ecosystems.md)
 * [Information Security](concepts/information-security.md)
 * [Personal Data & Attributes](concepts/personal-data-and-attributes.md)
