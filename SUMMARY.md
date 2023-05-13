@@ -29,6 +29,7 @@
 * [Decentralised Identifiers (DIDs)](platform/did.md)
 * [Vault](platform/vault/overview.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
+* [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Supported Standards](platform/supported-standards.md)
 
 ## Guides
