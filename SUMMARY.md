@@ -18,6 +18,7 @@
 * [Privacy- and Security-by-design](concepts/privacy-and-security-by-design.md)
 * [Secure Data Storage](/concepts/secure-data-storage.md)
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
+* [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
 * [Verifiable Credentials](concepts/verifiable-credentials.md)
 
@@ -27,7 +28,6 @@
 * [Authorisation, Tenant & Organisation Manager (ATOM)](platform/ATOM.md)
 * [Credential Service](platform/credential-service.md)
 * [Decentralised Identifiers (DIDs)](platform/did.md)
-* [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Vault](platform/vault/overview.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Supported Standards](platform/supported-standards.md)
