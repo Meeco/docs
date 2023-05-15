@@ -4,7 +4,7 @@ We have created the [Meeco SDK](https://www.npmjs.com/package/@meeco/sdk) and th
 
 ## SDK
 
-{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" caption="" %}
+{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" %}
 
 Our first release of the SDK is written in Typescript, and we have it released as an [NPM Package here](https://www.npmjs.com/package/@meeco/sdk) so you can easily import our modules into your project and start making calls to our APIs.
 
@@ -24,7 +24,7 @@ If you would like a port of the Meeco SDK in another language, let us know throu
 
 ### A tool for interacting with Meeco services and databases
 
-{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/cli" caption="" %}
+{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/cli" %}
 
 To get the Meeco platform up and running so that you can get a feel for it as a developer, we have created some tools that set up a Meeco User and create all the necessary access tokens and keys for you to explore what Meeco can do.
 
@@ -44,15 +44,14 @@ The Typescript CLI and SDK Github repos reside below in the downloads section.
 
 The CLI documentation can be found below - it will help you set up tool so you can begin making requests against our APIs.
 
-{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/cli" caption="" %}
+{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/cli" %}
 
 The Typescript SDK documentation can be found below
 
-{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" caption="" %}
+{% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" %}
 
 The CLI relies heavily on the SDK, so by running through the commands we've got set up, you'll be able to follow along and learn how the Meeco Platform works, and give you some idea about what it can do.
 
 ### What Next?
 
-Now, go back to the [Meeco Quickstart](../getting-started/quickstart.md) guide and follow the run-through in order to create a User, setup the Keystore, gain access to the Vault and create your first Item!
-
+Now, go back to the [Meeco Quickstart](broken-reference) guide and follow the run-through in order to create a User, setup the Keystore, gain access to the Vault and create your first Item!

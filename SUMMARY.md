@@ -2,11 +2,6 @@
 
 * [Docs](README.md)
 
-## Getting Started
-
-* [Setting Up](getting-started/setting-up.md)
-* [Quickstart](getting-started/quickstart.md)
-
 ## Concepts
 
 * [Digital Identity and Why It's Important](concepts/digital-identity.md)
@@ -65,14 +60,11 @@
 * [Meeco SDK & CLI](tools/meeco-cli.md)
 * [Cryppo SDK & CLI](tools/cryppo.md)
 
-## Releases
-
-* [Overview](releases/overview.md)
-* [1.0.0](releases/svx-1-0-0.md)
-* [API-of-Me Releases](releases/api-of-me-releases.md)
-
 ## Policies
 
 * [Privacy](policies/privacy.md)
 * [Developer Policy](policies/developer-policy.md)
 
+***
+
+* [Releases](releases/releases.md)

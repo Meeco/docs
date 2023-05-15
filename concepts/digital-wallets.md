@@ -23,14 +23,15 @@ A Holder wallet must provide a user facing form-factor that will enable the Hold
 5. Manage keys related to DIDs
 6. Manage user settings
 7. Provide help functionality
+8.
 
 ## Operatinging Model of Wallets
 
 There are three different ways a wallets can be operated, and any of them may be fully decentralised, centralised, or managed:
 
-- **Non-custodial**: all the associated keys are under the control of the Holder (most likely decentralised).
-- **Custodial**: all the associated keys are under the control of the custodian (most likely centralised).
-- **Hybrid**: a combination of Holder and custodian controls (most likely managed).
+* **Non-custodial**: all the associated keys are under the control of the Holder (most likely decentralised).
+* **Custodial**: all the associated keys are under the control of the custodian (most likely centralised).
+* **Hybrid**: a combination of Holder and custodian controls (most likely managed).
 
 Non-custodial wallets operate as per the Holder’s discretion and cannot be accessed by third parties unless the Holder provides consent. Generally, a non-custodial wallet is not linked to any external data storage, therefore, if the Holder loses their device or is locked out of their wallet application, they are unable to retrieve the contents of the wallet.
 
