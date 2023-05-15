@@ -23,7 +23,7 @@ A Holder wallet must provide a user facing form-factor that will enable the Hold
 5. Manage keys related to DIDs
 6. Manage user settings
 7. Provide help functionality
-8.
+
 ## Operatinging Model of Wallets
 
 There are three different ways a wallets can be operated, and any of them may be fully decentralised, centralised, or managed:
