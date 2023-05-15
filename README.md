@@ -4,25 +4,25 @@ The documentation serves as the primary source of information for individuals ne
 
 ## Concepts
 
+Deepen your understanding of digital identity concepts.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Digital Identity</strong> </td><td>Defining the core concept of the platform</td><td></td><td><a href="concepts/digital-identity.md">digital-identity.md</a></td></tr><tr><td><strong>Secure Storage</strong></td><td>Protect sensitive personal data</td><td></td><td><a href="concepts/secure-data-storage.md">secure-data-storage.md</a></td></tr><tr><td><strong>Verifiable Credentials</strong></td><td>Open standard for asserting information about anything</td><td></td><td><a href="concepts/verifiable-credentials.md">verifiable-credentials.md</a></td></tr></tbody></table>
+
 ## Platform
+
+Embark on your journey and harness the full potential of the platform's capabilities.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Introducing SVX</strong></td><td>Composable platform to manage a data network</td><td></td><td><a href="platform/overview.md">overview.md</a></td></tr><tr><td><strong>Vault</strong></td><td>Meeco's secure, end-to-end encrypted, storage implementation</td><td></td><td><a href="platform/vault/overview.md">overview.md</a></td></tr><tr><td><strong>Credential Service</strong></td><td>Issue, present and verify credentials</td><td></td><td><a href="platform/credential-service.md">credential-service.md</a></td></tr></tbody></table>
 
 ## Tools
 
-Meeco has made available for use some tools to make using the API-of-Me easier.
+Build faster using following tools.
 
-The Meeco CLI is available [here](https://github.com/Meeco/cli). Open the [Meeco CLI](tools/meeco-cli.md) section in this documentation for detailed installation instructions, and then you can get into the [Quickstart Guide](getting-started/quickstart.md) to create a User and an Item to save to your Vault.
-
-We've also created an encryption library called `Cryppo` that makes using the encryption and decryption routines we recommend much easier. We've created a Javascript and Ruby library - the examples contained within this guide will focus on the JS version. Check out `Cryppo-JS` [here](https://github.com/Meeco/cryppo-js) and `Cryppo` with Ruby [here](https://github.com/Meeco/cryppo).
-
-`cryppo-cli` is a tool that we've created that quickly makes you a Data Encryption Key, and let's you encode and decode information with it from the command line. We recommend using this to follow along with some of the examples on the site.
-
-You can even use them to generate encrypted data to use in the calls to the Developer Portal API Sandbox
-
-To read more about Cryppo and the Cryppo-CLI, open the Cryppo page in the Meeco Docs [here](tools/cryppo.md)
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>SVX SDK</strong></td><td>Javascript SDK for faster development</td><td></td><td><a href="tools/meeco-cli.md">meeco-cli.md</a></td></tr><tr><td><strong>Meeco Wallet</strong></td><td>Experience the mobile identity wallet in <a href="https://apps.apple.com/be/app/meeco-wallet">App Store</a> and <a href="https://play.google.com/store/apps/details?id=me.meeco.wallet&#x26;hl=en&#x26;gl=US">Play Store</a>.</td><td></td><td></td></tr><tr><td><strong>Cryppo SDK</strong></td><td>Aiding in encryption and decryption</td><td></td><td><a href="tools/cryppo.md">cryppo.md</a></td></tr></tbody></table>
 
 ## Environments
 
-Currently, we have the following environments setup:
+SVX platform is available in both public deployment (hosted in Amsterdam, EU), as well as private deployments (contact us). In the public environment, currently, we have the following environments setup:
 
 * **sandbox**: allows you to experiment freely in an environment that is always updated to include the latest and the greatest functionalities.
 * **pre-production**: mimics the production environment, allows you to perform regression tests.
