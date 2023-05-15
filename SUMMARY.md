@@ -65,11 +65,13 @@
 * [Meeco SDK & CLI](tools/meeco-cli.md)
 * [Cryppo SDK & CLI](tools/cryppo.md)
 
+## [Releases](releases/overview.md)
+
+* [1.0.0](releases/1.0.0.md)
+* [API-of-Me Releases](releases/api-of-me-releases.md)
+
 ## Policies
 
 * [Privacy](policies/privacy.md)
 * [Developer Policy](policies/developer-policy.md)
 
-***
-
-* [Releases](releases/releases.md)

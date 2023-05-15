@@ -1,4 +1,4 @@
-# Releases
+# API-of-Me Releases
 
 ## 2021-Q2
 
@@ -9,10 +9,10 @@
 * Added client task for re-encrypting the account owners KEK during delegation setup
 * Added support multiple JWT issuers for OpenIDConnect Authentication flow.
 * Added support seamless identity transition on OpenIDConnect identity provider change.
-  * This feature requires OpenIDConnect JWT to enclose a special claim `extension_meecoUserId` 
+  * This feature requires OpenIDConnect JWT to enclose a special claim `extension_meecoUserId`
     with value reference to the previous Meeco user identity.
 * Added parameters for `GET /connections`:
-  * `delegation=granted_to_the_other_user`; the current user has granted delegation to other users 
+  * `delegation=granted_to_the_other_user`; the current user has granted delegation to other users
   * `delegation=granted_to_me`; the current user has received delegation from other users
 * Changed `GET /session` shows:
   * the type of the session (`oidc` or `token`)
@@ -97,7 +97,7 @@
 
 * Added support multiple JWT issuers for OpenIDConnect Authentication flow.
 * Added support seamless identity transition on OpenIDConnect identity provider change.
-  * This feature requires OpenIDConnect JWT to enclose a special claim `extension_meecoUserId` 
+  * This feature requires OpenIDConnect JWT to enclose a special claim `extension_meecoUserId`
     with value reference to the previous Meeco user identity.
 * Changed `GET /session` shows the validity of the current session
 * Added endpoint `POST /session/limited_in_time`
