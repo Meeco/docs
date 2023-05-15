@@ -6,7 +6,6 @@
 
 * [Setting Up](getting-started/setting-up.md)
 * [Quickstart](getting-started/quickstart.md)
-* [Terminology](concepts/terminology.md)
 
 ## Concepts
 
@@ -21,6 +20,7 @@
 * [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
 * [Verifiable Credentials](concepts/verifiable-credentials.md)
+* [Terminology](concepts/terminology.md)
 
 ## Platform
 
