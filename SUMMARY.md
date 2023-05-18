@@ -63,8 +63,9 @@
 ***
 
 * [Releases](releases/README.md)
-  * [Overview](releases/overview.md)
-  * [1.0.0](releases/1.0.0.md)
+  * [1.1.0](releases/svx-1.1.0.md)
+  * [1.0.0](releases/svx-1.0.0.md)
+  * [Legacy API-of-Me](releases/api-of-me-releases.md)
 
 ## Policies
 
