@@ -100,61 +100,6 @@ JSON Web Token is a proposed Internet standard for creating data with optional s
 ## Key Encryption Key
 Used to encrypt all other keys (**Data Encryption Keys** and **Keypairs**) before they are stored in the [Keystore](#keystore). The Key Encryption Key is encrypted with the [Passphrase Derived Key](#passphrase-derived-key)
 
-## DID Subject
-The entity identified by a DID and described by a DID Document. DID subjects include:
-- people
-- organizations
-- physical entities
-- digital entities
-
-## Distributed Ledger Technology (DLT)
-An umbrella term for technologies that provide distributed storage mechanics based on a consensus algorithm. Blockchain and hash-graph technologies are included under the term DLTs.
-
-## Distributed Public Key Infrastructure (DPKI)
-Same as PKI, but does not require a centralized authority to provide authenticity.
-
-## Ecosystem
-A group of organizations, users, and things that interact within a particular environment to achieve a (common) goal.
-
-## End-to-end Encryption (E2E)
-A system of communication where only the users communicating can read the messages. It prevents data from being read or secretly modified, other than by the true sender and recipient(s). The messages are encrypted by the sender (via the use of encryption keys), they are stored, encrypted, by the recipient, and are decrypted (read) by the recipient with another set of keys.
-
-## End-users
-A role within **SVX**. End-users, including **Wallet Holders**, partake in the exchange and sharing of data with **Issuers** and **Verifiers**. Via the use of Meeco’s Wallet application, they are able to, but not limited to:
-- Register with **Tenants**
-- **Connect** with **Organizations**
-- Import credentials
-- Import and respond to **Presentation Requests**
-
-## Ephemeral DID
-DID which is self-contained or generative, does not need to be represented in VDR.
-
-## Issuer
-A role an entity can perform by asserting claims about one or more subjects, creating a verifiable credential from these claims, and transmitting the verifiable credential to a holder. See reference here.
-
-## Item
-A group of [Slots](#slot) related by a topic. Common examples of Items:
-- user profile
-- club membership
-- flight reservation
-The Slots in an Item are keyed by their name property and contain only encrypted values.
-Detailed documentation can be found [here](../guides/vault/items-and-slots.md).
-
-## Item Template
-A predefined list of empty [Slots](#slot). Each Item is created by cloning a template and filling in the Slots with data.
-Detailed documentation can be found [here](../guides/vault/items-and-slots.md).
-
-## JSON File Type
-JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute-value pairs and arrays. It is a common data format with diverse uses in electronic data interchange, including that of web applications with servers.
-
-## JSON Web Tokens
-JSON Web Token is a proposed Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key.
-
-## Key Encryption Key
-Used to encrypt all other keys (**Data Encryption Keys** and **Keypairs**) before they are stored in the [Keystore](https://meecosystem.atlassian.net/concepts/terminology#keystore "/concepts/terminology#keystore"). The Key Encryption Key is encrypted with the [Passphrase Derived Key](https://meecosystem.atlassian.net/concepts/terminology#passphrase-derived-key-and-derivation-artefacts "/concepts/terminology#passphrase-derived-key-and-derivation-artefacts"), which is private to the user.
-The serialization format of encrypted data used in the Meeco platform allows for adding new encryption algorithms without breaking backward compatibility.
-There is one Key Encryption Key per user.
-
 ## Key Exchange
 A process where at least two parties exchange cryptographic key(s) with the intention to use it/them for encryption or authentication.
 
