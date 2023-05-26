@@ -14,8 +14,6 @@ sequenceDiagram
   participant P as Portal
   participant W as Wallet
   participant API as SVX API
-  participant IDP as IDP Service
-  participant VC as VC Service
 
   W->>W: did:key generated locally
   TA->>P: Navigate to Add User > End Users > Manage Tenancy.
