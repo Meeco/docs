@@ -55,7 +55,7 @@ The entity identified by a DID and described by a DID Document. DID subjects inc
 - digital entities
 
 ## Distributed Ledger Technology (DLT)
-An umbrella term for technologies that provide distributed storage mechanics based on a consensus algorithm. Blockchain and hash-graph technologies are included under the term DLTs.
+An umbrella term for technologies that provide distributed, append-only storage mechanics based on a consensus algorithm. Blockchain and hashgraph technologies are included under the term DLTs.
 
 ## Distributed Public Key Infrastructure (DPKI)
 Same as PKI, but does not require a centralized authority to provide authenticity.
