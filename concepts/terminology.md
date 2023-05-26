@@ -242,7 +242,6 @@ In the context of decentralised identity, is a place where Decentralised Identif
 A tamper-evident presentation encoded in such a way that authorship of the data can be trusted after a process of cryptographic verification. Certain types of verifiable presentations might contain data that is synthesized from, but do not contain, the original [verifiable credentials](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-credentials) (for example, zero-knowledge proofs). See reference [here](https://www.w3.org/TR/vc-data-model/#dfn-credential).
 
 ## Verification Request
-
 See **Presentation Request**.
 
 ## Verification Template
