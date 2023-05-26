@@ -23,11 +23,9 @@ A persistent channel via which two entities can share information (e.g. [Items](
 
 ## Credential
 For a comprehensive understanding of "Credential(s)", please refer to the [Verifiable Credentials](#verifiable-credential-vc) section.
+
 ## Credential Schema
 A document that is used to guarantee the structure, and by extension the semantics, of the set of **claims** comprising a **Verifiable Credential**. A shared Credential Schema allows all parties to reference data in a known way. See [reference here](https://www.w3.org/TR/vc-data-model/#dfn-credential "https://www.w3.org/TR/vc-data-model/#dfn-credential").
-
-## Credential Presentation
-See **Presentation**.
 
 ## Credential Template
 The defining properties of the resulting **Credential**. Credential Templates generally include:
@@ -237,7 +235,6 @@ A token that contains security rights assigned to a user or agent, which can be 
 ## Share
 A Share is created when a user grants access to one of their [Items](#item) to another user that they have [Connected](#connection) with. The **Item** is re-encrypted with a [Data Encryption Key](#data-encryption-key-dek) and shared with the recipient of the Share. An Item you have received via a Share can be shared with another user, but you cannot alter any of its **Slots**. Only the original creator of the Item can update the Share, other than deleting it. Detailed documentation can be found [here](#guides-vault-connections-and-sharing).
 
-
 ## Slot
 A Slot is the smallest data entity in the [Vault](#vault). An Item is made up of Slots, which are defined by the `name` property. Each Slot has a `name`, a `label`, and a `value`. Slots are able to be shared after two users have made a [Connection](#connection) with each other. Note that the API does not return the `value` property but `encrypted_value`. The API will not allow storing any unencrypted data in either `value` or `encrypted_value`. Slot values are always stored in an encrypted form, and only the user can decrypt and read them. Once encrypted and serialized, a Slot value of "BMW" would look something like this: `"encrypted_value": "Aes256Gcm.2hDl.LS0tCml2OiAhYmluYXJ5IHwtCiAgQWQwSThDZk5qRnFycmFuMAphdDogIWJpbmFyeSB8LQogIDJXVklzbUxOSWVoOHZIVDB1ZzBtZVE9PQphZDogbm9uQQo="`. Slots are typed, but the values cannot be checked to match the given type, as the API does not have decrypted keys for these items. Example Slot types are:
 - `key_value`
@@ -268,45 +265,35 @@ Meeco's proprietary platform. [SVX](https://www.meeco.me/platform) provides cust
 A term used within SVX but is identical to **Verifiable Presentation**.
 
 ## Tenant
-
 An entity within [SVX](https://www.meeco.me/platform). A Tenant is operated by **Tenant Administrators** and is responsible for the governance of its **Tenancy** participants (including **Organisations** and **End-users**).
 
 ## Tenant Administrator
-
 A role within [SVX](https://www.meeco.me/platform). Tenant Administrators are individuals (users) who have administrator access and permissions to operate a **Tenant**. A Tenant Administrator is responsible for the actions that take place within their Tenancy, including:
 
 - Onboarding, managing and governing Organisations.
 - Registering and managing **End-users**.
 
 ## Tenancy(ies)
-
 A Tenancy is operated by an enterprise/company, referred to as a **Tenant** and consists of **Organisations**, and **End-users**.
 
 ## Uniform resource identifier (URI)
-
 A Uniform Resource Identifier is a unique sequence of characters that identifies a logical or physical resource used by web technologies. URIs may be used to identify anything, including real-world objects, such as people and places, concepts, or information resources such as web pages and books.
 
 ## Universally unique identifier (UUID)
-
 A number assigned to any type of data set or attribute to make it uniquely identifiable.
 
 ## Vault
-
 Meeco’s Vault is where users can store and **Share** the [Items](#item") they create with **Connections** they establish. A Vault user’s data is **end-to-end encrypted** and is only accessible by them. Additional information can be found [here]().
 
 ## Verifiable Credential
-
 A verifiable credential is a tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to build [verifiable presentations](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations), which can also be cryptographically verified. The [claims](https://www.w3.org/TR/vc-data-model/#dfn-claims) in a credential can be about different [subjects](https://www.w3.org/TR/vc-data-model/#dfn-subjects). See reference [here](https://www.w3.org/TR/vc-data-model/#dfn-credential).
 
 (and so on for the remaining terms)
 
-
 ## Verifiable Data Registry (VDR)
-
 In the context of decentralised identity, is a place where Decentralised Identifiers (DIDs) can be anchored to.
 
 ## Verifiable Presentation
-
 A tamper-evident presentation encoded in such a way that authorship of the data can be trusted after a process of cryptographic verification. Certain types of verifiable presentations might contain data that is synthesized from, but do not contain, the original [verifiable credentials](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-credentials) (for example, zero-knowledge proofs). See reference [here](https://www.w3.org/TR/vc-data-model/#dfn-credential).
 
 ## Verification Request
@@ -314,7 +301,6 @@ A tamper-evident presentation encoded in such a way that authorship of the data 
 See **Presentation Request**.
 
 ## Verification Template
-
 The defining properties of the resulting **Presentation Request**. Verification Templates generally include:
 - template name
 - purpose (reason for requesting the specified **Credential(s)**)
@@ -323,12 +309,10 @@ The defining properties of the resulting **Presentation Request**. Verification 
 Verification Templates can be used repeatedly to form the basis of many different **Presentation Requests**.
 
 ## Verifier
-
 A role an [entity](https://www.w3.org/TR/vc-data-model/#dfn-entities) performs by receiving one or more [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-credentials), optionally inside a [Verifiable Presentation](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations) for processing. Other specifications might refer to this concept as a relying party. See reference [here](https://www.w3.org/TR/vc-data-model/#dfn-credential).
 
 
 ## Verifying Key
-
 A well-known key link directly to a specific entity. Used to confirm signatures. Technically, it is a public asymmetric key.
 
 ## Wallet
@@ -336,13 +320,10 @@ A well-known key link directly to a specific entity. Used to confirm signatures.
 Software that enables the wallet’s controller (the end-user or **Wallet Holder**) to generate, store, manage and protect cryptographic keys and Verifiable Credentials. It allows the person to take actions (e.g. accept and present credentials) and setup peer-to-peer communication.
 
 ## Wallet Holder
-
 An entity that stores and “owns” **Verifiable Credentials**. A Wallet Holder’s **Credentials** are cryptographically signed with the Holder’s signing key in the ‘holder’ section of the **Verifiable Credential**.
 
 ## Zero Knowledge Proof(s) (ZKP)
-
 In cryptography, a zero-knowledge proof or zero-knowledge protocol is a method by which one party can prove to another party that a given statement is true while the prover avoids conveying any additional information apart from the fact that the statement is indeed true.
 
 ## Zero Value Knowledge (ZVK)
-
 A system that has no knowledge (by using end-to-end encryption) of the data value, whilst allowing metadata to be accessible to the service. Metadata might include a data label (such as "street_name"), or classifications (such as "home").
