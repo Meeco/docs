@@ -47,6 +47,8 @@
   * [DID Controller Keypair](guides/dids/did-controller-keypair.md)
 * [OpenID Connect](guides/openid-connect/README.md)
   * [For Verifiable Presentation](guides/oidc/oidc4vp.md)
+* Users
+  * [Inviting End-Users](guides/users/inviting-end-users.md)
 * [Vault](guides/vault/README.md)
   * [Setting up Access](guides/vault/setting-up-access.md)
   * [Items and Slots](guides/vault/items-and-slots.md)
