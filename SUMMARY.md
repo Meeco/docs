@@ -23,6 +23,7 @@
 * [Authorisation, Tenant & Organisation Manager (ATOM)](platform/ATOM.md)
 * [Credential Service](platform/credential-service.md)
 * [Decentralised Identifiers (DIDs)](platform/did.md)
+* [Keys](platform/keys.md)
 * [Vault](platform/vault/overview.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Supported Standards](platform/supported-standards.md)
