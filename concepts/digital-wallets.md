@@ -10,15 +10,15 @@ An identity wallet focuses on the safeguarding and management of a Holder’s id
 2. [Decentralised identifiers](platform/did.md) (DIDs)
 3. [Credentials](concepts/verifiable-credentials.md) (e.g. W3C Verifiable Credentials, mDL, PDFs)
 
-A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols that allow it to interact with others. This part is where it is so important to go for open standards that are adopted by a wide range software providers to ensure interoperability.
+A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols which enables these interactions. It is for this reason that the adoption of open standards by software providers is important to ensure interoperability.
 
 ### UX Functions of an Identity Wallet
 
-A Holder wallet must provide a user facing form-factor that will enable the Holder to:
+An identity wallet must provide the user with a UI that will enable them to:
 
-1. Bootstrap the wallet by binding an identity
+1. Bind the identity of the Holder to the wallet
 2. Request and receive credentials
-3. Present (and possibly selectively disclose) credentials
+3. Present (and possibly selectively disclose) credentials for verification
 4. Manage credentials including auditing capabilities & consent management
 5. Manage keys related to DIDs
 6. Manage user settings
@@ -40,4 +40,4 @@ A hybrid wallet can support Privacy- & Security-by-Design by enabling the Holder
 
 ## The Meeco Wallet
 
-Find out more about Meeco’s Wallet by viewing our Wallet overview page.
+Find out more about Meeco’s Wallet by viewing our [Wallet product page](https://www.meeco.me/wallet).
