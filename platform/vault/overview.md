@@ -60,7 +60,7 @@ An end-user Vault is accessed, managed and controlled by one single user. End-us
 
 ## Enterprise Vault
 
-An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. Enterprise refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](docs/platform/vault/enterprise-portal.md) information page.
+An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. *Enterprise* refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](docs/platform/vault/enterprise-portal.md) information page.
 
 # Standards and Compliance
 
