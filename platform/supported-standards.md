@@ -26,7 +26,7 @@ Meeco is actively following and where possible contributing in standardisation e
 | Entity Identifier (NP,LE) | [did:ebsi]() | W3C |
 | Entity Identifier (NP,LE) | [did:hedera]() | HBAR |
 | Entity Identifier (LE) | [did:web](https://github.com/w3c-ccg/did-method-web) | W3C |
-| Revocation | [Verifiable Credential Status List 2021](https://identity.foundation/.well-known/resources/did-configuration) | DIF |
+| Revocation | [Verifiable Credential Status List 2021](https://www.w3.org/TR/vc-status-list/) | DIF |
 | M2M/User Authentication | [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749) - Code flow, client credentials flow | IETF |
 | User Authentication | [Proof Key for Code Exchange by OAuth Public Clients](https://datatracker.ietf.org/doc/html/rfc7636) - Code flow | IETF |
 
