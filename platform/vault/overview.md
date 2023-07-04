@@ -1,8 +1,8 @@
 # Vault Overview
 
-The Meeco Vault is a secure storage solution where users can store a range of data types including attributes, documents, verifiable credentials (VCs), and digital media. The Meeco Vault is both Privacy-by-Design (PbD) and Security-by-Design (SbD). The Vault has a Zero Knowledge Value (ZKV) architecture, which means all data values are end-to-end encrypted with only the metadata in plain text. 
+The Meeco Vault is a secure storage solution where users can store a range of data types including attributes, documents, verifiable credentials (VCs), and digital media. The Meeco Vault is both [Privacy-by-Design (PbD)](concepts/privacy-and-security-by-design.md) and [Security-by-Design (SbD)](concepts/privacy-and-security-by-design.md). The Vault has a [Zero Knowledge Value (ZKV)](../../concepts/terminology.md#zero-value-knowledge-zvk) architecture, which means all data values are end-to-end encrypted with only the metadata in plain text.
 
-By enabling plain text metadata an extensive range of use-cases are possible without accessing personally identifiable information (PII). For example, it is possible to request and exchange data without having direct access to the data. It also allows for an extensible data schema and the addition of semantic labels. 
+By enabling plain text metadata an extensive range of use-cases are possible without accessing personally identifiable information (PII). For example, it is possible to request and exchange data without having direct access to it. It also allows for an extensible data schema and the addition of semantic labels.
 
 All data values are encrypted in transit and at rest with unique cryptographic keys managed by the user of that Vault. Additionally, all data values are assigned a Universally Unique Identifier (UUID) to guard against correlation when the data is shared or exchanged. This approach also supports Progressive Disclosure and other data minimisation use cases.
 
@@ -15,7 +15,7 @@ Slots are the smallest data entity in the Vault. Each Slot represents a field th
 - Label: Policy number
 - Value*: Numerical
 
-* Values can be strings, dates, or numbers, but also binaries like images or documents. Values are always encrypted.
+* Values can be strings, dates, or numbers, but also binaries such as images or documents. Values are always encrypted.
 
 ## Items
 
@@ -23,11 +23,11 @@ Items form the basis for every set of data stored in the Vault. In order for a u
 - their house insurance policy number, and
 - the date the policy is due to expire
 
-They also have the option to attach files and assign tags (for ease of filtering). Once saved, the user will have a new Item appear in their Vault.
+They also have the option to attach files and assign tags (for ease of filtering). Once saved, a new Item will appear in the user's Vault.
 
 ## Connections
 
-In order for Vault users to Share their Items, they must establish Connections with other Vault users. A Connection is established via an invitation flow which requires users to consent to the Connection being made. Connections can be cancelled at any time by either Vault user. Connections can also be governed by business rules, for example, maintain the Connection for the duration of being a customer, or until a service has been completed. 
+In order for Vault users to Share their Items, they must establish Connections with other Vault users. A Connection is established via an invitation flow which requires users to consent to the Connection being made. Connections can be cancelled at any time by either Vault user. Connections can also be governed by business rules, for example, maintain the Connection for the duration of being a customer, or until a service has been completed.
 
 ## Shares
 
@@ -46,13 +46,13 @@ An additional feature to Shares is On-Shares where Vault users can specify if th
 
 The Account Delegation feature enables Vault users to provide full access or read-only access to their data to a trusted individual. An example where this feature may be employed is when a Vault user (a child or an aging parent) requires assistance when managing or exchanging their data with other parties. With the Meeco Vault, they are able to ask a trusted individual to be a delegate of their Vault.
 
-Note that in almost all cases we recommend using Shares and On-Shares to give access to other users as it gives much more granular control over the data shared to another user. However, there are circumstances where Account Delegation is more practical, consider the use case(s) that you are developing when selecting different features.
+Note that in almost all cases we recommend using Shares and On-Shares to give access to other users as it gives much more granular control over the data shared to another user. However, there are circumstances where Account Delegation is more practical. Consider the use case(s) that you are developing when selecting different features.
 
 # Implementation and Integration
 
 Our Vault technology can be embedded in existing (front- and backend) applications such as mobile banking apps, web portals or back-up services with Authentication via an OIDC provider.
 
-Convert data from on-boarding to any product or service to a Vault to enable customer control and direct collaboration. This approach minimises the amount of times a customer has to re-key information. It also increases security and decreases fraud and mistakes. Importantly, it provides a peer-2-peer connection with customers for secure communications, notifications and data sharing. 
+Convert data from on-boarding to any product or service to a Vault to enable customer control and direct collaboration. This approach minimises the amount of times a customer has to re-key information. It also increases security and decreases fraud and mistakes. Importantly, it provides a peer-2-peer connection with customers for secure communications, notifications and data sharing.
 
 ## End-user Vault
 
@@ -60,7 +60,7 @@ An end-user Vault is accessed, managed and controlled by one single user. End-us
 
 ## Enterprise Vault
 
-An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. Enterprise refers to any entity, for example a company, government, or association. For further details on the EV, see the [Enterprise Vault](docs/platform/vault/enterprise-portal.md) information page.
+An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. *Enterprise* refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](docs/platform/vault/enterprise-portal.md) information page.
 
 # Standards and Compliance
 
