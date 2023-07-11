@@ -6,28 +6,27 @@ Digital wallets enable users to manage their digital assets easily and securely 
 
 An identity wallet focuses on the safeguarding and management of a Holder’s identity data. The wallet acts as a secure container that generates, stores and processes the Holder’s:
 
-1. Cryptographic keys
-2. Decentralised identifiers (DIDs)
-3. Credentials (e.g. W3C Verifiable Credentials, mDL, PDFs)
+1. [Cryptographic keys](platform/keys.md)
+2. [Decentralised identifiers](platform/did.md) (DIDs)
+3. [Credentials](concepts/verifiable-credentials.md) (e.g. W3C Verifiable Credentials, mDL, PDFs)
 
-A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols that allow it to interact with others. This part is where it is so important to go for open standards that are adopted by a wide range software providers to ensure interoperability.
+A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols which enables these interactions. It is for this reason that the adoption of open standards by software providers is important to ensure interoperability.
 
-### UX Functions of an Identity Wallet?
+### UX Functions of an Identity Wallet
 
-A Holder wallet must provide a user facing form-factor that will enable the Holder to:
+An identity wallet must provide the user with a UI that will enable them to:
 
-1. Bootstrap the wallet by binding an identity
+1. Bind the identity of the Holder to the wallet
 2. Request and receive credentials
-3. Present (and possibly selectively disclose) credentials
+3. Present (and possibly selectively disclose) credentials for verification
 4. Manage credentials including auditing capabilities & consent management
 5. Manage keys related to DIDs
 6. Manage user settings
 7. Provide help functionality
-8.
 
-## Operatinging Model of Wallets
+## Operating Model of Wallets
 
-There are three different ways a wallets can be operated, and any of them may be fully decentralised, centralised, or managed:
+There are three different ways a wallet can be operated, and any of them may be fully decentralised, centralised, or managed:
 
 * **Non-custodial**: all the associated keys are under the control of the Holder (most likely decentralised).
 * **Custodial**: all the associated keys are under the control of the custodian (most likely centralised).
@@ -37,8 +36,8 @@ Non-custodial wallets operate as per the Holder’s discretion and cannot be acc
 
 Custodial wallets enable third parties to manage a Holder’s data on their behalf. Generally, third parties acting on a wallet Holder’s behalf work as intermediaries between the Holder and other wallets / services.
 
-A hybrid wallet can support Privacy & Security-by-Design by enabling the Holder to maximise their privacy and exercise their data rights. However, as it is partly custodial, it can provide an option to help the Holder if they lose their wallet or obtain a new device. This may include key escrow services, together with wallet backup capabilities.
+A hybrid wallet can support Privacy- & Security-by-Design by enabling the Holder to maximise their privacy and exercise their data rights. However, as it is partly custodial, it can provide an option to help the Holder if they lose their wallet or obtain a new device. This may include key escrow services, together with wallet backup capabilities.
 
 ## The Meeco Wallet
 
-Find out more about Meeco’s Wallet by viewing our Wallet overview page.
+Find out more about Meeco’s Wallet by viewing our [Wallet product page](https://www.meeco.me/wallet).
