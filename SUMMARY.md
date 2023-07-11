@@ -66,6 +66,7 @@
 ***
 
 * [Releases](releases/README.md)
+  * [1.2.0](releases/svx-1.2.0.md)
   * [1.1.0](releases/svx-1.1.0.md)
   * [1.0.0](releases/svx-1.0.0.md)
   * [Legacy API-of-Me](releases/api-of-me-releases.md)
