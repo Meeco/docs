@@ -36,7 +36,7 @@ Locate the credential schema in the list and select the horizontal ellipsis icon
 > **Note**
 > The _Available to_ field allows you to make schemas available to Organisations within your Tenancy. You can always add or remove Organisations.
 
-To edit the credentials schema, select the _Edit_ button from the _View credential schema_ page or select _Edit_ from the horizontal ellipsis icon ⋯ alongside the schema’s name. The information will be presented as an editable form where you can update / change the following information:
+To edit the credential schema, select the _Edit_ button from the _View credential schema_ page or select _Edit_ from the horizontal ellipsis icon ⋯ alongside the schema’s name. The information will be presented as an editable form where you can update / change the following information:
 * Available to
 
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
