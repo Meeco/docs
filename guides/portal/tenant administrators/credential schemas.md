@@ -54,5 +54,5 @@ To archive a credential schema navigate to _Credentials_ on the left-side menu o
 
 ## Reinstate a credential schema
 
-To reinstate a credential schema navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential schemas_. Locate the credential schema in the _Archived schemas_ tab and select the horizontal ellipsis icon ⋯ alongside the schema’s name to reveal menu options. Select _Reinstate_ and confirm the archiving of the credential schema via the modal window. The credential schema will be reinstated to the Tenant, and will be moved to the _Active schemas_ tab.
+To reinstate a credential schema navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential schemas_. Locate the credential schema in the _Archived schemas_ tab and select the horizontal ellipsis icon ⋯ alongside the schema’s name to reveal menu options. Select _Reinstate_ and confirm the reinstating of the credential schema via the modal window. The credential schema will be reinstated to the Tenant, and will be moved to the _Active schemas_ tab.
 
