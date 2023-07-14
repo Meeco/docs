@@ -58,11 +58,19 @@
   * [On-sharing & Client Tasks](guides/vault/on-sharing-and-client-tasks.md)
   * [Account Delegation](guides/vault/account-delegation.md)
  * Portal
-   * [Manage Tenant Administrators](guides/portal/manage-tenant-administrators.md)
-   * [Manage Organisations](guides/portal/manage-organisations.md)
-   * [Manage Organisation Administrators](guides/portal/manage-organisation-administrators.md)
-   * [Credential Schemas](guides/portal/credential-schemas.md)
-   * [End Users](guides/portal/end-users.md)
+   * Tenant Administrators
+     * [Manage Tenant Administrators](guides/portal/manage-tenant-administrators.md)
+     * [Manage Organisations](guides/portal/manage-organisations.md)
+     * [Manage Organisation Administrators](guides/portal/manage-organisation-administrators.md)
+     * [Credential Schemas](guides/portal/credential-schemas.md)
+     * [End Users](guides/portal/end-users.md)
+   * Organisation Administrators
+     * [Onboarding and Organisation Set Up](onboarding-and-organisation-set-up.md)
+     * [Manage Organisation Administrators](manage-organisation-administrators.md)
+     * [Credential Templates](credential-templates.md)
+     * [Issue/Revoke Credentials](issue-&-revoke-credentials.md)
+     * [Verification Templates](verification-templates.md)
+     * [Verification Requests](verification-requests.md)
 
 ## Tools
 
