@@ -6,8 +6,8 @@
 Tenant Administrators can invite Organisation Administrators to join an Organisation within their Tenancy. To do this, navigate to _Organisations_ on the left-side menu of the SVX Portal. Locate the Organisation in the list and select the horizontal ellipsis icon ⋯ alongside the Organisation’s name to reveal menu options. Select _View_. Via the secondary navigation menu, select _Administrators_.
 
 Select the _Add new administrator_ button. You will be presented with a form where you will need to enter the details of the new administrator:
-* First name
-* Surname
+* Given name
+* Family name
 * Email address
 
 You will also have the option to include a message that will be delivered to the administrator via the automatically generated invitation email.

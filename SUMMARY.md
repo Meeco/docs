@@ -59,18 +59,18 @@
   * [Account Delegation](guides/vault/account-delegation.md)
  * Portal
    * Tenant Administrators
-     * [Manage Tenant Administrators](guides/portal/manage-tenant-administrators.md)
-     * [Manage Organisations](guides/portal/manage-organisations.md)
-     * [Manage Organisation Administrators](guides/portal/manage-organisation-administrators.md)
-     * [Credential Schemas](guides/portal/credential-schemas.md)
-     * [End Users](guides/portal/end-users.md)
+     * [Manage Tenant Administrators](guides/portal/tenant-administrators/manage-tenant-administrators.md)
+     * [Manage Organisations](guides/portal/tenant-administrators/manage-organisations.md)
+     * [Manage Organisation Administrators](guides/portal/tenant-administrators/manage-organisation-administrators.md)
+     * [Credential Schemas](guides/portal/tenant-administrators/credential-schemas.md)
+     * [End Users](guides/portal/tenant-administrators/end-users.md)
    * Organisation Administrators
-     * [Onboarding and Organisation Set Up](onboarding-and-organisation-set-up.md)
-     * [Manage Organisation Administrators](manage-organisation-administrators.md)
-     * [Credential Templates](credential-templates.md)
-     * [Issue/Revoke Credentials](issue-&-revoke-credentials.md)
-     * [Verification Templates](verification-templates.md)
-     * [Verification Requests](verification-requests.md)
+     * [Onboarding and Organisation Setup](guides/portal/organisation-administrators/onboarding-and-organisation-setup.md)
+     * [Manage Organisation Administrators](guides/portal/organisation-administrators/manage-organisation-administrators.md)
+     * [Credential Templates](guides/portal/organisation-administrators/credential-templates.md)
+     * [Issue/Revoke Credentials](guides/portal/organisation-administrators/issue-revoke-credentials.md)
+     * [Verification Templates](guides/portal/organisation-administrators/verification-templates.md)
+     * [Verification Requests](guides/portal/organisation-administrators/verification-requests.md)
 
 ## Tools
 
