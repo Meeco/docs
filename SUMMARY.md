@@ -63,6 +63,7 @@
      * [Manage Organisations](guides/portal/tenant-administrators/manage-organisations.md)
      * [Manage Organisation Administrators](guides/portal/tenant-administrators/manage-organisation-administrators.md)
      * [Credential Schemas](guides/portal/tenant-administrators/credential-schemas.md)
+     * [Applications](guides/portal/tenant-adminsitrators/applications.md)
      * [End Users](guides/portal/tenant-administrators/end-users.md)
    * Organisation Administrators
      * [Onboarding and Organisation Setup](guides/portal/organisation-administrators/onboarding-and-organisation-setup.md)
@@ -71,6 +72,8 @@
      * [Issue/Revoke Credentials](guides/portal/organisation-administrators/issue-revoke-credentials.md)
      * [Verification Templates](guides/portal/organisation-administrators/verification-templates.md)
      * [Verification Requests](guides/portal/organisation-administrators/verification-requests.md)
+     * [Connections](guides/portal/organisation-administrators/connections.md)
+     * [Applications](guides/portal/organisation-administrators/applications.md)
 
 ## Tools
 
