@@ -4,7 +4,7 @@ Applications leverage [OAuth2's client credentials grant](https://oauth.net/2/gr
 
 ## Create an application
 
-Tenant Administrators can create a new application by navigating to Devtools on the left-side menu of the SVX Portal, and selecting Applications. After selecting the Create application button, you will be presented with a form. The form consists of the following fields:
+Tenant Administrators can create a new application by navigating to _Devtools_ on the left-side menu of the SVX Portal, and selecting _Applications_. After selecting the _Create application_ button, you will be presented with a form. The form consists of the following fields:
 * Application name
 * Application description
 
@@ -15,9 +15,9 @@ Once all required fields are complete select the Create application button and t
 
 ## View and edit an application
 
-Tenant Administrators can view applications by navigating to Devtools on the left-side menu of the SVX Portal, and selecting Applications.
+Tenant Administrators can view applications by navigating to _Devtools_ on the left-side menu of the SVX Portal, and selecting _Applications_.
 
-Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select View. You will be presented with the following information:
+Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select _View_. You will be presented with the following information:
 * Application name
 * Application description
 * Domain
@@ -30,11 +30,11 @@ Locate the application in the list and select the horizontal ellipsis icon ⋯ a
 > **Note**
 > _Client secret:_ This field is hidden for security and privacy reasons. Click on the eye 👁 icon to reveal the entire secret.
 
-To edit the application’s details, select the Edit button from the View application page or select Edit from the horizontal ellipsis icon ⋯ alongside the application’s name. The information will be presented as an editable form where you can update / change the following fields:
+To edit the application’s details, select the _Edit_ button from the _View application_ page or select Edit from the horizontal ellipsis icon ⋯ alongside the application’s name. The information will be presented as an editable form where you can update / change the following fields:
 * Application name
 * Application description
 
-When complete, select Save to save changes, or Cancel to discard changes.
+When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
 ## Enable machine-2-machine authentication
 
@@ -44,8 +44,8 @@ A Tenant Administrator can provide an application with authenticated access to S
 * Create, archive and reinstate Organisations
 * Invite, remove and reinstate Tenant Administrators
 
-Once an application has been created, the Tenant Administrator can navigate to Devtools on the left-side menu of the SVX Portal, select Applications, locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. After selecting View you will be able to copy the Client ID and Client Secret which you can use to provide your application authenticated access to the SVX Platform.
+Once an application has been created, the Tenant Administrator can navigate to _Devtools_ on the left-side menu of the SVX Portal, select _Applications_, locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. After selecting _View_ you will be able to copy the Client ID and Client Secret which you can use to provide your application authenticated access to the SVX Platform.
 
 ## Delete an application
 
-To remove an application from your Tenant navigate to Devtools on the left-side menu of the SVX Portal, and select Applications. Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select Delete and confirm the deletion of the application via the modal window. The application will be permanently deleted from the Tenant, and will no longer appear in the list.
+To remove an application from your Tenant navigate to _Devtools_ on the left-side menu of the SVX Portal, and select _Applications_. Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select _Delete_ and confirm the deletion of the application via the modal window. The application will be permanently deleted from the Tenant, and will no longer appear in the list.
