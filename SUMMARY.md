@@ -63,7 +63,7 @@
      * [Manage Organisations](guides/portal/tenant-administrators/manage-organisations.md)
      * [Manage Organisation Administrators](guides/portal/tenant-administrators/manage-organisation-administrators.md)
      * [Credential Schemas](guides/portal/tenant-administrators/credential-schemas.md)
-     * [Applications](guides/portal/tenant-adminsitrators/applications.md)
+     * [Applications](guides/portal/tenant-administrators/applications.md)
      * [End Users](guides/portal/tenant-administrators/end-users.md)
    * Organisation Administrators
      * [Onboarding and Organisation Setup](guides/portal/organisation-administrators/onboarding-and-organisation-setup.md)
