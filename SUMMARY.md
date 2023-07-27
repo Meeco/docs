@@ -19,12 +19,12 @@
 
 ## Platform
 
-* [Secure Value Exchange](platform/overview.md)
-* [Authorisation, Tenant & Organisation Manager (ATOM)](platform/ATOM.md)
+* [Secure Value Exchange](platform/README.md)
+* [Authorisation, Tenant & Organisation Manager (ATOM)](platform/atom.md)
 * [Credential Service](platform/credential-service.md)
 * [Decentralised Identifiers (DIDs)](platform/did.md)
 * [Keys](platform/keys.md)
-* [Vault](platform/vault/overview.md)
+* [Vault](platform/vault/README.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Supported Standards](platform/supported-standards.md)
 
