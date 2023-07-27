@@ -41,8 +41,6 @@ When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 A Tenant Administrator can provide an application with authenticated access to SVX functionality. This allows the application to perform the following actions:
 * Invite and remove end-users
 * Manage credential schemas
-* Create, archive and reinstate Organisations
-* Invite, remove and reinstate Tenant Administrators
 
 Once an application has been created, the Tenant Administrator can navigate to _Devtools_ on the left-side menu of the SVX Portal, select _Applications_, locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. After selecting _View_ you will be able to copy the Client ID and Client Secret which you can use to provide your application authenticated access to the SVX Platform.
 
