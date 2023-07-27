@@ -44,6 +44,8 @@ A Tenant Administrator can provide an application with authenticated access to S
 
 Once an application has been created, the Tenant Administrator can navigate to _Devtools_ on the left-side menu of the SVX Portal, select _Applications_, locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. After selecting _View_ you will be able to copy the Client ID and Client Secret which you can use to provide your application authenticated access to the SVX Platform.
 
+For more information, see the [Machine-2-Machine Communication](guides/api-guides/machine-2-machine-communication) guide.
+
 ## Delete an application
 
 To remove an application from your Tenant navigate to _Devtools_ on the left-side menu of the SVX Portal, and select _Applications_. Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select _Delete_ and confirm the deletion of the application via the modal window. The application will be permanently deleted from the Tenant, and will no longer appear in the list.
