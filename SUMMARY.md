@@ -79,10 +79,10 @@
      * [Applications](guides/portal-tutorials/organisation-administrators/applications.md)
  * [Wallet Tutorials](guides/wallet-tutorials/README.md)
    * [Wallet Set Up](guides/wallet-tutorials/wallet-set-up.md)
-   * [Wallet Set Up](guides/wallet-tutorials/provider-configuration.md)
-   * [Wallet Set Up](guides/wallet-tutorials/organisation-configuration.md)
-   * [Wallet Set Up](guides/wallet-tutorials/credentials.md)
-   * [Wallet Set Up](guides/wallet-tutorials/requests.md)
+   * [Provider Registration](guides/wallet-tutorials/provider-configuration.md)
+   * [Organisation Configuration](guides/wallet-tutorials/organisation-configuration.md)
+   * [Credentials](guides/wallet-tutorials/credentials.md)
+   * [Requests](guides/wallet-tutorials/requests.md)
 
 ## Tools
 
