@@ -33,7 +33,7 @@ Log in to the [SVX Portal](https://portal-sandbox.securevalueexchange.com/login)
 > Tenant and Organisation Administrators can both create Applications, however, different workflows are achieved based on the associated role and access rights.
 
 > **Note**
-> Once an application has been created, ensure you record the ``client_id`` and ``client-secret``. 
+> Once an application has been created, ensure you record the ``client_id`` and ``client-secret``.
 
 #### 3. Open the API configuration
 
@@ -48,6 +48,9 @@ Use the token endpoint from the configuration (https://login-sandbox.securevalue
 ```
 
 Replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with the actual values you obtained when creating the application.
+
+> **Note**
+> The Application Token will expire every 10 minutes. To refresh the token you will need to call the token endpoint again.
 
 #### 4. Access the SVX Sandbox API
 
