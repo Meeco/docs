@@ -33,11 +33,17 @@ Credentials can exist in different statuses. The status of a credential is indic
 #### Valid / Verified
 A valid credential is indicated by a tick in a circle icon and the colour of the credential will not change.
 
+<img src="/.gitbook/assets/credential_status_verified.png" alt="credential_status_verified" width="30"/>
+
 #### Not verified
 A credential that is unable to be verified in real-time is indicated by an exclamation mark in a circle icon. The colour of the credential will not change.
 
+<img src="/.gitbook/assets/credential_status_unknown.png" alt="credential_status_unknown" width="30"/>
+
 #### Revoked / Expired
 An expired credential is indicated by a an exclamation mark in a hexagon icon. The colour of the credential will change to a grey striped pattern.
+
+<img src="/.gitbook/assets/credential_status_revoked_expired.png" alt="credential_status_revoked_expired" width="30"/>
 
 ## Delete a credential
 To delete a credential, tap on a credential to view more details. Tap on the horizontal ellipsis icon ⋯ in the top-right corner of the screen. Tap on the _Delete_ button. The credential will be removed from your wallet.
