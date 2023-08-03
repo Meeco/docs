@@ -44,7 +44,21 @@ You will be redirected to the authorisation page of the service you are connecti
 
 After successful authorisation, you will be redirected back to Postman, and the personal access token will be automatically saved.
 
-#### 3. Access the SVX Sandbox API
+> **Note**
+> Your Personal Access Token will expire after 1 hour. Just like the Application Token, you will be required to refresh it to maintain access.
+
+#### 3. Refresh your Personal Access Token
+
+To refresh the Personal Access Token, you need to make a `POST` request to the OAuth2 token endpoint with a valid refresh token and your client and tenant IDs.
+```bash
+curl 'https://login-sandbox.securevalueexchange.com/oauth2/token' \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  --data-raw 'grant_type=refresh_token&refresh_token=existing_token&client_id=ed3d2366-0fb6-406e-ae72-afd7634e6c9f&tenant_id=32a08dc4-ad7f-491a-a06c-3284592a3737' \
+  --compressed
+```
+Make sure to replace `existing_token`, `client_id`, and `tenant_id` with your specific values.
+
+#### 4. Access the SVX Sandbox API
 
 With the obtained personal access token, you can now use the SVX Sandbox API. For example, if you want to access the ``me`` endpoint, use the following cURL command:
 
