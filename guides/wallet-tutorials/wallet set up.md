@@ -4,7 +4,7 @@ The Meeco Wallet is available on the Apple App Store and Google Play. To downloa
 
 | iOS  | Android |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
+| <img src="/.gitbook/assets/Wallet_icon_iOS.png" alt="Wallet_icon_iOS" width="150"/>  | <img src="/.gitbook/assets/Wallet_icon_android.png" alt="Wallet_icon_android" width="150"/>  |
 
 ## Onboarding
 
@@ -16,8 +16,7 @@ The first time the Meeco Wallet is opened, four screens are presented. These scr
 - Registering with Providers
 - Connecting with Organisations
 
-|    |   |
-| ------------- | ------------- |
+<img src="/.gitbook/assets/wallet_onboarding_screen_01.png" alt="wallet_onboarding_screen_01" width="200"/>    <img src="/.gitbook/assets/wallet_onboarding_screen_02.png" alt="wallet_onboarding_screen_02" width="200"/>    <img src="/.gitbook/assets/wallet_onboarding_screen_03.png" alt="wallet_onboarding_screen_03" width="200"/>    <img src="/.gitbook/assets/wallet_onboarding_screen_04.png" alt="wallet_onboarding_screen_04" width="200"/>
 
 ### Terms & Conditions and Privacy Policy
 
