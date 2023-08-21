@@ -39,7 +39,7 @@ Meeco’s products are VDR agnostic, any of the above VDR types can be used when
 
 ### Digital Wallets
 
-[Digital wallets](../concepts/digital-wallet.md) enable users to manage their digital assets easily and securely from the device(s) of their choosing. Wallets are commonly used for the management of data and transactions, ranging from identity documentation (driver licences and certificates), financial (payments and transfers), tokens (fungible and non-fungible), and loyalty programs (vouchers and point accumulation). To better understand how VCs are managed in digital wallets, see our Digital Wallets information page.
+[Digital wallets](../concepts/digital-wallets.md) enable users to manage their digital assets easily and securely from the device(s) of their choosing. Wallets are commonly used for the management of data and transactions, ranging from identity documentation (driver licences and certificates), financial (payments and transfers), tokens (fungible and non-fungible), and loyalty programs (vouchers and point accumulation). To better understand how VCs are managed in digital wallets, see our Digital Wallets information page.
 
 ## VCs in real-world applications
 
