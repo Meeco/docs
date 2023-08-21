@@ -5,7 +5,7 @@ Digital credentials are becoming more commonly used to assert and transfer infor
 VCs are compiled of a set of claims made about a Holder / Subject. They can be imagined as digital equivalents of physical documents (e.g. driver licences, passports, birth certificates). What differentiates them from physical documents and other non-secure forms of digital data is that they are tamper-resistant and can be cryptographically verified. In addition to this, VCs:
 
 * Are based on international standards such as those published by the [W3C](https://www.w3.org/TR/vc-data-model/)
-* Include decentralised identifiers [DIDs](docs/platform/did.md). (for all actors)
+* Include decentralised identifiers [DIDs](../platform/did.md). (for all actors)
 * Are designed to be globally interoperable
 * Require cryptographic proof throughout the credential lifecycle
 * Can be used across ecosystems
@@ -39,7 +39,7 @@ Meeco’s products are VDR agnostic, any of the above VDR types can be used when
 
 ### Digital Wallets
 
-[Digital wallets](docs/concepts/digital-wallet.md) enable users to manage their digital assets easily and securely from the device(s) of their choosing. Wallets are commonly used for the management of data and transactions, ranging from identity documentation (driver licences and certificates), financial (payments and transfers), tokens (fungible and non-fungible), and loyalty programs (vouchers and point accumulation). To better understand how VCs are managed in digital wallets, see our Digital Wallets information page.
+[Digital wallets](../concepts/digital-wallet.md) enable users to manage their digital assets easily and securely from the device(s) of their choosing. Wallets are commonly used for the management of data and transactions, ranging from identity documentation (driver licences and certificates), financial (payments and transfers), tokens (fungible and non-fungible), and loyalty programs (vouchers and point accumulation). To better understand how VCs are managed in digital wallets, see our Digital Wallets information page.
 
 ## VCs in real-world applications
 
