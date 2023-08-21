@@ -6,9 +6,9 @@ Digital wallets enable users to manage their digital assets easily and securely 
 
 An identity wallet focuses on the safeguarding and management of a Holder’s identity data. The wallet acts as a secure container that generates, stores and processes the Holder’s:
 
-1. Cryptographic keys
-2. Decentralised identifiers (DIDs)
-3. Credentials (e.g. W3C Verifiable Credentials, mDL, PDFs)
+1. [Cryptographic keys](../platform/keys.md)
+2. [Decentralised identifiers](../platform/did.md) (DIDs)
+3. [Credentials](../concepts/verifiable-credentials.md) (e.g. W3C Verifiable Credentials, mDL, PDFs)
 
 A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols which enables these interactions. It is for this reason that the adoption of open standards by software providers is important to ensure interoperability.
 
