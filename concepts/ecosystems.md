@@ -2,10 +2,10 @@
 
 SVX supplies the building blocks to implement an interoperable data ecosystem, designed around your enterprise use cases. In Web3, those use cases unlock the power of permissioned personal data and lay the foundation to create Personal Identity Ecosystems ([PIE’s](ecosystems.md#types-of-ecosystems)). This new paradigm vastly increases user experience, privacy and security for your organisation and its end-users. Enterprises can explore radically new business opportunities built on digital trust, or, upgrade existing successful Web2 apps to Web3 by embracing trends such as:
 
-* [decentralised identity](../guides/dids/)
-* [verifiable credentials](../guides/credentials/)
-* [privacy-by-design](concepts/privacy-and-security-by-design.md), and
-* [security-by-design](concepts/privacy-and-security-by-design.md)
+* [decentralised identity](../guides/api-guides/dids)
+* [verifiable credentials](verifiable-credentials.md)
+* [privacy-by-design](privacy-and-security-by-design.md), and
+* [security-by-design](privacy-and-security-by-design.md)
 
 ## Types of Ecosystems
 
@@ -13,7 +13,7 @@ Depending on the desired reach of a use case, an enterprise can choose to implem
 
 * Open Ecosystems (aka Public Ecosystems): for broadly applicable use cases, such as the issuance, verification and management of a driver’s license, university diploma or first aid certificate across various organisations and users.
 * Closed Ecosystems:
-  * Private Enterprise Ecosystems: [Verifiable Credentials (VCs)](concepts/verifiable-credentials.md) issued by an enterprise to its users. For example a company issues an access VC to employees, enabling them to gain access to software or buildings via a verification workflow.
+  * Private Enterprise Ecosystems: [Verifiable Credentials (VCs)](verifiable-credentials.md) issued by an enterprise to its users. For example a company issues an access VC to employees, enabling them to gain access to software or buildings via a verification workflow.
   * Personal Identity Ecosystems (PIE’s): are user-centric networks and platforms specifically designed around digital identities and personal reputation management while offering high standards for end-user privacy and data protection.
 * Linked or interoperable Ecosystems: combine a government credential with a means of payment to allow frictionless onboarding to an eCommerce platform or service.
 
