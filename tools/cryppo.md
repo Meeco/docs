@@ -34,7 +34,7 @@ With the Cryppo CLI you can use the following functions:
 
 * Encrypt a value
 * Decrypt a value
-* Generate a url-safe base64 key of variable length \(see [DEK](https://docs.meeco.me/guides/terminology#data-encryption-key-dek)\)
+* Generate a url-safe base64 key of variable length \(see [DEK](../concepts/terminology.md#data-encryption-key-dek))
 * Generate an RSA keypair
 * Sign a file with an RSA private key
 * Verify a file that has been signed with an RSA key
