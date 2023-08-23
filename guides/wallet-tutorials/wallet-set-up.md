@@ -1,6 +1,6 @@
 ## Download and Install
 
-The Meeco Wallet is available on the Apple App Store and Google Play. To download and install the app on your mobile device, navigate to the applicable app store on your device and follow the install instructions. Once installed, the Meeco Wallet app icon will appear on your device’s home screen.
+The Meeco Wallet is available on the [Apple App Store](https://apps.apple.com/au/app/meeco-wallet/id1570355469) and [Google Play](https://play.google.com/store/apps/details?id=me.meeco.wallet&hl=en_AU&gl=US). To download and install the app on your mobile device, navigate to the applicable app store on your device and follow the install instructions. Once installed, the Meeco Wallet app icon will appear on your device’s home screen:
 
 | iOS  | Android |
 | ------------- | ------------- |
