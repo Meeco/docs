@@ -1,4 +1,4 @@
-Verifiers can send Wallet Holders request for credentials so they can verify information about the Holder. To receive and submit requests via the Meeco Wallet, you will need to have established a connection with the Verifier (aka Organisation). See the [Organisation Configuration tutorial](guides/wallet-tutorials/organisation-configuration.md) for more details.
+Verifiers can send Wallet Holders request for credentials so they can verify information about the Holder. To receive and submit requests via the Meeco Wallet, you will need to have established a connection with the Verifier (aka Organisation). See the [Organisation Configuration tutorial](organisation-configuration.md) for more details.
 
 ## Import a request
 
