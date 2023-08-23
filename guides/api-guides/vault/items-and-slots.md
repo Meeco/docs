@@ -10,6 +10,7 @@ This guide describes creating Items and Item Templates using the Meeco API.
 -   **Slot** — The smallest data entity in the vault. Each slot has a name, a label, and a value. Values can be strings, dates, or numbers, but also binaries like images or documents. Values are always encrypted.
 -   **Item Template** — A list of empty slots with a label and a name. Each Item is created by cloning such a template and filling in the slots.
 -   **Item** — Contains one or more slots with filled in values.
+
 For more information on Vault-specific terminology, see the [Vault overview](../platform/vault/README.md) page.
 
 
