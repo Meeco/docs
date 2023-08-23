@@ -8,7 +8,7 @@ We have created the [Meeco SDK](https://www.npmjs.com/package/@meeco/sdk) and th
 
 Our first release of the SDK is written in Typescript, and we have it released as an [NPM Package here](https://www.npmjs.com/package/@meeco/sdk) so you can easily import our modules into your project and start making calls to our APIs.
 
-For full usage and functionality, you can visit the [API Docs](https://meeco.github.io/js-sdk/).
+For full usage and functionality, you can visit the [API Docs](https://meeco.github.io/sdk-docs/js-sdk/).
 
 ### SDK in other languages
 
