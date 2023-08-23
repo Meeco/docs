@@ -98,7 +98,7 @@ JSON is an open standard file format and data interchange format that uses human
 JSON Web Token is a proposed Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key.
 
 ## Key Encryption Key
-Used to encrypt all other keys (**Data Encryption Keys** and **Keypairs**) before they are stored in the [Keystore](#keystore). The Key Encryption Key is encrypted with the [Passphrase Derived Key](#passphrase-derived-key)
+Used to encrypt all other keys (**Data Encryption Keys** and **Keypairs**) before they are stored in the [Keystore](#keystore). The Key Encryption Key is encrypted with the [Passphrase Derived Key](#passphrase-derived-key-pdk).
 
 ## Key Exchange
 A process where at least two parties exchange cryptographic key(s) with the intention to use it/them for encryption or authentication.
@@ -107,9 +107,9 @@ A process where at least two parties exchange cryptographic key(s) with the inte
 A pair of private key(s) and public key(s) that are mathematically linked to each other. Public keys are used to encrypt data, and the private key of the keypair is used to decrypt that data. This is known as asymmetric encryption.
 
 ## Keystore
-A component within SVX. The Keystore enables users to store and manage their cryptographic keys. This is where the [Data Encryption Keys](#data-encryption-key-dek), [Public/Private Keypairs](#keypair), and the [Key Encryption Key](#key-encryption-key) are stored along with the [Derivation Artefacts](#derivation-artefacts). All of the stored keys are encrypted with the **KEK**, except for the **KEK** itself, which is encrypted with the **Passphrase Derived Key**.
+A component within SVX. The Keystore enables users to store and manage their cryptographic keys. This is where the [Data Encryption Keys](#data-encryption-key-dek), [Public/Private Keypairs](#keypair), and the [Key Encryption Key](#key-encryption-key) are stored along with the [Derivation Artefact](#derivation-artefact). All of the stored keys are encrypted with the **KEK**, except for the **KEK** itself, which is encrypted with the **Passphrase Derived Key**.
 No encryption is done in the Keystore; the **Cryppo library** aids in creating and using keys.
-Additional information can be found [here](#component-keys).
+Additional information can be found [here](../platform/keys.md).
 
 ## Organisation
 An entity within **SVX**. An Organisation belongs to a Tenant and is managed by one or more **Organisation Administrators**.
