@@ -2,7 +2,7 @@ The Meeco Wallet enables users (Holders) to import, store, view, share and delet
 
 ## Import a credential
 
-Once a connection with an Organisation has been established (see the [Organisation Configuration tutorial](guides/wallet-tutorials/organisation-configuration.md) for more information), the Organisation can directly issue credentials to your wallet. When a credential is issued to a wallet, a toast message will appear notifying you that a credential is waiting to be added to your wallet. You can either tap on the _Add now_ button or the cross icon to cancel. A pop-up screen will appear asking you to confirm that you wish to add the credential(s) to your wallet. Select the credential(s) you wish to add and tap on the _Add_ button. You can also choose to _Cancel_ or _Reject all credentials_.
+Once a connection with an Organisation has been established (see the [Organisation Configuration tutorial](organisation-configuration.md) for more information), the Organisation can directly issue credentials to your wallet. When a credential is issued to a wallet, a toast message will appear notifying you that a credential is waiting to be added to your wallet. You can either tap on the _Add now_ button or the cross icon to cancel. A pop-up screen will appear asking you to confirm that you wish to add the credential(s) to your wallet. Select the credential(s) you wish to add and tap on the _Add_ button. You can also choose to _Cancel_ or _Reject all credentials_.
 
 > **Note**
 > _Reject all credentials:_ Once a credential is rejected, the option to add it to your wallet will not appear again. The Issuer will need to re-issue the credential for you to add to your wallet.
