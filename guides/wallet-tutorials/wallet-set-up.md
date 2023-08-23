@@ -4,7 +4,7 @@ The Meeco Wallet is available on the Apple App Store and Google Play. To downloa
 
 | iOS  | Android |
 | ------------- | ------------- |
-| <img src="/.gitbook/assets/Wallet_icon_iOS.png" alt="Wallet_icon_iOS" width="150"/>  | <img src="/.gitbook/assets/Wallet_icon_android.png" alt="Wallet_icon_android" width="150"/>  |
+| <img src="/.gitbook/assets/Wallet_icon_iOS.png" alt="Wallet_icon_iOS" width="100"/>  | <img src="/.gitbook/assets/Wallet_icon_android.png" alt="Wallet_icon_android" width="100"/>  |
 
 ## Onboarding
 
