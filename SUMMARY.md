@@ -83,6 +83,8 @@
    * [Organisation Configuration](guides/wallet-tutorials/organisation-configuration.md)
    * [Credentials](guides/wallet-tutorials/credentials.md)
    * [Requests](guides/wallet-tutorials/requests.md)
+   * [Security](guides/wallet-tutorials/security.md)
+   * [Wallet Recovery](guides/wallet-tutorials/wallet-recovery.md)
 
 ## Tools
 
