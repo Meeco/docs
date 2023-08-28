@@ -51,7 +51,3 @@ The Typescript SDK documentation can be found below
 {% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" %}
 
 The CLI relies heavily on the SDK, so by running through the commands we've got set up, you'll be able to follow along and learn how the Meeco Platform works, and give you some idea about what it can do.
-
-### What Next?
-
-Now, go back to the [Meeco Quickstart](broken-reference) guide and follow the run-through in order to create a User, setup the Keystore, gain access to the Vault and create your first Item!
