@@ -6,8 +6,8 @@ The data format used for a presentation is [vp-jwt](https://www.w3.org/TR/vc-dat
 
 ## Prerequisites
 
-- [DID](dids/did-methods.md)
-- [Credentials](https://docs.meeco.me/guides/credentials)
+- [DID](../dids/did-methods.md)
+- [Credentials](README.md)
 
 ## Who can undertake this operation?
 

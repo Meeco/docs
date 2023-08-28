@@ -8,7 +8,7 @@ We have created the [Meeco SDK](https://www.npmjs.com/package/@meeco/sdk) and th
 
 Our first release of the SDK is written in Typescript, and we have it released as an [NPM Package here](https://www.npmjs.com/package/@meeco/sdk) so you can easily import our modules into your project and start making calls to our APIs.
 
-For full usage and functionality, you can visit the [API Docs](https://meeco.github.io/js-sdk/).
+For full usage and functionality, you can visit the [API Docs](https://meeco.github.io/sdk-docs/js-sdk/).
 
 ### SDK in other languages
 
@@ -51,7 +51,3 @@ The Typescript SDK documentation can be found below
 {% embed url="https://github.com/Meeco/js-sdk/tree/master/packages/sdk" %}
 
 The CLI relies heavily on the SDK, so by running through the commands we've got set up, you'll be able to follow along and learn how the Meeco Platform works, and give you some idea about what it can do.
-
-### What Next?
-
-Now, go back to the [Meeco Quickstart](broken-reference) guide and follow the run-through in order to create a User, setup the Keystore, gain access to the Vault and create your first Item!
