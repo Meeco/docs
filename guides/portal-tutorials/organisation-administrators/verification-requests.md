@@ -31,7 +31,7 @@ To archive a verification request, navigate to _Credentials_ on the left-side me
 > **Note**
 > _Archiving a verification request:_ All previous responses received for the archived verification request will also be archived.
 
-## View a request responses
+## View a request response
 
 As Holders scan the QR Code and submit their verifiable credentials for verification, their responses will be available for viewing. To view a request response, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Verification requests_. Locate the verification request in the list that the response relates to. Select the horizontal ellipsis icon ⋯ alongside the request’s name to reveal menu options. Select _View_. Scroll to the bottom of the page where you will find a table that lists all associated request responses.
 
