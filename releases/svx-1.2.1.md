@@ -32,7 +32,7 @@ This release also includes a comprehensive set of bug fixes aimed at enhancing s
 * Error message displayed during Organisation creation, despite successful record creation.
 * Invited Tenant Administrators are not displayed in the 'Pending' status.
 * "Credential not found" message appears after opening a verification request.
-* 401 error encountered during ATOM delegation for administrators.
+* 401 error encountered during delegation for administrators.
 * Organisation Administrators can archive Organisations but are unable to reinstate them.
 * 404 error encountered when viewing a credential schema.
 * No Organisations available for selection when creating a credential schema, despite existing Organisations in the Tenant.
@@ -85,10 +85,10 @@ We did a review of email notification content and corrected the following bugs:
 
 Additional bugs that were fixed:
 
-* Resolved issue where page_count and records_count don't update when filters are applied in ATOM.
+* Resolved issue where page_count and records_count don't update when filters are applied.
 * Deadlock issue detected and resolved in Vault.
 * Added missing message for empty state screen when Organisations are archived in the Portal.
-* Corrected missing security rights for new Global Administrators in ATOM.
+* Corrected missing security rights for new Global Administrators.
 * Addressed missing documentation for POST /end_users/invitations.
 * Fixed link styling issue in Meeco Signature Generator.
 * Investigated and addressed errors in IDP service.
