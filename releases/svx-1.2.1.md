@@ -57,7 +57,7 @@ This release also includes a comprehensive set of bug fixes aimed at enhancing s
 * Tenant Administrators, who aren't Organisation Administrators, are incorrectly prompted to set up a passphrase.
 * No redirection to the 'View Tenant Details' page when clicking on 'Tenant > View'.
 * Tooltip box remains displayed and does not disappear.
-* Issue credential summary screen needs UI review.
+* Issue credential summary screen underwent UI review.
 * "Invalid URI" response returned for Issue credential QR Code in Wallet.
 * No redirection to login screen from the "Forgot your password?" screen.
 * Array attributes are not rendered correctly when viewing a credential.
