@@ -24,7 +24,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates' \
      -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY"
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 (Get `API_SUBSCRIPTION_KEY` by [signing up](<https://dev.meeco.me/signup>) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
 
@@ -125,7 +125,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates/ITEM-TEMPLATE-
      -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 Or, to search Item Templates by matching `label` text (replace `SEARCH_TEXT`):
 
@@ -135,7 +135,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates?like=SEARCH_TE
      -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 
 ## Creating an Item
@@ -168,7 +168,7 @@ To create an Item you must give the name of an existing Item Template, and a lab
 }'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=post-items>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 The API response is the newly created Item:
 
@@ -237,7 +237,7 @@ The API response is the newly created Item:
 
 Notice that Slots are created according to the Item Template, but are left empty for now.
 
-Items can also be classified, that is described in [another page](classification-hierarchies.md).
+Items can also be classified, that is described in [another page](../vault/classification-hierarchies.md).
 
 
 ### Item Names
@@ -665,7 +665,7 @@ Response:
 
 ## Shared Items
 
-The page on [Connections and Sharing](connections-and-sharing.md) covers sharing Items. This section will just describe some properties of shared Items.
+The page on [Connections and Sharing](../vault/connections-and-sharing.md) covers sharing Items. This section will just describe some properties of shared Items.
 
 
 ### Receiving A Share
