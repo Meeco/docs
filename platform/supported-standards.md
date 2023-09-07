@@ -23,8 +23,8 @@ Meeco is actively following and where possible contributing in standardisation e
 | DID Authentication | [Self-Issued OpenID Provider v2](https://openid.net/specs/openid-connect-self-issued-v2-1_0.html) | OIDF |
 | Identifier Data Model | [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/) | W3C |
 | Entity Identifier (NP) | [did:key](https://w3c-ccg.github.io/did-method-key/) | W3C |
-| Entity Identifier (NP,LE) | [did:ebsi]() | W3C |
-| Entity Identifier (NP,LE) | [did:hedera]() | HBAR |
+| Entity Identifier (NP,LE) | [did:ebsi](https://ec.europa.eu/digital-building-blocks/wikis/display/EBSIDOC/EBSI+DID+Method) | EBSI |
+| Entity Identifier (NP,LE) | [did:hedera](https://github.com/hashgraph/did-method/blob/master/did-method-specification.md) | HBAR |
 | Entity Identifier (LE) | [did:web](https://github.com/w3c-ccg/did-method-web) | W3C |
 | Revocation | [Verifiable Credential Status List 2021](https://www.w3.org/TR/vc-status-list/) | DIF |
 | M2M/User Authentication | [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749) - Code flow, client credentials flow | IETF |
