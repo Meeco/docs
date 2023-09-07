@@ -11,6 +11,6 @@ We're working on adding support for the following
 
 | Method | Description | Specification | Resolver | Registrar |
 | -- | -- | -- | -- | -- |
-| `did:hedera` | DIDs on Hedera Hashgraph from Hbar Foundation | [Hedera DID Method](#) | yes | yes |
+| `did:hedera` | DIDs on Hedera Hashgraph from Hbar Foundation | [Hedera DID Method](https://github.com/hashgraph/did-method/blob/master/did-method-specification.md) | yes | yes |
 
 Don't find your preferred DID method in the list? Contact us!
