@@ -8,7 +8,7 @@ description: What you need to know about using our sandbox APIs
 
 ## Developer Policy <a id="qd4yB"></a>
 
-Please read this policy to understand Meeco’s terms and conditions for the use of our APIs in the Developer Sandbox Environment at [https://www.meeco.me/developers](https://www.meeco.me/developers).
+Please read this policy to understand Meeco’s terms and conditions for the use of our APIs in the Developer Sandbox Environment at [https://www.meeco.me/signup](https://www.meeco.me/signup).
 
 ### Sign Up <a id="tTeUy"></a>
 
