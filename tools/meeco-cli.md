@@ -8,7 +8,7 @@ We have created the [Meeco SDK](https://www.npmjs.com/package/@meeco/sdk) and th
 
 Our first release of the SDK is written in Typescript, and we have it released as an [NPM Package here](https://www.npmjs.com/package/@meeco/sdk) so you can easily import our modules into your project and start making calls to our APIs.
 
-For full usage and functionality, you can visit the [API Docs](https://meeco.github.io/sdk-docs/js-sdk/).
+For full usage and functionality, you can visit the [API Docs](https://api-reference-sandbox.svx.exchange/).
 
 ### SDK in other languages
 
@@ -38,7 +38,7 @@ In short, it can:
 
 You can use the keys and tokens that the Meeco CLI has generated in combination with the [Cryppo-CLI](cryppo.md) tool to get a feel for the encryption and decryption flows.
 
-Feed this data back to the Meeco-CLI to store it against a Meeco User and then Share it! You can read more about [Sharing and Connections](../guides/connections-and-sharing.md) and [Items](../guides/items-and-slots.md) in the Guides section of this documentation site.
+Feed this data back to the Meeco-CLI to store it against a Meeco User and then Share it! You can read more about [Connections and Sharing](/guides/api-guides/vault/connections-and-sharing.md) and [Items](/guides/api-guides/vault/items-and-slots.md) in the Guides section of this documentation site.
 
 The Typescript CLI and SDK Github repos reside below in the downloads section.
 
