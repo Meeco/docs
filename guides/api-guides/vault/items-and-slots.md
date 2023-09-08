@@ -26,7 +26,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates' \
 
 [API docs](https://api-reference-sandbox.svx.exchange/)
 
-(Get `API_SUBSCRIPTION_KEY` by [signing up](<https://dev.meeco.me/signup>) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
+(Get `API_SUBSCRIPTION_KEY` by [signing up](https://www.meeco.me/signup) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
 
 The response JSON object lists Templates under the `item_templates` key. Each Template object has a `slot_ids` list, which references Slots in the top-level `slots` list.
 
@@ -526,7 +526,7 @@ One of the core features of the Meeco platform is data encryption. User data sto
 
 If we want to store data in an Item we must encrypt it, otherwise the Vault will return an error.
 
-To get familiar with the kinds of cryptographic key the Meeco platform uses please follow either the [Quickstart](../getting-started/quickstart.md) guide, or "[Setting Up Access to the Vault and Keystore](setting-up-access.md)". That will introduce you to the Cryppo library that we use to make encryption, decryption and serialization simpler in the context of the Meeco Service.
+To get familiar with the kinds of cryptographic key the Meeco platform uses please follow either the [Onboarding to SVX](/guides/onboarding-to-svx.md) guide, or "[Setting Up Access to the Vault and Keystore](setting-up-access.md)". That will introduce you to the Cryppo library that we use to make encryption, decryption and serialization simpler in the context of the Meeco Service.
 
 In the following example, we will use the Data Encryption Key (DEK) that the CLI generated for us from the Quickstart guide (and saved into the \`.user.yaml\` file) to encrypt a Slot value.
 
