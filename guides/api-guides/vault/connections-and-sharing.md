@@ -8,13 +8,13 @@ description: How to create a connection between you and another user to share da
 
 _Below the guide using the CLI we have a more in depth explanation of how sharing works_
 
-After successfully creating an item in your user's Vault from the [Quickstart section](../getting-started/quickstart.md), it's now time to create another user called Bob.
+After successfully creating an item in your user's Vault from the [Onboarding to SVX](/guides/onboarding-to-svx.md), it's now time to create another user called Bob.
 
 ```bash
 meeco users:create -p supersecretpassword > .bob.yaml
 ```
 
-We used the same password as in the [Quickstart](../getting-started/quickstart.md) example, in case you were wondering.
+We used the same password as in the [Onboarding to SVX](/guides/onboarding-to-svx.md) example, in case you were wondering.
 
 Using the CLI again, we're going to make a connection configuration file between _Alice_ and _Bob_
 
