@@ -1,6 +1,6 @@
 ## Introduction
 
-Connections can be established between Organisations and end-users to facilitate secure, end-to-end encrypted sharing of data. An Organisation within the Portal is provided with an [Enterprise Vault](docs/platform/vault/enterprise-vault.md) and end-users who have registered with the Organisation’s associated Tenant, are provided with an [end-user Vault](docs/platform/vault/overview.md). A connection between an Organisation and an end-user allows Organisations to directly issue, revoke and verify an end-user’s credentials.
+Connections can be established between Organisations and end-users to facilitate secure, end-to-end encrypted sharing of data. An Organisation within the Portal is provided with an [Enterprise Vault](/platform/vault/enterprise-vault.md) and end-users who have registered with the Organisation’s associated Tenant, are provided with an [end-user Vault](/platform/vault/README.md). A connection between an Organisation and an end-user allows Organisations to directly issue, revoke and verify an end-user’s credentials.
 
 ## Invite a user or an Organisation to connect
 
