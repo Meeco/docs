@@ -4,7 +4,7 @@ To onboard to SVX you will first need to sign up. Navigate to our [sign up form]
 
 ## Using the Portal UI
 
-Navigate to the [Portal login page](https://portal-sandbox.securevalueexchange.com/login) and log in using your SVX credentials. Refer to the [Portal tutorials](guides/portal-tutorials/README.md) where you can find step-by-step instructions to navigate the Portal and manage a Tenancy and / or an Organisation.
+Navigate to the [Portal login page](https://portal-sandbox.securevalueexchange.com/login) and log in using your SVX credentials. Refer to the [Portal tutorials](/guides/portal-tutorials/README.md) where you can find step-by-step instructions to navigate the Portal and manage a Tenancy and / or an Organisation.
 
 ## Accessing the SVX Sandbox API
 
@@ -73,4 +73,4 @@ With the obtained personal access token, you can now use the SVX Sandbox API. Fo
 
 Replace `YOUR_ORGANISATION_ID` with the relevant ID for your organisation, and `YOUR_ACCESS_TOKEN` with the token obtained in the previous step. You should now be able to successfully access the SVX Sandbox API using the provided authorisation token. 
 
-For additional support, review the [API Guides](guides/api-guides/README.md) or contact the [Service Desk](https://meecosystem.atlassian.net/servicedesk/customer/portal/4).
+For additional support, review the [API Guides](/guides/api-guides/README.md) or contact the [Service Desk](https://meecosystem.atlassian.net/servicedesk/customer/portal/4).

@@ -1,12 +1,12 @@
 # Vault Overview
 
-The Meeco Vault is a secure storage solution where users can store a range of data types including attributes, documents, verifiable credentials (VCs), and digital media. The Meeco Vault is both [Privacy-by-Design (PbD)](concepts/privacy-and-security-by-design.md) and [Security-by-Design (SbD)](concepts/privacy-and-security-by-design.md). The Vault has a [Zero Knowledge Value (ZKV)](../../concepts/terminology.md#zero-value-knowledge-zvk) architecture, which means all data values are end-to-end encrypted with only the metadata in plain text.
+The Meeco Vault is a secure storage solution where users can store a range of data types including attributes, documents, verifiable credentials (VCs), and digital media. The Meeco Vault is both [Privacy-by-Design (PbD)](/concepts/privacy-and-security-by-design.md) and [Security-by-Design (SbD)](/concepts/privacy-and-security-by-design.md). The Vault has a [Zero Knowledge Value (ZKV)](../../concepts/terminology.md#zero-value-knowledge-zvk) architecture, which means all data values are end-to-end encrypted with only the metadata in plain text.
 
 By enabling plain text metadata an extensive range of use-cases are possible without accessing personally identifiable information (PII). For example, it is possible to request and exchange data without having direct access to it. It also allows for an extensible data schema and the addition of semantic labels.
 
 All data values are encrypted in transit and at rest with unique cryptographic keys managed by the user of that Vault. Additionally, all data values are assigned a Universally Unique Identifier (UUID) to guard against correlation when the data is shared or exchanged. This approach also supports Progressive Disclosure and other data minimisation use cases.
 
-To enable the sharing of data, the Meeco Vault comprises of four key elements: Slots, Items, Connections and Shares. Together, these elements provide users with flexibility, customisation and control of their data. Below is an introduction to these elements, for further details see our [Vault API documentation](docs/guides/vault.md).
+To enable the sharing of data, the Meeco Vault comprises of four key elements: Slots, Items, Connections and Shares. Together, these elements provide users with flexibility, customisation and control of their data. Below is an introduction to these elements, for further details see our [Vault API documentation](/guides/api-guides/vault/README.md).
 
 ## Slots
 
@@ -60,7 +60,7 @@ An end-user Vault is accessed, managed and controlled by one single user. End-us
 
 ## Enterprise Vault
 
-An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. *Enterprise* refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](docs/platform/vault/enterprise-portal.md) information page.
+An Enterprise Vault (EV) is a secure service similar to an end-user Vault but with added functionality tailored to enterprises. *Enterprise* refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](/platform/vault/enterprise-vault.md) information page.
 
 # Standards and Compliance
 

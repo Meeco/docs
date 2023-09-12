@@ -15,7 +15,7 @@ A Classification Node is structured like
 
 ## Browsing Classification Nodes
 
-The `$VAULT_ACCESS_TOKEN` can be grabbed from the user file you created in the [Quickstart](../getting-started/quickstart.md) guide.
+The `$VAULT_ACCESS_TOKEN` can be grabbed from the user file you created in the [Onboarding to SVX](guides/onboarding-to-svx.md) guide.
 
 All classification nodes can be queried by `GET /vault/classification_nodes`:
 
@@ -26,7 +26,7 @@ curl --request GET \
   -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY"
 ```
 
-[API Docs](https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-classification_nodes)
+[API Docs](https://api-reference-sandbox.svx.exchange/)
 
 You can modify the request with the following query parameters:
 
@@ -68,7 +68,7 @@ You can create a Classification node as follows
 }'
 ```
 
-[API Docs](https://dev.meeco.me/api-details#api=meeco-vault-api&operation=post-classification_nodes)
+[API Docs](https://api-reference-sandbox.svx.exchange/)
 
 ```json
 {

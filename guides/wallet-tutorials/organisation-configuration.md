@@ -17,7 +17,7 @@ Once all required fields are complete select the _Continue_ button. A toast mess
 
 After connecting with an Organisation, you will be able to navigate to _Settings > Organisation configuration_ and view the list of the Organisations you are connected with. Tap on an Organisation to see the associated connection details.
 
-## Forget an Organisation
+## Forget a Connection
 
 If you no longer wish to be connected with an Organisation navigate to _Settings_ and tap on _Organisation configuration_. Locate the Organisation you wish to forget in the list and tap on the Organisation’s name. Tap on the _Forget this connection_ button located at the bottom of the screen. A pop-up screen will appear asking you to confirm that you wish to forget the Organisation. Select _Confirm_ to disconnect from the Organisation or select _Cancel_.
 

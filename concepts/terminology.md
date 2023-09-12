@@ -22,7 +22,7 @@ Combinations of [Classifications](#classification) are called _**Classification 
 A persistent channel via which two entities can share information (e.g. [Items](#item), DIDs).
 
 ## Credential
-For a comprehensive understanding of "Credential(s)", please refer to the [Verifiable Credentials](#verifiable-credential-vc) section.
+For a comprehensive understanding of "Credential(s)", please refer to the [Verifiable Credentials](./verifiable-credentials.md) section.
 
 ## Credential Schema
 A document that is used to guarantee the structure, and by extension the semantics, of the set of **claims** comprising a **Verifiable Credential**. A shared Credential Schema allows all parties to reference data in a known way. See [reference here](https://www.w3.org/TR/vc-data-model/#dfn-credential "https://www.w3.org/TR/vc-data-model/#dfn-credential").
@@ -85,11 +85,11 @@ A group of [Slots](#slot) related by a topic. Common examples of Items:
 - club membership
 - flight reservation
 The Slots in an Item are keyed by their name property and contain only encrypted values.
-Detailed documentation can be found [here](https://docs.meeco.me/guides/vault/items-and-slots).
+Detailed documentation can be [found here](../guides/api-guides/vault/items-and-slots.md).
 
 ## Item Template
-A predefined list of empty [Slots](https://meecosystem.atlassian.net/concepts/terminology#slot). Each Item is created by cloning a template and filling in the Slots with data.
-Detailed documentation can be found [here](https://docs.meeco.me/guides/vault/items-and-slots).
+A predefined list of empty [Slots](#slot). Each Item is created by cloning a template and filling in the Slots with data.
+Detailed documentation can be [found here](../guides/api-guides/vault/items-and-slots.md).
 
 ## JSON File Type
 JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute-value pairs and arrays. It is a common data format with diverse uses in electronic data interchange, including that of web applications with servers.
@@ -97,7 +97,7 @@ JSON is an open standard file format and data interchange format that uses human
 ## JSON Web Tokens
 JSON Web Token is a proposed Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key.
 
-## Key Encryption Key
+## Key Encryption Key (KEK)
 Used to encrypt all other keys (**Data Encryption Keys** and **Keypairs**) before they are stored in the [Keystore](#keystore). The Key Encryption Key is encrypted with the [Passphrase Derived Key](#passphrase-derived-key-pdk).
 
 ## Key Exchange
@@ -109,7 +109,7 @@ A pair of private key(s) and public key(s) that are mathematically linked to eac
 ## Keystore
 A component within SVX. The Keystore enables users to store and manage their cryptographic keys. This is where the [Data Encryption Keys](#data-encryption-key-dek), [Public/Private Keypairs](#keypair), and the [Key Encryption Key](#key-encryption-key) are stored along with the [Derivation Artefact](#derivation-artefact). All of the stored keys are encrypted with the **KEK**, except for the **KEK** itself, which is encrypted with the **Passphrase Derived Key**.
 No encryption is done in the Keystore; the **Cryppo library** aids in creating and using keys.
-Additional information can be found [here](../platform/keys.md).
+Additional information can be [found here](../tools/cryppo.md).
 
 ## Organisation
 An entity within **SVX**. An Organisation belongs to a Tenant and is managed by one or more **Organisation Administrators**.
@@ -141,7 +141,6 @@ Data derived from one or more [Verifiable Credentials](https://www.w3.org/TR/vc-
 ## Presentation Definition
 Presentation Definitions are objects that articulate what proofs a Verifier requires. These help the Verifier to decide how or whether to interact with a [Holder](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:holder). Presentation Definitions are composed of inputs, which describe the forms and details of the proofs they require, and optional sets of selection rules, to allow Holders flexibility in cases where many different types of proofs may satisfy an input requirement. See reference [here](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:presentation-definition).
 
-
 ## Presentation Request (PR)
 Presentation Requests are transport mechanisms for [Presentation](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:presentation). Presentation Requests can take multiple shapes, using a variety of protocols and signature schemes not refined in this specification. They are sent by a [Verifier](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:verifier) to a [Holder](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:holder). Defining Presentation Requests is outside the scope of this specification. See reference [here](https://identity.foundation/presentation-exchange/spec/v2.0.0/#term:presentation-definition).
 
@@ -162,8 +161,8 @@ In cryptography and computer security, a root certificate is a public key certif
 
 ## Secret Key (also see **Private Key**)
 In symmetric cryptography, a secret key (or "private key") is a piece of information or a framework used to decrypt and encrypt messages. Each party taking part in a transaction that is intended to be private possesses a common secret key. See reference [here](https://www.hypr.com/security-encyclopedia/secret-key). The secret key is a component of the authentication flow. The format for version 1 is as follows: `{version}-{username}-{salt}`. The `username` is generated by the server, and the `salt` is a 256-bit randomly generated key, which is base58 encoded and has a hyphen (-) at each 6th character. The salt component is created on the client and stored securely by the user. It is used to generate:
-1. An encryption key [(PDK)](#passphrase-derived-key-and-derivation-artefacts) with which to encrypt your [Key Encryption Key (KEK)](#key-encryption-key-kek).
-2. A password that, along with a username, will be used for [Secure Remote Password (SRP)](#srp---secure-remote-password) authentication.
+1. An encryption key [(aka Passphrase Derived Key (PDK))](#passphrase-derived-key-pdk) with which to encrypt your [Key Encryption Key (KEK)](#key-encryption-key-kek).
+2. A password that, along with a username, will be used for [Secure Remote Password (SRP)](#secure-remote-password-srp) authentication.
 
 ## Secure Remote Password (SRP)
 An authentication method that sends proof that a user knows their password without revealing the actual password to the server. Additional information can be found [here](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol "https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol").
@@ -178,7 +177,7 @@ The permissions an individual user or a computer application holds to read, writ
 A token that contains security rights assigned to a user or agent, which can be used as proof that it can perform certain actions.
 
 ## Share
-A Share is created when a user grants access to one of their [Items](#item) to another user that they have [Connected](#connection) with. The **Item** is re-encrypted with a [Data Encryption Key](#data-encryption-key-dek) and shared with the recipient of the Share. An Item you have received via a Share can be shared with another user, but you cannot alter any of its **Slots**. Only the original creator of the Item can update the Share, other than deleting it. Detailed documentation can be found [here](#guides-vault-connections-and-sharing).
+A Share is created when a user grants access to one of their [Items](#item) to another user that they have [Connected](#connection) with. The **Item** is re-encrypted with a [Data Encryption Key](#data-encryption-key-dek) and shared with the recipient of the Share. An Item you have received via a Share can be shared with another user, but you cannot alter any of its **Slots**. Only the original creator of the Item can update the Share, other than deleting it. Detailed documentation can be found [here](../guides/api-guides/vault/connections-and-sharing.md).
 
 ## Slot
 A Slot is the smallest data entity in the [Vault](#vault). An Item is made up of Slots, which are defined by the `name` property. Each Slot has a `name`, a `label`, and a `value`. Slots are able to be shared after two users have made a [Connection](#connection) with each other. Note that the API does not return the `value` property but `encrypted_value`. The API will not allow storing any unencrypted data in either `value` or `encrypted_value`. Slot values are always stored in an encrypted form, and only the user can decrypt and read them. Once encrypted and serialized, a Slot value of "BMW" would look something like this: `"encrypted_value": "Aes256Gcm.2hDl.LS0tCml2OiAhYmluYXJ5IHwtCiAgQWQwSThDZk5qRnFycmFuMAphdDogIWJpbmFyeSB8LQogIDJXVklzbUxOSWVoOHZIVDB1ZzBtZVE9PQphZDogbm9uQQo="`. Slots are typed, but the values cannot be checked to match the given type, as the API does not have decrypted keys for these items. Example Slot types are:
@@ -228,7 +227,7 @@ A Uniform Resource Identifier is a unique sequence of characters that identifies
 A number assigned to any type of data set or attribute to make it uniquely identifiable.
 
 ## Vault
-Meeco’s Vault is where users can store and **Share** the [Items](#item") they create with **Connections** they establish. A Vault user’s data is **end-to-end encrypted** and is only accessible by them. Additional information can be found [here]().
+Meeco’s Vault is where users can store and **Share** the [Items](#item) they create with **Connections** they establish. A Vault user’s data is **end-to-end encrypted** and is only accessible by them. Additional information can be found [here]().
 
 ## Verifiable Credential
 A verifiable credential is a tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to build [verifiable presentations](https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations), which can also be cryptographically verified. The [claims](https://www.w3.org/TR/vc-data-model/#dfn-claims) in a credential can be about different [subjects](https://www.w3.org/TR/vc-data-model/#dfn-subjects). See reference [here](https://www.w3.org/TR/vc-data-model/#dfn-credential).
@@ -261,10 +260,10 @@ A well-known key link directly to a specific entity. Used to confirm signatures.
 
 ## Wallet
 
-Software that enables the wallet’s controller (the end-user or **Wallet Holder**) to generate, store, manage and protect cryptographic keys and Verifiable Credentials. It allows the person to take actions (e.g. accept and present credentials) and setup peer-to-peer communication.
+Software that enables the wallet’s controller (the end-user or **Wallet Holder**) to generate, store, manage and protect cryptographic keys and [Verifiable Credentials](#verifiable-credential). It allows the person to take actions (e.g. accept and present credentials) and setup peer-to-peer communication.
 
 ## Wallet Holder
-An entity that stores and “owns” **Verifiable Credentials**. A Wallet Holder’s **Credentials** are cryptographically signed with the Holder’s signing key in the ‘holder’ section of the **Verifiable Credential**.
+An entity that stores and “owns” [Verifiable Credentials](#verifiable-credential). A Wallet Holder’s **Credentials** are cryptographically signed with the Holder’s signing key in the ‘holder’ section of the [Verifiable Credential](#verifiable-credential).
 
 ## Zero Knowledge Proof(s) (ZKP)
 In cryptography, a zero-knowledge proof or zero-knowledge protocol is a method by which one party can prove to another party that a given statement is true while the prover avoids conveying any additional information apart from the fact that the statement is indeed true.

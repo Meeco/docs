@@ -47,12 +47,12 @@ To archive a credential schema navigate to _Credentials_ on the left-side menu o
 
 > **Note**
 > _Archiving a credential schema:_ Once archived, a credential schema will not be available to Organisations when creating credential and verification templates
-> Note that credential schemas can be reinstated if required and full functionality will be restored to Organisations.
+> Note that credential schemas can be restored if required and full functionality will be restored to Organisations.
 
 > **Note**
 > Schemas are not permanently deleted from the system. Once published, it remains accessible through a public link. Credentials that have been issued that reference the schema can still be used.
 
-## Reinstate a credential schema
+## Restore a credential schema
 
-To reinstate a credential schema navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential schemas_. Locate the credential schema in the _Archived schemas_ tab and select the horizontal ellipsis icon ⋯ alongside the schema’s name to reveal menu options. Select _Reinstate_ and confirm the reinstating of the credential schema via the modal window. The credential schema will be reinstated to the Tenant, and will be moved to the _Active schemas_ tab.
+To restore a credential schema navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential schemas_. Locate the credential schema in the _Archived schemas_ tab and select the horizontal ellipsis icon ⋯ alongside the schema’s name to reveal menu options. Select _Restore_ and confirm the restoration of the credential schema via the modal window. The credential schema will be restored to the Tenant, and will be moved to the _Active schemas_ tab.
 

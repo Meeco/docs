@@ -27,7 +27,7 @@ Navigate to [SVX Sandbox API documentation](https://api-reference-sandbox.svx.ex
 
 #### 2. Create an application
 
-Log in to the [SVX Portal](https://portal-sandbox.securevalueexchange.com/login) and create an application, see the Applications tutorial located in the [Portal tutorials](guides/portal-tutorials/README.md) for more information. 
+Log in to the [SVX Portal](https://portal-sandbox.securevalueexchange.com/login) and create an application, see the Applications tutorial located in the [Portal tutorials](/guides/portal-tutorials/README.md) for more information. 
 
 > **Note**
 > Tenant and Organisation Administrators can both create Applications, however, different workflows are achieved based on the associated role and access rights.

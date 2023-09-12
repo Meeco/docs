@@ -44,7 +44,7 @@ To remove an end user form a Tenancy navigate to _Manage Tenancy_ on the left-si
 > **Note**
 > When an end user is removed from a Tenancy their associated end user vault is deactivated. Because of this, any connections between the end user and Organisations are cancelled. Any credentials that have been issued to the end user will remain in their wallet.
 
-## Restoring an end user to a Tenancy
+## Restore an end user to a Tenancy
 
 If a Tenant Administrator provides an end user with a newly generated invitation QR Code within 30 days of the end user being removed from the Tenancy, the end user will have their end user vault reinstated and will be able to restore their connections with Organisations.
 

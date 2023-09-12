@@ -24,9 +24,9 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates' \
      -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY"
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
-(Get `API_SUBSCRIPTION_KEY` by [signing up](<https://dev.meeco.me/signup>) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
+(Get `API_SUBSCRIPTION_KEY` by [signing up](https://www.meeco.me/signup) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
 
 The response JSON object lists Templates under the `item_templates` key. Each Template object has a `slot_ids` list, which references Slots in the top-level `slots` list.
 
@@ -125,7 +125,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates/ITEM-TEMPLATE-
      -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 Or, to search Item Templates by matching `label` text (replace `SEARCH_TEXT`):
 
@@ -135,7 +135,7 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates?like=SEARCH_TE
      -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=get-item_templates-id>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 
 ## Creating an Item
@@ -168,7 +168,7 @@ To create an Item you must give the name of an existing Item Template, and a lab
 }'
 ```
 
-[API docs](<https://dev.meeco.me/api-details#api=meeco-vault-api&operation=post-items>)
+[API docs](https://api-reference-sandbox.svx.exchange/)
 
 The API response is the newly created Item:
 
@@ -237,7 +237,7 @@ The API response is the newly created Item:
 
 Notice that Slots are created according to the Item Template, but are left empty for now.
 
-Items can also be classified, that is described in [another page](classification-hierarchies.md).
+Items can also be classified, that is described in [another page](../vault/classification-hierarchies.md).
 
 
 ### Item Names
@@ -526,7 +526,7 @@ One of the core features of the Meeco platform is data encryption. User data sto
 
 If we want to store data in an Item we must encrypt it, otherwise the Vault will return an error.
 
-To get familiar with the kinds of cryptographic key the Meeco platform uses please follow either the [Quickstart](../getting-started/quickstart.md) guide, or "[Setting Up Access to the Vault and Keystore](setting-up-access.md)". That will introduce you to the Cryppo library that we use to make encryption, decryption and serialization simpler in the context of the Meeco Service.
+To get familiar with the kinds of cryptographic key the Meeco platform uses please follow either the [Onboarding to SVX](/guides/onboarding-to-svx.md) guide, or "[Setting Up Access to the Vault and Keystore](setting-up-access.md)". That will introduce you to the Cryppo library that we use to make encryption, decryption and serialization simpler in the context of the Meeco Service.
 
 In the following example, we will use the Data Encryption Key (DEK) that the CLI generated for us from the Quickstart guide (and saved into the \`.user.yaml\` file) to encrypt a Slot value.
 
@@ -665,7 +665,7 @@ Response:
 
 ## Shared Items
 
-The page on [Connections and Sharing](connections-and-sharing.md) covers sharing Items. This section will just describe some properties of shared Items.
+The page on [Connections and Sharing](../vault/connections-and-sharing.md) covers sharing Items. This section will just describe some properties of shared Items.
 
 
 ### Receiving A Share

@@ -31,7 +31,7 @@ The flow centres around the creation and exchange of a Request and a Response ob
 
 ## Prerequisites
 
-- [DID](dids/did-methods.md)
+- [DID](../dids/did-methods.md)
 - [Presentation](../credentials/presentations.md)
 
 ## Who can undertake this operation?
