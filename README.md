@@ -16,7 +16,7 @@ Embark on your journey and harness the full potential of the platform's capabili
 
 ## Tools
 
-Build faster using the following tools.
+Build faster with the following tools.
 
 <table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>SVX SDK</strong></td><td>Javascript SDK for faster development</td><td></td><td><a href="tools/meeco-cli.md">meeco-cli.md</a></td></tr><tr><td><strong>Meeco Wallet</strong></td><td>Experience the mobile identity wallet in <a href="https://apps.apple.com/app/id1570355469">App Store</a> and <a href="https://play.google.com/store/apps/details?id=me.meeco.wallet">Play Store</a>.</td><td></td><td><a href="guides/wallet-tutorials/README.md">README.md</a></td></tr><tr><td><strong>Cryppo SDK</strong></td><td>Aiding in encryption and decryption</td><td></td><td><a href="tools/cryppo.md">cryppo.md</a></td></tr></tbody></table>
 
