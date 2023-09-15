@@ -34,9 +34,9 @@ Meeco is actively following and where possible contributing in standardisation e
 
 ### JWS Signature
 
-Following key types are supported for JWS verification.
+Following key types are supported for JWS verification. The subset of supported "JWS Algorithms" are part of [IANA - JSON Web Signature Algorithms registry](https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms).
 
-| JWT Algorithm | Key Type |
+| JWS Algorithm | Key Type |
 | --- | --- |
 | ES256 | ECDSA using P-256 and SHA-256 |
 | ES256K | ECDSA using secp256k1 and SHA-256 |
