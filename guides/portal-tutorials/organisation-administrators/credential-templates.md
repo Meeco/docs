@@ -42,5 +42,5 @@ To archive a credential template, navigate to _Credentials_ on the left-side men
 
 ## Restore a credential template
 
-To reinstate a credential template navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential templates_. Locate the credential template in the _Archived templates_ tab and select the horizontal ellipsis icon ⋯ alongside the template’s name to reveal menu options. Select _Restore_ and confirm the reinstating of the credential template via the modal window. The credential template will be restored to the Organisation, and will be moved to the _Active templates_ tab.
+To restore a credential template navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential templates_. Locate the credential template in the _Archived templates_ tab and select the horizontal ellipsis icon ⋯ alongside the template’s name to reveal menu options. Select _Restore_ and confirm the reinstating of the credential template via the modal window. The credential template will be restored to the Organisation, and will be moved to the _Active templates_ tab.
 
