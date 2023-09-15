@@ -36,9 +36,11 @@ Meeco is actively following and where possible contributing in standardisation e
 
 Following key types are supported for JWS verification.
 
-| Key Type | JWT Algorithm |
+| JWT Algorithm | Key Type |
 | --- | --- |
-| Ed25519 | EdDSA |
+| ES256 | ECDSA using P-256 and SHA-256 |
+| ES256K | ECDSA using secp256k1 and SHA-256 |
+| EdDSA | EdDSA using Ed25519 and SHA-256 |
 
 ### Master Encryption Key Algorithms
 
