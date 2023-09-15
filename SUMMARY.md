@@ -26,6 +26,7 @@
 * [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Vault](platform/vault/README.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
+* [Portal](platform/portal.md)
 * [Supported Standards](platform/supported-standards.md)
 
 ## Guides
