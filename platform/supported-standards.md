@@ -7,6 +7,7 @@ Meeco is actively following and where possible contributing in standardisation e
 - [Decentralized Identity Foundation (DIF)](https://identity.foundation/)
 - [European Blockchain (EBSI)](https://ec.europa.eu/ebsi)
 - [HBAR Foundation](https://hbarfoundation.org)
+- [Internet Assigned Numbers Authority (IANA)](https://www.iana.org)
 - [Internet Engineering Task Force (IETF)](https://www.ietf.org/)
 - [OpenID Foundation (OIDF)](https://openid.net/foundation/)
 - [World Wide Web Consortium (W3C)](https://www.w3.org/)
