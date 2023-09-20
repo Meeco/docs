@@ -54,7 +54,6 @@
     * [Inviting End-Users](guides/api-guides/users/inviting-end-users.md)
     * [Authenticating End-Users](guides/api-guides/users/authenticating-end-users.md)
   * [Vault](guides/api-guides/vault/README.md)
-    * [Setting up Access](guides/api-guides/vault/setting-up-access.md)
     * [Items and Slots](guides/api-guides/vault/items-and-slots.md)
     * [Connections and Sharing](guides/api-guides/vault/connections-and-sharing.md)
     * [Classification Hierarchies](guides/api-guides/vault/classification-hierarchies.md)
