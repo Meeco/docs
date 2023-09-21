@@ -48,9 +48,7 @@ This release also includes a comprehensive set of bug fixes aimed at improving t
 
 ### API
 
-* Changed association Openapi version to the version of the platform, instead of the gateway component.
-
-
+* The `/version` endpoint now returns the versions of all underlying components as well as the overall SVX version.
 
 ## Deprecations and EOL
 
