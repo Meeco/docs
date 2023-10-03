@@ -48,34 +48,3 @@ The response is the credential object that is generated. This contains:
 * ID of the credential
 * Unsigned credential in `vc-jwt` data format
 * Metadata
-
-## Issue a Credential
-
-Issuing a credential involves [Generating](#generate-credential) a credential with the addition of the credential being signed by the given issuer. The result is a signed VC-JWT.
-
-To sign the credential, a fully qualified DID string or object with an `id` property needs to be provided. The DID and its verification keypair needs to be under control of the platform to be able to perform the signing.
-
-**Endpoint**
-
-```bash
-POST /credentials/issue
-```
-
-**Request**
-
-The request contains the following data:
-* [Credential Type](credential-types.md)
-* Issuer
-  * DID – Fully qualified DID string
-  * Name – Name of the issuer (optional)
-* Claims
-  * Subject DID – Typically, the `id` property contains the DID of the subject
-* Expiration date – Datetime after which the credential expires
-* Revocable – If true, the generated credential can be revoked later on.
-
-**Response**
-
-The response provides the generated credential object. This contains:
-* ID of the credential
-* Signed Credential in `vc-jwt` data format
-* Meta data
