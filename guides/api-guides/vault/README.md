@@ -1,3 +1,3 @@
 # Vault
 
-The following are step-by-step guides and contextual information relating to secure storage (the SVX Vault) via the SVX API.
+![Notice stating that this section of Meeco's documentation is undergoing updates.](/.gitbook/assets/Documentation_Update_Notice.png)
