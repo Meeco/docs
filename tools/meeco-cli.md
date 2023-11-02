@@ -1,5 +1,7 @@
 # Meeco SDK & CLI
 
+![Notice stating that this section of Meeco's documentation is undergoing updates.](/.gitbook/assets/Documentation_Update_Notice.png)
+
 We have created the [Meeco SDK](https://www.npmjs.com/package/@meeco/sdk) and the [Meeco CLI](https://github.com/Meeco/js-sdk/tree/master/packages/cli).
 
 ## SDK
