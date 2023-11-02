@@ -196,7 +196,7 @@ Notice that new types cannot be created; `key_value` should be the default type 
 ## Software Development Kit (SDK)
 A collection of software development tools in one installable package. They facilitate the creation of applications by having a compiler, debugger, and sometimes a software framework.
 
-## Singing Key
+## Signing Key
 See **Private Key**.
 
 ## Subject
