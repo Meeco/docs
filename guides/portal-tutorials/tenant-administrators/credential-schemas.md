@@ -21,7 +21,9 @@ When a predefined schema template has been selected, an editing panel will be di
 
 Once all required fields are complete select the _Create_ button and the credential schema will appear in a list with a designated Schema ID and Version Number.
 
-![How to create a credential schema tutorial video.](/.gitbook/assets/12_TA_Create_new_credential_schema.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/12_TA_Create_new_credential_schema.gif" alt="How to create a credential schema tutorial video." width="80%">
+</p>
 
 ## View and edit a credential schema
 
@@ -43,7 +45,9 @@ To edit the credential schema, select the _Edit_ button from the _View credentia
 
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
-![How to view and edit a credential schema tutorial video.](/.gitbook/assets/13_TA_View_and_edit_credential_schema.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/13_TA_View_and_edit_credential_schema.gif" alt="How to view and edit a credential schema tutorial video." width="80%">
+</p>
 
 ## Archive a credential schema
 
@@ -56,10 +60,14 @@ To archive a credential schema navigate to _Credentials_ on the left-side menu o
 > **Note**
 > Schemas are not permanently deleted from the system. Once published, it remains accessible through a public link. Credentials that have been issued that reference the schema can still be used.
 
-![How to archive a credential schema tutorial video.](/.gitbook/assets/14_TA_Archive_credential_schema.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/14_TA_Archive_credential_schema.gif" alt="How to archive a credential schema tutorial video." width="80%">
+</p>
 
 ## Restore a credential schema
 
 To restore a credential schema navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential schemas_. Locate the credential schema in the _Archived schemas_ tab and select the horizontal ellipsis icon ⋯ alongside the schema’s name to reveal menu options. Select _Restore_ and confirm the restoration of the credential schema via the modal window. The credential schema will be restored to the Tenant, and will be moved to the _Active schemas_ tab.
 
-![How to restore a credential schema tutorial video.](/.gitbook/assets/15_TA_Restore_credential_schema.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/15_TA_Restore_credential_schema.gif" alt="How to restore a credential schema tutorial video." width="80%">
+</p>
