@@ -14,7 +14,9 @@ Once all required fields are complete select the _Add_ button and the Tenant Adm
 > **Note**
 > Once the invited administrator accepts the invitation to join the SVX Portal they will appear in the _Current Administrators_ list.
 
-![How to add a Tenant Administrator to a Tenant tutorial video.](/.gitbook/assets/01_TA_Add_a_Tenant_Administrator_to_a_Tenant.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/01_TA_Add_a_Tenant_Administrator_to_a_Tenant.gif" alt="How to add a Tenant Administrator to a Tenant tutorial video." width="80%">
+</p>
 
 ## Resend an invitation to join a Tenant
 
