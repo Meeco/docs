@@ -10,7 +10,9 @@ Tenant Administrators can add Organisations to their Tenancy by navigating to _O
 
 Once all required fields are complete select the _Add_ button and the Organisation will appear in the list.
 
-![How to add an Organisation to a Tenant tutorial video.](/.gitbook/assets/06_TA_Create_an_Organisation.gif)
+<p align="center">
+<img align="center" src="/.gitbook/assets/06_TA_Create_an_Organisation.gif" alt="How to add an Organisation to a Tenant tutorial video." width="80%">
+</p>
 
 ## View and edit an Organisation’s details
 
