@@ -33,6 +33,10 @@ When complete, select Update to save changes, or Cancel to discard changes.
 > **Note**
 > The Organisation’s _ID_ and _DID_ cannot be edited. These are system-generated identifiers that remain with the Organisation once it is created.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/23_TA_View_and_edit_Organisation.gif" alt="How to view and edit an Organisation tutorial video." width="80%">
+</p>
+
 ## Archive an Organisation
 
 To archive an Organisation within a Tenant, navigate to _Organisations_ on the left-side menu of the SVX Portal. Locate the Organisation in the _Current Organisations_ list and select the horizontal ellipsis icon ⋯ alongside the Organisation’s name to reveal menu options. Select _Archive_ and confirm the archiving of the Organisation via the modal window. The Organisation will be removed from the Tenant, and will be moved to the _Removed Administrators_ tab.
@@ -47,6 +51,14 @@ To archive an Organisation within a Tenant, navigate to _Organisations_ on the l
 > * Applications
 > Note that Organisations can be reinstated if required and full functionality will be restored.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/24_TA_Archive_Organisation.gif" alt="How to archive an Organisation tutorial video." width="80%">
+</p>
+
 ## Reinstate an Organisation
 
 To reinstate an Organisation to a Tenant, navigate to _Organisations_ on the left-side menu of the SVX Portal. Locate the Organisation in the _Archived Organisations_ list and select the horizontal ellipsis icon ⋯ alongside the Organisation’s name to reveal menu options. Select _Reinstate_ and confirm the reinstating of the Organisation via the modal window. The Organisation will be reinstated to the Tenant, and will be moved to the _Current Administrators_ tab.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/25_TA_Reinstate_Organisation.gif" alt="How to reinstate an Organisation tutorial video." width="80%">
+</p>
