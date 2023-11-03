@@ -1,0 +1,51 @@
+# SVX 1.2.4 Release Notes
+
+**Software Release Date**: Oct 31, 2023
+
+**Summary**:
+
+The following is a summary of the key features and enhancements:
+
+* **Enhancements**: Updated context switcher options for administrators depending on their administrator levels. Archived credential schemas are displayed in the lists with the appropriate mark "archived" but no ability to use/select the archived objects for Credential Templates, Verification Templates, or organisation details.
+* **Bug Fixes**: This release consists of certain bug fixes mostly related to spelling issues, UI glitches during invitation administrators, and cancellation invitations for administrators and end-users.
+
+
+## Enhancements
+
+### Portal
+
+* Updated rules of accessibility to the Tenant depending on the administrator level.
+* Changed the navigation to the previously selected option to display rows on the page when the user clicks "Back" in the browser after opening a page from the list.
+* Updated all instances where "Meeco OIDC" appears as the browser tab title.
+* Updated UI for the explanation of verification response status.
+* Archived Credential Schema should appear in the "Associated to" field on an Organsiation's details page.
+* Archived schema(s) should appear as 'archived' and disabled when creating a Verification Template and Credential Template.
+* Updated pagination: added the ability to select the number of pages per row and the ability to navigate to the desired page number.
+* The archived administrator (not associated with any instance on the Portal) must be logged out of the system.
+* Removed the necessity to select credential template during issuance flow if administrator does it via Credential Template-> Issue Credential.
+* Changed the UX when removing an 'Expired' end user QR Code registration invitation.
+
+## Bug Fixes
+
+This release also includes bug fixes aimed at improving the user experience.
+
+### Portal
+
+* Fixed the ability to verify the revoked credential.
+* Fixed issue with cleaning up the list with pending admins during cancellation invitations.
+* Fixed issue with the appearance of a wrong tooltip while inviting a new admin.
+* Fixed displaying the organisation lists in the "Available to" field for the View Credential Schema page.
+* Fixed issue with context switching screen for users who no longer have access to SVX OA Context.
+* Fixed displaying the archived Credential Schema on an Organsiation's details page.
+* Fixed administrator's navigation if he decides to remain logged in during the logout process.
+* Fixed issue with the pagination if less than 10 records per page during some removing records process.
+* Fixed issue with the changing organisation name.
+* Fixed tooltip message when cancelling a new end-user registration QR Code.
+* Checked spacing between tab, sub-heading and table heading components, full stops at the end of sentences.
+* Fixed name of uploaded image name of organisation logo.
+* Fixed error messages for empty fields on the login screen.
+* Fixed opening links to Privacy Policy and T&Cs from the logout and login page should open in new browser tabs.
+
+## Deprecations and EOL
+
+None
