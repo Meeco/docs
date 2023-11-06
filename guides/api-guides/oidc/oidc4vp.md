@@ -236,16 +236,16 @@ sequenceDiagram
   V-->>W: return unsigned verifiable presentation (VP)
   W->>W: Sign VP
 
-  %% Generate verifiable presentation in a form of VP token
+  %% Generate id_token for request submission based on the Wallet information and the verifiable presentation token
   W->>API: POST /oidc/presentations/token
-  API-->>W: 201 OK and unsigned VP token
-  W->>W: Sign VP token
+  API-->>W: 201 OK and unsigned id_token
+  W->>W: Sign id_token
 
   %% Submit VP token to the redirect_uri
   W->>+V: POST "presentation_request.redirect_uri"
 
   %% Validate VP token and its content
-  V->>API: POST /oidc/presentations/verify
+  V->>API: POST /oidc/presentations/response/verify
   API->>API: Verify SIOP token signature and <br /> extract the verifiable presentation
   API->>API: Verify verifiable presentation structure, signatures and <br /> if data provided match presentation definition
   API-->>V: 204 OK / 201 OK and parsed token information
