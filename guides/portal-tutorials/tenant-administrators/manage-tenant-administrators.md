@@ -14,10 +14,17 @@ Once all required fields are complete select the _Add_ button and the Tenant Adm
 > **Note**
 > Once the invited administrator accepts the invitation to join the SVX Portal they will appear in the _Current Administrators_ list.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/01_TA_Add_a_Tenant_Administrator_to_a_Tenant.gif" alt="How to add a Tenant Administrator to a Tenant tutorial video." width="80%">
+</p>
 
 ## Resend an invitation to join a Tenant
 
 Tenant Administrators are able to resend invitations to invited administrators. To resend an invitation, navigate to _Manage Tenancy_ on the left-side menu of the SVX Portal and select _Administrators_. Select the _Pending Administrators_ tab and locate the invitee in the list. Select the horizontal ellipsis icon ⋯ alongside the invitee’s name to reveal menu options. Select _Resend invitation_ and the onboarding email will automatically be resent to the designated recipient.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/02_TA_Resend_an_invitation_to_join_a_Tenant.gif" alt="How to resend an invitation to join a Tenant tutorial video." width="80%">
+</p>
 
 ## View a Tenant Administrator’s details
 
@@ -29,6 +36,10 @@ To view the details of a Tenant Administrator within a Tenant, navigate to _Mana
 * Tenant name
 * Tenant ID
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/03_TA_View_a_Tenant_Administrators_details.gif" alt="How to view a Tenant Administrator's details tutorial video." width="80%">
+</p>
+
 ## Remove a Tenant Administrator from a Tenant
 
 To remove a Tenant Administrator from a Tenant, navigate to _Manage Tenancy_ on the left-side menu of the SVX Portal and select _Administrators_. Locate the administrator in either the _Current Administrators_ or the _Pending Administrators_ tabs. Select the horizontal ellipsis icon ⋯ alongside the administrator's name to reveal menu options. Select _Remove_ and confirm the removal of the administrator via the modal window. The administrator will be removed from the Tenant, and their name will be moved to the _Removed Administrators_ tab.
@@ -36,7 +47,14 @@ To remove a Tenant Administrator from a Tenant, navigate to _Manage Tenancy_ on 
 > **Note**
 > _Removing a Tenant Administrator:_ Once removed from a Tenant, the administrator will no longer be able to access the Tenant or its functions. Note that administrators can be reinstated if required.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/04_TA_Remove_a_Tenant_Administrator_from_a_Tenant.gif" alt="How to remove a Tenant Administrator from a Tenant tutorial video." width="80%">
+</p>
 
 ## Reinstate a Tenant Administrator to a Tenant
 
 To reinstate a Tenant Administrator to a Tenant, navigate to _Manage Tenancy_ on the left-side menu of the SVX Portal and select _Administrators_. Select the _Archived Administrators_ tab and locate the administrator in the list. Select the horizontal ellipsis icon ⋯ alongside the administrator's name to reveal menu options. Select _Reinstate_ and confirm the reinstating of the administrator via the modal window. The administrator will be reinstated in the Tenant, and their name will be moved to the _Current Administrators_ tab.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/05_TA_Reinstate_a_Tenant_Administrator_to_a_Tenant.gif" alt="How to reinstate a Tenant Administrator to a Tenant tutorial video." width="80%">
+</p>

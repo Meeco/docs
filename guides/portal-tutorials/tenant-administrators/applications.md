@@ -13,6 +13,10 @@ Tenant Administrators can create a new application by navigating to _Devtools_ o
 
 Once all required fields are complete select the Create application button and the application will appear in a list with a designated Client ID.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/16_TA_Create_new_application.gif" alt="How to create an application tutorial video." width="80%">
+</p>
+
 ## View and edit an application
 
 Tenant Administrators can view applications by navigating to _Devtools_ on the left-side menu of the SVX Portal, and selecting _Applications_.
@@ -36,6 +40,10 @@ To edit the application’s details, select the _Edit_ button from the _View app
 
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/17_TA_View_and_edit_application.gif" alt="How to view and edit an application tutorial video." width="80%">
+</p>
+
 ## Enable machine-2-machine authentication
 
 A Tenant Administrator can provide an application with authenticated access to SVX functionality. This allows the application to perform the following actions:
@@ -49,3 +57,7 @@ For more information, see the [Machine-2-Machine Communication](/guides/api-guid
 ## Delete an application
 
 To remove an application from your Tenant navigate to _Devtools_ on the left-side menu of the SVX Portal, and select _Applications_. Locate the application in the list and select the horizontal ellipsis icon ⋯ alongside the application’s name to reveal menu options. Select _Delete_ and confirm the deletion of the application via the modal window. The application will be permanently deleted from the Tenant, and will no longer appear in the list.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/18_TA_Delete_application.gif" alt="How to delete an application tutorial video." width="80%">
+</p>
