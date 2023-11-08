@@ -38,6 +38,10 @@ Once complete, select the _Connect_ button. You will be presented with a confirm
 
 Select the _Confirm_ button to complete the connection. The new connection will appear in the list of _Existing connections_. Or, select the _Cancel_ button to reject the connection.
 
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_33_Accept_a_connection_invitation.gif" alt="How to accept an invitation to connect tutorial video." width="80%">
+</p>
+
 ## View a connection
 
 Connections can exist in two states:
