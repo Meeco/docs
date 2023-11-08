@@ -72,15 +72,6 @@ For further details, locate the response in the table and select the horizontal 
 <img align="center" src="/.gitbook/assets/OA_27_View_Verification_Response.gif" alt="How to view a verification response tutorial video." width="80%">
 </p>
 
-## Archive a request response
-
-To archive a verification template, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Verification requests_. Locate the verification request in the list that the response relates to. Select the horizontal ellipsis icon ⋯ alongside the request’s name to reveal menu options. Select _View_. Scroll to the bottom of the page where you will find a table that lists all associated request responses.
-
-Select the horizontal ellipsis icon ⋯ alongside the response’s name to reveal menu options. Select _Archive_ and confirm the archiving of the request response via the modal window. The request response will be removed from the Organisation.
-
-> **Note**
-> _Archived request responses:_ Credentials within an archived request response can still be viewed and verified.
-
 ## Verify a credential
 
 Once a Holder has submitted credentials via a verification request, an Organisation Administrator can verify the returned credentials. Follow the steps mentioned above to _view a request response_. On the _view response_ screen, select the _Verify credential(s)_ button.
