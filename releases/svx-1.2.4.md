@@ -6,7 +6,7 @@
 
 The following is a summary of the key features and enhancements:
 
-* **Enhancements**: Updated context switcher options for administrators depending on their administrator levels.
+* **Enhancements**: Improved the context-switching menu options in the Portal based on the access levels of the administrator
 * **Consistent display of archived Credential Schema**: Archived credential schemas are displayed in the lists with the appropriate mark "archived" but no ability to use/select the archived objects for Credential Templates, Verification Templates, or organisation details.
 * **Bug Fixes**: Various bug fixes in Portal including corrections to spelling errors, resolution of UI glitches that occur when inviting administrators, and improvements to the cancellation of invitations for both administrators and end-users.
 
@@ -15,7 +15,7 @@ The following is a summary of the key features and enhancements:
 
 ### Portal
 
-* Updated rules of accessibility to the Tenant depending on the administrator level.
+* Updated context-switching options in Portal. "Return to Global Dashboard", "Return to Tenant Dashboard" and "Switch Tenant or Organisation" options only show for administrators with multiple levels of access and are hidden for other administrators.
 * Changed the navigation to the previously selected option to display rows on the page when the user clicks "Back" in the browser after opening a page from the list.
 * Updated all instances where "Meeco OIDC" appears as the page title to "Meeco SVX Identity Provider".
 * Updated UI for the explanation of verification response status.
