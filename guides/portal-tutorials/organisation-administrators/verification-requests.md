@@ -17,12 +17,20 @@ Below the QR Code is a summary of the request details, including:
 
 Below the request details is a table that displays the received request responses. This table will be populated as Holders scan the QR Code and submit their verifiable credentials for verification.
 
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_23_Create_Verification_Request.gif" alt="How to create a verification request tutorial video." width="80%">
+</p>
+
 ## View a verification request
 
 Organisation Administrators can view a verification request by navigating to _Credentials_ on the left-side menu of the SVX Portal, and selecting _Verification requests_. Locate the verification request in the list and select the horizontal ellipsis icon ⋯ alongside the request’s name to reveal menu options. Select _View_. You will be presented with the following information:
 * Request QR Code
 * Request details
 * Request responses
+
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_24_View_Verification_Request.gif" alt="How to view a verification request tutorial video." width="80%">
+</p>
 
 ## Archive a verification request
 
@@ -31,9 +39,17 @@ To archive a verification request, navigate to _Credentials_ on the left-side me
 > **Note**
 > _Archiving a verification request:_ All previous responses received for the archived verification request will also be archived.
 
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_25_Archive_Verification_Request.gif" alt="How to archive a verification request tutorial video." width="80%">
+</p>
+
 ## Restore a verification request
 
 To restore a verification template navigate to Credentials on the left-side menu of the SVX Portal, and select Verification templates. Locate the verification template in the Archived templates tab and select the horizontal ellipsis icon ⋯ alongside the template’s name to reveal menu options. Select Restore and confirm the reinstating of the verification template via the modal window. The verification template will be restored to the Organisation, and will be moved to the Active templates tab.
+
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_26_Restore_Verification_Request.gif" alt="How to restore a verification request tutorial video." width="80%">
+</p>
 
 ## View a request response
 
@@ -52,14 +68,9 @@ For further details, locate the response in the table and select the horizontal 
 * Number of credentials returned
   * Details of each credential returned
 
-## Archive a request response
-
-To archive a verification template, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Verification requests_. Locate the verification request in the list that the response relates to. Select the horizontal ellipsis icon ⋯ alongside the request’s name to reveal menu options. Select _View_. Scroll to the bottom of the page where you will find a table that lists all associated request responses.
-
-Select the horizontal ellipsis icon ⋯ alongside the response’s name to reveal menu options. Select _Archive_ and confirm the archiving of the request response via the modal window. The request response will be removed from the Organisation.
-
-> **Note**
-> _Archived request responses:_ Credentials within an archived request response can still be viewed and verified.
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_27_View_Verification_Response.gif" alt="How to view a verification response tutorial video." width="80%">
+</p>
 
 ## Verify a credential
 
@@ -69,5 +80,7 @@ The status of the response will change from _Pending_ to either _Valid_ or _Expi
 
 > **Note**
 > _Verifying credentials:_ A credential’s status is accurate at the time of verification. Credential verification does not happen automatically. To ensure accurate credential status, you will need to re-verify credentials as often as required.
->
-> 
+
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_29_Verify_credential.gif" alt="How to verify a credential tutorial video." width="80%">
+</p>
