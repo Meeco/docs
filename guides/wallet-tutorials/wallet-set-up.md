@@ -27,5 +27,5 @@ As part of the wallet set up, every Wallet Holder is required to consent to Meec
 By default, the Meeco Wallet requires all Holders to secure their wallet with a PIN. If biometric finger and/or face scanning is enabled on the device, this method can also be employed. Via the wallet’s _Settings_, a Holder can also designate the length of time before the application locks when open in the device’s background.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_00_Wallet_set_up.gif" alt="How to set up your wallet tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_00_Wallet_set_up.gif" alt="How to set up your wallet tutorial video." width="300">
 </p>
