@@ -7,6 +7,10 @@ Once a connection with an Organisation has been established (see the [Organisati
 > **Note**
 > _Reject all credentials:_ Once a credential is rejected, the option to add it to your wallet will not appear again. The Issuer will need to re-issue the credential for you to add to your wallet.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_10_Import_credential_to_wallet.gif" alt="How to import a credential tutorial video." width="80%">
+</p>
+
 ## View a credential
 
 Once a credential has been added to your wallet, you will see it appear in the _Credentials_ section. The _face_ of the credential will display the following information:
@@ -25,6 +29,10 @@ To view additional credential details, tap on the credential. An expanded view w
   - Issuer DID
   - Option to copy raw data
   - Option to share raw data
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_11_View_a_credential.gif" alt="How to view a credential tutorial video." width="80%">
+</p>
 
 ## Credential status
 
@@ -45,5 +53,13 @@ An expired credential is indicated by a an exclamation mark in a hexagon icon. T
 
 <img src="/.gitbook/assets/credential_status_revoked_expired.png" alt="credential_status_revoked_expired" width="30"/>
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_12_View_revoked_credential.gif" alt="How to view a revoked credential tutorial video." width="80%">
+</p>
+
 ## Delete a credential
 To delete a credential, tap on a credential to view more details. Tap on the horizontal ellipsis icon ⋯ in the top-right corner of the screen. Tap on the _Delete_ button. The credential will be removed from your wallet.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_13_Delete_credential.gif" alt="How to delete a credential tutorial video." width="80%">
+</p>
