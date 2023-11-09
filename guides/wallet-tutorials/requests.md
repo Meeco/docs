@@ -5,7 +5,7 @@ Verifiers can send Wallet Holders request for credentials so they can verify inf
 To import a request for credentials into your Wallet you will first need to be given a QR Code from the verifying Organisation. Once you have received or been presented with the QR Code, scan it using the in-app scan function in your Wallet. The request will appear as will a toast message notifying you that the request was successfully imported.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_14_Import_request.gif" alt="How to import a request for credentials tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_14_Import_request.gif" alt="How to import a request for credentials tutorial video." width="300">
 </p>
 
 ## Submit credentials for verification
@@ -27,7 +27,7 @@ Once all credentials have been selected, the _Submit_ button in the top-right co
 After tapping on the _Submit_ button, a confirmation toast message will appear stating that the Verifier has received your credentials. Tap on the _<Back_ button and you will see that the request will have now moved to the _Completed_ tab in the _Requests_ section of your wallet.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_15_Submit_credential_for_verification.gif" alt="How to submit a credential for verification tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_15_Submit_credential_for_verification.gif" alt="How to submit a credential for verification tutorial video." width="300">
 </p>
 
 ## View a request
@@ -40,11 +40,7 @@ Locate the request in the list and tap on the request to open it.
 
 | Pending Request  | Completed Request |
 | ------------- | ------------- |
-| <p align="center">
-<img align="center" src="/.gitbook/assets/WH_16_View_pending_request.gif" alt="How to view a pending request tutorial video." width="80%">
-</p>  | <p align="center">
-<img align="center" src="/.gitbook/assets/WH_17_View_completed_request.gif" alt="How to view a completed tutorial video." width="80%">
-</p>  |
+| <img src="/.gitbook/assets/WH_16_View_pending_request.gif" alt="How to view a pending request tutorial video." width="300">  |  <img align="center" src="/.gitbook/assets/WH_17_View_completed_request.gif" alt="How to view a completed tutorial video." width="300">  |
 
 ## Delete a request
 
@@ -56,8 +52,4 @@ Locate the request in the list and tap on the request to open it. Tap on the hor
 
 | Pending Request  | Completed Request |
 | ------------- | ------------- |
-| <p align="center">
-<img align="center" src="/.gitbook/assets/WH_19_Delete_pending_request.gif" alt="How to delete a pending request tutorial video." width="80%">
-</p>  | <p align="center">
-<img align="center" src="/.gitbook/assets/WH_20_Delete_completed_request.gif" alt="How to delete a completed tutorial video." width="80%">
-</p>  |
+| <img src="/.gitbook/assets/WH_19_Delete_pending_request.gif" alt="How to delete a pending request tutorial video." width="300">  |  <img align="center" src="/.gitbook/assets/WH_20_Delete_completed_request.gif" alt="How to delete a completed tutorial video." width="300">  |
