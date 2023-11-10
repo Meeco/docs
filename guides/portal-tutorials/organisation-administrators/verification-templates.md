@@ -12,9 +12,9 @@ After selecting the _Create verification template_ button, you will be presented
 
 Once all required fields are complete, select the Create button and the verification template will appear in the _Active templates_ list.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_19_Create_Verification_Template.gif" alt="How to create a verification template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_19_Create_Verification_Template.gif" alt="How to create a verification template tutorial video." width="80%">
+</div>
 
 ## View a verification template
 
@@ -26,9 +26,9 @@ Organisation Administrators can view a verification template by navigating to _C
 * Issuer
 * Date created
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_20_View_Verification_Template.gif" alt="How to view a verification template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_20_View_Verification_Template.gif" alt="How to view a verification template tutorial video." width="80%">
+</div>
 
 ## Archive a verification template
 
@@ -37,14 +37,14 @@ To archive a verification template, navigate to _Credentials_ on the left-side m
 > **Note**
 > _Archiving a verification template:_ Verification templates can be reinstated if required and full functionality will be restored across the Organisation.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_21_Archive_Verification_Template.gif" alt="How to archive a verification template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_21_Archive_Verification_Template.gif" alt="How to archive a verification template tutorial video." width="80%">
+</div>
 
 ## Reinstate a verification template
 
 To reinstate a verification template navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Verification templates_. Locate the verification template in the _Archived templates_ tab and select the horizontal ellipsis icon ⋯ alongside the template’s name to reveal menu options. Select _Restore_ and confirm the reinstating of the verification template via the modal window. The verification template will be restored to the Organisation, and will be moved to the _Active templates_ tab.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_22_Restore_Verification_Template.gif" alt="How to restore a verification template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_22_Restore_Verification_Template.gif" alt="How to restore a verification template tutorial video." width="80%">
+</div>
