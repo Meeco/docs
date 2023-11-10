@@ -11,6 +11,10 @@ If you wish to change your PIN, navigate to _Settings_ and tap on _Secure your w
 > **Note**
 > While it is possible to turn off the PIN code and biometrics functionality, we strongly advise that you secure your wallet app with at least one method of security.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_21_Changing_your_PIN.gif" alt="How to change your wallet PIN tutorial video." width="300">
+</p>
+
 ## Biometrics
 
 At time of wallet set up you will be required to set either a 6-digit PIN or biometrics as the primary way to unlock your wallet (see the [Wallet Set Up tutorial](../guides/wallet-tutorials/wallet-set-up.md) for more information). If you choose to secure your wallet with biometrics you will be required to either make your face visible to your device’s camera or scan your fingerprint every time you open your wallet app.
@@ -32,3 +36,7 @@ The auto lock feature allows you to set a specific amount of time before the Mee
 ### Enable and Disable auto lock
 
 You can enable / disable the auto lock feature to ensure the Meeco Wallet app locks when running in the background of your device. To do this navigate to _Settings_ and tap on _Secure your wallet_. Toggle the switch next to _Enable auto lock_ so that it turns on. A slide bar will appear below. Tap and drag the circle along the slide bar or tap on the bar itself to increase the time before the app will auto lock (increments of 10 seconds). To disable auto lock, toggle the switch next to _Enable auto lock_ so that it turns off.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_22_Auto_lock.gif" alt="How to enable and disable the auto lock feature tutorial video." width="300">
+</p>
