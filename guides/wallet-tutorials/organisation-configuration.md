@@ -14,7 +14,7 @@ Once all required fields are complete select the _Continue_ button. A toast mess
 > It may take a few seconds for the connection to be established.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_06_Connect_with_organisation.gif" alt="How to connect with an Organisation tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_06_Connect_with_organisation.gif" alt="How to connect with an Organisation tutorial video." width="300">
 </p>
 
 ## View Connection details
@@ -22,7 +22,7 @@ Once all required fields are complete select the _Continue_ button. A toast mess
 After connecting with an Organisation, you will be able to navigate to _Settings > Organisation configuration_ and view the list of the Organisations you are connected with. Tap on an Organisation to see the associated connection details.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_07_View_organisation_details.gif" alt="How to view a Connection's details tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_07_View_organisation_details.gif" alt="How to view a Connection's details tutorial video." width="300">
 </p>
 
 ## Forget a Connection
@@ -33,7 +33,7 @@ If you no longer wish to be connected with an Organisation navigate to _Settings
 > After cancelling a connection with an Organisation all credentials issued by the Organisation will remain in your wallet. 
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/WH_08_Forget_connection.gif" alt="How to forget a Connection tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/WH_08_Forget_connection.gif" alt="How to forget a Connection tutorial video." width="300">
 </p>
 
 ## Removal from an Organisation
