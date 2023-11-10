@@ -23,7 +23,9 @@ Once all required fields are complete select the _Add_ button and the Organisati
 
 Organisation Administrators are able to resend invitations to other invited Organisation Administrators. To resend an invitation, navigate to _Manage Organisation_ on the left-side menu of the SVX Portal, and select _Administrators_. Select the _Pending Administrators_ tab and locate the administrator in the list. Select the horizontal ellipsis icon ⋯ alongside the administrator’s name to reveal menu options. Select _Resend invitation_ and the onboarding email will automatically be resent to the designated recipient.
 
-<img align="center" src="/.gitbook/assets/OA_04_Resend_invitation_to_join_Organisation.gif" alt="How to resend an invitation to join an Organisation tutorial video." width="80%">
+<div align="center">
+  <img src="/.gitbook/assets/OA_04_Resend_invitation_to_join_Organisation.gif" alt="How to resend an invitation to join an Organisation tutorial video." width="80%">
+</div>
 
 ## View an Organisation Administrator’s details
 
