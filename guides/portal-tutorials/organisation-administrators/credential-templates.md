@@ -14,9 +14,9 @@ Once all required fields are complete select the _Create_ button and the credent
 > **Note**
 > A schema forms the structure of the verifiable credential, allowing you to issue credentials that include information specific to a Holder.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_08_Create_Credential_Template.gif" alt="How to create a credential template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_08_Create_Credential_Template.gif" alt="How to create a credential template tutorial video." width="80%">
+</div>
 
 ## View and edit a credential template
 
@@ -37,9 +37,9 @@ To edit the credential template, select _Edit template_ from the horizontal elli
 
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_09_View_and_edit_Credential_Template.gif" alt="How to view and edit a credential template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_09_View_and_edit_Credential_Template.gif" alt="How to view and edit a credential template tutorial video." width="80%">
+</div>
 
 ## Archive a credential template
 
@@ -48,14 +48,14 @@ To archive a credential template, navigate to _Credentials_ on the left-side men
 > **Note**
 > _Archiving a credential template:_ Credential templates can be reinstated if required and full functionality will be restored across the Organisation.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_10_Archive_Credential_Template.gif" alt="How to archive a credential template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_10_Archive_Credential_Template.gif" alt="How to archive a credential template tutorial video." width="80%">
+</div>
 
 ## Restore a credential template
 
 To restore a credential template navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Credential templates_. Locate the credential template in the _Archived templates_ tab and select the horizontal ellipsis icon ⋯ alongside the template’s name to reveal menu options. Select _Restore_ and confirm the reinstating of the credential template via the modal window. The credential template will be restored to the Organisation, and will be moved to the _Active templates_ tab.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_11_Restore_Credential_Template.gif" alt="How to restore a credential template tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_11_Restore_Credential_Template.gif" alt="How to restore a credential template tutorial video." width="80%">
+</div>
