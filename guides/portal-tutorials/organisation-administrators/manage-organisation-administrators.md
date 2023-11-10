@@ -15,7 +15,7 @@ Once all required fields are complete select the _Add_ button and the Organisati
 > **Note**
 > Once the invited administrator accepts the invitation to join the SVX Portal they will appear in the _Current Administrators_ list.
 
-> <p align="center">
+<p align="center">
 <img align="center" src="/.gitbook/assets/OA_03_Add_new_OA.gif" alt="How to add an Organisation Administrator tutorial video." width="80%">
 </p>
 
