@@ -16,9 +16,9 @@ Return to the _Connections_ list and you will see the connection appear in the _
 > **Note**
 > Once the connection recipient has accepted the invitation, the connection will move to the _Existing connections_ tab.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_12_Generate_connection_code.gif" alt="How to invite a user or Organisation to connect tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_12_Generate_connection_code.gif" alt="How to invite a user or Organisation to connect tutorial video." width="80%">
+</div>
 
 ## Accept an invitation to connect
 
@@ -38,9 +38,9 @@ Once complete, select the _Connect_ button. You will be presented with a confirm
 
 Select the _Confirm_ button to complete the connection. The new connection will appear in the list of _Existing connections_. Or, select the _Cancel_ button to reject the connection.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_33_ Accept_a_connection_invitation.gif" alt="How to accept an invitation to connect tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_33_ Accept_a_connection_invitation.gif" alt="How to accept an invitation to connect tutorial video." width="80%">
+</div>
 
 ## View a connection
 
@@ -55,9 +55,9 @@ To view a _Pending_ connection navigate to _Enterprise Vault_ on the left-side m
 * Token
 * Date created
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_13_View_pending_connection.gif" alt="How to view a pending connection tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_13_View_pending_connection.gif" alt="How to view a pending connection tutorial video." width="80%">
+</div>
 
 To view an _Existing_ connection navigate to _Enterprise Vault_ on the left-side menu of the SVX Portal, and select _Connections_. Select the _Existing connections_ tab, locate the connection in the list and select the horizontal ellipsis icon ⋯ alongside the connection’s name to reveal menu options. Select _View_. You will be presented with the following information:
 * Recipient identifier
@@ -68,9 +68,9 @@ To view an _Existing_ connection navigate to _Enterprise Vault_ on the left-side
 > **Note**
 > _Items being shared:_ This includes credentials that have been issued via a Vault-to-Vault share.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_14_View_existing_connection.gif" alt="How to view an existing connection tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_14_View_existing_connection.gif" alt="How to view an existing connection tutorial video." width="80%">
+</div>
 
 ## Cancel and remove a connection
 
@@ -83,6 +83,6 @@ To cancel and remove a connection navigate to _Enterprise Vault_ on the left-sid
 > When an end-user is removed as a connection, they will be notified in their wallet application that the connection has been cancelled. All issued credentials will remain in their wallet.
 > 
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_15_Cancel_and_remove_connection.gif" alt="How to cancel and remove a connection tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_15_Cancel_and_remove_connection.gif" alt="How to cancel and remove a connection tutorial video." width="80%">
+</div>
