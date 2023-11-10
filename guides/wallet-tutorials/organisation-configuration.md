@@ -37,4 +37,4 @@ If you no longer wish to be connected with an Organisation navigate to _Settings
 </p>
 
 ## Removal from an Organisation
-An Organisation may cancel and remove the connection with your wallet. If this occurs you will be notified via a pop-up notification when using your wallet app.
+An Organisation may cancel and remove the connection with your wallet. If you would like to reconnect with the Organisation you will need to contact them with your request.
