@@ -20,7 +20,7 @@ Meeco is actively following and where possible contributing in standardisation e
 | Credential Data Format | [JSON Web Token VC (JWT-VC)](https://www.w3.org/TR/vc-data-model/#json-web-token) - signed as JWS ([RFC7515](https://datatracker.ietf.org/doc/html/rfc7515)) | W3C, IETF |
 | Credential Presentation | [Presentation Exchange v2](https://identity.foundation/presentation-exchange/spec/v2.0.0/) | DIF |
 | Credential Presentation <br/>Transfer Protocol | [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | OIDF |
-| Credential JSON Schema | [Verifiable Credentials JSON Schema 2022](https://w3c-ccg.github.io/vc-json-schemas/) | W3C |
+| Credential JSON Schema | [Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema/) | W3C |
 | DID Authentication | [Self-Issued OpenID Provider v2](https://openid.net/specs/openid-connect-self-issued-v2-1_0.html) | OIDF |
 | Identifier Data Model | [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/) | W3C |
 | Entity Identifier (NP) | [did:key](https://w3c-ccg.github.io/did-method-key/) | W3C |

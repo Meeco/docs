@@ -1,6 +1,6 @@
 # Information Security
 
-Meeco’s Information Security Management System (ISMS) is a framework of policies and controls that systematically manage security and risks across Meeco’s operations and technology. Meeco follows the [ISO27001](https://www.iso.org/isoiec-27001-information-security.html) standard to manage Information Security. ISO27001 is a set of specifications detailing how to create, manage, and implement ISMS policies and procedures.
+Meeco’s Information Security Management System (ISMS) is a framework of policies and controls that systematically manage security and risks across Meeco’s operations and technology. Meeco follows the [ISO27001](https://www.iso.org/standard/27001) standard to manage Information Security. ISO27001 is a set of specifications detailing how to create, manage, and implement ISMS policies and procedures.
 
 Meeco’s ISMS is designed to establish holistic information security management capabilities and to embed them in our day-to-day activities. This includes our goal to digitise non-digital assets and services, such as Verifiable Credentials (VCs) and to never store unencrypted customer data.
 

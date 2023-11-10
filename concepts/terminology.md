@@ -36,7 +36,7 @@ The defining properties of the resulting **Credential**. Credential Templates ge
 - styling information (background and text colour)
 
 ## Data Encryption Key (DEK)
-Are `AES256-GCM` keys used to encrypted and decrypt user data. They are stored in the [Keystore](https://meecosystem.atlassian.net/concepts/terminology#keystore "/concepts/terminology#keystore") encrypted with the **Key Encryption Key**. It is possible for a user to have multiple Data Encryption Keys.
+Are `AES256-GCM` keys used to encrypted and decrypt user data. They are stored in the [Keystore](#keystore) encrypted with the **Key Encryption Key**. It is possible for a user to have multiple Data Encryption Keys.
 
 ## Decentralized Identifier (DID)
 [URIs](https://w3c.github.io/did-core/#dfn-uri) that associate a [DID subject](https://w3c.github.io/did-core/#dfn-did-subjects) with a [DID document](https://w3c.github.io/did-core/#dfn-did-documents) allowing trustable interactions associated with that subject. [DIDs](https://w3c.github.io/did-core/#dfn-decentralized-identifiers) have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, the controller of a [DID](https://w3c.github.io/did-core/#dfn-decentralized-identifiers) can prove control over it without requiring permission from any other party.
