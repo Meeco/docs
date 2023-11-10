@@ -15,7 +15,9 @@ Once all required fields are complete select the _Add_ button and the Organisati
 > **Note**
 > Once the invited administrator accepts the invitation to join the SVX Portal they will appear in the _Current Administrators_ list.
 
-<img align="center" src="/.gitbook/assets/OA_03_Add_new_OA.gif" alt="How to add an Organisation Administrator tutorial video." width="80%">
+<div align="center">
+  <img src="/.gitbook/assets/OA_03_Add_new_OA.gif" alt="How to add an Organisation Administrator tutorial video." width="80%">
+</div>
 
 ## Resend an invitation to join an Organisation
 
@@ -31,7 +33,9 @@ To view the details of an Organisation Administrator, navigate to _Manage Organi
 * Family name
 * Email
 
-<img align="center" src="/.gitbook/assets/OA_05_View_OAs_details.gif" alt="How to view an Organisation Administrator's detials tutorial video." width="80%">
+<div align="center">
+  <img src="/.gitbook/assets/OA_05_View_OAs_details.gif" alt="How to view an Organisation Administrator's detials tutorial video." width="80%">
+</div>
 
 ## Remove an Organisation Administrator from an Organisation
 
@@ -40,10 +44,14 @@ To remove an Organisation Administrator from an Organisation, navigate to _Manag
 > **Note**
 > _Removing an Organisation Administrator:_ Once removed from an Organisation, the administrator will no longer be able to access the Organisation or its functions. Note that administrators can be reinstated if required.
 
-<img align="center" src="/.gitbook/assets/OA_06_Remove_an_OA.gif" alt="How to remove an Organisation Administrator from an Organisation tutorial video." width="80%">
+<div align="center">
+  <img src="/.gitbook/assets/OA_06_Remove_an_OA.gif" alt="How to remove an Organisation Administrator from an Organisation tutorial video." width="80%">
+</div>
 
 ## Reinstate an Organisation Administrator to an Organisation
 
 To reinstate an Organisation Administrator to an Organisation, navigate to _Manage Organisation_ on the left-side menu of the SVX Portal, and select _Administrators_. Locate the administrator in either the _Current Administrators_ or _Pending Administrators_ tabs. Select the horizontal ellipsis icon ⋯ alongside the administrator's name to reveal menu options. Select _Reinstate_ and confirm the reinstating of the administrator via the modal window. The administrator will be reinstated in the Organisation, and their name will be moved to the _Current Administrators_ tab.
 
-<img align="center" src="/.gitbook/assets/OA_07_Reinstate_an_OA.gif" alt="How to reinstate an Organisation Administrator to an Organisation tutorial video." width="80%">
+<div align="center">
+  <img src="/.gitbook/assets/OA_07_Reinstate_an_OA.gif" alt="How to reinstate an Organisation Administrator to an Organisation tutorial video." width="80%">
+</div>
