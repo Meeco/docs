@@ -14,9 +14,9 @@ You will be presented with a form that displays all the attributes required from
 
 On successful issuance of the verifiable credential, the issued credential will appear in a list with the status _Issued_.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_16_Issue_credential_via_connection.gif" alt="How to issue a credential via a Vault connection tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_16_Issue_credential_via_connection.gif" alt="How to issue a credential via a Vault connection tutorial video." width="80%">
+</div>
 
 ## View a credential
 
@@ -32,9 +32,9 @@ You will be presented with a summary of the credential, including:
 * Credential details
 * The connection the credential has been issued to
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_17_View_issued_credential.gif" alt="How to view a credential tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_17_View_issued_credential.gif" alt="How to view a credential tutorial video." width="80%">
+</div>
 
 ## Revoke a credential
 
@@ -42,6 +42,6 @@ To revoke a credential, navigate to _Credentials_ on the left-side menu of the S
 
 You will be presented with a confirmation message where you can choose to _Cancel_ or _Revoke_. If you decide to revoke the credential, you will return to the list of credentials where a confirmation toast message will appear. The revoked credential will no longer be visible in the list of credentials.
 
-> <p align="center">
-<img align="center" src="/.gitbook/assets/OA_18_Revoke_Credential.gif" alt="How to revoke a credential tutorial video." width="80%">
-</p>
+<div align="center">
+  <img src="/.gitbook/assets/OA_18_Revoke_Credential.gif" alt="How to revoke a credential tutorial video." width="80%">
+</div>
