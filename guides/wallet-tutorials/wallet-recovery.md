@@ -15,6 +15,10 @@ On the _Back up recovery phrase_ screen, tap on the _Backup now_ button. You wil
 > **Note**
 > It is strongly advised that you save your recovery phrase in a secure password manager or similar application. Be careful not to share your recovery phrase with anyone else.
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_23_Recovery_phrase.gif" alt="How to view and save your recovery phrase tutorial video." width="300">
+</p>
+
 ## Recovery process
 
 ### Recover your wallet
@@ -30,6 +34,10 @@ You will be prompted to enter your 24-word recovery phrase. After entering your 
 
 > **Note**
 > If you did not save your recovery phrase before losing access to your wallet, you will not be able to restore your wallet to its previous state. You will need to install the Meeco Wallet app and re-establish your connections and re-add your credentials.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/WH_24_Recovery_process.gif" alt="How to recover your wallet tutorial video." width="300">
+</p>
 
 ### What has been recovered?
 
