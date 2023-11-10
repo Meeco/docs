@@ -55,6 +55,6 @@ If you no longer wish to be registered with a Provider navigate to _Settings_ an
 
 A Provider may remove your registered wallet from their Tenancy. If this occurs you will be notified via a pop-up notification when using your wallet app. If the Provider _was_ your active Provider, another Provider will be activated by default. If the Provider _was not_ your active Provider, your active Provider will remain active.
 
-| Provider was active  | Provider was not active |
+| Provider was active  | Provider was *not* active |
 | ------------- | ------------- |
 | <img src="/.gitbook/assets/WH_05_Provider_removed_activated_by_default.gif" alt="Removed Provider was the Wallet's active Provider tutorial video." width="300">  |  <img align="center" src="/.gitbook/assets/WH_05_Provider_removed_not_active.gif" alt="Removed Provider was not the Wallet's active Provider tutorial video." width="300">  |
