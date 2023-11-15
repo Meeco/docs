@@ -10,6 +10,11 @@ Tenant Administrators can add Organisations to their Tenancy by navigating to _O
 
 Once all required fields are complete select the _Add_ button and the Organisation will appear in the list.
 
+> **Note**
+> The Tenant Administrator who creates the Organisation will automatically become the Organisation's first Administrator. This allows you to invite other Organisation Administrators to join. It also provides you with access to the Organisation's context by clicking on the Organisation's name in the list.
+
+> After entering the Organisation's context, you will be asked to set up the Organisation's [passphrase](/./concepts/terminology.md#passphrase). Meeco strongly advises that you do not set up the Organisation's [passphrase](/./concepts/terminology.md#passphrase). Instead, allow a known, invited member of the Organisation to set up the [passphrase](/./concepts/terminology.md#passphrase) when they first log in to the Portal. For more information, see the [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md) tutorial.
+
 <p align="center">
 <img align="center" src="/.gitbook/assets/TA_06_Create_an_Organisation.gif" alt="How to add an Organisation to a Tenant tutorial video." width="80%">
 </p>
@@ -65,9 +70,9 @@ To reinstate an Organisation to a Tenant, navigate to _Organisations_ on the lef
 
 ## View an Organisation from the Organisation's context
 
-To view an Organisation within the Organisation's context you must first be an Administrator of the Organisation. While Tenant Administators can add themselves as Organisation Administrators, without an Organisation's Passphrase you will have limited access to the Organisation and its functionality within the Portal. To obtain full access to the Organisation, you will need to enter the Organisation's Passphrase.
+To view an Organisation within the Organisation's context you must first be an Administrator of the Organisation. While Tenant Administators can add themselves as Organisation Administrators, without an Organisation's [passphrase](/./concepts/terminology.md#passphrase) you will have limited access to the Organisation and its functionality within the Portal. To obtain full access to the Organisation, you will need to enter the Organisation's [passphrase](/./concepts/terminology.md#passphrase).
 
 > **Note**
-> Meeco strongly advises that you first obtain consent from the Organisation to be added as an Administrator. After obtaining the Organisation's Passphrase, you will be able to undertake actions on behalf of the Organisation.
+> Meeco strongly advises that you first obtain consent from the Organisation to be added as an Administrator. After obtaining the Organisation's passphrase, you will be able to undertake actions on behalf of the Organisation.
 
 For more information, see the following tutorials: [Manage Organisation Administrators](manage-organisation-administrators.md) and [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md).
