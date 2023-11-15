@@ -62,3 +62,12 @@ To reinstate an Organisation to a Tenant, navigate to _Organisations_ on the lef
 <p align="center">
 <img align="center" src="/.gitbook/assets/TA_25_Reinstate_Organisation.gif" alt="How to reinstate an Organisation tutorial video." width="80%">
 </p>
+
+## View an Organisation from the Organisation's context
+
+To view an Organisation within the Organisation's context you must first be an Administrator of the Organisation. While Tenant Administators can add themselves as Organisation Administrators, without an Organisation's Passphrase you will have limited access to the Organisation and its functionality within the Portal. To obtain full access to the Organisation, you will need to enter the Organisation's Passphrase.
+
+> **Note**
+> Meeco strongly advises that you first obtain consent from the Organisation to be added as an Administrator. After obtaining the Organisation's Passphrase, you will be able to undertake actions on behalf of the Organisation.
+
+For more information, see the following tutorials: [Manage Organisation Administrators](manage-organisation-administrators.md) and [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md).
