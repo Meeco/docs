@@ -1,5 +1,5 @@
 > **Note**
-> Only Tenant Administrators with the required security rights are able to manage Organisations and associated Organisation Administrators. To gain access to an Organisation and its functions, you will need to acquire the associated Passphrase.
+> Only Tenant Administrators with the required security rights are able to manage Organisations and associated Organisation Administrators. To gain access to an Organisation and its functions, you will need to acquire the associated Passphrase. For more information, see the [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md) tutorial.
 
 ## Add an Organisation Administrator to an Organisation
 
