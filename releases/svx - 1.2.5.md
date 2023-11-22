@@ -6,7 +6,7 @@
 
 The following is a summary of the key features and enhancements:
 
-* **Enhancements**: Added pagination for end user pages and improved behavior during search: the number and numbering of pages corresponds to the specified search criterion, and also adjusted the display of data when navigating through pages and tabs
+* **Enhancements**: Added pagination to End User pages and improved behavior during search: the number and numbering of pages corresponds to the specified search criterion, and also adjusted the display of data when navigating through pages and tabs
 * **Loading screen feature**: In cases where an administrator has been archived and no longer has access to the SVX Portal during their session - a loading screen appears while the changes are being applied.
 * **Bug Fixes**: Various bug fixes for the portal, including fixes for spelling errors, pagination and search issues, and improvements to the error message displayed when an incorrect email address is entered when inviting an admin.
 
@@ -22,7 +22,6 @@ The following is a summary of the key features and enhancements:
 * Added the option "Delete" for the verification response.
 
 
-
 ## Bug Fixes
 
 This release also includes bug fixes aimed at improving the user experience.
@@ -35,7 +34,7 @@ This release also includes bug fixes aimed at improving the user experience.
 * Fixed spelling issue: The word "credential" is misspelt in the description text (sub-heading).
 * The tooltip link now opens in a new browser tab.
 * Fixed issue with changing the search field icon to a cross when text has been entered.
-  
+
 
 ## Various
 
