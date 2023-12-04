@@ -10,14 +10,15 @@ Tenant Administrators are responsible for registering end users with their Tenan
 
 ## Register an end user with a Tenancy
 
-Tenant Administrators can register an end user with their Tenancy by navigating to _Manage Tenancy_ on the left-side menu of the SVX Portal, and selecting _End users_. Next, select the _Generate invitation QR code_ button. You will be presented with an Invitation QR Code. You are able to download the QR Code and copy the QR Code link for distribution to end users.
+Tenant Administrators can register an end user with their Tenancy by navigating to _Manage Tenancy_ on the left-side menu of the SVX Portal, and selecting _End users_. Next, select the _Generate invitation QR Code_ button. You will be presented with an Invitation QR Code. You are able to download the QR Code and copy the QR Code link for distribution to end users.
 
-Select the _Done_ button to close the _Generate invitation QR Code_ screen.
+Select the _Done_ button to close the _Generate invitation QR Code_ screen. Prior to the end user scanning the QR Code, the pending invitation will appear under the _Pending Invitations_ tab.
 
-The list of end users contains a status label for each registration:
-* Pending (invitation is waiting to be actioned by the end user)
-* Registered (invitation has been accepted by the end user)
-* Expired (invitation has not been used within the expiration period of 30 days)
+The end users table contains three tabs:
+* Active End Users (end users who have registered with the Tenant).
+* Pending Invitations (invitations that are waiting to be actioned by the end user).
+  * Expired Invitations appear in the _Pending Invitations_ tab if the invitation has not been used within the expiration period of 30 days.
+* Removed End Users (end users that have been removed from the Tenancy).
 
 The registration of an end user with a Tenancy includes the creation of an end user vault. This vault enables the end user to create connections with Organisations and share credentials.
 
