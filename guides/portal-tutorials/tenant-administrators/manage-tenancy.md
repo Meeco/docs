@@ -1,6 +1,6 @@
 Within the Manage Tenancy section of the side menu, you can manage the following:
-- Administrators, see the Manage Tenant Administrators tutorial for more information.
-- End Users, see the End Users tutorial for more information.
+- Administrators, see the [Manage Tenant Administrators](./manage-tenant-administrators.md) tutorial for more information.
+- End Users, see the [End Users](./end-users.md) tutorial for more information.
 - Account Settings
 
 ## View Account Settings
