@@ -4,23 +4,31 @@
 
 **Summary**:
 
-The following is a summary of the key features and enhancements:
+This release introduces several new functionalities, enhancements, bug fixes, and security updates aimed at improving the overall user experience and security of the system.
 
-* **New functionalities**: Implemented the ability to manage Organisation Website URL in Organisation Details for all administartors. Added the ability to establish connection between Organisation and Meeco Wallet Holders via QR-code. It's possible now to change password in Manage Account page. Also now Organisation Administartor can decide to include ot not the logo for the credential template.
-* **Enhancements**: Added "logout" button if the user lost his access to SVX Portal during the active session. Improved usability by adding a QR-code for "View pending connections details", so that no necessity to create a new invitation if previously generated QR-code hasn't been used for some reasons. Improved work of search and pagination for page "Connections. Pending invitations" by switching to backend-based pagination. login page design bacame for user friendly on mobile browser.
-* **Security updates**: After security audit was performed the procedures for fixing and improvements all important security issues on frontend and backend sides.
-* **Bug Fixes**: Various bug fixes for the portal, including fixes for spelling errors, pagination and search issues, and improvements to the error message displayed when an incorrect email address is entered when inviting an admin.
+* **New functionalities**: We added a new functionality related to Organisation Management, such as managing the Organisation Website URL and managing the user password.
+* **Enhancements**: User Experience has been optimizided in terms of design, and usability of using pagination for the Connections page, introduced the ability for Organization Administrators to use a generated QR code to establish a connection. The consistency in UI for the Wallet application has been enhanced as well.
+* **Security updates**: Conducted a thorough security audit and addressed various security issues on both the frontend and backend
+* **Bug Fixes**: Various bug fixes for the portal mostly related to User Experience improvements such as fixed issues with navigation buttons, fixed a bug displaying incorrect status for the Revoked credentials in verification responses. The most important thing that has been solved is addressed issues preventing the archiving of organization administrators.
 
 
+## New Functionality
+
+### Portal 
+
+* Organisation Administartors and Tenant Administartors can now view and edit the organization website URL.
+* Added a QR code to "View pending connection details," streamlining the connection process.
+* Administrators can now change their passwords directly from within the Portal.
+* Organization Administrators can choose whether to include a logo in the credential template.
+
+  
 ## Enhancements
 
 ### Portal
 
-* Added a pagination feature for End Users pages.
-* Implemented a new loading screen.
-* Updated notification email footer text and logo.
-* Updated text size and wording in Password Reset notification emails.
-* Added the option "Delete" for the verification response.
+* Optimized the login page design for improved user-friendliness on mobile browsers.
+* Implemented backend-based pagination for the Connections page, pending connections, and Credential Template list.
+* Introduced the ability for Organization Administrators to use a generated QR code to establish a connection.
 
 
 ## Bug Fixes
@@ -29,17 +37,20 @@ This release also includes bug fixes aimed at improving the user experience.
 
 ### Portal
 
-* Fixed display of search results and pagination during the search process or its reset.
-* Fixed the issue with "Bad request exception" during the invitation of a new admin to the Organisation.
-* Fixed pagination issue in Credential Templates, Verification Templates and Verification requests pages: pagination should be removed when less than 10 results during some removing records process.
-* Fixed spelling issue: The word "credential" is misspelt in the description text (sub-heading).
-* The tooltip link now opens in a new browser tab.
-* Fixed issue with changing the search field icon to a cross when text has been entered.
+* Resolved an issue where an atom delegation error occurred during the setup passphrase process.
+* Fixed a bug where the verification response incorrectly showed "Verified" instead of "Revoked" after revocation.
+* Addressed an issue preventing the archiving of organization administrators.
+* Fixed issues with the "Back to Login" button on the Reset Password page and resolved dropdown functionality problems on the SVX Platform.
+* Resolved pagination problems when switching between tabs on the SVX Portal.
+
+### Wallet
+
+ * Rectified differences in the Terms and Conditions and Privacy Policy UI between onboarding and Settings in the Wallet.
 
 
-## Various
+## Security Updates
 
-* Our own custom implementation of the controllers/actions for loading/registering vault keys and organisation DID have been replaced with calls to @meeco/sdk so that now the same format is used in all our services.
+* Conducted a security audit and addressed various security issues on both the frontend and backend.
 
 ## Deprecations and EOL
 
