@@ -2,6 +2,7 @@
 
 Tenant Administrators can add Organisations to their Tenancy by navigating to _Organisations_ on the left-side menu of the SVX Portal. Select the _Add new organisation_ button. You will be presented with a form consisting of the following fields:
 * Organisation name
+* Organisation URL
 * Associated schemas (schemas made available to the Organisation)
 * Logo upload
 
@@ -18,6 +19,7 @@ Once all required fields are complete select the _Add_ button and the Organisati
 
 To view the details of an Organisation within a Tenant, navigate to _Organisations_ on the left-side menu of the SVX Portal. Locate the Organisation in the list and select the horizontal ellipsis icon ⋯ alongside the Organisation’s name to reveal menu options. Select _View_. You will be presented with a _Details_ screen that lists the following information:
 * Organisation Name
+* Organisation URL
 * Organisation ID
 * Organisation DID
 * Associated Schema(s)
@@ -25,6 +27,7 @@ To view the details of an Organisation within a Tenant, navigate to _Organisatio
 
 To edit the Organisation’s details, select the _Edit_ button from the _Details_ page or select _Edit_ from the horizontal ellipsis icon ⋯ alongside the Organisation’s name. The information will be presented as an editable form where you can update / change the following information:
 * Organisation Name
+* Organisation URL
 * Associated Schema(s)
 * Logo
 
