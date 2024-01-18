@@ -2,7 +2,7 @@
 
 Organisations are managed by Organisation Administrators. Organisation Administrators gain access to an Organisation via an invitation email. The first Organisation Administrator to join an Organisation will receive an invitation email from a Tenant Administrator. Subsequent Organisation Administrators can be invited by existing Organisation Administrators.
 
-To accept an invitation email, navigate to your email inbox. Locate the email sent from SVX Support with the subject heading _Invite to join (Organisation name) Organisation_.
+To accept an invitation email, navigate to your email inbox. Locate the email sent from _SVX Support_ with the subject heading _Invite to join (Organisation name) Organisation_.
 
 ### First time invitation to the SVX Portal
 
