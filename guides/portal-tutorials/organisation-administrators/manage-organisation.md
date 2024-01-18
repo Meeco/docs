@@ -11,6 +11,7 @@ Here you will see two tabs:
 
 Under the _General_ tab the following information is presented:
 - Organisation name
+- Organisation URL
 - Organisation ID
 - Organisation DID
 - Associated Schema(s)
@@ -29,6 +30,7 @@ Under the _Authorisation_ tab the following information is presented:
 
 To edit your Organisation’s details, select the _Edit_ button on the _Account Settings_ page under the _General_ tab. The information will be presented as an editable form where you can update / change the following information:
 - Organisation name
+- Organisation URL
 - Logo
 
 To change the Organisation’s logo either drag and drop the new logo file into the outlined logo box or select _click here_ to navigate to the new logo’s location on your device. The new logo will appear in the preview box.
