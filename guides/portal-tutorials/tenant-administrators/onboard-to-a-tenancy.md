@@ -15,7 +15,9 @@ If this is your first invitation to join SVX, the email will contain:
 
 After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s Privacy Policy and Terms and Conditions. Click _Next_ to log in. You will land on the Tenant / Organisation selection screen. Click on your Tenant and you will land on the associated Dashboard.
 
-_Insert recording of first time Portal user_
+<p align="center">
+<img align="center" src="/.gitbook/assets/TA_26_Onboard_To_A_Tenancy_New_User.gif" alt="How to onboard to a Tenancy as a new user tutorial video." width="80%">
+</p>
 
 ### Subsequent invitations to the SVX Portal
 
@@ -27,7 +29,9 @@ It is possible for a Tenant Administrator to be invited to join other Tenancies 
 
 After clicking on the _Portal Login_ URL, you will be presented with the SVX login screen. Enter your email address as your username and your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
 
-_Insert image of subsequent Portal invitation_
+<p align="center">
+<img align="center" src="/.gitbook/assets/TA_27_Onboard_To_A_Tenancy_Existing_User.gif" alt="How to onboard to a Tenancy as an existing user tutorial video." width="80%">
+</p>
 
 ## Accessing the SVX Portal
 
