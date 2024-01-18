@@ -29,7 +29,7 @@ It is possible for an Organisation Administrator to be invited to join other Org
 
 After clicking on the _Portal Login_ URL you will be presented with the SVX login screen. Enter your email address as your username, then enter your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant / Organisation selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
 
-If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled _Setup the Organisation's Passphrase_ for more information.
+If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled [Setup the Organisation's Passphrase](#setup-the-organisations-passphrase) for more information.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/OA_34_Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
@@ -50,4 +50,4 @@ You can choose to skip setup of the passphrase, however, you will have limited a
 <img align="center" src="/.gitbook/assets/OA_02_Setup_Organisation_Passphrase.gif" alt="How to setup the Organisation's passphrase tutorial video." width="80%">
 </p>
 
-If you are invited to join the Organisation and the associated passphrase has already been set up, you will need to enter the Organisation's passphrase when you first try to access the Organisation. See the section above titled _Subsequent invitations to the SVX Portal_ for more information.
+If you are invited to join the Organisation and the associated passphrase has already been set up, you will need to enter the Organisation's passphrase when you first try to access the Organisation. See the section above titled [Subsequent invitations to the SVX Portal](#subsequent-invitations-to-the-svx-portal) for more information.
