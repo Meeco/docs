@@ -50,7 +50,8 @@ Connections can exist in two states:
 * Existing
 
 To view a _Pending_ connection navigate to _Enterprise Vault_ on the left-side menu of the SVX Portal, and select _Connections_. Select the _Pending connections_ tab, locate the connection in the list and select the horizontal ellipsis icon ⋯ alongside the connection’s name to reveal menu options. Select _View_. You will be presented with the following information:
-* Placeholder name
+* Connection QR-code
+* Recipient Identifier
 * Connection ID
 * Token
 * Date created
