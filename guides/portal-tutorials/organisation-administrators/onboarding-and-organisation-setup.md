@@ -1,10 +1,33 @@
-## Login to the SVX Portal
+## Invitation emails
 
-Each Organisation is associated with a Tenant. For an Organisation Administrator to gain access to the SVX Portal, a Tenant Administrator will first need to send them an invitation email with instructions on how to login. The email received includes a link to the Portal and a temporary password. Click the link to the Portal, enter your email address as your username and the provided temporary password. You will be required to set a new password for future use. You will also be required to agree to Meeco’s [Privacy Policy](https://www.meeco.me/privacy-policy) and [Terms and Conditions](https://www.meeco.me/terms).
+Organisations are managed by Organisation Administrators. Organisation Administrators gain access to an Organisation via an invitation email. The first Organisation Administrator to join an Organisation will receive an invitation email from a Tenant Administrator. Subsequent Organisation Administrators can be invited by existing Organisation Administrators.
+
+To accept an invitation email, navigate to your email inbox. Locate the email sent from SVX Support with the subject heading _Invite to join (Organisation name) Organisation_.
+
+### First time invitation to the SVX Portal
+
+If this is your first invitation to join SVX, the email will contain:
+- The name of the person who invited you, and
+- Steps on how to access the SVX Portal. These steps include:
+  - Navigating to the registration URL
+  - Entering your temporary password
+  - Setting a new password
+
+After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s [Privacy Policy](https://www.meeco.me/privacy-policy) and [Terms and Conditions](https://www.meeco.me/terms). Click _Next_ to log in. You will land on the Tenant / Organisation selection screen. Click on your Organisation and you will land on the associated Dashboard.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/OA_01_Login_to_SVX.gif" alt="How to login to the SVX Portal tutorial video." width="80%">
 </p>
+
+### Subsequent invitations to the SVX Portal
+
+It is possible for an Organisation Administrator to be invited to join other Organisations or Tenancies. In this case, the SVX Portal will recognise the Organisation Administrator as an existing Portal user. All subsequent invitation emails will state: 
+- Which Tenant or Organisation you have been invited to join
+- The name of the person who invited you
+- A URL to access the SVX Portal, and
+- A reminder to use your existing login details
+
+After clicking on the _Portal Login_ URL you will be presented with the SVX login screen. Enter your email address as your username and your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant / Organisation selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
 
 ## Setup the Organisation’s Passphrase
 
