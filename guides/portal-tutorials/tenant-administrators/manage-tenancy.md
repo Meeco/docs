@@ -1,4 +1,4 @@
-# Manage Tenancy
+## Introduction
 
 Within the Manage Tenancy section of the side menu, you can manage the following:
 - Administrators, see the [Manage Tenant Administrators](./manage-tenant-administrators.md) tutorial for more information.
