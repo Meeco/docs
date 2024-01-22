@@ -35,7 +35,7 @@ If you have been invited to an Organisation, after clicking on the Organisation 
 <img align="center" src="/.gitbook/assets/OA_34_Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
 </p>
 
-## Setup the Organisation’s Passphrase
+## Setup an Organisation’s Passphrase
 
 If you are the first Organisation Administrator from your Organisation to login to the SVX Portal you will be presented with the option to setup your Organisation’s Passphrase. This passphrase is unique to your Organisation and ensures that only Organisation Administrators who have entered the passphrase will be able to access all available features and functions. With this in mind, if you decide to setup your Organisation’s passphrase at this point in time, please consider the following:
 
