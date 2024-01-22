@@ -21,7 +21,7 @@ After clicking on the registration URL, you will be presented with the SVX regis
 
 ### Subsequent invitations to the SVX Portal
 
-It is possible for an Organisation Administrator to be invited to join other Organisations or Tenancies. In this case, the SVX Portal will recognise the Organisation Administrator as an existing Portal user. All subsequent invitation emails will state: 
+It is possible for an Organisation Administrator to be invited to join other Organisations or Tenancies. In this case, the SVX Portal will recognise the Organisation Administrator as an existing  user. All subsequent invitation emails will state: 
 - Which Tenant or Organisation you have been invited to join
 - The name of the person who invited you
 - A URL to access the SVX Portal, and
@@ -29,7 +29,7 @@ It is possible for an Organisation Administrator to be invited to join other Org
 
 After clicking on the _Portal Login_ URL you will be presented with the SVX login screen. Enter your email address as your username, then enter your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant / Organisation selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
 
-If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled [Setup the Organisation's Passphrase](#setup-the-organisations-passphrase) for more information.
+If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled [Setup the Organisation's Passphrase](onboarding-and-organisation-setup.md#setup-an-organisations-passphrase) for more information.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/OA_34_Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
@@ -37,17 +37,33 @@ If you have been invited to an Organisation, after clicking on the Organisation 
 
 ## Setup an Organisation’s Passphrase
 
+### First Administrator to join the Organisation
+
 If you are the first Organisation Administrator from your Organisation to login to the SVX Portal you will be presented with the option to setup your Organisation’s Passphrase. This passphrase is unique to your Organisation and ensures that only Organisation Administrators who have entered the passphrase will be able to access all available features and functions. With this in mind, if you decide to setup your Organisation’s passphrase at this point in time, please consider the following:
 
 You will need to distribute the passphrase to other Organisation Administrators who wish to access all features and functions within the Portal.
 
+To setup the Organisation's passphrase, first read the information presented on the setup screen. Click on _Continue_ to proceed to the passphrase or _Skip_ to navigate to the Organisation's dashbaord. After clicking _Continue_ you will be presented with the partially hidden passphrase in a non-editable text field. You can click on the eye 👁 icon to reveal the entire passphrase. Next, click on the _Copy Passphrase to clipboard_ button then click _Next_. Paste the passphrase in the empty text field and clik the _Done_ button.
+
+A modal will appear confirming that passphrase setup is complete. Click _OK_ to close the modal and navigate to the Organisation's dashboard.
+
 > **Note**
-> If you lose the passphrase it is not retrievable and access to your Organisation will be lost.
+> If you lose the passphrase it is not retrievable and access to your Organisation will be lost. Please only share the passphrase with known users who require access to the Organisation via SVX.
 
 You can choose to skip setup of the passphrase, however, you will have limited access to the components within the Portal.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/OA_02_Setup_Organisation_Passphrase.gif" alt="How to setup the Organisation's passphrase tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/OA_02_Setup_Organisation_Passphrase.gif" alt="How to setup an Organisation's passphrase as the first Administrator tutorial video." width="80%">
 </p>
 
-If you are invited to join the Organisation and the associated passphrase has already been set up, you will need to enter the Organisation's passphrase when you first try to access the Organisation. See the section above titled [Subsequent invitations to the SVX Portal](#subsequent-invitations-to-the-svx-portal) for more information.
+### Subsequent Administrators
+
+If you are invited to join the Organisation and the associated passphrase has already been set up, you will need to enter the Organisation's passphrase when you first try to access the Organisation.
+
+After actioning an invitation email or by clicking on a new Organisation that appears in your Organisations list, you will be prompted to enter the Organisation's passphrase. To do this, acquire the passphrase from another Organisation Administrator, click in the text box on the Passphrase screen, then click the _Login_ button. You will be navigated to the Organisation's dashboard.
+
+You can choose to skip setup of the passphrase by clicking on the _Skip for now_ button, however, you will have limited access to the components within the Portal.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/OA_35_Setup_Organisation_Passphrase_Existing_User.gif" alt="How to setup an Organisation's passphrase as a subsequent Administrator tutorial video." width="80%">
+</p>
