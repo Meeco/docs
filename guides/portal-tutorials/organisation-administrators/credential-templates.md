@@ -7,7 +7,7 @@ After selecting the _Create credential template_ button, you will be presented w
 * Schema (listed are schemas made available to the Organisation by Tenant Administrators)
 * Default credential card background colour
 * Default credential card text colour
-* Default credential card logo
+* Default credential card logo (Organisation Administrator can decide display a logo or not)
 
 Once all required fields are complete select the _Create_ button and the credential template will appear in a list with a designated version number.
 
