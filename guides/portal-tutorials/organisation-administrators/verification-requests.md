@@ -56,9 +56,10 @@ To restore a verification template navigate to Credentials on the left-side menu
 As Holders scan the QR Code and submit their verifiable credentials for verification, their responses will be available for viewing. To view a request response, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Verification requests_. Locate the verification request in the list that the response relates to. Select the horizontal ellipsis icon ⋯ alongside the request’s name to reveal menu options. Select _View_. Scroll to the bottom of the page where you will find a table that lists all associated request responses.
 
 Responses can return one of three statuses:
-* Pending (waiting for a Holder to submit credentials)
-* Valid (the submitted credentials have been successfully verified and meet the request requirements)
-* Expired / Revoked (indicates that the submitted credentials have been revoked or expired)
+* Pending (waiting for a Holder to submit credentials).
+* Verified (the submitted credentials have been successfully verified and meet the request requirements).
+* Failed (indicates that the submitted credentials have been revoked or expired).
+  * A failed response will include details of what, specifically, failed to verify. 
 
 For further details, locate the response in the table and select the horizontal ellipsis icon ⋯ alongside to reveal menu options. Select _View_. You will be presented with the following information:
 * Submission ID
