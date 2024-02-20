@@ -67,3 +67,7 @@ You can choose to skip setup of the passphrase by clicking on the _Skip for now_
 <p align="center">
 <img align="center" src="/.gitbook/assets/OA_35_Setup_Organisation_Passphrase_Existing_User.gif" alt="How to setup an Organisation's passphrase as a subsequent Administrator tutorial video." width="80%">
 </p>
+
+## Accessing the SVX Portal
+
+The SVX Portal can be accessed via: [https://portal-sandbox.securevalueexchange.com](https://portal-sandbox.securevalueexchange.com)
