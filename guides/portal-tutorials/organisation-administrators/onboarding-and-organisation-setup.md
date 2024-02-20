@@ -32,7 +32,7 @@ After clicking on the _Portal Login_ URL you will be presented with the SVX logi
 If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled [Setup the Organisation's Passphrase](onboarding-and-organisation-setup.md#setup-an-organisations-passphrase) for more information.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/OA_34_Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/OA_34_ Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
 </p>
 
 ## Setup an Organisation’s Passphrase
