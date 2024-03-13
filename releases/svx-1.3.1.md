@@ -4,16 +4,16 @@
 
 **Summary**:
 
-This release introduces several enhancements and bug fixes related to SVX Portal and Meeco Wallet
+This release introduces several enhancements and bug fixes related to the SVX Portal and Meeco Wallet
 
 * **Enhancements**: Introduced a new approach for displaying encrypted data for organization administrators depending on the entered passphrase. Added a Toolbar with links to Documentation and HelpDesk. Updated the empty screens "Credentials" and "Requests" with animations for Meeco Wallet.
-* **Bug Fixes**: Resolved a bug causing a 500 error during the opening/managing of verification responses. Fixed the ability to open Tenant or Organisation right after their creation. Various bug fixes for the Wallet application mostly related to User Experience improvements.
+* **Bug Fixes**: Resolved a bug causing a 500 error during the opening/managing of verification responses. Fixed the ability to open a Tenant or Organisation right after their creation. Various bug fixes for the Wallet application mostly related to User Experience improvements.
   
 ## Enhancements
 
 ### Portal
 
-* Created a new Toolbar.
+* A new toolbar has been added to the Portal enabling users to view and access: Security-related information, SVX Documentation and SVX Helpdesk.
 * Updated the screen View credential based on security aspects and whether a passphrase was entered or not.
 
   
@@ -40,7 +40,7 @@ This release also includes bug fixes aimed at improving the user experience.
 
 ### Wallet
 
-* Icons and main image are displayed now on "Settings" ->  "Terms&Conditions" screen.
+* Icons and main image are displayed now on the "Settings" ->  "Terms&Conditions" screen.
 
 
 ## Deprecations and EOL
