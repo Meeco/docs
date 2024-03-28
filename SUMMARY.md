@@ -75,6 +75,7 @@
    * [Organisation Administrators](guides/portal-tutorials/organisation-administrators/README.md)
      * [Manage Organisation](guides/portal-tutorials/organisation-administrators/manage-organisation.md)
      * [Onboarding and Organisation Setup](guides/portal-tutorials/organisation-administrators/onboarding-and-organisation-setup.md)
+     * [Dashboard and Navigation](guides/portal-tutorials/organisation-administrators/dashboard-and-navigation.md)
      * [Manage Organisation Administrators](guides/portal-tutorials/organisation-administrators/manage-organisation-administrators.md)
      * [Credential Templates](guides/portal-tutorials/organisation-administrators/credential-templates.md)
      * [Issue/Revoke Credentials](guides/portal-tutorials/organisation-administrators/issue-revoke-credentials.md)
