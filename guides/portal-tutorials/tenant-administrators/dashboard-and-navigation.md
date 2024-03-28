@@ -76,7 +76,7 @@ A Tenant Administrator’s side menu in the SVX Portal consists of the following
 - Credentials
   - Credential schemas
 - Devtools
-  -Applications
+  - Applications
 - Manage Tenancy
   - Administrators
   - End Users
