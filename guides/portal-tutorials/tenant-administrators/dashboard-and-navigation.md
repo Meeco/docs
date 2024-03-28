@@ -73,10 +73,13 @@ Via the SVX Helpdesk landing page, Administrators can choose to lodge help reque
 
 A Tenant Administrator’s side menu in the SVX Portal consists of the following sections and sub-sections:
 - Dashboard
+- Organisations
 - Credentials
   - Credential schemas
 - Devtools
   - Applications
+  - Documentation
+  - Helpdesk
 - Manage Tenancy
   - Administrators
   - End Users
