@@ -10,7 +10,7 @@ The tiles that appear on a Tenant Dashboard include:
 - Helpdesk
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/Tile-button.png" width="30%">
+<img align="center" src="/.gitbook/assets/Tile-button-tenant.png" width="30%">
 </p>
 
 ## Navigation
