@@ -9,6 +9,10 @@ The tiles that appear on a Tenant Dashboard include:
 - Documentation
 - Helpdesk
 
+<p align="center">
+<img align="center" src="/.gitbook/assets/Tile-button.png" width="30%">
+</p>
+
 ## Navigation
 
 ### Toolbar
@@ -26,7 +30,7 @@ Three icons appear in the top-right corner of the toolbar:
 
 All three icons enable Administrators to navigate to external resource sites, however, the security icon also acts as a visual indicator of secure information being presented on the screen (see below for more details).
 
-<p align="center">
+<p align="left">
 <img align="left" src="/.gitbook/assets/Shield-lock.png" width="3%">
 </p>
 
@@ -39,7 +43,7 @@ If an Adminsitrator does not have the required permissions to view the sensitive
 > **Why is this important?**
 > This icon indicates to Administrators which personally identifiable information (PII), or other sensitive data is visible to them (or not) based on their access permissions. This is important as sensitive data should only be accessible to authorised users.
 
-<p align="center">
+<p align="left">
 <img align="left" src="/.gitbook/assets/Security.png" width="4%">
 </p>
 
@@ -47,7 +51,7 @@ When a user lands on a page that has a security container component, or when a u
 
 When hovering over the security icon, or after clicking the icon on the toolbar, a message will appear below stating _**“Privately viewed information.** This information is only visible to Organisation Administrators with the associated permissions.”_
 
-<p align="center">
+<p align="left">
 <img align="left" src="/.gitbook/assets/Files.png" width="3%">
 </p>
 
@@ -55,7 +59,7 @@ When hovering over the security icon, or after clicking the icon on the toolbar,
 
 When hovering over the documentation icon, a message will appear below stating _**“Documentation.** Click to navigate to SVX documentation.”_ After clicking on the documentation icon, you will be taken to the SVX supporting documentation landing page. Here you will find API documentation and step-by-step tutorials.
 
-<p align="center">
+<p align="left">
 <img align="left" src="/.gitbook/assets/Helpdesk.png" width="3%">
 </p>
 
