@@ -1,4 +1,4 @@
-# SVX 1.3.5 Release Notes
+# SVX 1.3.6 Release Notes
 
 **Software Release Date**: XXX, 2024
 
