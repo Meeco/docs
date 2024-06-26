@@ -1,4 +1,4 @@
-# SVX 1.3.4 Release Notes
+# SVX 1.3.5 Release Notes
 
 **Software Release Date**: April 19, 2024
 
