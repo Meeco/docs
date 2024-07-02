@@ -175,6 +175,10 @@ This release introduces several enhancements and bug fixes across multiple SVX s
   - Elixir version 1.16.3
   - Project dependencies upgraded
 
+- **VC Container Security**:
+  - Service runs under a non-privileged user
+  - Service can run on a readonly filesystem
+
 - **Keystore Container Security**:
   - Service runs under a non-privileged user
   - Service can run on a readonly filesystem
