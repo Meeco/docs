@@ -1,6 +1,6 @@
 # SVX 1.3.6 Release Notes
 
-**Software Release Date**: XXX, 2024
+**Software Release Date**: 3 July, 2024
 
 **Summary**:
 This release introduces several enhancements and bug fixes across multiple SVX services, focusing on improved search capabilities, OpenAPI specification management, JWT-based token support, and enhanced security.
