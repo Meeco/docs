@@ -100,6 +100,8 @@
 ***
 
 * [Releases](releases/README.md)
+  * [1.3.8](releases/svx-1.3.8.md)
+  * [1.3.7](releases/svx-1.3.7.md)
   * [1.3.6](releases/svx-1.3.6.md)
   * [1.3.5](releases/svx-1.3.5.md)
   * [1.3.4](releases/svx-1.3.4.md)
