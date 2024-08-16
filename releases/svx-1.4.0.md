@@ -30,10 +30,17 @@ This release introduces several new functionalities, enhancements, and bug fixes
 ### IDP
 
 - End-user search length restriction increased from 100 to 512 characters. This allows to search for longer DIDs often used on end-users.
+- Introduction of `PAGINATION_DEFAULT_PAGE_SIZE`, `PAGINATION_DEFAULT_ORDER`, `PAGINATION_MAX_SEARCH_QUERY_LENGTH` configuration options to control pagination behavior across endpoints. Defaults are 10, "DESC", 512 respectively.
+- Upgraded NodeJS to the latest LTS 20.16.0
+
+### Verifiable Credentials
+
+- Changed `presentation_definition.required_credentials[].constraints.fields[].filter` parameter validation in `POST /presentation_definitions`. `type` is required, but `const` and `pattern` are optional, but can't appear both.
 
 ### All
 
 - All services using a database are able to configure database connection using environment variables in addition to configuration files. This allows for more flexible configuration of database connections.
+- All services show RabbitMQ configuration values in `GET /system/status` endpoint for easier monitoring of message queues and asynchronous processing.
 
 ## Bug Fixes
 
