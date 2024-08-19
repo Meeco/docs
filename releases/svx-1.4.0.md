@@ -44,7 +44,7 @@ This release introduces several new functionalities, enhancements, and bug fixes
 
 ## Bug Fixes
 
-- Resolved an issue where organisation applications could still login after the organisation or tenant was archived. After archiving, allow for up to 10 minutes access token expiration.
+- Resolved an issue where organisation or tenant applications could still login after the organisation or tenant was archived. After archiving, allow for up to 10 minutes access token expiration.
 
 ### Portal
 
