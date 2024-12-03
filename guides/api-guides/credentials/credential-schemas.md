@@ -21,32 +21,58 @@ Each VC JSON Schema consists of the following mandatory attributes:
 - JSON Schema – Object that describes the schema the credential is validated against.
 
 [JSON schemas](https://json-schema.org/) are plain JSON objects that cosist of following mandatory attributes (at the top level):
-- `$schema` - The schema specification used (e.g. `https://json-schema.org/draft/2019-09/schema`)
-- `required` – Array of required properties. Array MUST include `id`.
-- `additionalProperties` – MUST be `false`
+- `$schema` - The schema specification used (e.g. `https://json-schema.org/draft/2020-12/schema`)
+- `required` – Array of required properties.
 - `type` – MUST be `object`
+- `additionalProperties` - MUST be `true`
 
 Below is an example JSON schema. Note that all the attributes contained within a JSON schema will be used to form a credential. Attributes can be customised, and those that appear in the example below are indicative of possible options.
 
 ```bash
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "title": "Example",
-  "description": "Example",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Example title",
+  "description": "Example description",
   "type": "object",
   "properties": {
-    "id": {
+    "student_id": {
       "type": "string",
     }
   },
-  "required": ["id"],
-  "additionalProperties": false,
+  "required": ["student_id"],
+  "additionalProperties": true
 }
 ```
 
-Note that the `$id` property of the JSON Schema is set by the platform. When one is present in the schema, it will be overridden.
+Note that the `$id` property of the JSON Schema is set by the platform. When one is present in the schema, it will be overridden.  
+Note that if the format is `jwt_vc_json`, you need to define `credentialSubject` and store claims under it.  
+Here's the example of credential schema for `jwt_vc_json`.
 
-Also note that `https://json-schema.org/draft/2020-12/schema` is not supported at this point in time.
+```bash
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Example title",
+  "description": "Example description",
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+        "type": "string",
+        }
+      },
+      "required": [
+        "student_id"
+      ],
+      "additionalProperties": true
+    },
+  },
+  "required": [
+    "credentialSubject"
+  ]
+}
+```
 
 ## Who can undertake this operation?
 
@@ -66,11 +92,18 @@ Creation of a credential schema.
 POST /schemas
 ```
 
-**Request**
+**Request body**
+```bash
+{ "schema":
+  { "name":{name},
+    "schema_json": {json_schema}
+    "organization_ids" : [{organisation_id}, ...]
+  }
+}
 
-* Name – Name of the credential schema
-* JSON Schema - JSON schema file
-* List of organisations - Organisations where this credential schema can be used (optional)
+* `name` – Name of the credential schema
+* `json_schema` - JSON schema file
+* `organisation_id` - Organisations where this credential schema can be used (optional)
 
 **Response**
 
@@ -87,8 +120,8 @@ GET /schemas
  ```
 
 **Request**
-
-* Organisation (header)
+Include the following in the header section.  
+* `Meeco-Organisation-ID` - An organisation ID where schemas are available to.  
 
 **Response**
 
@@ -107,15 +140,26 @@ Note that in this version, the schema cannot be updated.
 ```bash
 PUT /schemas/{id}
  ```
-**Request**
 
-* The ID of the credential schema
-* Name – Name of the credential schema
-* List of organisations - Organisations where this credential schema can be used (optional)
+**Request**
+* id - The ID of the credential schema
+
+**Request body**
+```bash
+{ "schema":
+  { "name":{name},
+    "organization_ids" : [{organisation_id}, ...]
+  }
+}
+ ```
+* `name` – Name of the credential schema
+* `organization_id` - List of organisation IDs. Organisations where this credential schema can be used (optional)
+
+
 
 **Response**
 
-The updated credential schema object.
+The updated credential schema object.  
 
 ## Read Verifiable Credential JSON Schema
 
@@ -128,9 +172,8 @@ GET /schemas/{id}/{version}/schema.json
 ```
 
 **Request**
-
-* Id – ID of the Credential Schema
-* Version – Version of the credential schema
+* `id` – ID of the Credential Schema
+* `version` – Version of the credential schema
 
 **Response**
 
