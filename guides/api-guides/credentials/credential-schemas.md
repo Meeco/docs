@@ -99,7 +99,7 @@ POST /schemas
     "schema_json": {json_schema}
     "organization_ids" : [{organisation_id}, ...]
   }
-}
+}`
 
 * `name` – Name of the credential schema
 * `json_schema` - JSON schema file
