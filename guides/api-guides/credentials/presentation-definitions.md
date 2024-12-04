@@ -2,11 +2,6 @@
 
 Presentation definitions define which credential(s) a Verifier requests and for what purpose. Each selected credential is comprised of a [credential schema](credential-schemas.md) and the associated Issuer. The resulting object is conformant with the [W3C Presentation Exchange 1.0](https://identity.foundation/presentation-exchange/spec/v1.0.0/) specification and is used when generating a [Verification Request](../oidc/oidc4vp.md).
 
-## Prerequisites
-
-* [Verifiable Credential JSON Schema](credential-schemas.md)
-* [Issuer DID](dids/did-methods.md) (optional)
-
 ## Who can undertake this operation?
 
 A presentation definiton is created by an Organisation.
@@ -21,15 +16,43 @@ Creation of a presentation definitions for an Organisation.
 POST /presentation_definitions
 ```
 **Request**
+* `Meeco-Organisation-ID` - An organisation ID where the presentation definition is available to.  (header)
 
-* Organisation (header)
-* Name
-* Purpose
-* List of required credentials. For each, the following is defined:
-  * Name
-  * Purpose
-  * Verifiable Credential JSON Schema URL
-  * Issuer DID
+**Request body**  
+```bash
+{
+    "presentation_definition": {
+        "name": {name},
+        "purpose": {purpose},
+        "input_descriptors": [
+            {
+                "id": {id},
+                "format": {
+                    {format}: {
+                        "alg": [
+                            {algorithm}
+                        ]
+                    }
+                },
+                "purpose": {purpose},
+                "constraints": {
+                    "limit_disclosure": "preferred",
+                    "fields": [{path}]
+                }
+            }
+        ]
+    }
+}
+```
+
+
+* `name`
+* `purpose`
+* `input_descriptors` - Containing list of required credentials. For each, the following is defined:
+  * `name`
+  * `purpose`
+  * `format`
+  * `constraints` - List of requested fields
 
 **Response**
 
@@ -48,9 +71,12 @@ GET /presentation_definitions
 ```
 **Request**
 
-* Organisation (header)
-* Filters (optional):
-  * Status
+* `Meeco-Organisation-ID` (header)
+* Query parameters (optional):
+i.e. 
+  * `status` - To filter archived presentation definitions. Enum: "all" "active" "archived"
+  * `search` - Search by name
+
 
 **Response**
 
@@ -67,8 +93,9 @@ POST /presentation_definitions/{id}
 ```
 **Request**
 
-* Presentation Definition ID
-* Organisation (header)
+* `Meeco-Organisation-ID` (header)
+* `id` - Presentation Definition ID
+
 
 **Response**
 
@@ -81,12 +108,12 @@ A presentation definition can be archived and restored. When a presentation defi
 **Endpoint**
 
 ```bash
-PUT /presentation_definitions/{id}
+POST /presentation_definitions/{id}/archive
 ```
 **Request**
 
-* Presentation Definition ID
-* Organisation (header)
+* `Meeco-Organisation-ID` (header)
+* `id` - Presentation Definition ID
 
 **Response**
 
@@ -105,8 +132,8 @@ GET /presentation_definitions/{id}/definition.json
 ```
 **Request**
 
-* Presentation Definition ID
-* Organisation (header)
+* `Meeco-Organisation-ID` (header)
+* `id` - Presentation Definition ID
 
 **Response**
 
