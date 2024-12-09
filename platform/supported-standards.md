@@ -1,6 +1,6 @@
 # SVX Supported Standards
 
-Meeco is actively following and where possible contributing in standardisation efforts of the leading groups in the identity, personal data space. This page lists the currently supported standards within the platform.
+Meeco is actively following, and where possible, contributing in standardisation efforts of the leading groups in the identity and personal data space. This page lists the currently supported standards within the Secure Value Exchange (SVX) platform.
 
 ## Standard Bodies
 
@@ -36,7 +36,7 @@ Meeco is actively following and where possible contributing in standardisation e
 
 ### JWS Signature
 
-Following key types are supported for JWS verification. The subset of supported "JWS Algorithms" are part of [IANA - JSON Web Signature Algorithms registry](https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms).
+The following key types are supported for JWS verification. The subset of supported "JWS Algorithms" are part of [IANA - JSON Web Signature Algorithms registry](https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms).
 
 | JWS Algorithm | Key Type |
 | --- | --- |
@@ -46,7 +46,7 @@ Following key types are supported for JWS verification. The subset of supported 
 
 ### Master Encryption Key Algorithms
 
-Following algorithms are supported when generating derived keys. Used as defined in [NIST - Master Key](https://csrc.nist.gov/glossary/term/master_key).
+The following algorithms are supported when generating derived keys. Used as defined in [NIST - Master Key](https://csrc.nist.gov/glossary/term/master_key).
 
 | Key Type |
 | --- |
@@ -54,7 +54,7 @@ Following algorithms are supported when generating derived keys. Used as defined
 
 ### Key Encryption Algorithms
 
-Following algorithms are supported when encrypting other keys at rest and in transit. Used as defined in [NIST - Key-Encryption-Key](https://csrc.nist.gov/glossary/term/key_encryption_key).
+The following algorithms are supported when encrypting other keys at rest and in transit. Used as defined in [NIST - Key-Encryption-Key](https://csrc.nist.gov/glossary/term/key_encryption_key).
 
 | Key Type |
 | --- |
@@ -62,7 +62,7 @@ Following algorithms are supported when encrypting other keys at rest and in tra
 
 ### Keypairs
 
-Following keypair algorithms are supported for exchanging keys between parties. Used as defined in [NIST - Key pair](https://csrc.nist.gov/glossary/term/key_pair).
+The following keypair algorithms are supported for exchanging keys between parties. Used as defined in [NIST - Key pair](https://csrc.nist.gov/glossary/term/key_pair).
 
 | Key Type |
 | --- |
@@ -70,7 +70,7 @@ Following keypair algorithms are supported for exchanging keys between parties. 
 
 ### Data Encryption Algorithms
 
-Following algorithms are supported when encrypting data at rest and in transit. Used as defined in [NIST - Data Encryption Key](https://csrc.nist.gov/glossary/term/data_encryption_key).
+The following algorithms are supported when encrypting data at rest and in transit. Used as defined in [NIST - Data Encryption Key](https://csrc.nist.gov/glossary/term/data_encryption_key).
 
 | Key Type |
 | --- |
@@ -78,12 +78,12 @@ Following algorithms are supported when encrypting data at rest and in transit. 
 
 ## Supported OAuth Authentication Flows
 
-Following flows are supported by the platform.
+The following flows are supported by SVX:
 
-## OAuth Code Flow & PKCE
+### OAuth Code Flow & PKCE
 
-The Enterprise Portal uses a code flow in conjunction with Proof Key for Code Exchange (PKCE) for secure authentication of (admin)users logging into the portal.
+The [Portal](/platform/portal.md) uses a code flow in conjunction with Proof Key for Code Exchange (PKCE) for secure authentication of users (Administrators) logging into the Portal.
 
-## Client Credentials Flow
+### Client Credentials Flow
 
-Organisations building services on top of the SVX API can use the Enterprise Portal to create an application to enable machine to machine communication. The application allows access to a Client ID and Secret to perform the client credentials flow. The access token enables organisations to access the resources linked to that organisation.
+Organisations building services on top of the SVX API can use the [Portal](/platform/portal.md) to create an application to enable machine-to-machine communication. The application allows access to a Client ID and Secret to perform the client credentials flow. The access token enables organisations to access the resources linked to that organisation.
