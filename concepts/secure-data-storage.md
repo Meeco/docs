@@ -12,4 +12,4 @@ Both users and enterprises store a significant amount of data online, including 
 
 Meeco has developed the Vault as part of our Secure Value Exchange (SVX) platform, a flexible secure data storage option that provides end-to-end encryption on all data types. It also includes encrypted peer-to peer-sharing with granular control over Shares. Via the use of the Vault APIs, our secure data technology can be embedded in new and existing applications such as digital wallets, mobile apps, web portals or back-up services. By default, users and organisations are authenticated via an OIDC provider.
 
-For more information see the [Vault](/platform/vault/README.md) information page.
+For details, see our [Vault](/platform/vault/README.md) information page.
