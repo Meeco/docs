@@ -1,16 +1,17 @@
-The SVX Portal is a user-friendly interface that allows users to undertake processes enabled by the SVX API. Following an initial onboarding invitation, Tenant and Organisation Administrators can self-service in order to complete their desired workflows. Depending on their associated [Security Rights](/concepts/terminology.md#security-rights-srs), an Administrator can undertake the following tasks:
+The Secure Value Exchange (SVX) Portal is a user-friendly interface that allows users to undertake processes enabled by the SVX API. Following an initial onboarding invitation, Tenant and Organisation Administrators can self-service in order to complete their desired workflows. Depending on their associated [Security Rights](/concepts/terminology.md#security-rights-srs), an Administrator can undertake the following tasks:
 
 - Manage their Tenant / Organisation
 - Invite and manage other Administrators
-- Utilise the Credentials Service to:
+- Utilise the Credential Service to:
   - Create and manage credential schemas
   - Create and manage credential templates
-  - Issue and revoke credentials
+  - View issued and revoked credentials
   - Create and manage verification templates
-  - Create and manage verification requests
+  - View and manage verification requests
+  - View and manage request responses
 - Utilise the Enterprise Vault to:
   - Create and manage connections
-  - Manage items being shared
+  - View items being shared
 - Create and manage Applications
 
 ## Tenants
@@ -30,11 +31,11 @@ During onboarding, all users of the Portal must agree to Meeco’s Terms and Con
 
 ### Role, Administrators & Activity
 
-When Organisations are onboarded to the Portal they are invited to join an existing Tenancy. As mentioned above, the Tenant governs the Tenancy that the Organisation conducts business in. Organisation Administrators manage the Organisation and, depending on their [Security Rights](/concepts/terminology.md#security-rights-srs), can action workflows associated with Credentials, their Enterprise Vault, Applications and account settings. 
+When Organisations are onboarded to the Portal they are invited to join an existing Tenancy. As mentioned above, the Tenant governs the Tenancy in which the Organisation conducts business. Organisation Administrators manage the Organisation and, depending on their [Security Rights](/concepts/terminology.md#security-rights-srs), can action workflows associated with Credentials, their Enterprise Vault, Applications and account settings. 
 
 When utilising credentials, Organisations can act as Issuers and/or Verifiers, thus allowing them to manage:
 - Credential Templates
-- Issue, revoke and verify credentials
+- Issued, revoked and verified credentials
 - Verification Templates
 - Verification Requests
 
