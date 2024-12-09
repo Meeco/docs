@@ -12,7 +12,7 @@ Components can be used individually, or combined to enable enterprises with exte
 * Cryptographic key management
 * Consent, permission and authorisation management
 
-Each component can be accessed via our extensive API, SDK, or via our low-code Portal and digital Wallet application.
+Each component can be accessed via our extensive API, SDK, or via our low-code [Portal](/platform/portal.md) and digital Wallet application.
 
 SVX components include:
 
