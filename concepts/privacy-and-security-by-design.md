@@ -14,15 +14,15 @@ PbD is not just about implementing these principles when designing and developin
 
 ## Meeco’s PbD Implementation
 
-Meeco's solutions are all built with PbD in mind, we never read, mine or sell personal data. We provide the infrastructure for our partners to enable their customers to access, control and exchange their identity and personal data. We maintain user privacy by ensuring that all user data is end-to-end encrypted. This means that there is no way for anyone other than the data owner to view, edit, or manage the data without explicit consent of the owner.
+Meeco's Secure Value Exchange (SVX) platform is built with PbD in mind, we never read, mine or sell personal data. We provide the infrastructure for our partners to enable their customers to access, control and exchange their identity and personal data. We maintain user privacy by ensuring that all user data is end-to-end encrypted. This means that there is no way for anyone other than the data owner to view, edit, or manage the data without explicit consent of the owner.
 
-The Meeco Wallet and Enterprise Portal both demonstrate user-centric design. This is visible via their user interfaces (UIs) at each stage of a workflow where information is clearly conveyed to the user. By plainly stating why and where action is required, including providing consent, users can make informed decisions when sharing their data.
+The SVX Portal and Wallet application both demonstrate user-centric design. This is visible via their user interfaces (UIs) at each stage of a workflow where information is clearly conveyed to the user. By plainly stating why and where action is required, including consent methods, users can make informed decisions when sharing their data.
 
 We hope that these PbD principles will be adopted by all of our customers when integrating with, implementing and utilising our APIs and supporting components.
 
 ## Security-by-design
 
-Security-by-design (SbD) is a concept that promotes the inclusion of security considerations at each stage of a product’s lifecycle. For example, instead of a a product development team creating fixes or patches once a security threat has been identified, the entire team considers who, why and how a threat may occur at each stage of planning, design and development. By adopting this approach the final product delivered is more robust, less susceptible to data breaches, and generally more secure for users to engage with.
+Security-by-design (SbD) is a concept that promotes the inclusion of security considerations at each stage of a product’s lifecycle. For example, instead of a product development team creating fixes or patches once a security threat has been identified, the entire team considers who, why and how a threat may occur at each stage of planning, design and development. By adopting this approach the final product delivered is more robust, less susceptible to data breaches, and generally more secure for users to engage with.
 
 ## Meeco’s SbD Implementation
 
@@ -36,7 +36,7 @@ Examples of how we achieve SbD are listed below:
 
 **Cybersecurity Mitigation Strategies**
 - Information Security Manual (ISM) and Essential Eight
-- ISO 27001Controls / Security Council
+- ISO 27001 Controls / Security Council
 - Azure Security Center / Defender for Cloud
 
 **Separation of Concerns**
