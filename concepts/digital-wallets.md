@@ -4,13 +4,13 @@ Digital wallets enable users to manage their digital assets easily and securely 
 
 ## What is an Identity Wallet?
 
-An identity wallet focuses on the safeguarding and management of a Holder’s identity data. The wallet acts as a secure container that generates, stores and processes the Holder’s:
+An identity wallet focuses on the safeguarding and management of a wallet holder's (Holder) identity data. The wallet acts as a secure container that generates, stores and processes the Holder’s:
 
 1. [Cryptographic keys](../platform/keys.md)
-2. [Decentralised identifiers](../platform/did.md) (DIDs)
+2. [Decentralised identifiers (DIDs)](../platform/did.md)
 3. [Credentials](../concepts/verifiable-credentials.md) (e.g. W3C Verifiable Credentials, mDL, PDFs)
 
-A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that speaks different protocols which enables these interactions. It is for this reason that the adoption of open standards by software providers is important to ensure interoperability.
+A wallet also maintains the many connections its controller makes with other wallets. It is coupled with a software agent that utilises different protocols which enables these interactions. It is for this reason that the adoption of open standards by software providers is important to ensure interoperability.
 
 ### UX Functions of an Identity Wallet
 
