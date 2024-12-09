@@ -46,7 +46,8 @@ An additional feature to Shares is On-Shares where Vault users can specify if th
 
 The Account Delegation feature enables Vault users to provide full access or read-only access to their data to a trusted individual. An example where this feature may be employed is when a Vault user (a child or an aging parent) requires assistance when managing or exchanging their data with other parties. With the Vault, they are able to ask a trusted individual to be a delegate of their Vault.
 
-Note that in almost all cases we recommend using Shares and On-Shares to give access to other users as it gives much more granular control over the data shared to another user. However, there are circumstances where Account Delegation is more practical. Consider the use case(s) that you are developing when selecting different features.
+> **Note**
+> that in almost all cases we recommend using Shares and On-Shares to give access to other users as it gives much more granular control over the data shared to another user. However, there are circumstances where Account Delegation is more practical. Consider the use case(s) that you are developing when selecting different features.
 
 # Implementation and Integration
 
