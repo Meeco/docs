@@ -32,14 +32,10 @@ The following are examples of services the EV offers:
 
 There are multiple ways to interact with and manage an EV, including:
 
-**SVX Portal**
-The [Portal](/platform/portal.md) is a web application that enables Organisation Administrators to onboard, invite additional Organisation Administrators, and begin accessing Meeco's Vault API via a low-code interface. When using the EV via the Portal, Administrators can view [Items](/guides/api-guides/vault/items-and-slots.md), [Connections](/guides/api-guides/vault/connections-and-sharing.md) and [Shares](/guides/api-guides/vault/connections-and-sharing.md). It also provides a view of the End-users and other third-party services that the Organisation is connected to.
+**SVX Portal**: The [Portal](/platform/portal.md) is a web application that enables Organisation Administrators to onboard, invite additional Organisation Administrators, and begin accessing Meeco's Vault API via a low-code interface. When using the EV via the Portal, Administrators can view [Items](/guides/api-guides/vault/items-and-slots.md), [Connections](/guides/api-guides/vault/connections-and-sharing.md) and [Shares](/guides/api-guides/vault/connections-and-sharing.md). It also provides a view of the End-users and other third-party services that the Organisation is connected to.
 
-**SVX API**
-All functionality is available using the [SVX API (sandbox)](https://api-reference-sandbox.svx.exchange) to connect services.
+**SVX API**: All functionality is available using the [SVX API (sandbox)](https://api-reference-sandbox.svx.exchange) to connect services.
 
-**Command Line Interface (CLI)**
-Meeco provides a [CLI](/tools/meeco-cli.md) to facilitate interactation with the EV.
+**Command Line Interface (CLI)**: Meeco provides a [CLI](/tools/meeco-cli.md) to facilitate interactation with the EV.
 
-**Onboarding to an Enterprise Vault**
-To set up an EV, an authorised user must first create an Organisation. Note that setting up an Organisation will require either approval via the creation of a Meeco Licence, or via an ecosystem's Tenant Administrator.
+**Onboarding to an Enterprise Vault**: To set up an EV, an authorised user must first create an Organisation. Note that setting up an Organisation will require either approval via the creation of a Meeco Licence, or via an ecosystem's Tenant Administrator.
