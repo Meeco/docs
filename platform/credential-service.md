@@ -2,7 +2,7 @@
 
 Meeco’s Credential Service enables the issuance, request, presentation, verification and revocation of Verifiable Credentials (VCs) within the Secure Value Exchange (SVX) platform. It does this by leveraging open standards to facilitate the creation of trust-based, data exchange ecosystems. Once onboarded to SVX, Issuers and Verifiers can develop a range of credential services based on secure, cryptographic, tamper-proof data exchanges. Our Credential Service enables trusted Issuers to design and issue custom VCs which can in-turn be verified by trusted Verifiers.
 
-The Credential Service is integrated with the Portal and Wallet offerings to support the complete credential life cycle.
+The Credential Service is integrated with the [Portal](/platform/portal.md) and Wallet offerings to support the complete credential life cycle.
 
 ## VCs and VPs
 
