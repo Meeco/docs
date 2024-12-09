@@ -1,4 +1,4 @@
-# Vault Overview
+# Vault
 
 Within Secure Value Exchange (SVX) is a secure storage solution called the Vault. The Vault is where users can store a range of data types including attributes, documents, Verifiable Credentials (VCs), and digital media. The Vault has been built to align with both [Privacy-by-Design (PbD)](/concepts/privacy-and-security-by-design.md) and [Security-by-Design (SbD)](/concepts/privacy-and-security-by-design.md) principles. The Vault has a [Zero Knowledge Value (ZKV)](../../concepts/terminology.md#zero-value-knowledge-zvk) architecture, which means all data values are end-to-end encrypted with only the metadata in plain text.
 
