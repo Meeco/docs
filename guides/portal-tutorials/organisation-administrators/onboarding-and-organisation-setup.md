@@ -13,7 +13,7 @@ If this is your first invitation to join SVX, the email will contain:
   - Entering your temporary password
   - Setting a new password
 
-After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s [Privacy Policy](https://www.meeco.me/privacy-policy) and [Terms and Conditions](https://www.meeco.me/terms). Click _Next_ to log in. You will land on the Tenant / Organisation selection screen. Click on your Organisation and you will land on the associated Dashboard.
+After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s [Privacy Policy](https://www.meeco.me/privacy-policy) and [Terms and Conditions](https://www.meeco.me/terms). Click _Next_ to log in. You will be asked to set up your Organisation's Passphrase. See the section below titled [Setup the Organisation's Passphrase](onboarding-and-organisation-setup.md#setup-an-organisations-passphrase) for more information.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/OA_01_Login_to_SVX.gif" alt="How to login to the SVX Portal tutorial video." width="80%">
@@ -32,7 +32,7 @@ After clicking on the _Portal Login_ URL you will be presented with the SVX logi
 If you have been invited to an Organisation, after clicking on the Organisation in the list, you will be prompted to enter the associated _Passphrase_. See the section below titled [Setup the Organisation's Passphrase](onboarding-and-organisation-setup.md#setup-an-organisations-passphrase) for more information.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/OA_34_Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/OA_34_ Login_To_SVX_Existing_User.gif" alt="How to login to the SVX Portal as an existing user tutorial video." width="80%">
 </p>
 
 ## Setup an Organisation’s Passphrase
