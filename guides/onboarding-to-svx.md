@@ -1,5 +1,5 @@
-To onboard to SVX you will first need to sign up. Navigate to our [sign up form](https://www.meeco.me/signup) to gain access to our Sandbox. Once your access has been approved, you will be able to [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login). From here you can either:
-* Use the Portal UI to undertake workflows, or
+To onboard to Secure Value Exchange (SVX) you will first need to sign up. Navigate to our [sign up form](https://www.meeco.me/signup) to gain access to our Sandbox. Once your access has been approved, you will be able to [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login). From here you can:
+* Use the Portal UI to manage workflows, and
 * Directly access the SVX Sandbox API.
 
 ## Using the Portal UI
