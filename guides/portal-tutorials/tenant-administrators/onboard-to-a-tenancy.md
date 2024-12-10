@@ -13,7 +13,7 @@ If this is your first invitation to join SVX, the email will contain:
   - Entering your temporary password
   - Setting a new password
 
-After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s Privacy Policy and Terms and Conditions. Click _Next_ to log in. You will land on the Tenant / Organisation selection screen. Click on your Tenant and you will land on the associated Dashboard.
+After clicking on the registration URL, you will be presented with the SVX registration screen. Enter the temporary password that was provided to you, set your new password and accept Meeco’s [Privacy Policy](https://www.meeco.me/privacy-policy) and [Terms and Conditions](https://www.meeco.me/terms). Click _Next_ to log in. You will land on the Tenant selection screen. Click on your Tenant and you will land on the associated Dashboard.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/TA_26_Onboard_To_A_Tenancy_New_User.gif" alt="How to onboard to a Tenancy as a new user tutorial video." width="80%">
@@ -28,6 +28,9 @@ It is possible for a Tenant Administrator to be invited to join other Tenancies 
 - A reminder to use your existing login details
 
 After clicking on the _Portal Login_ URL, you will be presented with the SVX login screen. Enter your email address as your username and your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
+
+> **Note**
+> If you are joining an Organisation you will be asked to either set up or enter the Organisation's Passphrase. For more information, see the [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md) tutorial.
 
 <p align="center">
 <img align="center" src="/.gitbook/assets/TA_27_Onboard_To_A_Tenancy_Existing_User.gif" alt="How to onboard to a Tenancy as an existing user tutorial video." width="80%">
