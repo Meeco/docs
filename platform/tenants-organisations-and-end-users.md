@@ -4,7 +4,9 @@ Within Meeco’s Secure Value Exchange (SVX) platform, different entities have b
 
 It is worth noting that regardless of whether you are using Meeco’s APIs, or if you are interacting via our [Portal](/platform/portal.md), the different users and organisations are consistent across both.
 
-## Users and Organisations explained
+## Users and Organisations Explained
+
+Throughout this documentation, the term ‘Users’ broadly refers to individuals interacting with the SVX platform, including our customers' customers and those engaging with various workflows. Within SVX, the term ‘End-users’ specifically denotes Wallet Holders and users associated with a Tenant (refer to the section below for further details).
 
 Please note that the term ‘Organisation’ is occasionally used throughout our documentation as a cover-all term for any enterprise, company, group, or association. When utilising SVX, ‘Organisation’ refers to a specific role played by an enterprise, company, group, or association undertaking actions within a Tenancy.
 
