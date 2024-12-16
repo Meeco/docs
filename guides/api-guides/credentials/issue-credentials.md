@@ -55,7 +55,7 @@ The request contains the following data:
   * `issuer`
     * `id` – Issuer ID
     * `name` – Name of the issuer (optional)
-* `claims` – Claims for the subject
+* `claims` – Claims of the subject
 * `disclosure_frame` - Disclosure frame for vc+sd-jwt format credential (optional)
 * `cnf` - VC JWKs configuration. 
 * `revokable` – If true, the generated credential can be revoked later on.
