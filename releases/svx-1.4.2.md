@@ -8,5 +8,5 @@ This release includes a fix that allows Japanese characters to be accepted when 
 
 ## VC
 
-- Fixed:
+- **Fixed:**
   - Credential generate validation not allowing Japanese charset for 'type' param.
