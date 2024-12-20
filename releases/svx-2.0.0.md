@@ -102,9 +102,11 @@ To recap, the revision of our Digital Credentials API has led to the following o
 
 ### Improved Credential and Verification Templates
 - When creating Credential Templates, Organisation Administrators can now choose from either `jwt_vc_json` or `vc+sd-jwt` credential formats. This results in format-specific templates that allow customisation of format specific features. For example, when creating a `vc+sd-jwt` credential template, it is now possible to specify disclosure frames associated with selectively disclosable credentials.
-- Organisation Administrators have more control when creating verification templates. They can add multiple verifiable credentials of both types (`jwt_vc_json` and `vc+sd-jwt`) to a single verification request and can define the associated options as specified in DIF Presentation Exchange per required credential. See screenshot below for reference.
+- Organisation Administrators have more control when creating verification templates. They can add multiple verifiable credentials of both types (`jwt_vc_json` and `vc+sd-jwt`) to a single verification request and can define the associated options as specified in DIF Presentation Exchange per required credential. See video below for reference.
 
-VIDEO
+<p align="center">
+<img align="center" src="/.gitbook/assets/Release_2.0.0_Verification_Template_Creation.gif" alt="Data Model Image." width="80%">
+</p>
 
 - **Credential and Verification Templates:**
   - Added the option to select either `jwt_vc_json` or `vc+sd-jwt` credential format when creating a credential template to increase specificity and to enable more use cases.
