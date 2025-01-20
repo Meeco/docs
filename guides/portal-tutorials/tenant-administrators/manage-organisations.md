@@ -3,11 +3,11 @@
 Tenant Administrators can add Organisations to their Tenancy by navigating to _Organisations_ on the left-side menu of the SVX Portal. Select the _Add new organisation_ button. You will be presented with a form consisting of the following fields:
 * Organisation name
 * Organisation URL
-* Associated schemas (schemas made available to the Organisation)
+* Associated schemas (made available to Organisations)
 * Logo upload
 
 > **Note**
-> _Associated schemas:_ For more information on creating, managing and assigning schemas to Organisations, see the tutorial Credential Schemas.
+> _Associated schemas:_ For more information on creating, managing and assigning schemas to Organisations, see the tutorial [Credential Schemas](./credential-schemas.md).
 
 Once all required fields are complete select the _Add_ button and the Organisation will appear in the list.
 
