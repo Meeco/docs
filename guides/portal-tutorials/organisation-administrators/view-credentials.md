@@ -6,13 +6,14 @@ To view a credential navigate to _Credentials_ on the left-side menu of the SVX 
 
 You will be presented with a summary of the credential, including:
 * VC ID
+* Wallet DID
+* Issuer ID
+* Format
 * Credential template
 * Date issued
 * Expiry date
 * Status
-* SD Compatible
 * Credential details
-* The connection the credential has been issued to
 
 ### Administrators with viewing rights
 
