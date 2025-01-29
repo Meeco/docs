@@ -14,15 +14,9 @@ You will be presented with a summary of the credential, including:
 * Credential details
 * The connection the credential has been issued to
 
-<div align="center">
-  <img src="/.gitbook/assets/OA_17_View_issued_credential.gif" alt="How to view a credential tutorial video." width="80%">
-</div>
-
 ### Administrators with viewing rights
 
 Organisation Administrators with the necessary security permissions can view Holder information within a credential. This information is displayed in the *Credential details* section, which expands to reveal a box containing the attributes and corresponding Holder details. To emphasise SVX's robust security measures and promote awareness around the safe handling of personally identifiable information (PII), the Portal presents PII within identifiable *security components*. For more information, see the [Security](./dashboard-and-navigation.md#security) section under [Dashboard and Navigation](./dashboard-and-navigation.md).
-
-*Insert Screen Recording*
 
 ### Administrators without viewing rights
 
@@ -31,14 +25,11 @@ Organisation Administrators without the necessary security permissions will not 
 > **Note**
 > To gain the necessary security rights to view PII, an Organisation Administrator must enter the Organisation's Passphrase as part of their Account Settings. For more information, see [Set Up an Organisation's Passphrase](./onboarding-and-organisation-setup.md#setup-an-organisations-passphrase).
 
-*Insert Screen Recording*
-
 ## Revoke a credential
 
-To revoke a credential, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _Issue / Revoke Credentials_. Find the credential in the list either by using the sort or search function. Once located, select the horizontal ellipsis icon ⋯ to reveal menu options. Select _Revoke credential_.
+To revoke a credential, navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _View Credentials_. Find the credential in the list either by using the sort or search function. Once located, select the horizontal ellipsis icon ⋯ to reveal menu options. Select _Revoke credential_.
 
 You will be presented with a confirmation message where you can choose to _Cancel_ or _Revoke_. If you decide to revoke the credential, you will return to the list of credentials where a confirmation toast message will appear. The revoked credential will no longer be visible in the list of credentials.
 
-<div align="center">
-  <img src="/.gitbook/assets/OA_18_Revoke_Credential.gif" alt="How to revoke a credential tutorial video." width="80%">
-</div>
+> **Note**
+> Only some credentials can be revoked depending on their credential format. Currently, the credential format(s) that support revocation are W3C (jwt-vc-json).
