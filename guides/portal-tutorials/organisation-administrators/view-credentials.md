@@ -2,7 +2,7 @@ Organisations are able to build applications that enable credential issuance via
 
 ## View a credential
 
-To view a credential navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _View Credentials_. Find the credential in the list either by using the sort or search function. Once located, select the horizontal ellipsis icon ⋯ to reveal menu options. Select _View credential_.
+To view an issued credential navigate to _Credentials_ on the left-side menu of the SVX Portal, and select _View Credentials_. Find the credential in the list either by using the sort or search function. Once located, select the horizontal ellipsis icon ⋯ to reveal menu options. Select _View credential_.
 
 You will be presented with a summary of the credential, including:
 * VC ID
