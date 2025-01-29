@@ -76,5 +76,5 @@ You can choose to skip setup of the passphrase by clicking on the _Skip for now_
 If you have been invited to join an Organisation, and have logged in but _skipped_ the passphrase setup step, it is possible to add the Organisation's passphrase during the current or subsequent session. To do this, navigate to _Manage Organisation_ and click on _Account settings_. Click on the _Authorization_ tab and enter the Passphrase in the corresponding field. Click on the _Confirm Passphrase_ button. A confirmation toast message will appear on successful entry of the Organisation's passphrase.
 
 <p align="center">
-<img align="center" src="/.gitbook/assets/OA_02_Setup_Organisation_Passphrase.gif" alt="How to setup an Organisation's passphrase as the first Administrator tutorial video." width="80%">
+<img align="center" src="/.gitbook/assets/OA_36_Skip_and_Enter_Passphrase.mp4" alt="How to setup an Organisation's passphrase after skipping the original set up step video." width="80%">
 </p>
