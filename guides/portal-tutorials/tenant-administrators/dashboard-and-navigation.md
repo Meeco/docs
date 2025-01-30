@@ -57,7 +57,7 @@ When hovering over the security icon, or after clicking the icon on the toolbar,
 
 ### Documentation
 
-When hovering over the documentation icon, a message will appear below stating _**“Documentation.** Click to navigate to SVX documentation.”_ After clicking on the documentation icon, you will be taken to the SVX supporting documentation landing page. Here you will find API documentation and step-by-step tutorials.
+When hovering over the documentation icon, a message will appear below stating _**“Documentation.** Click to navigate to SVX documentation.”_ After clicking on the documentation icon, you will be taken to the SVX supporting [documentation landing page](https://docs.meeco.me/). Here you will find API documentation and step-by-step tutorials.
 
 <p align="left">
 <img align="left" src="/.gitbook/assets/Helpdesk.png" width="30">
