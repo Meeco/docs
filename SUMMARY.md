@@ -27,6 +27,8 @@
 * [Vault](platform/vault/README.md)
   * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Portal](platform/portal.md)
+* [Wallets](platform/wallet.md)
+  * [Organisation Wallet](platform/wallet/organisation-wallet.md)
 * [Supported Standards](platform/supported-standards.md)
 
 ## Guides
