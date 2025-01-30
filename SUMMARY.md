@@ -65,6 +65,7 @@
    * [Tenant Administrators](guides/portal-tutorials/tenant-administrators/README.md)
      * [Onboard to a Tenancy](guides/portal-tutorials/tenant-administrators/onboard-to-a-tenancy.md)
      * [Dashboard and Navigation](guides/portal-tutorials/tenant-administrators/dashboard-and-navigation.md)
+     * [Manage Account](guides/portal-tutorials/tenant-administrators/manage-account.md)
      * [Manage Tenancy](guides/portal-tutorials/tenant-administrators/manage-tenancy.md)
      * [Manage Tenant Administrators](guides/portal-tutorials/tenant-administrators/manage-tenant-administrators.md)
      * [Manage Organisations](guides/portal-tutorials/tenant-administrators/manage-organisations.md)
