@@ -13,7 +13,7 @@ Here you will see your:
 - User ID
 
 > **Note**
-> The User ID is designated by the SVX Portal at the time the Administrator is created.
+> The _User ID_ is designated by the SVX Portal at the time the Administrator is created.
 
 ## Edit Profile details
 To edit your profile details, select the _Edit_ button on the _Profile_ page. The information will be presented as an editable form where you can update / change the following information:
@@ -23,7 +23,11 @@ To edit your profile details, select the _Edit_ button on the _Profile_ page. Th
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
 > **Note**
-> Your email address and User ID cannot be changed as they are tied together. At this point in time, an Administrator can only have one email address linked to their profile within SVX.
+> Your _email address_ and _User ID_ cannot be changed as they are tied together. At this point in time, an Administrator can only have one email address linked to their profile within SVX.
+>
+> <p align="center">
+<img align="center" src="/.gitbook/assets/OA_37_Manage_Account_Profile.gif" alt="How to view and edit an Administrator's profile details tutorial video." width="80%">
+</p>
 
 ## Security
 ### Change your password
@@ -33,3 +37,7 @@ Organisation Administrators can change their SVX password by navigating to _Mana
 - Confirm new password
 
 When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
+
+<p align="center">
+<img align="center" src="/.gitbook/assets/OA_38_Manage_Account_Security.gif" alt="How to change an Administrator's password tutorial video." width="80%">
+</p>
