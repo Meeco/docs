@@ -27,7 +27,7 @@ It is possible for a Tenant Administrator to be invited to join other Tenancies 
 - A URL to access the SVX Portal, and
 - A reminder to use your existing login details
 
-After clicking on the _Portal Login_ URL, you will be presented with the SVX login screen. Enter your email address as your username and your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
+After clicking on the _Portal Login_ URL, you will be presented with the SVX login screen. Enter your email address (as your username) and your password. Click _Log in_ to continue to the SVX Portal. You will land on the Tenant selection screen. Click on your Tenant or Organisation to navigate to the associated Dashboard.
 
 > **Note**
 > If you are joining an Organisation you will be asked to either set up or enter the Organisation's Passphrase. For more information, see the [Onboarding and Organisation Setup](../organisation-administrators/onboarding-and-organisation-setup.md) tutorial.
