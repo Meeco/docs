@@ -24,6 +24,9 @@ The diagram below provides a high-level overview of how the OW can interact with
 <img align="center" src=".gitbook/assets/Platform_OW_01_Organisation_Wallet_Service_Diagram.png" width="800">
 </p>
 
+> **Note**
+> As the OW is delivered as an API, all updates and changes are instant. New versions of the API will be released intermittently with associated updates communicated with customers promptly.
+
 ## Organisation Wallet Gateway
 
 In front of the OW sits an API Gateway. This Gateway provides an authentication layer to the OW. The software used to create this Gateway is [KrakenD](https://www.krakend.io/) and its purpose is to manage API traffic, implement rate limiting, instill authentication measures, and serve as a control point for managing API requests. This layer can also enforce security policies and provide additional logging and monitoring capabilities.
