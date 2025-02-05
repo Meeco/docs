@@ -75,7 +75,7 @@ An Organisation Administrator’s side menu in the SVX Portal consists of the fo
 - Dashboard
 - Credentials
   - Credential templates
-  - Issue / Revoke Credentials
+  - View Credentials
   - Verification templates
   - Verification requests
 - Enterprise Vault

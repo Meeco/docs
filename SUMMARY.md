@@ -78,7 +78,7 @@
      * [Dashboard and Navigation](guides/portal-tutorials/organisation-administrators/dashboard-and-navigation.md)
      * [Manage Organisation Administrators](guides/portal-tutorials/organisation-administrators/manage-organisation-administrators.md)
      * [Credential Templates](guides/portal-tutorials/organisation-administrators/credential-templates.md)
-     * [Issue/Revoke Credentials](guides/portal-tutorials/organisation-administrators/issue-revoke-credentials.md)
+     * [View Credentials](guides/portal-tutorials/organisation-administrators/view-credentials.md)
      * [Verification Templates](guides/portal-tutorials/organisation-administrators/verification-templates.md)
      * [Verification Requests](guides/portal-tutorials/organisation-administrators/verification-requests.md)
      * [Connections](guides/portal-tutorials/organisation-administrators/connections.md)
