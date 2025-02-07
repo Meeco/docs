@@ -91,7 +91,7 @@ At the bottom of the side menu, you will see the footer. The footer displays you
 
 #### My Profile
 
-Within the _My Profile_ section you are able to manage your SVX account, including your profile information and password. For more information, see the Manage Account guide.
+Within the _My Profile_ section you are able to manage your SVX account, including your profile information and password. For more information, see the [Manage Account](./manage-account.md) guide.
 
 #### Switch Tenant or Organisation
 
