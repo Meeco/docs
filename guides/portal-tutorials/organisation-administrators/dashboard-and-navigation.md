@@ -103,7 +103,7 @@ If you are an Administrator of multiple Tenants and / or Organisations you can c
 Click on a Tenant or Organisation to navigate to the corresponding Dashboard.
 
 <div align="center">
-  <img src="/.gitbook/assets/OA_39_Switch_Context.gif" alt="How to create a credential template tutorial video." width="80%">
+  <img src="/.gitbook/assets/OA_39_Switch_Context.gif" alt="How to switch contexts tutorial video." width="80%">
 </div>
 
 #### Logout
@@ -111,5 +111,5 @@ Click on a Tenant or Organisation to navigate to the corresponding Dashboard.
 If you wish to logout of the SVX Portal, navigate to the side menu footer, click on the arrow icon ⌃ and click on _Logout_. You will be presented with a confirmation message asking you to confirm that you wish to logout. Click the button _Yes, log me out_ to complete the logout workflow. Alternatively, if you wish to remain logged in, click the button _No, keep me logged in_.
 
 <div align="center">
-  <img src="/.gitbook/assets/OA_40_Log_Out_of_Portal.gif" alt="How to create a credential template tutorial video." width="80%">
+  <img src="/.gitbook/assets/OA_40_Log_Out_of_Portal.gif" alt="How to log out of the Portal tutorial video." width="80%">
 </div>
