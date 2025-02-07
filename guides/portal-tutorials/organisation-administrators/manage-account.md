@@ -24,8 +24,8 @@ When complete, select _Save_ to save changes, or _Cancel_ to discard changes.
 
 > **Note**
 > Your _email address_ and _User ID_ cannot be changed as they are tied together. At this point in time, an Administrator can only have one email address linked to their profile within SVX.
->
-> <p align="center">
+
+<p align="center">
 <img align="center" src="/.gitbook/assets/OA_37_Manage_Account_Profile.gif" alt="How to view and edit an Administrator's profile details tutorial video." width="80%">
 </p>
 
