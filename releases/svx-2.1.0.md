@@ -219,6 +219,37 @@ This update ensures compliance with the latest specifications and maintains comp
   - Adopted OpenID4VCI [version draft13](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html) (Implementors Draft 1).
   - Integrated JSON Schema validation as per [DIF PEX v2.1.0](https://identity.foundation/presentation-exchange/spec/v2.1.0/).
 
+# Other New Functionalities
+## Portal
+### Create Credential Template
+- Added Type (vct) field for `vc+sd-jwt` format when creating, editing and viewing a credential template in the `Credential templates` section.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_NewFunctionalities_AddedVCT.png" alt="Credential Template - VCT field is added" width="80%">
+</p>  
+
+- Added `Disclosure Frame` field on `Create credential template` page for `vc+sd-jwt` format.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_NewFunctionalities_DisclosureFrame.png" alt="Credential Template - Disclosure field is added" width="80%">
+</p>  
+
+- It is now possible for users to set and edit a credential’s validity period in the `Create credential template` page.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_NewFunctionalities_ValidPeriod.png" alt="Credential Template - Valid period is editable" width="80%">
+</p>  
+
+### View Credential Template
+- After creating a credential template, users can now view the valid from and expires information based on the configuration set when creating the credential template.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_NewFunctionalities_ViewCredentialTemplate_ValidationPeriod.png" alt="View Credential Template - Valid from/until is shown in the VC image" width="80%">
+</p>  
+
+### Manage Account
+- Added `Language` section to `Manage Account` page to allow a user to change their default language. This feature currently supports English and Japanese.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_NewFunctionalites_LanguageSettings.png" alt="Admin Language Page" width="80%">
+</p>  
+
+
 # Enhancements
 ## Portal
 ### Changed
@@ -227,17 +258,17 @@ This update ensures compliance with the latest specifications and maintains comp
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_TenantIDSearch.png" alt="Tenants - Search tenatns by tenant ID" width="80%">
 </p>  
 
-- Changed all instances of credential format to a human readable name when viewing on the Credential templates page. If the format is mso_mdoc then the document type is also displayed.
+- Changed all instances of credential `format` to a human readable name when viewing on the `Credential templates` page. If the format is `mso_mdoc` then the document type is also displayed.
 <p align="center">
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_FormatName.png" alt="Credential Templates - Show Format names" width="80%">
 </p>  
 
-- Changed the order of fields on Create verification template screen so that the format selection field is above the fields it affects. This improves usability and information hierarchy.
+- Changed the order of fields on `Create verification template` screen so that the format selection field is above the fields it affects. This improves usability and information hierarchy.
 <p align="center">
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_OrderOfFields.png" alt="Create Verification Template - Fixed the order of the fields" width="80%">
 </p>  
 
-- When viewing a verification response, shared credentials that do not contain any data no longer display an empty box on the View Response screen. Instead, a warning message appears stating "No credential details provided".
+- When viewing a verification response, shared credentials that do not contain any data no longer display an empty box on the `View Response` screen. Instead, a warning message appears stating "No credential details provided".
 <p align="center">
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_ViewResponse.png" alt="View verification reseponse - Display warning message when there is no credential provided for presentation" width="80%">
 </p>  
