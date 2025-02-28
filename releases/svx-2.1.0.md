@@ -219,125 +219,94 @@ This update ensures compliance with the latest specifications and maintains comp
   - Adopted OpenID4VCI [version draft13](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html) (Implementors Draft 1).
   - Integrated JSON Schema validation as per [DIF PEX v2.1.0](https://identity.foundation/presentation-exchange/spec/v2.1.0/).
 
-# New Functionality
+# Enhancements
 ## Portal
-- Portal users can now experience the UI in Japanese.
-- The library of credential schema examples available when creating new credential schemas has been updated to align with VC API V2 changes. These updates offer users enhanced schema capabilities.
+### Changed
+- Tenants can be searched for by their IDs or fragments of their IDs.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_TenantIDSearch.png" alt="Tenants - Search tenatns by tenant ID" width="80%">
+</p>  
+
+- Changed all instances of credential format to a human readable name when viewing on the Credential templates page. If the format is mso_mdoc then the document type is also displayed.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_FormatName.png" alt="Credential Templates - Show Format names" width="80%">
+</p>  
+
+- Changed the order of fields on Create verification template screen so that the format selection field is above the fields it affects. This improves usability and information hierarchy.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_OrderOfFields.png" alt="Create Verification Template - Fixed the order of the fields" width="80%">
+</p>  
+
+- When viewing a verification response, shared credentials that do not contain any data no longer display an empty box on the View Response screen. Instead, a warning message appears stating "No credential details provided".
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_Enhancements_ViewResponse.png" alt="View verification reseponse - Display warning message when there is no credential provided for presentation" width="80%">
+</p>  
+
+- Migrated the application from Webpack to Vite for improved performance.
+
+## SVX API
+### Changed
+- Improved the reliability of event processing by using a new AMQP architecture with a background AMQP consumer in Ruby (on Rails) components. Connections to RabbitMQ are now more stable for Vault and Keystore.
+
+## OW API
+### Added
+- Added enforcement of `kid` presence in `ACCESS_TOKEN_JKWS`, `AUTHORIZATION_SERVER_JWKS`, and `ISSUER_JWKS `configurations.
+- Added validation of `access_token` against cNonce for security, preventing brute force attacks on the `cNonce`.
+- Added optional configuration variable `SWAGGER_UI_ENABLED` to enable/disable Swagger UI (accessible at `/openapi/ui`). By default, Swagger UI is enabled, but it can be disabled by setting `SWAGGER_UI_ENABLED='false'`.
+- Added `TEST_ENDPOINTS_ENABLED` configuration variable to enable/disable `test/*` set of endpoint. When turned off, the Test UI is no longer accessible, but issuance and presentation flows keep working.
+
+### Removed
+- `upgradeInsecureRequests` CSP directive from Content-Security-Policy response header as it was forcing the browser to upgrade all requests to HTTPS.
+
+## HW API
+### Added
+- Added optional configuration variable `SWAGGER_UI_ENABLED` to enable/disable Swagger UI (accessible at `/openapi/ui`). By default, Swagger UI is enabled, but it can be disabled by setting `SWAGGER_UI_ENABLED='false'`.
+
+### Removed
+- `upgradeInsecureRequests` CSP directive from Content-Security-Policy response header as it was forcing the browser to upgrade all requests to HTTPS.
+- Removed the `format` property from the `POST /wallets/{walletId}/receive/get_credential` payload.
+
+### Changed
+- The `client_id` parameter is now required for wallet-initiated issuance and Authorization Code Grant when calling the `POST /wallets/:walletId/receive/get_access_token` endpoint.
+- `vc+sd-jwt` credential claims are no longer by default disclosed if `claims_to_disclose` parameter was not provided when presenting.
 
 # Bug Fixes
 ## Portal
-- Fixed route on the “Issue / Revoke credentials” page's table when clicking on the `VC ID` cell. The user was previously taken to a 404-error page but is now taken to the “View credential” page.
-- Fixed an issue where an empty error message would appear after creating a new verification template. An appropriate error message now appears.
-- Fixed breadcrumb routing on the “View Tenants” page. Previously, a 404-error page was presented when clicking on the “Tenants” link, now, the user is taken to the list of Tenants.
-- Fixed an issue where, when viewing an issued credential’s details, the credential attributes were displayed out of order compared to their arrangement in the associated credential schema. Attributes are now displayed across the platform in the same order as specified by the credential schema.
-- Fixed the search functionality to ensure the component would not break when a user entered a search query too quickly. This has made the search component more robust when accepting search queries.
-- Fixed default `limit signature algorithm` for verification requests. The algorithm has been changed from RS256 to ES256 as this is the algorithm SVX currently uses.
-- Corrected error handling that resulted in a crash for `Validate Schema` when parsing a credential schema. This ensures that users no longer experience a software crash when editing a credential schema.
-- Fixed the response status on both `View Verification Request` and `View Request Response` pages as some responses were showing `failed` even if the credential(s) had successfully been verified. The correct response now appears.
-- Fixed `Create Credential Schema` to allow empty `Arrays` and `Number` types. These additional schema properties extend the user’s schema capabilities. Prior to this fix, empty `Arrays` and `Number` types would result in an error when creating a new credential schema.
-- Fixed errors on `View credential` page when viewing a credential that had been issued using V2 of the VC API. Users can now view all issued credentials without errors occurring.
+- Fixed translation of version numbers in `Footer` that resulted in no version number being displayed.
+- Fixed Tenant ID label in Tenants list and the administered Tenants from `Tenant DID` to `Tenant ID`.
+- Fixed the schema name to be editable on the `Credential Schema` page.
 
-## SVX API
-- Implemented comprehensive monitoring of AMQP configuration and connections to RabbitMQ across the platform. This enhancement enables early detection of unhealthy RabbitMQ states, addressing a critical issue where incomplete propagation of changes (e.g., tenants, orgs, apps) caused disruptions and required complex fixes.
-
-# Performance Improvements
-## SVX API
-- Horizontal scaling enabled for Authorisation, Tenant, and Organisation Manager (ATOM) used to authorise incoming requests.
+## OW API
+- Fixed an issue where existing values were not being set correctly for text area elements on `test/issue` page.
 
 # Security Updates
-## Portal
-- Disabled gzip (except for css) to address web security vulnerabilities.
-
-## SVX API
-- KrakenD EE upgraded to version 2.7.6
-- Node in Identity Network upgraded to version 20.13.1
-- Node in VC upgraded to version 20.16
-- Node in IDP upgraded to version 20.16
-- Erlang upgraded from version 26.2.5.5
+## SVX API  
+- Node in VC upgraded to version 20.18
+- OpenAPI generator in VC upgraded to version 7.10.0
+- @nestjs/swagger in VC upgraded to 8.1.1
+- SDK Typescript version to ^5.0.0 and Node version to ^20.0.0 in VC 
 - Ruby upgraded to 3.3.6
+- Elixir upgraded tp 1.18.2
+- Erlang upgraded from version 26.2.5.7
 
-# API Changes
-## Added
-- Added support for `BitstringStatusList` [specification](https://www.w3.org/TR/vc-bitstring-status-list/).
-- New revocable credentials will be issued with `BitstringStatusList` status list. Previously issued credentials will remain using `StatusList2021`.
-- Added support for verifying credential revocation status for credentials issued with `BitstringStatusList`.
-- Added `format` attribute to the response of `POST /credentials/generate`.
-- Added support for `JsonSchema` as per the [W3C JSON Schema specification](https://www.w3.org/TR/vc-json-schema/).
-- Added Credential schema verification check for `vc+sd-jwt` credential verification. Now, if `CredentialVerificationCheck.SCHEMA` is included in the checks to perform, the schema will be verified against the credential.
-- Added Optional properties `$defs`, `name`, `required`, and `additionalProperties` to `CredentialJSONSchemaPayloadDto` for enhanced schema definition flexibility.
-- Added `format` and `config` attributes to `POST /credential_types` endpoints. Updated payload requirements for `PUT /credential_types/:id`.
-- Added `GET /credential_types` query param `format` filter with `vc+sd-jwt` and `jwt_vc_json` options.
-- Added support for generating Presentation Request based on `OpenID4VP-draft18` at `POST /openid/presentations/requests`.
-- Added `credential.disclosure_frame` payload param to the `POST /credentials/generate` endpoint.
-- Added JSON Schema validation based on DIF PEX v2.1.0 ([DIF Presentation Exchange](https://identity.foundation/presentation-exchange/spec/v2.1.0/#json-schemas)) for presentation definition creation.
-- Added `parameters.presentation_definition` into response param to the `POST /openid/presentations/requests` endpoint.
-- Added a new required property `disclosure_frame` to the `config` payload of create credential types when the format is `vc+sd-jwt`.
-- Added `POST /generate/validate_payload` endpoint to validate credential payloads without generating the credential.
+## OW API
+- Node in VC upgraded to version 20.18
+- OpenAPI generator in VC upgraded to version 7.10.0
+- SDK Typescript version to ^5.0.0 and Node version to ^20.0.0
 
-## Removed
-- Removed `organizations` attribute from the `GET /credential_types` endpoint response.
-- Removed functionality to capture and store `organization` and `tenant` data in the database on `TenantCreated` and `OrgCreated` RabbitMQ events.
-- Removed `organizations` and `tenants` tables.
-- Removed `Accept` header use to determine `format` of the credential to generate via `POST /credentials/generate`.
-- Removed `credentialSchema` from the generated credential token via `POST /credentials/generate`.
-- `GET /schemas/:id/:version/schema.json` returns unwrapped schema for `JsonSchema2023` type schemas and response is unchanged for schemas of type `JsonSchema2018`.
-- Removed support for generating Presentation Request based on `oidvp-draft10` at `POST /openid/presentations/requests`.
-- Removed `POST /openid/presentations/token` due to the removal of `draft-10` support. The `id_token` now refers to the simplified `SIOPv2` specification.
-- Removed Verification Request Submissions endpoints:
-  - `POST /openid/presentations/requests/:id/submissions`
-  - `GET /openid/presentations/requests/:id/submissions`
-  - `PATCH /openid/presentations/requests/:id/submissions/:subId`
-  - `DELETE /openid/presentations/requests/:id/submissions/:subId`
-- Removed `POST /openid/presentations/request/verify` endpoint. The separate verification of the presentation request is no longer supported.
-- Removed `GET /openid/presentations/request/:id/jwt` endpoint. VC API no longer stores a signer copy of the request. Client is responsible of hosting it if needed.
-- Removed `PATCH /openid/presentations/requests/:id` endpoint. VC API no longer stores a signed copy of the request.
-- Removed `tokens` from the Presentation Request response structure.
-- Removed `status` from the Presentation Request response structure.
-- Removed the `id` and `cnf` validation within claims during credential generation.
-
-## Changed
-- When a presentation definition is deleted, all presentation requests linked to it are deleted.
-- When a credential type is deleted, all credential records linked to it are deleted.
-- When a credential is deleted, all credential revocation status records linked to it are deleted.
-- When a revocation list is deleted, all credential revocation status records linked to it are deleted.
-- `POST /credentials/generate` payload attribute `cnf` moved from `credential.claims.cnf` to `credential.cnf`.
-- `POST /credentials/generate` response attribute `credential.unsigned_vc_jwt` renamed to `credential.credential`.
-- `POST /credentials/verify` payload attribute `credential.signed_credential_jwt` renamed to `credential.credential`.
-- `POST /presentations/generate` response attribute `presentation.unsigned_vp_jwt` renamed to `presentation.presentation`.
-- `POST /presentations/verify` payload attribute `presentation.signed_presentation_jwt` renamed to `presentation.presentation`.
-- Changed the `POST /schemas` endpoint to accept the new `JsonSchema` format for schema definitions.
-- Enhanced schema validation and set `JsonSchema` as the default schema format for schema creation.
-- Changed presentation definition creation from using credential schema to `input_descriptors` provided in payload.
-- Changed `POST /presentation_definitions` payload attributes:
-  - Removed `format`
-  - Renamed `required_credentials` to `input_descriptors`
-- Changed `POST /presentation_definitions/` response attributes:
-  - Removed `format`
-  - Removed `presentation_definition_to_schema`
-  - Added `input_descriptors`
-- Renamed routes to replace `/oidc/` prefix with `/openid/` for clarity.
-- Renamed `token_properties` to `parameters` in the presentation request response structure.
-- `POST /openid/presentations/response/verify` changes:
-  - `request_uri` payload param replaced with the `presentation_defintion`
-  - `vp_token` payload param can be passed as a string or an array of strings
-  - `vp_token` response param is an array
-
-## Fixed
-- Fixed an issue where Tenant or Organisation data was not removed when receiving `TenantDeleted` or `OrgDeleted` event.
+## HW API
+- Node in VC upgraded to version 20.18
 
 # Holder Wallet Frontend (HW-FE) Updates
+- Current latest version: 2.6.4
+- Added ability to receive and present credentials with mdoc format
+- Added ability to support credential issuance auth flow
+- Added `openid4vp-draft18` in the Request Protocol Version to enable selection in the wallet configuration
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_HWFE.PNG" alt="HW-FE Added openid4vp-draft18 protocol versions in Wallet Config" width="320px">
+</p>   
 
-Current latest version: 2.6.4
-
-Added ability to receive and present credentials with mdoc format
-
-Added ability to support credential issuance auth flow
-
-Added openid4vp-draft18 to protocolVersions to enable selection in the wallet configuration
-
-Open IMG_2972.PNG
-IMG_2972.PNG
-Fixed display "That barcode appears to be invalid" error when logged in with Auth0
+- Fixed display "That barcode appears to be invalid" error when logged in with Auth0
 
 # Deprecations and EOL
 None
