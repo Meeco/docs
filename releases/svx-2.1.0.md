@@ -219,6 +219,52 @@ This update ensures compliance with the latest specifications and maintains comp
   - Adopted OpenID4VCI [version draft13](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html) (Implementors Draft 1).
   - Integrated JSON Schema validation as per [DIF PEX v2.1.0](https://identity.foundation/presentation-exchange/spec/v2.1.0/).
 
+
+# Support for JARM and JWE
+Included in the ISO/IEC 18013-7 implementation, support has been added to the SVX API, HW API and OW API for:
+* [OpenID JARM](https://openid.net/specs/oauth-v2-jarm.html): JWT Secured Authorization Response Mode for OAuth 2.0
+* [IETF JWE](https://www.rfc-editor.org/rfc/rfc7516.html#appendix-A): JSON Web Encryption
+This section provides a brief overview of both and lists the changes made to the platform in order to support it.
+
+## JARM
+JARM is a JWT-based mode to encode OAuth 2.0 authorisation responses.
+As stated in the [OpenID JARM](https://openid.net/specs/oauth-v2-jarm.html) standard:
+> This mechanism enhances the security of the standard authorization response with support for signing and optional encryption of the response. A signed response provides message integrity, sender authentication, audience restriction, and protection from mix-up attacks. Encrypting the response provides confidentiality of the response parameter values. The JWT authorization response mode can be used in conjunction with any response type.
+
+We have extended the HW and OW with support for encryption and optional signing of the response. The advantage of an encrypted, but not signed authorization response, is that it prevents the signing key from being used as a correlation factor. From a privacy perspective this is important. Establishing trust in the signing key can be challenging when ensuring authenticity. 
+
+[OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-8.3.1) specifies a new response mode, direct_post.jwt which allows the use of JARM with the direct_post response mode. The response mode direct_post.jwt, similar to direct_post, causes the Wallet to send the authorization response using an HTTP POST request instead of redirecting back to the Verifier. Different from direct_post, direct_post.jwt encapsulates the response parameters in a JWT that is encrypted and optionally signed.
+
+Encrypting the authorization response can prevent personal data in the authorization response from leaking when it is returned through the front channel (e.g. the browser).
+
+JARM is mandatory when following ISO/IEC 18013-7, but can also be used in other scenarios and with other credential formats.
+
+## JWE
+JWE is an encrypted JSON Web Token (JWT).
+As stated in the [IETF JWE](https://www.rfc-editor.org/rfc/rfc7516.html#appendix-A) standard:
+> JSON Web Encryption (JWE) represents encrypted content using JSON data structures and base64url encoding. The JWE cryptographic mechanisms encrypt and provide integrity protection for an arbitrary sequence of octets.
+
+JWE is used when encrypted authorization responses are enabled (using JARM).
+
+## SVX API
+### POST /openid/presentations/requests
+- Added support for `direct_post.jwt` in the `response_mode` field.
+### POST /credentials/generate 
+- Added with `credential.id` and `credential.credential_id` attributes in the response.
+
+## OW API
+- Added support for `direct_post.jwt` to comply with `JARM`.
+  - Added `responseMode` to `POST - /presentations/requests` request body and response
+  - Added `responseMode` dropdown to `test/present` template site
+- Added new required configuration variables:
+  - `PRESENTATION_RESPONSE_ENCRYPTION_ENC` - defines `direct_post.jwt` method.
+  - `PRESENTATION_RESPONSE_ENCRYPTION_ALG` - defines `direct_post.jwt` algorithm.
+  - `PRESENTATION_RESPONSE_ENCRYPTION_CURVE` - defines `direct_post.jwt` curve.
+- Added support to accept encrypted authorization response for `POST /openid/presentations/requests/:requestId/submissions` endpoint.
+
+## HW API
+- Added validation of `direct_post.jwt` to `POST /wallets/{walletId}/send`.
+
 # Other New Functionalities
 ## Portal
 ### Create Credential Template
