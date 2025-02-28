@@ -219,6 +219,96 @@ This update ensures compliance with the latest specifications and maintains comp
   - Adopted OpenID4VCI [version draft13](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html) (Implementors Draft 1).
   - Integrated JSON Schema validation as per [DIF PEX v2.1.0](https://identity.foundation/presentation-exchange/spec/v2.1.0/).
 
+# Support for ISO Mobile Documents
+## What are Mobile Documents (mdocs)?
+A Mobile Document (mdoc) is a digitally signed, standardised electronic document. It uses the CBOR formatting defined in [RFC 8949](https://datatracker.ietf.org/doc/html/rfc8949). CBOR uses binary encoding which features a small footprint (especially compared to JSON) and is, therefore, ideal for bandwidth constrained environments. Similar to other formats it can be used for both online and proximity use cases, although it is a better fit for the latter. These documents are designed to securely replace physical credentials including, but not limited to IDs, driving licences, passports, or medical records.
+
+### Mobile Driver’s Licences (mDLs)
+Mobile Driver’s Licences (mDLs) are a type of mdoc. SVX supports the issuance of mDL (and other document types) through OpenID 4 Verifiable Credential Issuance (OID4VCI).
+
+SVX now supports [ISO/IEC TS 18013-7](https://www.iso.org/standard/82772.html) using OpenID 4 Verifiable presentation (OID4VP), which enables the presentation of mdocs to a reader (verifier) over the internet.
+
+## New Functionalities and Changes
+### SVX API
+#### POST /schemas
+Since JSON Schema types alone are not able to specify the correct encoding in CBOR, we extended JSON Schema definitions by introducing the `x-cbor-encoding` keyword for both validation and generating the correct CBOR encoding.
+
+For example, if you want to define the field `portrait` in CBOR (bitstring), you would use the following 
+````
+"portrait": {
+      "type": "string",
+      "description": "jpeg as base64url encoded",
+      "x-cbor-encoding": "bstr"
+}
+````
+
+Below you can find how CBOR datatypes are mapped to JSON schema types:
+
+|datatype|description|JSON schema|
+|--------|-----------|-----------|
+|bool|Boolean value (major type 7)|`{ “type”: “boolean” }`|
+|uint|unsigned integer (major type 0)|`{ "type": "integer" }`|
+|nint|negative integer (major type 1)|`{ "type": "integer" }`|
+|int|unsigned integer or negative integer|`{ "type": "integer" }`  no way to specify; assumption is this is handled by cbor encoding library|
+|float16|half-precision float (major type 7, add info 25)|`{ "type": "number", "x-cbor-encoding": "float16"  }`|
+|float32|single-precision float (major type 7, add info 26)|`{ "type": "number", "x-cbor-encoding": "float32"  }`|
+|float64|double-precision float (major type 7, add info 27)|`{ "type": "number", "x-cbor-encoding": "float64"  }`|
+|float|one of float16, float32 or float64|`{ "type": "number" }`  assumption: handled by cbor library|
+|bstr|byte string (major type 2)|`{ "type": "string", "x-cbor-encoding": "bstr" }`|
+|tstr|text string (major type 3)|`{ "type": "string" }`|
+|tdate|Standard date/time string (#6.0)|`{ “type”: “string”, “format”: “date-time” }`|
+|bigint|biguint (#6.2) or bignint (#6.3) (bstr)|`{ "type": "string", "x-cbor-encoding": "bigint" }`|
+|regexp|tstr #6.35|`{ “type”: “string”, "format": "regex" }`|
+|full-date|full-date string (#6.1004)|`{ "type": "string", "format": "date"}`|
+|encoded-cbor|#6.24 (bstr)|`{ "type": "string", "x-cbor-encoding": "encoded-cbor" }`|
+
+#### POST /credential_types
+- Extended format with `mso_mdoc`.
+- Added `config.doctype` (required when format equals mso_mdoc).
+
+#### POST /credentials/generate
+The following additional parameters are now available to use in the request payload:
+- `doctype` : The docType of the Mobile Document (mdoc)
+- `device_key_info`
+
+#### POST /presentations/verify and /openid/presentations/response/verify
+- Added verification for base64url encoded `mso_mdoc`.
+
+#### POST /presentation_definitions
+- Added support for requesting `mso_mdoc`.
+Note that the `id` from the `input_descriptor` object needs to match the doctype of an mdoc. This requirement is defined in ISO/IEC 18013-7 and implemented as such for all mobile documents in SVX. 
+
+### Organisation Wallet (OW) API and Holder Wallet (HW) API
+- Added support for `mso_mdoc` issuance and verification in OCW and HCW API.
+
+### Portal
+#### Create Credential Schema
+- The Basic Mdoc JSON Schema template for mso-mdoc format is available for use when creating a credential schema. 
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateCredentialSchema_doctype.png" alt="Creaet Credential Schema - The Basic Mdoc JSON Schema example is added" width="80%">
+</p>  
+
+#### Create Credential Template
+- Users can select ISO mdoc (mso_mdoc) and add the document type as free text.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateCredentialTemplate_doctype.png" alt="Creaet Credential Template - ISO mdoc added and the document type field" width="80%">
+</p>  
+
+#### Create Verification Template
+- Added ISO mdoc (mso_mdoc) format to Create Verification Template along with its constraints.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateVerificationTemplate_CredentialFormat.png" alt="Creaet Verification Template - ISO mdoc format added" width="80%">
+</p>  
+
+#### View Credentials and Verification Requests
+- Issued credentials and verification requests that contain mdocs can be viewed via the Portal in the same way as other credential format types.
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CredentialDetails.png" alt="View credential with mdoc type" width="80%">
+</p>  
+<p align="center">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_VerificationRequestDetails1.png" alt="View verification response with mdoc type" width="80%">
+</p>  
+
 
 # Support for JARM and JWE
 Included in the ISO/IEC 18013-7 implementation, support has been added to the SVX API, HW API and OW API for:
