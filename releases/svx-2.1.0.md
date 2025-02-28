@@ -82,19 +82,19 @@ Note that the `id` from the `input_descriptor` object needs to match the doctype
 
 ### Portal
 #### Create Credential Schema
-- The Basic Mdoc JSON Schema template for mso-mdoc format is available for use when creating a credential schema. 
+- The `Basic Mdoc JSON Schema` template for `mso-mdoc` format is available for use when creating a credential schema. 
 <p align="center">
-<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateCredentialSchema_doctype.png" alt="Creaet Credential Schema - The Basic Mdoc JSON Schema example is added" width="80%">
+<img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateCredentialSchema.png" alt="Creaet Credential Schema - The Basic Mdoc JSON Schema example is added" width="80%">
 </p>  
 
 #### Create Credential Template
-- Users can select ISO mdoc (mso_mdoc) and add the document type as free text.
+- Users can select `ISO mdoc (mso_mdoc)` and add the document type as free text.
 <p align="center">
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateCredentialTemplate_doctype.png" alt="Creaet Credential Template - ISO mdoc added and the document type field" width="80%">
 </p>  
 
 #### Create Verification Template
-- Added ISO mdoc (mso_mdoc) format to Create Verification Template along with its constraints.
+- Added `ISO mdoc (mso_mdoc)` format to `Create Verification Template` along with its constraints.
 <p align="center">
 <img align="center" src="../.gitbook/assets/releases/2.1.0/Release_2.1.0_mdoc_CreateVerificationTemplate_CredentialFormat.png" alt="Creaet Verification Template - ISO mdoc format added" width="80%">
 </p>  
@@ -135,13 +135,14 @@ As stated in the [IETF JWE](https://www.rfc-editor.org/rfc/rfc7516.html#appendix
 
 JWE is used when encrypted authorization responses are enabled (using JARM).
 
-## SVX API
-### POST /openid/presentations/requests
+## New Functionalities and Changes
+### SVX API
+#### POST /openid/presentations/requests
 - Added support for `direct_post.jwt` in the `response_mode` field.
-### POST /credentials/generate 
+#### POST /credentials/generate 
 - Added with `credential.id` and `credential.credential_id` attributes in the response.
 
-## OW API
+### OW API
 - Added support for `direct_post.jwt` to comply with `JARM`.
   - Added `responseMode` to `POST - /presentations/requests` request body and response
   - Added `responseMode` dropdown to `test/present` template site
@@ -151,7 +152,7 @@ JWE is used when encrypted authorization responses are enabled (using JARM).
   - `PRESENTATION_RESPONSE_ENCRYPTION_CURVE` - defines `direct_post.jwt` curve.
 - Added support to accept encrypted authorization response for `POST /openid/presentations/requests/:requestId/submissions` endpoint.
 
-## HW API
+### HW API
 - Added validation of `direct_post.jwt` to `POST /wallets/{walletId}/send`.
 
 # Other New Functionalities
