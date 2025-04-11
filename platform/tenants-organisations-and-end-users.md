@@ -19,7 +19,7 @@ SVX network participants as follows:
 | Tenant | A Tenant is operated by an enterprise. Its main responsibility is the governance of its network, participating organisations, and end-users.
 | Tenant Administrator | An individual (user) who has administrator access within a Tenant. A Tenant Administrator is responsible for the actions that take place within their Tenant, including the onboarding, management and governance of Organisations.
 | Organisation | An Organisation participating in the ecosystem will typically take the role of a credential or data Issuer, Verifier, or both. Organisations connect to End-users to exchange data.
-| Organisation Administrator | An individual (user) who has administrator access within an Organisation. An Organisation Administrator can use the Portal to manage the life-cyle of credentials and set up machine-to-machine access.
+| Organisation Administrator | An individual (user) who has administrator access within an Organisation. An Organisation Administrator can use the Portal to manage the lifecycle of credentials and set up machine-to-machine access.
 | End-User | End-users are associated with a Tenant and benefit from services offered by that Tenant including the ability to connect to Issuers, Verifiers, and create a vault.
 
 For more information on how users and organisations form an ecosystem, see our [Ecosystems](../concepts/ecosystems.md) page.
