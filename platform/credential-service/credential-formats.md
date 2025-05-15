@@ -2,10 +2,10 @@
 
 Verifiable credentials (VCs) are digital credentials that use cryptographic methods to prove authenticity and integrity. Different formats for verifiable credentials exist to meet varying needs for security, privacy, interoperability, and implementation contexts:
 
-1. Security and Cryptographic Methods: Different formats support various cryptographic methods, like JSON Web Tokens (JWT) for compact encoding and Linked Data Proofs (LDP) for integrity through digital signatures.
-2. Privacy Requirements: Privacy-focused formats, such as SD-JWT, enable selective disclosure, allowing users to share only specific information without revealing all credential data.
-3. Ecosystem Compatibility: Some formats, like JWT, are designed to integrate smoothly with existing systems (e.g., OAuth2, OpenID Connect), while others like DIDs support decentralised ecosystems.
-4. International and Legal Standards: Formats like the ISO/IEC 18013-5 (for mobile driver’s licenses) and X.509 certificates are used in regulatory contexts, ensuring that credentials meet specific industry standards.
+1. **Security and Cryptographic Methods**: Different formats support various cryptographic methods, such as JSON Web Tokens (JWT) for compact encoding and Linked Data Proofs (LDP) for integrity through digital signatures.
+2. **Privacy Requirements**: Privacy-focused formats, such as SD-JWT, enable selective disclosure, allowing users to share only specific information without revealing all credential data.
+3. **Ecosystem Compatibility**: Some formats, like JWT, are designed to integrate smoothly with existing systems (e.g., OAuth2, OpenID Connect), while others like DIDs support decentralised ecosystems.
+4. **International and Legal Standards**: Formats such as the ISO/IEC 18013-5 (for mobile driver’s licenses) and X.509 certificates are used in regulatory contexts, ensuring that credentials meet specific industry standards.
 These variations help verifiable credentials serve diverse applications - from decentralised identity verification to government-issued credentials.
 
 ## Formats Summarised
@@ -14,7 +14,7 @@ These variations help verifiable credentials serve diverse applications - from d
 JavaScript Object Notation (JSON) is a text-based format used for the serialisation of structured data as defined in [RFC8259](https://datatracker.ietf.org/doc/html/rfc8259). It is human-readable and represents data as key-value pairs, utilising JavaScript's object literal syntax.
 
 #### JSON-LD
-JSON-LD is a lightweight Linked Data format built on the JSON specification, defned by W3C. It is a machine-readable format that enables applications to start with a single piece of Linked Data and follow embedded links to access related data hosted across different sites on the Web.
+JSON-LD is a lightweight Linked Data format built on the JSON specification, defined by W3C. It is a machine-readable format that enables applications to start with a single piece of Linked Data and follow embedded links to access related data hosted across different sites on the Web.
 
 #### CBOR
 CBOR (Concise Binary Object Representation) [RFC8949](https://www.rfc-editor.org/rfc/rfc8949.html) is a compact, binary data serialisation format optimised for extremely small code size, efficient message size, and extensibility without requiring version negotiation. 
@@ -63,13 +63,13 @@ Open Badges is a format for digital badges, designed to represent and share achi
 This matrix compares key features the different credential formats offer.  
 |                            |    jwt_vc_json   |         vc+sd-jwt        |              jwt_vc_json-ld              |               vcdm+sd-jwt                |                  ldp_vc                  |                             mso_mdoc                            |
 |----------------------------|:----------------:|:------------------------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|:---------------------------------------------------------------:|
-| **Platform Supported**     | Supported  [VC DATA](https://www.w3.org/TR/vc-data-model/) | Supported  [SD-JWT-VC v3](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html) | Not supported To consider in the future. | Not supported To consider in the future. | Not supported To consider in the future. | Online: Supported Offline: Supported via third party technology |
+| **Platform Supported**     | Supported  [VC DATA](https://www.w3.org/TR/vc-data-model/) | Supported  [SD-JWT-VC v3](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html) | Not supported To consider in the future. | Not supported. To consider in the future. | Not supported. To consider in the future. | Online: Supported Offline: Supported via third party technology |
 | Credential Format | JWT-VC | SD-JWT | JWT-VC | SD-JWT | LDP-VC | CBOR |
 | Data Format | JSON | JSON | JSON-LD | JSON | JSON-LD | CBOR |
 | Encoding | Base64 | Base64 | Base64 | Base64 | Base64 | Binary |
 | Selective Disclosure (Y/N) | N | Y | N | Y | Y | Y |
 | SDO | W3C | IETF | W3C | W3C | W3C | ISO/IEC 18013-5 |
-| Best Use Case | Online use cases | Online use cases | Online use cases | Online use cases | Online use cases | Bandwidth constrained environments |
+| Suitable Use Cases | Online use cases | Online use cases | Online use cases | Online use cases | Online use cases | Bandwidth constrained environments |
 
 ## Additional Information
 ### Privacy-Enhancing Cryptographic Methods for Verifiable Credentials
