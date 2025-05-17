@@ -14,6 +14,7 @@
 * [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
 * [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
 * [Verifiable Credentials](concepts/verifiable-credentials.md)
+* [Credential Formats](platform/credential-service/credential-formats.md)
 * [Terminology](concepts/terminology.md)
 
 ## Platform
@@ -21,7 +22,6 @@
 * [Secure Value Exchange](platform/README.md)
 * [Authorisation, Tenant & Organisation Manager (ATOM)](platform/atom.md)
 * [Credential Service](platform/credential-service/README.md)
-  * [Credential Formats](platform/credential-service/credential-formats.md)
 * [Decentralised Identifiers (DIDs)](platform/did.md)
 * [Keys](platform/keys.md)
 * [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
