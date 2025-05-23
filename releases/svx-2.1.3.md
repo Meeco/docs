@@ -1,6 +1,6 @@
 # SVX 2.1.3 Release Notes
 
-**Software Release Date:** 22 March 2025
+**Software Release Date:** 22 May 2025
 
 **Summary:**
 This update includes a minor but important bug fix in Portal.
