@@ -11,47 +11,47 @@ These variations help verifiable credentials serve diverse applications - from d
 ## Formats Summarised
 ### Data (Serialisation) Formats
 #### JSON
-JavaScript Object Notation (JSON) is a text-based format used for the serialisation of structured data as defined in [RFC8259](https://datatracker.ietf.org/doc/html/rfc8259). It is human-readable and represents data as key-value pairs, utilising JavaScript's object literal syntax.
+JavaScript Object Notation (JSON) is a text-based format used for the serialisation of structured data as defined in [[RFC8259]](https://datatracker.ietf.org/doc/html/rfc8259).  
+It is human-readable and represents data as key-value pairs, utilising JavaScript's object literal syntax.
 
 #### JSON-LD
-JSON-LD is a lightweight Linked Data format built on the JSON specification, defined by W3C. It is a machine-readable format that enables applications to start with a single piece of Linked Data and follow embedded links to access related data hosted across different sites on the Web.
+JSON-LD is a lightweight Linked Data format built on the JSON specification, defined by W3C.  
+It is a machine-readable format that enables applications to start with a single piece of Linked Data and follow embedded links to access related data hosted across different sites on the Web.
 
 #### CBOR
-CBOR (Concise Binary Object Representation) [RFC8949](https://www.rfc-editor.org/rfc/rfc8949.html) is a compact, binary data serialisation format optimised for extremely small code size, efficient message size, and extensibility without requiring version negotiation. 
+CBOR (Concise Binary Object Representation) [[RFC8949]](https://www.rfc-editor.org/rfc/rfc8949.html) is a compact, binary data serialisation format optimised for extremely small code size, efficient message size, and extensibility without requiring version negotiation. 
 
 ### Credential Formats
-#### JSON Web Token (JWT)
-JWT [RFC7519](https://datatracker.ietf.org/doc/html/rfc7519) is for encoding verifiable credentials in a compact, URL-safe way. The claims in a JWT are encoded as a JSON object, which can be included as the payload of a JSON Web Signature (JWS) to provide digital signing or integrity protection, or as the plaintext of a JSON Web Encryption (JWE) to ensure confidentiality through encryption.
-
 #### Verifiable Credentials using JWTs (JWT-VC)
-JWT VCs are often issued with a digital signature (JWS) for verification. They are popular in ecosystems using OAuth2 or OpenID Connect. It provides a structure for encoding credentials and can be used with a variety of cryptographic methods.
+JWT VCs use JSON Web Tokens [[RFC7519]](https://datatracker.ietf.org/doc/html/rfc7519) with claims encoded in a signed JWT (JWS). They are popular in ecosystems using OAuth2 or OpenID Connect.  
+They follow the VC-JOSE-COSE specification and support various signing algorithms (e.g., RS256, ES256).
 
 Credential format identifiers:
-* `jwt_vc_json`
-* `jwt_vc_json-ld`
+* `jwt_vc_json`: Defined by W3C. Uses JSON.
+* `jwt_vc_json-ld`: Defined by W3C. Uses JSON-LD.
 
 #### Selective Disclosure for JWTs (SD-JWT)
-Selective Disclosure (SD-JWT) format is an extension of JSON Web Tokens (JWT) that enables users to selectively disclose specific claims within a credential, revealing only the necessary information while keeping other details private. This format enhances privacy in credential sharing by allowing holders to disclose minimal, relevant data in a secure and verifiable way.
+Selective Disclosure (SD-JWT) format is an extension of JSON Web Tokens (JWT) that enables users to selectively disclose specific claims within a credential, revealing only the necessary information while keeping other details private.  
+This format enhances privacy in credential sharing by allowing holders to disclose minimal, relevant data in a secure and verifiable way.
 
 Credential format identifiers:
-* `vc+sd-jwt`
-* `vcdm+sd-jwt`
+* `vc+sd-jwt`: Defined by IETF. Based on SD-JWT VC.
 
 #### Verifiable Credentials using LDP (LDP-VC)
-A Linked Data Proof Verifiable Credential (LDP-VC) is a format for expressing verifiable credentials using Linked Data Proofs as the signature mechanism. The credentials are structured as JSON-LD documents, with claims about a subject signed using cryptographic signature suites. This format supports selective disclosure with one of the following algorisms: BBS, CL-Signatures (CL) or Short Randomizable Signatures (ps-sig).
+A Linked Data Proof Verifiable Credential (LDP-VC) is a format for expressing verifiable credentials using Linked Data Proofs as the signature mechanism.  The credentials are structured as JSON-LD documents, with claims about a subject signed using cryptographic signature suites.  
+This format supports selective disclosure with one of the following algorisms: BBS, CL-Signatures (CL) or Short Randomizable Signatures (ps-sig).
 
 Credential format identifiers:
-* `ldp_vc`
+* `ldp_vc`: Defined by W3C.
 
 #### Mobile Document (mdoc)
-A Mobile Document (mdoc) is a digitally signed, standardised electronic document. It uses the CBOR formatting defined in [RFC 8949](https://www.rfc-editor.org/rfc/rfc8949.html). CBOR uses binary encoding which features a small footprint (especially compared to JSON) and is, therefore, ideal for bandwidth constrained environments. Similar to other formats it can be used for both online and proximity use cases, although it is a better fit for the latter. These documents are designed to securely replace physical credentials including, but not limited to IDs, driving licences, passports, or medical records.
+A Mobile Document (mdoc) is a digitally signed, standardised electronic document. It uses the CBOR formatting defined in [[RFC 8949]](https://www.rfc-editor.org/rfc/rfc8949.html). CBOR uses binary encoding which features a small footprint (especially compared to JSON) and is, therefore, ideal for bandwidth constrained environments.  
+It can be used for both online and proximity use cases. The Mobile Driving Licence (mDL) is one of the most popular types of mdoc, defined by [[ISO/IEC 18013-5]](https://www.iso.org/standard/69084.html). This format supports salted hash-based selective disclosure of claims.
 
-##### Mobile Driver’s Licences (mDLs)
-Mobile Driver’s Licences (mDLs) are a type of mdoc.  
-Our platform supports the issuance of mDL (and other document types) through OpenID 4 Verifiable Credential Issuance (OID4VCI). We also support ISO/IEC TS 18013-7 using OpenID 4 Verifiable presentation (OID4VP), which enables the presentation of mdocs to a reader (verifier) over the internet.
+Our platform supports the issuance of mDL (and other document types) through OpenID 4 Verifiable Credential Issuance (OID4VCI). We also support [[ISO/IEC TS 18013-7]](https://www.iso.org/standard/91154.html) using OpenID 4 Verifiable presentation (OID4VP), which enables the presentation of mdoc VCs to a reader (verifier) over the internet. This format supports salted hash-based selective disclosure of claims.
 
 Credential format identifiers:
-* `mso_mdoc`
+* `mso_mdoc`: Defined by ISO.
 
 #### X.509 Certificates
 Traditional digital certificates that can be adapted for use as verifiable credentials. X.509 certificates are commonly used in public-key infrastructure (PKI) systems and can work with verifiable credentials by incorporating the VC Data Model.
@@ -61,15 +61,16 @@ Open Badges is a format for digital badges, designed to represent and share achi
 
 ## Comparative Matrix
 This matrix compares key features the different credential formats offer.  
-|                            |    jwt_vc_json   |         vc+sd-jwt        |              jwt_vc_json-ld              |               vcdm+sd-jwt                |                  ldp_vc                  |                             mso_mdoc                            |
-|----------------------------|:----------------:|:------------------------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|:---------------------------------------------------------------:|
-| **Platform Supported**     | Supported  [VC DATA](https://www.w3.org/TR/vc-data-model/) | Supported  [SD-JWT-VC v3](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html) | Not supported To consider in the future. | Not supported. To consider in the future. | Not supported. To consider in the future. | Online: Supported Offline: Supported via third party technology |
-| Credential Format | JWT-VC | SD-JWT | JWT-VC | SD-JWT | LDP-VC | CBOR |
-| Data Format | JSON | JSON | JSON-LD | JSON | JSON-LD | CBOR |
-| Encoding | Base64 | Base64 | Base64 | Base64 | Base64 | Binary |
-| Selective Disclosure (Y/N) | N | Y | N | Y | Y | Y |
-| SDO | W3C | IETF | W3C | W3C | W3C | ISO/IEC 18013-5 |
-| Suitable Use Cases | Online use cases | Online use cases | Online use cases | Online use cases | Online use cases | Bandwidth constrained environments |
+|                            | jwt_vc_json |        jwt_vc_json-ld        |    dc+sd-jwt    |           ldp_vc           |               mso_mdoc               |
+|----------------------------|:-----------:|:----------------------------:|:---------------:|:--------------------------:|:-----------------------------------:|
+| Platform Supported | Supported [VCDM](https://www.w3.org/TR/vc-data-model/) | Not supported. To consider in the future. | Supported [SD-JWT-VC v8](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html) | Not supported. To consider in the future. | Online: Supported. Offline: Supported via third-party technology |
+| Credential Format | JWT-VC  | JWT-VC  | SD-JWT |LDP-VC | CBOR |
+| Data Format | JSON |  JSON-LD  | JSON | JSON-LD | CBOR |
+| Encoding | Base64 | Base64 | Base64 | Base64 | Binary |
+| Selective Disclosure (Y/N)| N | N | Y | Y | Y |
+| SDO | W3C | W3C | IETF | W3C | ISO/IEC 18013-5 |
+| Best Use Case | Online use cases | Online use cases | Online use cases | Online use cases | Bandwidth-constrained environments  |
+
 
 ## Additional Information
 ### Privacy-Enhancing Cryptographic Methods for Verifiable Credentials
@@ -97,6 +98,8 @@ By including the cnf (confirmation) claim in a JWT, the issuer binds the credent
 
 [ISO.18013-5](https://www.iso.org/standard/69084.html) ISO/IEC JTC 1/SC 17 Cards and security devices for personal identification, "ISO/IEC 18013-5:2021 Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL) application", 2021, ISO/IEC 18013-5:2021 .
 
+[ISO.18013-7](https://www.iso.org/standard/69084.html) ISO/IEC JTC 1/SC 17 Cards and security devices for personal identification, "ISO/IEC TS 18013-7:2025 Personal identification — ISO-compliant driving licence — Part 7: Mobile driving licence (mDL) add-on functions", 2025, ISO/IEC 18013-7:2025 .
+
 [JSON-LD](https://www.w3.org/TR/json-ld11/) Kellogg, G., Sporny, M., Longley, D., Lanthaler, M., Champin, P., and N. Lindström, "JSON-LD 1.1: A JSON-based Serialization for Linked Data.", 16 July 2020, JSON-LD 1.1 .
 
 [VC DATA](https://www.w3.org/TR/vc-data-model/) Sporny, M., Noble, G., Longley, D., Burnett, D. C., Zundel, B., and K. D. Hartog, "Verifiable Credentials Data Model 1.1", 3 March 2022, Verifiable Credentials Data Model v1.1 .
@@ -110,7 +113,5 @@ SD-JWT-based Verifiable Credentials (SD-JWT VC) .
 [VC DATA 2.0](https://www.w3.org/TR/vc-data-model-2.0/) Sporny, M., Jr, T. T., Herman, I., Jones, M. B., and G. Cohen, "Verifiable Credentials Data Model 2.0", 27 December 2023, Verifiable Credentials Data Model v2.0 .
 
 [VC JOSE COSE](https://www.w3.org/TR/vc-jose-cose/) Jones, M., Prorock, M., Cohen, G., “Securing Verifiable Credentials using JOSE and COSE”, 20 March 2025, Securing Verifiable Credentials using JOSE and COSE .
-
-[SD-JWT-VC-DM](https://github.com/danielfett/sd-jwt-vc-dm) Fett, D., “SD-JWT VC DM Credential Format”,  GitHub - danielfett/sd-jwt-vc-dm: SD-JWT VC Data Model is a credential format that combines the best of both worlds from SD-JWT VC and W3C VCDM .
 
 [OPEN BADGES](https://openbadges.org/) Home | IMS Open Badges.
