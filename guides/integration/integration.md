@@ -132,7 +132,7 @@ Identity Verification with CATRINA consists of the following steps:
 
 The steps above are illustrated in the following sequence diagram:
 
-**TODO**
+![Sequence Diagram](INV-07-sequence_diagram.png)
 
 To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
 
