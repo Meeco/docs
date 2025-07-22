@@ -236,12 +236,12 @@ The response payload will contain the following information:
 }
 ```
 
-**Best Practices:**
+### 3.5.Best Practices
 
-- **Minimise data use:** Only process and store the fields you need.
-- **Secure sensitive data:** Use secure channels with encryption.
-- **Audit access:** Ensure only authorised services and personnel can access the data.
-
+- Minimize data usage: Only request, process, and store the identity attributes essential for your use case. Avoid collecting unnecessary personal information.
+- Protect sensitive data: Always use secure, encrypted channels (e.g., HTTPS) for data transmission. Store data securely and in compliance with relevant regulations.
+- Control and audit access: Restrict access to identity data to authorized services and personnel only. Implement logging and regular audits to monitor who accesses the data and when.
+	
 ## 4. Integration Code Example (Javascript)
 
 This section provides a Javascript integration guide.
