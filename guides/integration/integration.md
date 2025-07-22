@@ -3,25 +3,25 @@
 This guide outlines the process for integrating with the CATRINA Identity Platform. This document is still a work in progress and may contain errors, please reach out to Meeco for any help that you may require.
 
 
-- [Overview](#overview)
-- [Pre-requisites](#pre-requisites)
-  - [Organisation Creation](#organisation-creation)
-  - [Authentication (Applications)](#authentication-applications)
-  - [Verification Template](#verification-template)
-  - [Final Setup](#final-setup)
-- [Integration and Authentication](#integration-and-authentication)
-  - [Authentication](#authentication)
-  - [Creating a Session](#creating-a-session)
-  - [Retrieving a Session](#retrieving-a-session)
-- [Integration Code Example (Javascript)](#integration-code-example-javascript)
-  - [1. Add a button to your website (client-side)](#1-add-a-button-to-your-website-client-side)
-  - [2. Redirect to CATRINA Identity (client-side, server-side)](#2-redirect-to-catrina-identity-client-side-server-side)
-  - [3. Handle Result](#3-handle-result)
-- [Access Verification Results](#access-verification-results)
-  - [Integration Complete](#integration-complete)
+- [1. Overview](#1-overview)
+- [2. Pre-requisites](#2-pre-requisites)
+  - [2.1. Organisation Creation](#21-organisation-creation)
+  - [2.2. Authentication (Applications)](#22-authentication-applications)
+  - [2.3. Verification Template](#23-verification-template)
+  - [2.4. CATRINA-Side Integration Setup](#24-catrina-side-integration-setup)
+  - [2.5. Integrator-Side Setup](#25-integrator-side-setup)
+- [3. Integration and Authentication](#3-integration-and-authentication)
+  - [3.1 Overview of Identity Verification with CATRINA](#31-overview-of-identity-verification-with-catrina)
+  - [3.2. Authentication](#32-authentication)
+  - [3.3. Creating a Session](#33-creating-a-session)
+  - [3.4. Retrieving a Session](#34-retrieving-a-session)
+  - [3.5.Best Practices](#35best-practices)
 - [Appendix 1: Verification Template Constraints Example](#appendix-1-verification-template-constraints-example)
 - [Appendix 2: Available Attributes](#appendix-2-available-attributes)
 - [Appendix 3: Integration Example Using JavaScript](#appendix-3-integration-example-using-javascript)
+  - [Add a button to your website (client-side)](#add-a-button-to-your-website-client-side)
+  - [Redirect to CATRINA Identity (client-side, server-side)](#redirect-to-catrina-identity-client-side-server-side)
+  - [Access Verification Results](#access-verification-results)
 
 ## 1. Overview
 
@@ -319,7 +319,7 @@ When the button is clicked, redirect the user to a CATRINA Identity hosted page.
 **Set up an endpoint to create a Verify Session**
 On the server-side, create a `create-verification-session` endpoint (HTTP POST) that authenticates, creates a session, and returns the session URL.
 
-> **Note:** To retrieve an access token, this code uses an OAuth2 library —  but don’t let that intimidate you, the OAuth2 client credentials grant is just a straightforward HTTP POST request. You can see how it works in the Authentication section, where we show a plain HTTP example. 
+> **Note:** To retrieve an access token, this code uses an OAuth2 library —  but don’t let that intimidate you, the OAuth2 client credentials grant is just a straightforward HTTP POST request. You can see how it works in the Authentication section, where we show a plain HTTP example.
 
 
 ```javascript
