@@ -263,12 +263,6 @@ This section provides a Javascript integration guide.
 
 When the button is clicked, redirect the user to a CATRINA Identity hosted page.
 
-**Sequence Diagram**
-This diagram shows how a traditional backend and frontend application integrates with CATRINA Identity.
-"Your" is the application integrating, and "Our" is the CATRINA Identity solution.
-
-![CATRINA Identity integration sequence diagram](https://storage.googleapis.com/askg-public-images/5a676767-1644-4696-abf2-89241940a45e.png)
-
 **Set up an endpoint to create a Verify Session**
 On the server-side, create a `create-verification-session` endpoint (HTTP POST) that authenticates, creates a session, and returns the session URL.
 
