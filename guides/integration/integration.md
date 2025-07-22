@@ -161,6 +161,8 @@ sequenceDiagram
     CAPI -->>- YB: verification status, verified data
 ```
 
+<!-- Gitbook requires mermaid integration https://www.gitbook.com/integrations/mermaid -->
+
 To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
 
 1. Authentication — an HTTP POST request  following the OAuth 2.0 client credentials grant flow
