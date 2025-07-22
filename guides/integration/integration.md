@@ -2,23 +2,23 @@
 
 This guide outlines the process for integrating with the CATRINA Identity Platform. This document is still a work in progress and may contain errors, please reach out to Meeco for any help that you may require.
 
-- [1. Overview](#1-overview)
-- [2. Pre-requisites](#2-pre-requisites)  
-  - [2.1. Organisation Creation](#21-organisation-creation)  
-  - [2.2. Authentication (Applications)](#22-authentication-applications)  
-  - [2.3. Verification Template](#23-verification-template)  
-  - [2.4. CATRINA-Side Integration Setup](#24-catrina-side-integration-setup)  
-  - [2.5. Integrator-Side Setup](#25-integrator-side-setup)  
-- [3. Integration and Authentication](#3-integration-and-authentication)  
-  - [3.1 Overview of Identity Verification with CATRINA](#31-overview-of-identity-verification-with-catrina)  
-  - [3.2. Authentication](#32-authentication)  
-  - [3.3. Creating a Session](#33-creating-a-session)  
-  - [3.4. Retrieving a Session](#34-retrieving-a-session)  
-- [4. Integration Code Example (Javascript)](#4-integration-code-example-javascript)  
-  - [4.1. Add a button to your website (client-side)](#41-add-a-button-to-your-website-client-side)  
-  - [4.2. Redirect to CATRINA Identity (client-side, server-side)](#42-redirect-to-catrina-identity-client-side-server-side)  
-  - [4.3. Handle Result](#43-handle-result)  
-- [5. Access Verification Results](#5-access-verification-results)
+
+- [Overview](#overview)
+- [Pre-requisites](#pre-requisites)
+  - [Organisation Creation](#organisation-creation)
+  - [Authentication (Applications)](#authentication-applications)
+  - [Verification Template](#verification-template)
+  - [Final Setup](#final-setup)
+- [Integration and Authentication](#integration-and-authentication)
+  - [Authentication](#authentication)
+  - [Creating a Session](#creating-a-session)
+  - [Retrieving a Session](#retrieving-a-session)
+- [Integration Code Example (Javascript)](#integration-code-example-javascript)
+  - [1. Add a button to your website (client-side)](#1-add-a-button-to-your-website-client-side)
+  - [2. Redirect to CATRINA Identity (client-side, server-side)](#2-redirect-to-catrina-identity-client-side-server-side)
+  - [3. Handle Result](#3-handle-result)
+- [Access Verification Results](#access-verification-results)
+  - [Integration Complete](#integration-complete)
 - [Appendix 1: Verification Template Constraints Example](#appendix-1-verification-template-constraints-example)
 - [Appendix 2: Available Attributes](#appendix-2-available-attributes)
 
@@ -236,17 +236,70 @@ The response payload will contain the following information:
 }
 ```
 
+
 ### 3.5.Best Practices
 
 - Minimize data usage: Only request, process, and store the identity attributes essential for your use case. Avoid collecting unnecessary personal information.
 - Protect sensitive data: Always use secure, encrypted channels (e.g., HTTPS) for data transmission. Store data securely and in compliance with relevant regulations.
 - Control and audit access: Restrict access to identity data to authorized services and personnel only. Implement logging and regular audits to monitor who accesses the data and when.
 	
-## 4. Integration Code Example (Javascript)
 
-This section provides a Javascript integration guide.
 
-### 4.1. Add a button to your website (client-side)
+## Appendix 1: Verification Template Constraints Example
+
+Replace `"const": "PhotoID_wContact_INV"` with the Credential Type you are verifying against. Confirm this with your Meeco Account Manager.
+
+```json
+{
+  "limit_disclosure": "preferred",
+  "fields": [
+    {
+      "path": ["$.vct"],
+      "filter": {
+        "type": "string",
+        "const": "PhotoID_wContact_INV"
+      }
+    },
+    { "path": ["$.given_name_unicode"] },
+    { "path": ["$.family_name_unicode"] },
+    { "path": ["$.birth_date"] },
+    { "path": ["$.phone_number"], "optional": true },
+    { "path": ["$.email"], "optional": true },
+    { "path": ["$.resident_address_unicode"], "optional": true },
+    { "path": ["$.resident_city_unicode"], "optional": true },
+    { "path": ["$.resident_state"], "optional": true },
+    { "path": ["$.resident_postal_code"], "optional": true },
+    { "path": ["$.resident_country"], "optional": true },
+    { "path": ["$.nationality"], "optional": true }
+  ]
+}
+```
+
+---
+
+## Appendix 2: Available Attributes
+
+These are the available attributes from account-based integration partners.
+| Field | Description | Connect ID | Select ID |
+| :--- | :--- | :---: | :---: |
+| **given_name_unicode** | First name of the holder, in Unicode. | ✅ | ✅ |
+| **family_name_unicode** | Last name of the holder, in Unicode. | ✅ | ✅ |
+| **birth_date** | ISO 8601 date of birth. | ✅ | ✅ |
+| **document_number** | Document or passport number. | ❌ | ✅ |
+| **issuing_country** | Country code of issuing authority. | ❌ | ✅ |
+| **expiry_date** | Document expiry date. | ❌ | ✅ |
+| **portrait** | Base64-encoded portrait image. | ❌ | ✅ |
+| **resident_address_unicode** | Full address in Unicode. | ✅ | ✅ |
+| **age_over_18** | Boolean indicating age eligibility. | ✅ | ❌ |
+| **phone_number** | Phone number if collected. | ✅ | ✅ |
+| **email** | Email address if provided. | ✅ | ✅ |
+
+## Appendix 3: Integration Example Using JavaScript
+
+
+This section provides a JavaScript example of integrating with CATRINA.
+
+### Add a button to your website (client-side)
 
 ```html
 <html>
@@ -259,7 +312,7 @@ This section provides a Javascript integration guide.
 </html>
 ```
 
-### 4.2. Redirect to CATRINA Identity (client-side, server-side)
+### Redirect to CATRINA Identity (client-side, server-side)
 
 When the button is clicked, redirect the user to a CATRINA Identity hosted page.
 
@@ -343,11 +396,7 @@ const url = await createVerificationSession("template-abc");
 </html>
 ```
 
-### 4.3. Handle Result
-
-When the user is redirected back to your site, the verification is complete. You can retrieve results from the API or view them in the Portal.
-
-## 5. Access Verification Results
+### Access Verification Results
 
 After a session is completed, access the structured verification results via the session response in the `verified_claims` object.
 
@@ -390,55 +439,4 @@ const sessionDetails = await getVerificationSession(sessionId);
 }
 ```
 
-### Integration Complete
-
 By following these steps, you should have successfully integrated your system with the CATRINA Identity platform.
-
-## Appendix 1: Verification Template Constraints Example
-
-Replace `"const": "PhotoID_wContact_INV"` with the Credential Type you are verifying against. Confirm this with your Meeco Account Manager.
-
-```json
-{
-  "limit_disclosure": "preferred",
-  "fields": [
-    {
-      "path": ["$.vct"],
-      "filter": {
-        "type": "string",
-        "const": "PhotoID_wContact_INV"
-      }
-    },
-    { "path": ["$.given_name_unicode"] },
-    { "path": ["$.family_name_unicode"] },
-    { "path": ["$.birth_date"] },
-    { "path": ["$.phone_number"], "optional": true },
-    { "path": ["$.email"], "optional": true },
-    { "path": ["$.resident_address_unicode"], "optional": true },
-    { "path": ["$.resident_city_unicode"], "optional": true },
-    { "path": ["$.resident_state"], "optional": true },
-    { "path": ["$.resident_postal_code"], "optional": true },
-    { "path": ["$.resident_country"], "optional": true },
-    { "path": ["$.nationality"], "optional": true }
-  ]
-}
-```
-
----
-
-## Appendix 2: Available Attributes
-
-These are the available attributes from account-based integration partners.
-| Field | Description | Connect ID | Select ID |
-| :--- | :--- | :---: | :---: |
-| **given_name_unicode** | First name of the holder, in Unicode. | ✅ | ✅ |
-| **family_name_unicode** | Last name of the holder, in Unicode. | ✅ | ✅ |
-| **birth_date** | ISO 8601 date of birth. | ✅ | ✅ |
-| **document_number** | Document or passport number. | ❌ | ✅ |
-| **issuing_country** | Country code of issuing authority. | ❌ | ✅ |
-| **expiry_date** | Document expiry date. | ❌ | ✅ |
-| **portrait** | Base64-encoded portrait image. | ❌ | ✅ |
-| **resident_address_unicode** | Full address in Unicode. | ✅ | ✅ |
-| **age_over_18** | Boolean indicating age eligibility. | ✅ | ❌ |
-| **phone_number** | Phone number if collected. | ✅ | ✅ |
-| **email** | Email address if provided. | ✅ | ✅ |
