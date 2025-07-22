@@ -391,17 +391,16 @@ Replace `"const": "PhotoID_wContact_INV"` with the Credential Type you are verif
 ## Appendix 2: Available Attributes
 
 These are the available attributes from account-based integration partners.
-
-| Field                        | Description                           |
-| :--------------------------- | :------------------------------------ |
-| **given_name_unicode**       | First name of the holder, in Unicode. |
-| **family_name_unicode**      | Last name of the holder, in Unicode.  |
-| **birth_date**               | ISO 8601 date of birth.               |
-| **document_number**          | Document or passport number.          |
-| **issuing_country**          | Country code of issuing authority.    |
-| **expiry_date**              | Document expiry date.                 |
-| **portrait**                 | Base64-encoded portrait image.        |
-| **resident_address_unicode** | Full address in Unicode.              |
-| **age_over_18**              | Boolean indicating age eligibility.   |
-| **phone_number**             | Phone number if collected.            |
-| **email**                    | Email address if provided.            |
+| Field | Description | Connect ID | Select ID |
+| :--- | :--- | :---: | :---: |
+| **given_name_unicode** | First name of the holder, in Unicode. | ✅ | ✅ |
+| **family_name_unicode** | Last name of the holder, in Unicode. | ✅ | ✅ |
+| **birth_date** | ISO 8601 date of birth. | ✅ | ✅ |
+| **document_number** | Document or passport number. | ❌ | ✅ |
+| **issuing_country** | Country code of issuing authority. | ❌ | ✅ |
+| **expiry_date** | Document expiry date. | ❌ | ✅ |
+| **portrait** | Base64-encoded portrait image. | ❌ | ✅ |
+| **resident_address_unicode** | Full address in Unicode. | ✅ | ✅ |
+| **age_over_18** | Boolean indicating age eligibility. | ✅ | ❌ |
+| **phone_number** | Phone number if collected. | ✅ | ✅ |
+| **email** | Email address if provided. | ✅ | ✅ |
