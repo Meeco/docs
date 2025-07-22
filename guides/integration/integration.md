@@ -71,13 +71,13 @@ Next, set up a Verification Template for your use case. This template is used to
 
 1.  In the Portal, go to the "Verification templates" tab in the navigation menu.
 
-![Select Verification Template](/.gitbook/assets/integration/INV-01-select-template.png)
+![Select Verification Template](INV-01-select-template.png)
 
 2.  Click the "Create verification template" button.
 
-![Create Verification Template](/.gitbook/assets/integration/INV-02-select-template-create.png) 3. Enter a template name and purpose. For example: - **Name:** "Guest Identity Verification" - **Purpose:** "To verify guest identity information using the CATRINA Identity Platform"
+![Create Verification Template](INV-02-select-template-create.png) 3. Enter a template name and purpose. For example: - **Name:** "Guest Identity Verification" - **Purpose:** "To verify guest identity information using the CATRINA Identity Platform"
 
-![Verification Template Name and Purpose](/.gitbook/assets/integration/INV-03-template-name.png)
+![Verification Template Name and Purpose](INV-03-template-name.png)
 
 4.  Complete the "Required credential" section:
     - **Credential name:** Guest Identity
@@ -85,9 +85,9 @@ Next, set up a Verification Template for your use case. This template is used to
     - **Constraints:** This section is automatically populated. For account-based solutions, only specific attributes can be requested.
     - **Signature algorithm value:** This will be automatically populated. Leave it as is.
 
-![Verification Template Credential](/.gitbook/assets/integration/INV-04-template-credential.png) 5. Click "Create".
+![Verification Template Credential](INV-04-template-credential.png) 5. Click "Create".
 
-![Verification Template Create](/.gitbook/assets/integration/INV-05-template-create-final.png) 6. Once created, click the ellipsis icon (...) and select "View" to get the `presentation_template_id`. You will need this for the session payload.
+![Verification Template Create](INV-05-template-create-final.png) 6. Once created, click the ellipsis icon (...) and select "View" to get the `presentation_template_id`. You will need this for the session payload.
 
 > **Note:** Despite the option to add multiple credentials via “Add required credentials”, the CATRINA Identity platform currently only supports one required credential per Verification Template. Please leave this as a single credential.
 
@@ -107,7 +107,7 @@ After completing these steps, contact your CATRINA Identity Account Manager with
 
 To interact with your CATRINA Identity integration, you'll need the `client_id` and `client_secret` from the "CATRINA Identity Authentication Application". This information is in the application's details in the Portal.
 
-![Application Screen](/.gitbook/assets/integration/INV-06-application.png)
+![Application Screen](INV-06-application.png)
 
 You will also need the API login URL from the asset registry. The authentication call will look like this:
 
