@@ -89,13 +89,15 @@ Next, set up a Verification Template for your use case. This template is used to
 
 > **Note:** For account-based integrations, only specific credential attributes can be used when defining the credential “constraints”. See Appendix 2 for details.
 
-### 2.4. Final Setup
+### 2.4. CATRINA-Side Integration Setup
 
-After completing these steps, contact your CATRINA Identity Account Manager with the following information:
+After completing these steps, contact your CATRINA Identity Account Manager and provide the following information:
 
-- Your CATRINA Identity Hosting Application `client_id`.
-- Your CATRINA Identity Authentication Application `client_id`.
+- The `client_id` of your CATRINA Identity Hosting Application
+- The `client_id` of your CATRINA Identity Authentication Application
 - Your Presentation Template ID.
+
+Once this information is received, the CATRINA Identity Account Manager will complete the necessary configuration on their side. Please wait for confirmation from your CATRINA Identity Account Manager before proceeding with the integrator-side setup.
 
 ## 3. Integration and Authentication
 
