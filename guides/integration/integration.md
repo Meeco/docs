@@ -319,6 +319,9 @@ When the button is clicked, redirect the user to a CATRINA Identity hosted page.
 **Set up an endpoint to create a Verify Session**
 On the server-side, create a `create-verification-session` endpoint (HTTP POST) that authenticates, creates a session, and returns the session URL.
 
+> **Note:** To retrieve an access token, this code uses an OAuth2 library —  but don’t let that intimidate you, the OAuth2 client credentials grant is just a straightforward HTTP POST request. You can see how it works in the Authentication section, where we show a plain HTTP example. 
+
+
 ```javascript
 const axios = require("axios");
 const { ClientCredentials } = require("simple-oauth2");
