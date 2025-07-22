@@ -185,7 +185,7 @@ Create the session by making the following API call:
 
 ```bash
 curl -X POST "https://YOUR_CATRINA_IDENTITY_URL/identity/sessions" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H 'Content-Type: application/json' \
   -d '{ "presentation_template_id": "YOUR_PRESENTATION_TEMPLATE_ID", "success_url": "https://your-website.com/success", "return_url": "https://your-website.com/return" }'
 ```
@@ -205,14 +205,14 @@ Save the session `id` for future reference. The `url` shoulf be used to to redir
 
 Once a session is complete, you can get the verification results from the `verified_claims` object in the session response.
 
-Use the `session_id` to retrieve the data:
+Use the session ID from the previous call to retrieve the data:
 
 ```bash
 curl -X GET 'https://YOUR_CATRINA_IDENTITY_URL/identity/sessions/SESSION_ID' \
--H "Authorization: Bearer $ACCESS_TOKEN"
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
-The response will be:
+The response payload will contain the following information:
 
 ```json
 {
