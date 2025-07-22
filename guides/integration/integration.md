@@ -132,7 +132,34 @@ Identity Verification with CATRINA consists of the following steps:
 
 The steps above are illustrated in the following sequence diagram:
 
-![Sequence Diagram](INV-07-sequence_diagram.png)
+```mermaid
+sequenceDiagram
+
+    participant YW as Your Website Page
+    participant YB as Your Backend
+
+    participant CAPI as CATRINA API
+    participant CW as CATRINA Website
+
+    YW ->>+ YB: "Verify" button clicked
+
+    YB ->>+ CAPI: Login with client ID<br>and client secret
+    CAPI -->>- YB: Access token
+
+    YB ->>+ CAPI: Create verification session<br>with template ID and access token
+    CAPI -->>- YB: verification session ID and redirect URL
+
+    YB -->>- YW: URL to redirect to VS
+
+    YW->>+CW: User is redirected to CATRINA Website
+
+    CW->>+CW: User completes verification
+
+    CW->>+YW: User is redirected to the SUCCESS URL
+
+    YB ->>+ CAPI: Retrieve verification results<br>with verification token ID and access token
+    CAPI -->>- YB: verification status, verified data
+```
 
 To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
 
