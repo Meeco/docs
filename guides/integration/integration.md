@@ -21,7 +21,7 @@ This guide outlines the process for integrating with the CATRINA Identity Platfo
   - [Integration Complete](#integration-complete)
 - [Appendix 1: Verification Template Constraints Example](#appendix-1-verification-template-constraints-example)
 - [Appendix 2: Available Attributes](#appendix-2-available-attributes)
-
+- [Appendix 3: Integration Example Using JavaScript](#appendix-3-integration-example-using-javascript)
 
 ## 1. Overview
 
@@ -148,7 +148,7 @@ To interact with your CATRINA Identity integration, you'll need the `client_id` 
 
 ![Application Screen](INV-06-application.png)
 
-You will also need the CATRINA API login URL (see [2.5. Integrator-Side Setup](#25-integrator-side-setup)). 
+You will also need the CATRINA API login URL (see [2.5. Integrator-Side Setup](#25-integrator-side-setup)).
 
 The authentication call will look as follows:
 
@@ -164,10 +164,10 @@ curl -X POST \
 This returns your access token:
 
 ```json
-{ 
-  "access_token": "ACCESS_TOKEN", 
-  "expires_in": 600, 
-  "token_type": "Bearer" 
+{
+  "access_token": "ACCESS_TOKEN",
+  "expires_in": 600,
+  "token_type": "Bearer"
 }
 ```
 
@@ -242,7 +242,7 @@ The response payload will contain the following information:
 - Minimize data usage: Only request, process, and store the identity attributes essential for your use case. Avoid collecting unnecessary personal information.
 - Protect sensitive data: Always use secure, encrypted channels (e.g., HTTPS) for data transmission. Store data securely and in compliance with relevant regulations.
 - Control and audit access: Restrict access to identity data to authorized services and personnel only. Implement logging and regular audits to monitor who accesses the data and when.
-	
+
 
 
 ## Appendix 1: Verification Template Constraints Example
