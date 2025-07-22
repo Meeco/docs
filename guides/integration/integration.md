@@ -2,9 +2,6 @@
 
 This guide outlines the process for integrating with the CATRINA Identity Platform. This document is still a work in progress and may contain errors, please reach out to Meeco for any help that you may require.
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Pre-requisites](#pre-requisites)
   - [Organisation Creation](#organisation-creation)
