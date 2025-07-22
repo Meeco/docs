@@ -329,15 +329,13 @@ const config = {
     secret: "your_client_secret",
   },
   auth: {
-    tokenHost:
-      "[https://login.stg.svxawsjp.meeco.cloud](https://login.stg.svxawsjp.meeco.cloud)",
+    tokenHost: "https://login.stg.svxawsjp.meeco.cloud",
     tokenPath: "/oauth2/token",
   },
 };
 
 const api = axios.create({
-  baseURL:
-    "[https://ocw-kaze-no-hana-inv.catrina-identity.stg-diw.net](https://ocw-kaze-no-hana-inv.catrina-identity.stg-diw.net)",
+  baseURL: "https://ocw-kaze-no-hana-inv.catrina-identity.stg-diw.net",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -348,10 +346,8 @@ async function createVerificationSession(presentationTemplateId) {
     "/identity/sessions",
     {
       presentation_template_id: presentationTemplateId,
-      success_url:
-        "[https://your-website.com/success](https://your-website.com/success)",
-      return_url:
-        "[https://your-website.com/return](https://your-website.com/return)",
+      success_url: "https://your-website.com/success",
+      return_url:  "https://your-website.com/return",
     },
     {
       headers: { Authorization: `Bearer ${token.token.access_token}` },
