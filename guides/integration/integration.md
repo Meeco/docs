@@ -175,22 +175,22 @@ Your backend is required to use this  access token as a Bearer token in the Auth
 
 ### 3.3. Creating a Session
 
-To create a session, you need:
+To create a session, you’ll need the following parameters:
 
-- `presentation_template_id`: The `presentation_template_id` created beforehand
-- `success_url`: The page the user returns to after a successful flow.
-- `return_url`: The page the user returns to on cancellation or if an error occurs.
+- `presentation_template_id`: The ID of your presentation template
+- `success_url`: The URL on your website where the user will be redirected after successful verification.
+- `return_url`: The URL on your website where the user will be redirected if the flow is canceled or an error occurs.
 
-Create a session with this API call:
+Create the session by making the following API call:
 
 ```bash
 curl -X POST "https://YOUR_CATRINA_IDENTITY_URL/identity/sessions" \
--H "Authorization: Bearer $ACCESS_TOKEN" \
--H 'Content-Type: application/json' \
--d '{ "presentation_template_id": "YOUR_PRESENTATION_TEMPLATE_ID", "success_url": "[https://your-website.com/success](https://your-website.com/success)", "return_url": "[https://your-website.com/return](https://your-website.com/return)" }'
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{ "presentation_template_id": "YOUR_PRESENTATION_TEMPLATE_ID", "success_url": "https://your-website.com/success", "return_url": "https://your-website.com/return" }'
 ```
 
-The response will be:
+The response payload will contain the following information:
 
 ```json
 {
@@ -199,7 +199,7 @@ The response will be:
 }
 ```
 
-Save the session `id` for future reference. The `url` is used to redirect the user to the CATRINA Identity website.
+Save the session `id` for future reference. The `url` shoulf be used to to redirect the user to the CATRINA Identity website.
 
 ### 3.4. Retrieving a Session
 
