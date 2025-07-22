@@ -2,26 +2,25 @@
 
 This guide outlines the process for integrating with the CATRINA Identity Platform. This document is still a work in progress and may contain errors, please reach out to Meeco for any help that you may require.
 
-- [Overview](#overview)
-- [Pre-requisites](#pre-requisites)
-  - [Organisation Creation](#organisation-creation)
-  - [Authentication (Applications)](#authentication-applications)
-  - [Verification Template](#verification-template)
-  - [Final Setup](#final-setup)
-- [Integration and Authentication](#integration-and-authentication)
-  - [Authentication](#authentication)
-  - [Creating a Session](#creating-a-session)
-  - [Retrieving a Session](#retrieving-a-session)
-- [Integration Code Example (Javascript)](#integration-code-example-javascript)
-  - [1. Add a button to your website (client-side)](#1-add-a-button-to-your-website-client-side)
-  - [2. Redirect to CATRINA Identity (client-side, server-side)](#2-redirect-to-catrina-identity-client-side-server-side)
-  - [3. Handle Result](#3-handle-result)
-- [Access Verification Results](#access-verification-results)
-  - [Integration Complete](#integration-complete)
+- [1. Overview](#1-overview)
+- [2. Pre-requisites](#2-pre-requisites)  
+  - [2.1. Organisation Creation](#21-organisation-creation)  
+  - [2.2. Authentication (Applications)](#22-authentication-applications)  
+  - [2.3. Verification Template](#23-verification-template)  
+  - [2.4. Final Setup](#24-final-setup)  
+- [3. Integration and Authentication](#3-integration-and-authentication)  
+  - [3.1. Authentication](#31-authentication)  
+  - [3.2. Creating a Session](#32-creating-a-session)  
+  - [3.3. Retrieving a Session](#33-retrieving-a-session)  
+- [4. Integration Code Example (Javascript)](#4-integration-code-example-javascript)  
+  - [4.1. Add a button to your website (client-side)](#41-add-a-button-to-your-website-client-side)  
+  - [4.2. Redirect to CATRINA Identity (client-side, server-side)](#42-redirect-to-catrina-identity-client-side-server-side)  
+  - [4.3. Handle Result](#43-handle-result)  
+- [5. Access Verification Results](#5-access-verification-results)
 - [Appendix 1: Verification Template Constraints Example](#appendix-1-verification-template-constraints-example)
 - [Appendix 2: Available Attributes](#appendix-2-available-attributes)
 
-## Overview
+## 1. Overview
 
 The CATRINA Identity Platform is designed for easy integration, giving organizations full control over their identity verification workflows. Integration starts in the Portal, where administrators can set key parameters, like the user data needed for a specific use case (e.g., name, date of birth, address, or government-issued ID), and define why this data is being requested.
 
@@ -31,11 +30,11 @@ When a user is redirected, CATRINA manages the entire identity verification proc
 
 After verification, users are sent back to your website or app. Verified identity attributes can be retrieved through the API or viewed on the dashboard. This approach offers the flexibility of an API-first model with the simplicity of a no-SDK, hosted solution. CATRINA is language-agnostic and works with any frontend framework, allowing integration into any environment without extra libraries or technical limitations.
 
-## Pre-requisites
+## 2. Pre-requisites
 
 This section covers all the components that need to be set up before you can begin your CATRINA Identity integration.
 
-### Organisation Creation
+### 2.1. Organisation Creation
 
 An Organisation must be created to successfully deploy your CATRINA identity integration. Organisations act as Issuers and Verifiers within the CATRINA Platform. For this integration, you'll need an organisation that acts as a Verifier.
 
@@ -43,7 +42,7 @@ Organisations are created by Tenant Administrators. If you are not a Tenant Admi
 
 Once your Organisation is created, you'll get an email invitation to join the Portal as an Administrator. Follow the instructions in the email to complete your onboarding and Organisation setup.
 
-### Authentication (Applications)
+### 2.2. Authentication (Applications)
 
 To enable your integration, you need to set up two applications in the Portal. One application will host the CATRINA Identity application, and the other will be used to authenticate and connect to it.
 
@@ -62,7 +61,7 @@ To enable your integration, you need to set up two applications in the Portal. O
     - **Description:** "Used for the CATRINA Identity Platform"
 3.  After your CATRINA Identity Account Manager completes the setup, you can use the `client_id` and `client_secret` to securely connect to your CATRINA Identity deployment.
 
-### Verification Template
+### 2.3. Verification Template
 
 Next, set up a Verification Template for your use case. This template is used to request specific information from your users.
 
@@ -90,7 +89,7 @@ Next, set up a Verification Template for your use case. This template is used to
 
 > **Note:** For account-based integrations, only specific credential attributes can be used when defining the credential “constraints”. See Appendix 2 for details.
 
-### Final Setup
+### 2.4. Final Setup
 
 After completing these steps, contact your CATRINA Identity Account Manager with the following information:
 
@@ -98,9 +97,9 @@ After completing these steps, contact your CATRINA Identity Account Manager with
 - Your CATRINA Identity Authentication Application `client_id`.
 - Your Presentation Template ID.
 
-## Integration and Authentication
+## 3. Integration and Authentication
 
-### Authentication
+### 3.1. Authentication
 
 To interact with your CATRINA Identity integration, you'll need the `client_id` and `client_secret` from the "CATRINA Identity Authentication Application". This information is in the application's details in the Portal.
 
@@ -125,7 +124,7 @@ This returns your `ACCESS_TOKEN`:
 
 > **Note:** Your application is required to use this ACCESS_TOKEN as a Bearer token in the Authorization header for all API calls to your CATRINA Identity deployment.
 
-### Creating a Session
+### 3.2. Creating a Session
 
 To create a session, you need:
 
@@ -153,7 +152,7 @@ The response will be:
 
 Save the session `id` for future reference. The `url` is used to redirect the user to the CATRINA Identity website.
 
-### Retrieving a Session
+### 3.3. Retrieving a Session
 
 Once a session is complete, you can get the verification results from the `verified_claims` object in the session response.
 
@@ -194,11 +193,11 @@ The response will be:
 - **Secure sensitive data:** Use secure channels with encryption.
 - **Audit access:** Ensure only authorised services and personnel can access the data.
 
-## Integration Code Example (Javascript)
+## 4. Integration Code Example (Javascript)
 
 This section provides a Javascript integration guide.
 
-### 1. Add a button to your website (client-side)
+### 4.1. Add a button to your website (client-side)
 
 ```html
 <html>
@@ -211,7 +210,7 @@ This section provides a Javascript integration guide.
 </html>
 ```
 
-### 2. Redirect to CATRINA Identity (client-side, server-side)
+### 4.2. Redirect to CATRINA Identity (client-side, server-side)
 
 When the button is clicked, redirect the user to a CATRINA Identity hosted page.
 
@@ -301,11 +300,11 @@ const url = await createVerificationSession("template-abc");
 </html>
 ```
 
-### 3. Handle Result
+### 4.3. Handle Result
 
 When the user is redirected back to your site, the verification is complete. You can retrieve results from the API or view them in the Portal.
 
-## Access Verification Results
+## 5. Access Verification Results
 
 After a session is completed, access the structured verification results via the session response in the `verified_claims` object.
 
