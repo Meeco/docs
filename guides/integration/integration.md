@@ -136,9 +136,9 @@ The steps above are illustrated in the following sequence diagram:
 
 To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
 
-•	Authentication – an HTTP POST request  following the OAuth 2.0 client credentials grant flow
-•	Session creation – a call to initiate an identity verification session
-•	Session status and data retrieval – a call to check the session status and access the verified identity data
+1. Authentication – an HTTP POST request  following the OAuth 2.0 client credentials grant flow
+2. Session creation – a call to initiate an identity verification session
+3. Session status and data retrieval – a call to check the session status and access the verified identity data
 
 The following sections provide a detailed look at each call, using the curl command-line utility to demonstrate the requests.
 
