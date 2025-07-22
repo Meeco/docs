@@ -22,13 +22,13 @@ This guide outlines the process for integrating with the CATRINA Identity Platfo
 
 ## 1. Overview
 
-The CATRINA Identity Platform is designed for easy integration, giving organizations full control over their identity verification workflows. Integration starts in the Portal, where administrators can set key parameters, like the user data needed for a specific use case (e.g., name, date of birth, address, or government-issued ID), and define why this data is being requested.
+The CATRINA Identity Platform is designed for seamless integration, giving organizations full control over their identity verification workflows. Integration begins in the Portal, where administrators can configure key parameters — such as the user data required for a specific use case (e.g., name, date of birth, address, or government-issued ID) — and specify the purpose for requesting this data.
 
-Once configured, developers can use our standards-based REST API to start a secure data request session, get a unique session URL, and monitor the transaction status in real-time. To keep the integration lightweight and compatible with all systems, the only client-side task is to redirect users to the CATRINA-hosted experience, usually with a button or link.
+Once configured, developers can use our standards-based REST API to initiate a secure data request session, retrieve a unique session URL, and monitor the transaction status in real time. To keep the integration lightweight and system-agnostic, the only client-side task is redirecting users to the CATRINA-hosted experience — typically via a button or link.
 
-When a user is redirected, CATRINA manages the entire identity verification process, including consent, data sharing, error handling, and secure transaction completion. The hosted environment follows privacy-by-design and security-by-design principles and complies with regulations like GDPR, eIDAS, and ISO/IEC 27001, so integrators don't have to.
+When a user is redirected, CATRINA handles the entire identity verification process — including consent, data sharing, error handling, and secure transaction completion. The hosted environment adheres to privacy-by-design and security-by-design principles and complies with standards such as GDPR, eIDAS, and ISO/IEC 27001 — so integrators don’t have to.
 
-After verification, users are sent back to your website or app. Verified identity attributes can be retrieved through the API or viewed on the dashboard. This approach offers the flexibility of an API-first model with the simplicity of a no-SDK, hosted solution. CATRINA is language-agnostic and works with any frontend framework, allowing integration into any environment without extra libraries or technical limitations.
+After verification, users are redirected back to your website or app. Verified identity attributes can be retrieved via the API or viewed in the dashboard. This approach combines the flexibility of an API-first model with the simplicity of a no-SDK, hosted solution. CATRINA is language-agnostic and compatible with any frontend framework, enabling integration into any environment without additional libraries or technical constraints.
 
 ## 2. Pre-requisites
 
