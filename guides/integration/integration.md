@@ -7,11 +7,13 @@ This guide outlines the process for integrating with the CATRINA Identity Platfo
   - [2.1. Organisation Creation](#21-organisation-creation)  
   - [2.2. Authentication (Applications)](#22-authentication-applications)  
   - [2.3. Verification Template](#23-verification-template)  
-  - [2.4. Final Setup](#24-final-setup)  
+  - [2.4. CATRINA-Side Integration Setup](#24-catrina-side-integration-setup)  
+  - [2.5. Integrator-Side Setup](#25-integrator-side-setup)  
 - [3. Integration and Authentication](#3-integration-and-authentication)  
-  - [3.1. Authentication](#31-authentication)  
-  - [3.2. Creating a Session](#32-creating-a-session)  
-  - [3.3. Retrieving a Session](#33-retrieving-a-session)  
+  - [3.1 Overview of Identity Verification with CATRINA](#31-overview-of-identity-verification-with-catrina)  
+  - [3.2. Authentication](#32-authentication)  
+  - [3.3. Creating a Session](#33-creating-a-session)  
+  - [3.4. Retrieving a Session](#34-retrieving-a-session)  
 - [4. Integration Code Example (Javascript)](#4-integration-code-example-javascript)  
   - [4.1. Add a button to your website (client-side)](#41-add-a-button-to-your-website-client-side)  
   - [4.2. Redirect to CATRINA Identity (client-side, server-side)](#42-redirect-to-catrina-identity-client-side-server-side)  
@@ -19,6 +21,7 @@ This guide outlines the process for integrating with the CATRINA Identity Platfo
 - [5. Access Verification Results](#5-access-verification-results)
 - [Appendix 1: Verification Template Constraints Example](#appendix-1-verification-template-constraints-example)
 - [Appendix 2: Available Attributes](#appendix-2-available-attributes)
+
 
 ## 1. Overview
 
@@ -115,7 +118,11 @@ If you haven’t received the CATRINA API login URL and Identity API host, pleas
 
 ## 3. Integration and Authentication
 
-### 3.1. Authentication
+### 3.1 Overview of Identity Verification with CATRINA
+
+TODO
+
+### 3.2. Authentication
 
 To interact with your CATRINA Identity integration, you'll need the `client_id` and `client_secret` from the "CATRINA Identity Authentication Application". This information is in the application's details in the Portal.
 
@@ -140,7 +147,7 @@ This returns your `ACCESS_TOKEN`:
 
 > **Note:** Your application is required to use this ACCESS_TOKEN as a Bearer token in the Authorization header for all API calls to your CATRINA Identity deployment.
 
-### 3.2. Creating a Session
+### 3.3. Creating a Session
 
 To create a session, you need:
 
@@ -168,7 +175,7 @@ The response will be:
 
 Save the session `id` for future reference. The `url` is used to redirect the user to the CATRINA Identity website.
 
-### 3.3. Retrieving a Session
+### 3.4. Retrieving a Session
 
 Once a session is complete, you can get the verification results from the `verified_claims` object in the session response.
 
