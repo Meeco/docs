@@ -120,7 +120,27 @@ If you haven’t received the CATRINA API login URL and Identity API host, pleas
 
 ### 3.1 Overview of Identity Verification with CATRINA
 
-TODO
+Identity Verification with CATRINA consists of the following steps:
+
+1. The user initiates an identity verification session by clicking a button or link on your website or mobile application.
+2. Your backend authenticates with CATRINA Identity as the Identity Authentication Application and retrieves an access token.
+3. Your backend calls the CATRINA Identity API to create an identity verification session. One of the input parameters in this call is a return URL—where the user should be redirected after the verification is complete. The response includes a session ID and a redirect URL.
+4. The user’s browser is redirected to the CATRINA-hosted experience using the redirect URL.
+5. The user completes the verification process by interacting with CATRINA and one of its supported identity providers.
+6. Upon completion, the user’s browser is redirected back to your website via the return URL specified in step 3.
+7. Your backend checks the status of the identity verification session to confirm the result.
+
+The steps above are illustrated in the following sequence diagram:
+
+**TODO**
+
+To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
+
+•	Authentication – an HTTP POST request  following the OAuth 2.0 client credentials grant flow
+•	Session creation – a call to initiate an identity verification session
+•	Session status and data retrieval – a call to check the session status and access the verified identity data
+
+The following sections provide a detailed look at each call, using the curl command-line utility to demonstrate the requests.
 
 ### 3.2. Authentication
 
