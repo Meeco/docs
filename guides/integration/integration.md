@@ -95,9 +95,23 @@ After completing these steps, contact your CATRINA Identity Account Manager and 
 
 - The `client_id` of your CATRINA Identity Hosting Application
 - The `client_id` of your CATRINA Identity Authentication Application
-- Your Presentation Template ID.
+- The ID of your presentationt template
 
 Once this information is received, the CATRINA Identity Account Manager will complete the necessary configuration on their side. Please wait for confirmation from your CATRINA Identity Account Manager before proceeding with the integrator-side setup.
+
+### 2.5. Integrator-Side Setup
+
+To continue with the integration, ensure you have the following configuration information:
+
+- The `client_id` of your CATRINA Identity Authentication Application
+- The `client_secret` of your CATRINA Identity Authentication Application
+- The ID of your presentationt template
+- CATRINA API  login URL
+- CATRINA Identity API host
+
+The first three tokens are linked to the entities you created in the Portal.
+If you haven’t received the CATRINA API login URL and Identity API host, please request them from your CATRINA Identity Account Manager.
+
 
 ## 3. Integration and Authentication
 
