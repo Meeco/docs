@@ -124,7 +124,7 @@ Identity Verification with CATRINA consists of the following steps:
 
 1. The user initiates an identity verification session by clicking a button or link on your website or mobile application.
 2. Your backend authenticates with CATRINA Identity as the Identity Authentication Application and retrieves an access token.
-3. Your backend calls the CATRINA Identity API to create an identity verification session. One of the input parameters in this call is a return URL—where the user should be redirected after the verification is complete. The response includes a session ID and a redirect URL.
+3. Your backend calls the CATRINA Identity API to create an identity verification session. One of the input parameters in this call is a return URL — where the user should be redirected after the verification is complete. The response includes a session ID and a redirect URL.
 4. The user’s browser is redirected to the CATRINA-hosted experience using the redirect URL.
 5. The user completes the verification process by interacting with CATRINA and one of its supported identity providers.
 6. Upon completion, the user’s browser is redirected back to your website via the return URL specified in step 3.
@@ -136,9 +136,9 @@ The steps above are illustrated in the following sequence diagram:
 
 To implement this solution, your backend will need to perform three server-to-server (backend-to-backend) calls:
 
-1. Authentication – an HTTP POST request  following the OAuth 2.0 client credentials grant flow
-2. Session creation – a call to initiate an identity verification session
-3. Session status and data retrieval – a call to check the session status and access the verified identity data
+1. Authentication — an HTTP POST request  following the OAuth 2.0 client credentials grant flow
+2. Creating a Session — a call to initiate an identity verification session
+3. Retrieving a Session — a call to check the session status and access the verified identity data
 
 The following sections provide a detailed look at each call, using the curl command-line utility to demonstrate the requests.
 
@@ -148,24 +148,30 @@ To interact with your CATRINA Identity integration, you'll need the `client_id` 
 
 ![Application Screen](INV-06-application.png)
 
-You will also need the API login URL from the asset registry. The authentication call will look like this:
+You will also need the CATRINA API login URL (see [2.5. Integrator-Side Setup](#25-integrator-side-setup)). 
+
+The authentication call will look as follows:
 
 ```bash
 curl -X POST \
-  "https://CATRINA_API_LOGIN/oauth2/token" \
+  "https://CATRINA_API_LOGIN_URL" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials" \
   -d "client_id=YOUR_CLIENT_ID" \
   -d "client_secret=YOUR_CLIENT_SECRET"
 ```
 
-This returns your `ACCESS_TOKEN`:
+This returns your access token:
 
 ```json
-{ "access_token": "ACCESS_TOKEN", "expires_in": 600, "token_type": "Bearer" }
+{ 
+  "access_token": "ACCESS_TOKEN", 
+  "expires_in": 600, 
+  "token_type": "Bearer" 
+}
 ```
 
-> **Note:** Your application is required to use this ACCESS_TOKEN as a Bearer token in the Authorization header for all API calls to your CATRINA Identity deployment.
+Your backend is required to use this  access token as a Bearer token in the Authorization header for all API calls to your CATRINA Identity deployment.
 
 ### 3.3. Creating a Session
 
