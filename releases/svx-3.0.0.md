@@ -213,9 +213,8 @@ Portal has been updated to support DCQL query creation and processing.
 - Fixed the portal login page title to reflect the correct title. It is also configurable in IDP with the config setting `branding` -> `app_title`.
 
 ## SVX API
-
 ### OpenID4VP v1.0 Support
-- Added new parameters to `POST /presentation_definitions` to add support for **DCQL Query**  
+- Added new parameters to `POST /presentation_definitions` to add support for DCQL Query  
   - `type` - `'pex' | 'dcql'`
 - Added new properties to `POST /presentation_request` response  
   - `parameters.dcql_query`  
@@ -224,30 +223,27 @@ Portal has been updated to support DCQL query creation and processing.
 - Added `type` query parameter to `GET /presentation_definitions` endpoint
 
 ### Self-Signup
-
-#### New Endpoints
-- `GET /signup` - Display public signup registration form
-- `POST /signup` - Submit signup registration with reCAPTCHA validation
-- `GET /signup/success` - Show signup confirmation page
-- `GET /signup/resend-verification` - Display resend verification email form
-- `POST /signup/resend-verification` - Resend verification email with reCAPTCHA validation
-- `GET /signup/resend-verification/success` - Show resend verification confirmation page
-
-#### Features
-- Email verification workflow with token-based validation
-- reCAPTCHA protection on all form submissions
-- Feature toggle support via `signup.enabled` config variable
-- Integration with existing notification system for verification emails
-- Automatic user and tenant creation upon successful email verification
-- Company name uniqueness validation to prevent duplicate tenant names
-
-#### Configuration Properties
-- `enabled` - Whether user signup is enabled
-- `verification_token_expiry_seconds` - Signup verification token expiry time in seconds
-- `resend_verification_cooldown_seconds` - Signup cooldown period for resending verification emails
-- `confirmation_email_recipient` - Email address to receive signup confirmations
-- Added an endpoint `POST /tenant/with_admin/{user_id}` that allows creating a new tenant where the first admin is not the current user but the user specified by the `user_id` parameter.
-- Enhanced invitation creation with email normalization (case-insensitive).
+- New Endpoints
+  - `GET /signup` - Display public signup registration form
+  - `POST /signup` - Submit signup registration with reCAPTCHA validation
+  - `GET /signup/success` - Show signup confirmation page
+  - `GET /signup/resend-verification` - Display resend verification email form
+  - `POST /signup/resend-verification` - Resend verification email with reCAPTCHA validation
+  - `GET /signup/resend-verification/success` - Show resend verification confirmation page
+- Features
+  - Email verification workflow with token-based validation
+  - reCAPTCHA protection on all form submissions
+  - Feature toggle support via `signup.enabled` config variable
+  - Integration with existing notification system for verification emails
+  - Automatic user and tenant creation upon successful email verification
+  - Company name uniqueness validation to prevent duplicate tenant names
+- Configuration Properties
+  - `enabled` - Whether user signup is enabled
+  - `verification_token_expiry_seconds` - Signup verification token expiry time in seconds
+  - `resend_verification_cooldown_seconds` - Signup cooldown period for resending verification emails
+  - `confirmation_email_recipient` - Email address to receive signup confirmations
+  - Added an endpoint `POST /tenant/with_admin/{user_id}` that allows creating a new tenant where the first admin is not the current user but the user specified by the `user_id` parameter.
+  - Enhanced invitation creation with email normalization (case-insensitive).
 
 ### New Functionalities
 - Added a public endpoint `GET /orgs/{org_id}/logo` that redirects a client to the logo of the organisation.
@@ -257,10 +253,10 @@ Portal has been updated to support DCQL query creation and processing.
 - Updated the credential type format identifier from `vc+sd-jwt` to `dc+sd-jwt` for SD-JWT credential types.
   - The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation. Verification continues to support both `sd-jwt-vc` and `dc+sd-jwt` format identifiers to ensure backward compatibility.
   - `POST /openid/presentations/requests` payload parameter `scope` no longer defaults to `openid`. If nothing provided, it will be `null`.
-- Updated password minimum length requirement to **12 characters**.
+- Updated password minimum length requirement to 12 characters.
 
 ### Removed
-- Removed support for **OpenID4VP draft-18**  
+- Removed support for OpenID4VP draft-18:  
   - `openid4vp-draft18` presentation requests created in the past are still returned by the API, but no new ones can be created.  
   - Use `protocol_version = openid4vp-v1` instead.
 - Removed `client_id_scheme` payload parameter from `POST /openid/presentations/requests`.
@@ -270,21 +266,21 @@ Portal has been updated to support DCQL query creation and processing.
 - Fixed storing `ItemDeleted` events correctly.
 
 ### Security Updates
-- Upgraded **Node** to `22.14 LTS`
-- Upgraded **Ruby** to `3.4.5`
-- Upgraded **Erlang** to `27.3.4.2`
-- Updated **Elixir** to `1.18.4`
+- Upgraded Node to `22.14 LTS`
+- Upgraded Ruby to `3.4.5`
+- Upgraded Erlang to `27.3.4.2`
+- Updated Elixir to `1.18.4`
 
 ## Organisation Wallet
 ### SVX Verify
-- Added SVX Verify with the following pages
-  - `/identity/verification/:id` SessionStep = **Index**
+- Added SVX Verify with the following pages:
+  - `/identity/verification/:id` SessionStep = Index    
     Verifier landing page
-  - `/identity/verification/:id` SessionStep = **Share**  
+  - `/identity/verification/:id` SessionStep = Share  
     Displays the QR code for wallet based flows or a *Sharing Credentials...* screen for account based flows
-  - `/identity/verification/:id` SessionStep = **Complete**  
+  - `/identity/verification/:id` SessionStep = Complete  
     Displays the results of the verification process, success
-  - `/identity/verification/:id` SessionStep = **Error**  
+  - `/identity/verification/:id` SessionStep = Error  
     Displays the results of any errors that occur, with the following information: `error_code`, `error_description` and `error_tips`.
 
 - Endpoints
@@ -360,7 +356,7 @@ Portal has been updated to support DCQL query creation and processing.
 
 ### New Functionalities
 - Added language selection that can be controlled via `?ui_locales=en` query parameter and `ui_locales` cookie
-- Added English, Japanese, Chinese (HK) and Korean translations
+  - Added English, Japanese, Chinese (HK) and Korean translations
 - Added new parameter `verifierRedirectUri` to `POST /presentations/requests`
 - Added `redirect_uri` in return body to `POST /openid/presentations/requests/:requestId/submissions` if presentation request was created with `verifierRedirectUri`
 - Added new option configuration variable `presentation.request.default_expected_origins`
@@ -426,7 +422,7 @@ Portal has been updated to support DCQL query creation and processing.
 - Fixed security declaration of public endpoints in `api-spec.yaml`
 
 ### Security Updates
-- Upgraded `oidc-provider` to version **8.8.1**
+- Upgraded `oidc-provider` to version `8.8.1`
 
 ## Holder Wallet
 ### Bridging Entity
@@ -456,9 +452,8 @@ Portal has been updated to support DCQL query creation and processing.
 ### Enhancements
 - This upgrade includes the latest SD-JWT-VC draft-08 related changes
   - Focused on mandatory SD-JWT VC draft-08 JOSE Header `typ` changes (`dc+sd-jwt`), deferring optional type metadata (type as URL) implementation to a future epic
-- Legacy `vc+sd-jwt` format is now marked as deprecated
-  - All new issuance and presentation requests should use the new `dc+sd-jwt` format
-  - Existing `vc+sd-jwt` credentials will continue to work in storage and for verification and presentation
+- Legacy `vc+sd-jwt` format is now marked as deprecated. All new issuance and presentation requests should use the new `dc+sd-jwt` format
+- Existing `vc+sd-jwt` credentials will continue to work in storage and for verification and presentation
 - Changed `GET /wallets/{:id}/receive/{:state}` response attributes:
   - `proof` has been replaced with `proofs` and `proofs.jwt` is always an array
   - `mso_mdoc` issuance - expects a base64url encoded `IssuerSigned` as per OpenID4VCI v1.0 spec (changed from previous implementation expecting a `DeviceResponse`)
