@@ -76,7 +76,9 @@ Previously, new users had to contact Meeco directly to access the SVX Sandbox en
 
 This feature can be enabled/disabled on a per installation basis.
 
-<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SelfSignup.png" alt="Self Signup to SVX link image" width="50%">
+<p align="center">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SelfSignup.png" alt="Self Signup to SVX link image" width="50%">
+</p>
 
 ## Issuance via Resource Hook
 The Resource Hook is a new feature in the SVX Organisation Wallet that enables credential issuance using data from an external resource server.
