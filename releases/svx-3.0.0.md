@@ -94,7 +94,7 @@ This allows organisations to integrate the Organisation Wallet seamlessly into t
 
 The Resource Hook functionality can be configured directly in the Organisation Wallet.
 
-For more details on configuration options, refer to [Appendix B](## Appendix B - Resource Hook).
+For more details on configuration options, refer to [Appendix B](#appendix-b---resource-hook).
 
 # Standards Updates
 ## OpenID4VCI and OpenID4VP v1.0 Support
@@ -107,7 +107,7 @@ DCQL is defined in section 6 of the [OpenID for Verifiable Presentations v1.0](h
 
 > The Digital Credentials Query Language (DCQL, pronounced [ˈdakl̩]) is a JSON-encoded query language that allows the Verifier to request Presentations that match the query. 
 
-DCQL simplifies the complexity of Presentation Exchange (PEX) by focusing on real-world use cases, offering a simpler design, practical features, and a specification tailored to the OpenID4VP protocol. For more information about DCQL, refer to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). Refer to [Appendix A](## Appendix A - DCQL Query Examples) for examples of DCQL Query.
+DCQL simplifies the complexity of Presentation Exchange (PEX) by focusing on real-world use cases, offering a simpler design, practical features, and a specification tailored to the OpenID4VP protocol. For more information about DCQL, refer to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). Refer to [Appendix A](#appendix-a---dcql-query-examples) for examples of DCQL Query.
 
 Note that DIF Presentation Exchange (PEX) implementation remains unchanged and can still be used.
 
@@ -250,15 +250,14 @@ Portal has been updated to support DCQL query creation and processing.
 
 ### Enhancements
 - Latest **SD-JWT-VC draft-08** related changes.
-- Updated the credential type format identifier from `vc+sd-jwt` to `dc+sd-jwt` for SD-JWT credential types.
+  - Updated the credential type format identifier from `vc+sd-jwt` to `dc+sd-jwt` for SD-JWT credential types.
   - The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation. Verification continues to support both `sd-jwt-vc` and `dc+sd-jwt` format identifiers to ensure backward compatibility.
-  - `POST /openid/presentations/requests` payload parameter `scope` no longer defaults to `openid`. If nothing provided, it will be `null`.
+- `POST /openid/presentations/requests` payload parameter `scope` no longer defaults to `openid`. If nothing provided, it will be `null`.
 - Updated password minimum length requirement to 12 characters.
 
 ### Removed
 - Removed support for OpenID4VP draft-18:  
-  - `openid4vp-draft18` presentation requests created in the past are still returned by the API, but no new ones can be created.  
-  - Use `protocol_version = openid4vp-v1` instead.
+- `openid4vp-draft18` presentation requests created in the past are still returned by the API, but there is no way to create new ones. Use `protocol_version = openid4vp-v1`.
 - Removed `client_id_scheme` payload parameter from `POST /openid/presentations/requests`.
 
 ### Bug Fixes
@@ -283,7 +282,7 @@ Portal has been updated to support DCQL query creation and processing.
   - `/identity/verification/:id` SessionStep = Error  
     Displays the results of any errors that occur, with the following information: `error_code`, `error_description` and `error_tips`.
 
-- Endpoints
+- Endpoints:
   - Added verify layout to apply to all `/identity/verification/` routes
   - `GET /identity/verification/:id/status` checks and returns status of the identity verification flow session
   - `GET /identity/verification/:id/request` returns identity verification presentation request token
@@ -294,7 +293,7 @@ Portal has been updated to support DCQL query creation and processing.
   - `POST /identity/language` for language switching, accepts `ko`, `jp`, `en` and `zh-hk`
   - `GET /identity/information` endpoint to render `client_uri` for Select ID integration
 
-- Configuration Changes
+- Configuration changes:
   - Added `svx_verify.enabled` to config to enable/disable all `/identity/` routes
   - Added `svx_verify.brand_name` to configure the brand name throughout the platform
   - Added `svx_verify.operating_company_name` to configure the name of the company operating the platform throughout SVX Verify
@@ -309,7 +308,7 @@ Portal has been updated to support DCQL query creation and processing.
   - Added `svx_verify.verifier_information` containing various information about the organisation
 
 ### OpenID4VCI v1.0 Support
-- Configuration Changes
+- Configuration changes:
   - Added new configuration value for `protocols.issuance` - `openid4vci-v1`
   - Added new configuration parameter `credential_issuer.max_batch_credential_issuance_size`
   - Added new configuration `credential_issuer.oidc_clients` to register clients for the Issuer IDP
@@ -333,20 +332,20 @@ Portal has been updated to support DCQL query creation and processing.
 - Presentation request `client_metadata.authorization_encrypted_response_enc` renamed to `encrypted_response_enc_values_supported` (array)
 - Changed presentation request `scope` attribute value. It no longer defaults to `openid`. It will be included into the token only if explicitly provided.
 - Changed response in `POST /openid/presentations/requests/:requestId/submissions` from `submissionId` to `submission_id`
-- Configuration Changes
+- Configuration changes:
   - Added optional `presentation.request.include_x5c` configuration attribute
   - Added required `presentation.request.default_response_mode` configuration attribute
 
 ### Bridging Entity
 - Added new configuration `credential_claims_map`, an array of claims mapping from external sources
 - Added claim display options `essential_claims`, `optional_claims`
-- Added new optional configuration groups under integrations
+- Added new optional configuration groups under `integrations`
 - Added generic `POST /interaction/:uid/select_authorization_server` endpoint to handle form submissions from connections
-- Added generic `select_authorization_server` to handle all bridge connection based interaction and its respective render function
+- Added generic `select_authorization_server` to handle all bridge connection based interaction and its respective `render` function
 
 ### Resource Hook
 - Feature to fetch claim from a resource server
-- Added new configuration group `resource_hook`
+- Added new configuration group `resource_hook`:
   - `resource_hook.endpoint`: URL of resource server
   - `resource_hook.send_schema_json`: Boolean to include schema JSON of credential in resource hook call (for debugging)
 
@@ -355,7 +354,7 @@ Portal has been updated to support DCQL query creation and processing.
 - The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation
 
 ### New Functionalities
-- Added language selection that can be controlled via `?ui_locales=en` query parameter and `ui_locales` cookie
+- Added language selection that can be controlled via `?ui_locales=en` query parameter and `ui_locales` cookie:
   - Added English, Japanese, Chinese (HK) and Korean translations
 - Added new parameter `verifierRedirectUri` to `POST /presentations/requests`
 - Added `redirect_uri` in return body to `POST /openid/presentations/requests/:requestId/submissions` if presentation request was created with `verifierRedirectUri`
@@ -368,12 +367,12 @@ Portal has been updated to support DCQL query creation and processing.
 - Added persistent identity verification session data model
 
 ### Enhancements
-- Application configuration changes
+- Application configuration changes:
   - Moved `c_nonce_expires_in` from the root level to `credential_issuer.c_nonce_expires_in`
   - Moved `oid4vc.redis_state_manager_key_expiration_time` to `state_manager.default_expiry`
   - Removed `oid4vc` configuration key
   - Renamed `svx.organization.auth_uri` to `svx.organisation.token_uri` to match the purpose of the configuration value
-- Test UI changes
+- Test UI changes:
   - Updated string-type field rendering: rendered as textarea by default, or as date input when format is set to `"date"`
   - Added `dark:text-white` class to field labels and set a fixed white background behind the QR code
   - Updated boolean type to render as radio buttons instead of a checkbox
@@ -383,17 +382,17 @@ Portal has been updated to support DCQL query creation and processing.
   - `C` certificate attribute must be provided
   - `CN` certificate attribute must be provided and match `app.base_url` host name
   - `subjectAltName` certificate attribute must be provided and match `DNS:app.<base_url host name>` format
-- Additional checks for duplicate `vct` or `doctype` values for credential types within the organisation
+- Additional checks for duplicate `vct` or `doctype` values for credential types within the organisation:
   - If a credential type has a duplicated `vct` or `doctype`, it will be removed from the `supportedCredentialTypes`. Errors will be logged at startup when duplicates are detected
   - `GET system/svx/reload_data` returns a 400 error if the organisation has duplicated credential types
-- Endpoint changes
+- Endpoint changes:
   - Response of `POST /presentations/request` keys transformed to snake case to match the rest of the API
   - Response of `POST /presentations/requests/:id/stats` keys transformed to snake case
   - Changed `/interaction/:uid` endpoint to render an error page instead of raw JSON
-  - Changed `getCredentialDisplayMetadata` to use the credential type name instead of the schema name
-  - Added support for `contentEncoding` and `contentMediaType` attributes in JSON schema when claims are automatically generated
-    - Supported encodings: `base64`
-    - Supported media types: `image/png`, `image/jpeg`, `image/svg+xml`
+- Changed `getCredentialDisplayMetadata` to use the credential type name instead of the schema name
+- Added support for `contentEncoding` and `contentMediaType` attributes in JSON schema when claims are automatically generated:
+  - Supported encodings: `base64`
+  - Supported media types: `image/png`, `image/jpeg`, `image/svg+xml`
 
 ### Removed
 - Removed support for OpenID4VCI-draft13
@@ -413,10 +412,10 @@ Portal has been updated to support DCQL query creation and processing.
 
 ### Bug Fixes
 - Added validation for `POST /openid/presentations/requests/:requestId/submissions` to check whether `vp_token` is an empty array represented as `'[]'`
-- Fixed application crash when `credential_types` selection was blank on `/test/issue` form  
+- Fixed application crash when `credential_types` selection was blank on `/test/issue` form:  
   - Added backend validation for missing `credential_types` and claims  
   - Enforced required selection in the frontend
-- Fixed `x5chain` in `COSE_Sign1` for issued `mso_mdoc`  
+- Fixed `x5chain` in `COSE_Sign1` for issued `mso_mdoc`:  
   - Single certificate is included as a byte array string instead of an array of single byte array string
 - Fixed error handling on bad JSON payload: now returns HTTP 400 instead of HTTP 500
 - Fixed security declaration of public endpoints in `api-spec.yaml`
@@ -439,7 +438,7 @@ Portal has been updated to support DCQL query creation and processing.
 - Supports PEX and DCQL Presentation Request
 - Added `/authorize/receive/callback` endpoint for bridge_wallet initiated flows to return to
 - Added the credential format type `dc+sd-jwt` for SD-JWT credential types
-- Added OpenID4VP DCQL Support:
+- Added OpenID4VP DCQL support:
   - Register Presentation Request with `dcql_query`
   - Submit Response from a presentation request with `dcql_query`
 - Added OpenID4VP v1.0 support:
@@ -447,10 +446,10 @@ Portal has been updated to support DCQL query creation and processing.
   - Added validation for `x509_san_dns` Verifier Client Identifier Scheme to ensure the identifier is a URL and matches the `dNSName` SAN entry of the x.509 leaf certificate
 - Added OpenID4VCI draft16 support:
   - New default and only issuance `protocol_version` value is `openid4vci-v1`
-  - Added optional `key.client_assertion_jwk` to enable `private_key_jwt` client auth where needed
+- Added optional `key.client_assertion_jwk` to enable `private_key_jwt` client auth where needed
 
 ### Enhancements
-- This upgrade includes the latest SD-JWT-VC draft-08 related changes
+- This upgrade includes the latest SD-JWT-VC draft-08 related changes:
   - Focused on mandatory SD-JWT VC draft-08 JOSE Header `typ` changes (`dc+sd-jwt`), deferring optional type metadata (type as URL) implementation to a future epic
 - Legacy `vc+sd-jwt` format is now marked as deprecated. All new issuance and presentation requests should use the new `dc+sd-jwt` format
 - Existing `vc+sd-jwt` credentials will continue to work in storage and for verification and presentation
