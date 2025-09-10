@@ -4,7 +4,7 @@
 
 **Summary:** 
 
-SVX 3.0.0 is a major release that introduces SVX Verify, expands standards support, and delivers operational improvements across the platform. With this release, we continue our commitment to providing a future-proof foundation for high-assurance digital identity and credential exchange.
+SVX 3.0.0 is a major release that introduces **SVX Verify**, expands standards support, and delivers operational improvements across the platform. With this release, we continue our commitment to providing a future-proof foundation for high-assurance digital identity and credential exchange.
 
 - **SVX Verify**: Launch of a new hosted service for low-friction, high-assurance identity verification, supporting both wallet-based and account-based models.
 
@@ -18,7 +18,7 @@ SVX 3.0.0 is a major release that introduces SVX Verify, expands standards suppo
 
 - **DPoP Support**: Optional Demonstrating Proof of Possession support added to Organisation and Holder Wallets for stronger token security.
 
-- **Updated IETF SD-JWT VC (draft-08)**: All components updated to support the latest draft, including migration from vc+sd-jwt to dc+sd-jwt.
+- **Updated IETF SD-JWT VC (draft-08)**: All components updated to support the latest draft, including migration from `vc+sd-jwt` to `dc+sd-jwt`.
 
 - **Unified Configuration Framework**: All components now use JSON-based configuration backed by JSON Schema, ensuring consistency, validation, and easier operations.
 
@@ -81,21 +81,20 @@ This feature can be enabled/disabled on a per installation basis.
 </p>
 
 ## Issuance via Resource Hook
-The Resource Hook is a new feature in the SVX Organisation Wallet that enables credential issuance using data from an external resource server.
+The **Resource Hook** is a new feature in the SVX Organisation Wallet that enables credential issuance using data from an external resource server.
 
 When a credential issuance request is received, the Organisation Wallet automatically calls the configured resource server to fetch the required data. The returned values are then included as claims in the issued credential.
 
 This approach separates responsibilities:
 
-Organisation Wallet manages the technical aspects of issuance flows and ensures compliance with open standards (e.g. OpenID4VCI).
-
-External resource server handles the business logic and provides the data that is included as claims in the credential.
+- **Organisation Wallet** manages the technical aspects of issuance flows and ensures compliance with open standards (e.g. OpenID4VCI).
+- **External resource server** handles the business logic and provides the data that is included as claims in the credential.
 
 This allows organisations to integrate the Organisation Wallet seamlessly into their existing systems without duplicating or moving business logic into the wallet itself.
 
 The Resource Hook functionality can be configured directly in the Organisation Wallet.
 
-For more details on configuration options, refer to Appendix B.
+For more details on configuration options, refer to [Appendix B](## Appendix B - Resource Hook).
 
 # Standards Updates
 ## OpenID4VCI and OpenID4VP v1.0 Support
@@ -108,7 +107,7 @@ DCQL is defined in section 6 of the [OpenID for Verifiable Presentations v1.0](h
 
 > The Digital Credentials Query Language (DCQL, pronounced [ˈdakl̩]) is a JSON-encoded query language that allows the Verifier to request Presentations that match the query. 
 
-DCQL simplifies the complexity of Presentation Exchange (PEX) by focusing on real-world use cases, offering a simpler design, practical features, and a specification tailored to the OpenID4VP protocol. For more information about DCQL, refer to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). Refer to [Appendix A](#Appendix A - DCQL Query Examples) for examples of DCQL Query.
+DCQL simplifies the complexity of Presentation Exchange (PEX) by focusing on real-world use cases, offering a simpler design, practical features, and a specification tailored to the OpenID4VP protocol. For more information about DCQL, refer to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). Refer to [Appendix A](## Appendix A - DCQL Query Examples) for examples of DCQL Query.
 
 Note that DIF Presentation Exchange (PEX) implementation remains unchanged and can still be used.
 
@@ -247,19 +246,17 @@ Portal has been updated to support DCQL query creation and processing.
 - `verification_token_expiry_seconds` - Signup verification token expiry time in seconds
 - `resend_verification_cooldown_seconds` - Signup cooldown period for resending verification emails
 - `confirmation_email_recipient` - Email address to receive signup confirmations
-
-### New Functionalities
 - Added an endpoint `POST /tenant/with_admin/{user_id}` that allows creating a new tenant where the first admin is not the current user but the user specified by the `user_id` parameter.
 - Enhanced invitation creation with email normalization (case-insensitive).
+
+### New Functionalities
 - Added a public endpoint `GET /orgs/{org_id}/logo` that redirects a client to the logo of the organisation.
 
 ### Enhancements
 - Latest **SD-JWT-VC draft-08** related changes.
 - Updated the credential type format identifier from `vc+sd-jwt` to `dc+sd-jwt` for SD-JWT credential types.
-- The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation.  
-  - Verification continues to support both `sd-jwt-vc` and `dc+sd-jwt` format identifiers to ensure backward compatibility.
-- `POST /openid/presentations/requests` payload parameter `scope` no longer defaults to `openid`.  
-  - If nothing provided, it will be `null`.
+  - The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation. Verification continues to support both `sd-jwt-vc` and `dc+sd-jwt` format identifiers to ensure backward compatibility.
+  - `POST /openid/presentations/requests` payload parameter `scope` no longer defaults to `openid`. If nothing provided, it will be `null`.
 - Updated password minimum length requirement to **12 characters**.
 
 ### Removed
@@ -279,229 +276,217 @@ Portal has been updated to support DCQL query creation and processing.
 - Updated **Elixir** to `1.18.4`
 
 ## Organisation Wallet
-
 ### SVX Verify
+- Added SVX Verify with the following pages
+  - `/identity/verification/:id` SessionStep = **Index**
+    Verifier landing page
+  - `/identity/verification/:id` SessionStep = **Share**  
+    Displays the QR code for wallet based flows or a *Sharing Credentials...* screen for account based flows
+  - `/identity/verification/:id` SessionStep = **Complete**  
+    Displays the results of the verification process, success
+  - `/identity/verification/:id` SessionStep = **Error**  
+    Displays the results of any errors that occur, with the following information: `error_code`, `error_description` and `error_tips`.
 
-#### Pages
-- `/identity/verification/:id` `SessionStep = Index`  
-  Verifier landing page.
-- `/identity/verification/:id` `SessionStep = Share`  
-  Displays QR code for wallet-based flows or a "Sharing Credentials..." screen for account-based flows.
-- `/identity/verification/:id` `SessionStep = Complete`  
-  Displays the results of the verification process (success).
-- `/identity/verification/:id` `SessionStep = Error`  
-  Displays error results with `error_code`, `error_description`, and `error_tips`.
+- Endpoints
+  - Added verify layout to apply to all `/identity/verification/` routes
+  - `GET /identity/verification/:id/status` checks and returns status of the identity verification flow session
+  - `GET /identity/verification/:id/request` returns identity verification presentation request token
+  - `POST /identity/verification/:id/idp/:idp` updates session with selected IDP
+  - `POST /identity/verification/:id/abort` aborts the session, returning to `returnURL`
+  - `POST /identity/sessions` for session management, accepts `return_url`, `success_url` and `presentation_template_id`
+  - `GET /identity/sessions/:id` for integrators to fetch the session state and `verified_claims`
+  - `POST /identity/language` for language switching, accepts `ko`, `jp`, `en` and `zh-hk`
+  - `GET /identity/information` endpoint to render `client_uri` for Select ID integration
 
-#### Endpoints
-- Added verify layout for all `/identity/verification/` routes.
-- `GET /identity/verification/:id/status` – Check and return status of verification flow session.
-- `GET /identity/verification/:id/request` – Return identity verification presentation request token.
-- `POST /identity/verification/:id/idp/:idp` – Update session with selected IdP.
-- `POST /identity/verification/:id/abort` – Abort session, returning to `returnURL`.
-- `POST /identity/sessions` – Session management; accepts `return_url`, `success_url`, and `presentation_template_id`.
-- `GET /identity/sessions/:id` – Fetch session state and `verified_claims`.
-- `POST /identity/language` – Language switching; accepts `ko`, `jp`, `en`, `zh-hk`.
-- `GET /identity/information` – Render `client_uri` for Select ID integration.
-
-#### Configuration Changes
-- `svx_verify.enabled` – Enable/disable `/identity/` routes.
-- `svx_verify.brand_name` – Configure brand name.
-- `svx_verify.operating_company_name` – Configure operating company name.
-- `svx_verify.presentation_template_ids` – Configure available Presentation Templates.
-- `svx_verify.response_mode` – Control IDP verification response mode.
-- `svx_verify.session_expiry` – Session expiry time.
-- `svx_verify.active_idps` – Available IDPs.
-- `svx_verify.bridge_authorize_url` – Bridge authorize entrypoint.
-- `svx_verify.bridge_client_id` – Bridge authorization code flow.
-- `svx_verify.presentation_request_multiple_loads_enabled` – Allow multiple request loads.
-- `svx_verify.manual_terms_acceptance_enabled` – Require "Accept" checkbox.
-- `svx_verify.verifier_information` – Configure organisation verifier information.
+- Configuration Changes
+  - Added `svx_verify.enabled` to config to enable/disable all `/identity/` routes
+  - Added `svx_verify.brand_name` to configure the brand name throughout the platform
+  - Added `svx_verify.operating_company_name` to configure the name of the company operating the platform throughout SVX Verify
+  - Added `svx_verify.presentation_template_ids` to configure available Presentation Template for identity verification flow
+  - Added `svx_verify.response_mode` to control the response mode for IDP verification
+  - Added `svx_verify.session_expiry` for identity verification session expiry time
+  - Added `svx_verify.active_idps` to control the available IDPs
+  - Added `svx_verify.bridge_authorize_url` for bridge authorize entrypoint
+  - Added `svx_verify.bridge_client_id` for bridge authorization code flow
+  - Added `svx_verify.presentation_request_multiple_loads_enabled` to control if the request can be loaded multiple times or only once
+  - Added `svx_verify.manual_terms_acceptance_enabled` to control if the deployment asks the user to check the "Accept" box
+  - Added `svx_verify.verifier_information` containing various information about the organisation
 
 ### OpenID4VCI v1.0 Support
-#### Configuration Changes
-- Added `protocols.issuance = openid4vci-v1`.
-- Added `credential_issuer.max_batch_credential_issuance_size`.
-- Added `credential_issuer.oidc_clients` to register Issuer IDP clients.
-- Added optional `credential_issuer.include_x5c`.
-- Renamed `POST /credentials` → `POST /credential` (spec update).
-- Added `background_image` to credential metadata.
-- Updated credential metadata in `/.well-known/openid-credential-issuer` to match spec.  
-  - `mso_mdoc` credential returned as base64url-encoded `issuerSigned` object.
+- Configuration Changes
+  - Added new configuration value for `protocols.issuance` - `openid4vci-v1`
+  - Added new configuration parameter `credential_issuer.max_batch_credential_issuance_size`
+  - Added new configuration `credential_issuer.oidc_clients` to register clients for the Issuer IDP
+  - Added optional `credential_issuer.include_x5c` configuration attribute
+- Renamed `POST /credentials` to `POST /credential` as per OpenID4VCI spec
+- Added `background_image` to display credential metadata
+- Changed credential metadata returned from `/.well-known/openid-credential-issuer` to match OpenID4VCI v1.0
+- `mso_mdoc` credential are returned as base64url encoded string of `issuerSigned` object
 
 ### DPoP Support
-- `POST /token` and `POST /credential` endpoints.  
-- Added `credential_issuer.dpop_enabled` configuration.
+- `POST /token` and `POST /credential` endpoints
+- `credential_issuer.dpop_enabled` configuration added
 
 ### OpenID4VP v1.0 Support
-- Added `openid4vp-v1` to `protocols.presentation`.
-- New `response_mode` options: `dc_api`, `dc_api.jwt`.
-- Supported client_id prefixes: `redirect_uri`, `decentralized_identifier`, `x509_san_dns`.
-- Added `expected_origins` parameter to `POST /presentations/requests`.
-- `presentation request` now contains `client_metadata.vp_formats_supported`.
-- `authorization_encrypted_response_alg` → replaced by `alg` from JWKS.
-- `authorization_encrypted_response_enc` → renamed to `encrypted_response_enc_values_supported` (array).
-- `scope` no longer defaults to `openid` — must be explicit.
-- `submissionId` → renamed to `submission_id` in `POST /openid/presentations/requests/:requestId/submissions`.
-
-#### Configuration Changes
-- Added optional `presentation.request.include_x5c`.
-- Added required `presentation.request.default_response_mode`.
+- New `openid4vp-v1` value to `protocols.presentation` values list
+- New `response_mode` options: `dc_api` and `dc_api.jwt`
+- `client_id` prefixes: `redirect_uri`, `decentralized_identifier` and `x509_san_dns`
+- Support for `expected_origins` parameter in `POST /presentations/requests` payload
+- Presentation request contains `client_metadata` with `vp_formats_supported` listed
+- Presentation request `client_metadata.authorization_encrypted_response_alg` replaced by `alg` value from JWKS
+- Presentation request `client_metadata.authorization_encrypted_response_enc` renamed to `encrypted_response_enc_values_supported` (array)
+- Changed presentation request `scope` attribute value. It no longer defaults to `openid`. It will be included into the token only if explicitly provided.
+- Changed response in `POST /openid/presentations/requests/:requestId/submissions` from `submissionId` to `submission_id`
+- Configuration Changes
+  - Added optional `presentation.request.include_x5c` configuration attribute
+  - Added required `presentation.request.default_response_mode` configuration attribute
 
 ### Bridging Entity
-- New config: `credential_claims_map` (map external source claims).
-- Added claim display options: `essential_claims`, `optional_claims`.
-- Added optional config groups under `integrations`.
-- Added `POST /interaction/:uid/select_authorization_server` – Generic bridge form handler.
-- Added `select_authorization_server` render function for bridge connections.
+- Added new configuration `credential_claims_map`, an array of claims mapping from external sources
+- Added claim display options `essential_claims`, `optional_claims`
+- Added new optional configuration groups under integrations
+- Added generic `POST /interaction/:uid/select_authorization_server` endpoint to handle form submissions from connections
+- Added generic `select_authorization_server` to handle all bridge connection based interaction and its respective render function
 
 ### Resource Hook
-- Feature: fetch claims from resource server.
-- New config group `resource_hook`:  
-  - `endpoint` – Resource server URL.  
-  - `send_schema_json` – Include schema JSON (debugging).
+- Feature to fetch claim from a resource server
+- Added new configuration group `resource_hook`
+  - `resource_hook.endpoint`: URL of resource server
+  - `resource_hook.send_schema_json`: Boolean to include schema JSON of credential in resource hook call (for debugging)
 
 ### IETF SD-JWT VC (draft-08) Support
-- Updated credential type format identifier: `vc+sd-jwt` → `dc+sd-jwt`.
-- Credential header `typ` now `dc+sd-jwt`.
+- Updated the credential type format identifier from `vc+sd-jwt` to `dc+sd-jwt` for SD-JWT credential types
+- The credential header `typ` for SD-JWT is now set to `dc+sd-jwt` for new credential generation
 
 ### New Functionalities
-- Added `?ui_locales=en` query param + cookie for language selection.
-- Added translations: English, Japanese, Chinese (HK), Korean.
-- Added `verifierRedirectUri` param to `POST /presentations/requests`.
-- Added `redirect_uri` in response of `POST /openid/presentations/requests/:requestId/submissions` when `verifierRedirectUri` is set.
-- Added config `presentation.request.default_expected_origins`.
-- **DCQL Support** (OpenID4VP v1):  
-  - Create request with `dcql_query`.  
-  - Verify response with `dcql_query`.
-- Added `VerifierError` for unexpected front-end route errors.
-- Added PostgreSQL support (`postgres` config).
-- Added persistent identity verification session model.
+- Added language selection that can be controlled via `?ui_locales=en` query parameter and `ui_locales` cookie
+- Added English, Japanese, Chinese (HK) and Korean translations
+- Added new parameter `verifierRedirectUri` to `POST /presentations/requests`
+- Added `redirect_uri` in return body to `POST /openid/presentations/requests/:requestId/submissions` if presentation request was created with `verifierRedirectUri`
+- Added new option configuration variable `presentation.request.default_expected_origins`
+- Added DCQL support (based on OpenID4VP v1):
+  - Create presentation request with `dcql_query`
+  - Verify presentation response for presentation request with `dcql_query`
+- Added `VerifierError` to catch and render any unexpected errors for front-end related routes
+- Added PostgreSQL database support and configuration `postgres` to the codebase
+- Added persistent identity verification session data model
 
 ### Enhancements
-
-#### Application Config
-- Moved `c_nonce_expires_in` → `credential_issuer.c_nonce_expires_in`.
-- Moved `oid4vc.redis_state_manager_key_expiration_time` → `state_manager.default_expiry`.
-- Removed `oid4vc` key.
-- Renamed `svx.organization.auth_uri` → `svx.organisation.token_uri`.
-
-#### Test UI
-- String fields render as textarea (or date input if format="date").
-- Added `dark:text-white` for field labels + white background for QR code.
-- Boolean fields → rendered as radio buttons.
-- Integers accepted as-is (not coerced to strings).
-
-#### Certificate Checks
-- Require `O`, `C`, `CN` attributes.  
-- `CN` must match `app.base_url`.  
-- `subjectAltName` must match `DNS:app.<base_url>`.
-
-#### Credential Type Validation
-- Duplicate `vct` or `doctype` removed from `supportedCredentialTypes`.  
-- Errors logged at startup.  
-- `GET system/svx/reload_data` returns **400** if duplicates exist.
-
-#### Endpoint Changes
-- `POST /presentations/request` response → snake_case keys.
-- `POST /presentations/requests/:id/stats` response → snake_case keys.
-- `/interaction/:uid` now renders error page (not raw JSON).
-- `getCredentialDisplayMetadata` uses credential type name (not schema name).
-- Added support for `contentEncoding` and `contentMediaType` in JSON schema.  
-  - Encodings: `base64`.  
-  - Media types: `image/png`, `image/jpeg`, `image/svg+xml`.
+- Application configuration changes
+  - Moved `c_nonce_expires_in` from the root level to `credential_issuer.c_nonce_expires_in`
+  - Moved `oid4vc.redis_state_manager_key_expiration_time` to `state_manager.default_expiry`
+  - Removed `oid4vc` configuration key
+  - Renamed `svx.organization.auth_uri` to `svx.organisation.token_uri` to match the purpose of the configuration value
+- Test UI changes
+  - Updated string-type field rendering: rendered as textarea by default, or as date input when format is set to `"date"`
+  - Added `dark:text-white` class to field labels and set a fixed white background behind the QR code
+  - Updated boolean type to render as radio buttons instead of a checkbox
+  - Allowed integer values to be passed as-is instead of converting them to strings
+- Additional checks done if configured key contains `x5c` attribute:
+  - `O` certificate attribute must be provided
+  - `C` certificate attribute must be provided
+  - `CN` certificate attribute must be provided and match `app.base_url` host name
+  - `subjectAltName` certificate attribute must be provided and match `DNS:app.<base_url host name>` format
+- Additional checks for duplicate `vct` or `doctype` values for credential types within the organisation
+  - If a credential type has a duplicated `vct` or `doctype`, it will be removed from the `supportedCredentialTypes`. Errors will be logged at startup when duplicates are detected
+  - `GET system/svx/reload_data` returns a 400 error if the organisation has duplicated credential types
+- Endpoint changes
+  - Response of `POST /presentations/request` keys transformed to snake case to match the rest of the API
+  - Response of `POST /presentations/requests/:id/stats` keys transformed to snake case
+  - Changed `/interaction/:uid` endpoint to render an error page instead of raw JSON
+  - Changed `getCredentialDisplayMetadata` to use the credential type name instead of the schema name
+  - Added support for `contentEncoding` and `contentMediaType` attributes in JSON schema when claims are automatically generated
+    - Supported encodings: `base64`
+    - Supported media types: `image/png`, `image/jpeg`, `image/svg+xml`
 
 ### Removed
-- Dropped support for **OpenID4VCI-draft13**.
-- Removed `openid4vci-draft13` from `protocols.issuance`.
-- Removed non-standard claims: `sub`, `client_name` from requests.
-- Removed `submission_id` from `POST /openid/presentations/requests/{requestId}/submissions`.
-- Removed `supported_credential.<ID>.expiry` → replaced by `expires_at`, `expires_in`.
-- Removed support for **OpenID4VP draft-18**.
-- Removed `credential_issuer.supported_credential` properties → replaced by SVX API:  
-  - `vct`, `expires_at`, `expires_in`, `valid_at`, `valid_ion`, `disclosure_frame`.
-- Removed `sd_jwt_vc.reserved_claim_keys` → now defaults to library list.
+- Removed support for OpenID4VCI-draft13
+- Removed `openid4vci-draft13` configuration value from `protocols.issuance`
+- Removed presentation request JWT claims `sub`, `client_name` since they are not standard
+- Removed `submission_id` attribute from `POST /openid/presentations/requests/{requestId}/submissions` endpoint response
+- Removed `supported_credential.<ID>.expiry` configuration (replaced by `expires_at`, `expires_in`)
+- Removed support for OpenID4VP draft-18
+- Removed `credential_issuer.supported_credential` configuration properties replaced by SVX API:
+  - `vct`
+  - `expires_at`
+  - `expires_in`
+  - `valid_at`
+  - `valid_ion`
+  - `disclosure_frame`
+- Removed `sd_jwt_vc.reserved_claim_keys` configuration (claims list from `@meeco/sd-jwt-vc` library is used as default)
 
 ### Bug Fixes
-- Added validation for `POST /openid/presentations/requests/:requestId/submissions` – prevent empty `vp_token` (`'[]'` string).
-- Fixed crash when `credential_types` blank in `/test/issue`. Added backend validation + enforced frontend requirement.
-- Fixed `x5chain` in `COSE_Sign1` for `mso_mdoc` (single cert as byte array string).
-- Fixed bad JSON payload error handling – return **400** instead of **500**.
-- Fixed security declaration of public endpoints in `api-spec.yaml`.
+- Added validation for `POST /openid/presentations/requests/:requestId/submissions` to check whether `vp_token` is an empty array represented as `'[]'`
+- Fixed application crash when `credential_types` selection was blank on `/test/issue` form  
+  - Added backend validation for missing `credential_types` and claims  
+  - Enforced required selection in the frontend
+- Fixed `x5chain` in `COSE_Sign1` for issued `mso_mdoc`  
+  - Single certificate is included as a byte array string instead of an array of single byte array string
+- Fixed error handling on bad JSON payload: now returns HTTP 400 instead of HTTP 500
+- Fixed security declaration of public endpoints in `api-spec.yaml`
 
 ### Security Updates
-- Upgraded **oidc-provider** to `8.8.1`
+- Upgraded `oidc-provider` to version **8.8.1**
 
 ## Holder Wallet
 ### Bridging Entity
-#### Configuration
-- Added `bridge_wallet` object:
-  - `enabled` – Turns on bridge wallet setup.
-  - `external_reference` – External reference string for wallet initialisation.
-  - `wallet_key_type` – Defines the `kty` and `crv`.
-  - `issuer_wallets` – Contains information related to IDPs used for Bridge issuance flow.
-
-#### Endpoints
-- Added `/authorize` endpoint to initialise the `bridge_wallet` flow.
+- Added `bridge_wallet` object to config, includes:
+  - `enabled`: Turns on the bridge wallet setup
+  - `external_reference`: string representing the external reference for wallet initialisation
+  - `wallet_key_type`: defines the `kty` and `crv`
+  - `issuer_wallets`: contains information related to IDPs used for the Bridge issuance flow
+- Added `/authorize` endpoint to initialise the bridge_wallet flow
 
 ### New Functionalities
-- **DPoP support** – Detects `dpop_signing_alg_values_supported` from `/.well-known/openid-configuration`.
-- Added `SetupService` provider to `AppModule` for post-initialization setup.
-- Supports **PEX** and **DCQL** Presentation Requests.
-- Added `/authorize/receive/callback` endpoint for `bridge_wallet` initiated flows to return to.
-- Added credential format type `dc+sd-jwt` for SD-JWT credential types.
-- Added **OpenID4VP DCQL Support**:
-  - Register Presentation Request with `dcql_query`.
-  - Submit Response with `dcql_query`.
-- Added **OpenID4VP v1.0 Support**:
-  - `POST /wallets/:id/send` now supports `protocol_version = openid4vp-v1`.
-  - Added validation for `x509_san_dns` Verifier Client Identifier Scheme to ensure:
-    - Identifier is a URL.
-    - Matches `dNSName` SAN entry of x.509 leaf certificate.
-- Added **OpenID4VCI v1.0 Support**:
-  - New default and only issuance `protocol_version = openid4vci-v1`.
-  - Added optional `key.client_assertion_jwk` to enable `private_key_jwt` client auth.
+- DPoP support - detect `dpop_signing_alg_values_supported` from `/.well-known/openid-configuration`
+- Added `SetupService` provider to `AppModule` for post initialization setup
+- Supports PEX and DCQL Presentation Request
+- Added `/authorize/receive/callback` endpoint for bridge_wallet initiated flows to return to
+- Added the credential format type `dc+sd-jwt` for SD-JWT credential types
+- Added OpenID4VP DCQL Support:
+  - Register Presentation Request with `dcql_query`
+  - Submit Response from a presentation request with `dcql_query`
+- Added OpenID4VP v1.0 support:
+  - `POST /wallets/:id/send` protocol_version added with `openid4vp-v1`
+  - Added validation for `x509_san_dns` Verifier Client Identifier Scheme to ensure the identifier is a URL and matches the `dNSName` SAN entry of the x.509 leaf certificate
+- Added OpenID4VCI draft16 support:
+  - New default and only issuance `protocol_version` value is `openid4vci-v1`
+  - Added optional `key.client_assertion_jwk` to enable `private_key_jwt` client auth where needed
 
 ### Enhancements
-- Updated to **SD-JWT-VC draft-08** changes:
-  - Mandatory JOSE Header `typ` set to `dc+sd-jwt`.
-  - Optional metadata (`type` as URL) deferred to future.
-- Legacy `vc+sd-jwt` format is now **deprecated**.
-  - New issuance & presentation requests → use `dc+sd-jwt`.
-  - Existing `vc+sd-jwt` credentials continue to work for storage, verification, and presentation.
-- Changed `GET /wallets/{:id}/receive/{:state}`:
-  - `proof` → replaced with `proofs`.
-  - `proofs.jwt` always returned as an array.
-- `mso_mdoc` issuance now expects **base64url encoded `IssuerSigned`** (per OpenID4VCI v1.0 spec).  
-  Previously expected a `DeviceResponse`.
+- This upgrade includes the latest SD-JWT-VC draft-08 related changes
+  - Focused on mandatory SD-JWT VC draft-08 JOSE Header `typ` changes (`dc+sd-jwt`), deferring optional type metadata (type as URL) implementation to a future epic
+- Legacy `vc+sd-jwt` format is now marked as deprecated
+  - All new issuance and presentation requests should use the new `dc+sd-jwt` format
+  - Existing `vc+sd-jwt` credentials will continue to work in storage and for verification and presentation
+- Changed `GET /wallets/{:id}/receive/{:state}` response attributes:
+  - `proof` has been replaced with `proofs` and `proofs.jwt` is always an array
+  - `mso_mdoc` issuance - expects a base64url encoded `IssuerSigned` as per OpenID4VCI v1.0 spec (changed from previous implementation expecting a `DeviceResponse`)
 
 ### Removed
-- From `GET /wallets/{:id}/receive/{:state}` response:
+- Removed `GET /wallets/{:id}/receive/{:state}` response attributes:
   - `c_nonce`
   - `c_nonce_expires_in`
-- From `POST /wallets/{:id}/receive/get_access_token` response:
+- Removed `POST /wallets/{:id}/receive/get_access_token` response attributes:
   - `c_nonce`
   - `c_nonce_expires_in`
-- From `POST /wallets/{:id}/receive/get_credential` response:
+- Removed `POST /wallets/{:id}/receive/get_credential` response attributes:
   - `c_nonce`
   - `c_nonce_expires_in`
-- Removed support for:
-  - **OpenID4VP draft-18**
-  - `client_id_scheme` (no longer separate from `client_id`)
-  - `client_metadata_uri`
-  - `pre_registered_client_id_scheme_default_metadata` configuration.
+- Removed `openid4vp-draft18` support
+- `client_id_scheme` is no longer used separately from the `client_id`
+- `client_metadata_uri` parameter is no longer supported
+- Removed `pre_registered_client_id_scheme_default_metadata` configuration attribute since it is no longer used anywhere
 
 ### Bug Fixes
-- Fixed incorrect SVX host config variable reference in **DID Service Factory**.
-- Fixed issue when creating `mso_mdoc` device response in **mixed-format** presentation definitions (e.g., with `jwt_vc_json` or `dc+sd-jwt`).  
-  Previously, it incorrectly matched `mso_mdoc` VCs against input descriptors of other formats.
-- Fixed security declaration of public endpoints in **OpenAPI spec**.
+- Fix incorrect SVX host config variable reference used in DID Service Factory
+- Fixed issue with creating an `mso_mdoc` device response in mixed-format presentation definitions (e.g., those including `jwt_vc_json` or `dc+sd-jwt`), where it incorrectly attempted to match `mso_mdoc` VCs against input descriptors for other formats
+- Fixed security declaration of public endpoints in OpenAPI spec
 
-### Deprecations & End of Life
-- Credential format identifier `vc+sd-jwt` is **deprecated**.  
-  Use `dc+sd-jwt`.
-- Removed protocol version support:
-  - **OID4VP**: `openid4vp-draft18` → use `openid4vp-v1`.
-  - **OID4VCI**: `openid4vci-draft13` → use `openid4vci-v1`.
+# Deprecations and EOL
+- The use of the credential format identifier `vc+sd-jwt` is deprecated
+- Removed `openid4vp-draft18` protocol version support for OID4VP protocol; `openid4vp-v1` should be used instead
+- Removed `openid4vci-draft13` protocol version support for OID4VCI protocol; `openid4vci-v1` should be used instead
 
 # Appendix
 ## Appendix A - DCQL Query Examples
