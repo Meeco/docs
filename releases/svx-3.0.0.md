@@ -57,9 +57,11 @@ SVX verify makes it simple for organisations to integrate high-assurance identit
 
 Below is a journey that shows how SVX Verify can be used in hotels to enable online check-in using a wallet-based system:
 
-<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet01.png" alt="SVX Wallet flow 01" width="80%">
-<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet02.png" alt="SVX Wallet flow 02" width="80%">
-<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet03.png" alt="SVX Wallet flow 03" width="80%">
+<p align="center">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet01.png" alt="SVX Wallet flow 01" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet02.png" alt="SVX Wallet flow 02" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet03.png" alt="SVX Wallet flow 03" width="80%">
+</p>
 
 ### Bridging today and tomorrow
 SVX Verify is designed to fully embrace the new generation of secure, privacy-preserving digital credentials. As governments worldwide adopt standards such as ISO Mobile Documents and IETF SD-JWT VCs, SVX Verify provides organisations with a pathway to accept these high-assurance credentials as they roll out.
