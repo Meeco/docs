@@ -57,9 +57,9 @@ SVX verify makes it simple for organisations to integrate high-assurance identit
 
 Below is a journey that shows how SVX Verify can be used in hotels to enable online check-in using a wallet-based system:
 
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet01.png" alt="SVX Wallet flow 01" width="80%">
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet02.png" alt="SVX Wallet flow 02" width="80%">
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet03.png" alt="SVX Wallet flow 03" width="80%">
+<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet01.png" alt="SVX Wallet flow 01" width="80%">
+<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet02.png" alt="SVX Wallet flow 02" width="80%">
+<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SVXVerify_Wallet03.png" alt="SVX Wallet flow 03" width="80%">
 
 ### Bridging today and tomorrow
 SVX Verify is designed to fully embrace the new generation of secure, privacy-preserving digital credentials. As governments worldwide adopt standards such as ISO Mobile Documents and IETF SD-JWT VCs, SVX Verify provides organisations with a pathway to accept these high-assurance credentials as they roll out.
@@ -72,9 +72,9 @@ SVX Verify is built on the SVX Organisation Wallet. It provides a hosted UI for 
 ## Self Signup to SVX
 Previously, new users had to contact Meeco directly to access the SVX Sandbox environment. We have now introduced a self signup form, allowing users to register themselves and begin testing SVX functionalities more quickly and easily.
 
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SelfSignup.png" alt="Self Signup to SVX link image" width="60%">
-
 This feature can be enabled/disabled on a per installation basis.
+
+<img style="display: block; margin: 0 auto;" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_SelfSignup.png" alt="Self Signup to SVX link image" width="50%">
 
 ## Issuance via Resource Hook
 The Resource Hook is a new feature in the SVX Organisation Wallet that enables credential issuance using data from an external resource server.
@@ -154,19 +154,19 @@ The JSON Schema also serves as living documentation, providing descriptions for 
 Portal has been updated to support DCQL query creation and processing.
 
 - Added support for creation of a `Verification Template` with DCQL Query. `Create Verification Template` page has now been separated into two tabs, Visual Builder (PEX) and JSON Editor (DCQL)
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_DCQLSupport.png" alt="JSON Editor (DCQL) in the Create Verification Template page" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_DCQLSupport.png" alt="JSON Editor (DCQL) in the Create Verification Template page" width="80%">
 
 - Added support to view DCQL Query verification responses
 - Added support for viewing `Verification Templates` with DCQL Query format
 
 ### New functionalities
 - Added detailed view of `constraints` `format` and `signature algorithm` for `View Presentation Template` page.
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_VerificationTemplates.png" alt="Detailed view of constraints, format and signature algorithm in the View Presentation Template page" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_VerificationTemplates.png" alt="Detailed view of constraints, format and signature algorithm in the View Presentation Template page" width="80%">
 
 - Added support for credentials using `dc+sd-jwt` format identifier.
 - Added a link from the `Tenant/Organization Details` page to the corresponding Dashboard.
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_TenantDetails.png" alt="Link to Tenant in the tenant details page" width="80%">
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_OrganisastionDetails.png" alt="Link to Organisation in the organisation details page" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_TenantDetails.png" alt="Link to Tenant in the tenant details page" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_New_OrganisastionDetails.png" alt="Link to Organisation in the organisation details page" width="80%">
 
 - Added ability to Create and View the `Credential Type` `type` for W3C VC formats
 
@@ -174,7 +174,7 @@ Portal has been updated to support DCQL query creation and processing.
 - Added `audience`, `IDP Login URL`, `Tenant ID` and `Organization ID` (if available) to applications. This makes it easier to configure system-to-system authentication using OAuth 2’s client credentials flow.
 
 - Added confirmation code check when removing an end user from a tenant.
-<img align="center" src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_Changed_Enduser.png" alt="Added confirmation code check when removing an end user from a tenant" width="80%">
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_Changed_Enduser.png" alt="Added confirmation code check when removing an end user from a tenant" width="80%">
 
 - Allowed Global Admins to view archived tenant details from the Tenants list.
 - Updated the `jwt_vc_json` verification template example for presentation exchange (PEX) to align with OpenID4VP v1.0.
