@@ -156,8 +156,8 @@ The JSON Schema also serves as living documentation, providing descriptions for 
 ### DCQL Support
 Portal has been updated to support DCQL query creation and processing.
 
-- Added support for creation of a `Verification Template` with DCQL Query. `Create Verification Template` page has now been separated into two tabs, Visual Builder (PEX) and JSON Editor (DCQL)
-<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_DCQLSupport.png" alt="JSON Editor (DCQL) in the Create Verification Template page" width="80%">
+- Added support for creation of a `Verification Template` with DCQL Query. `Create Verification Template` page has now been separated into two tabs, PEX (Presentation Exchange) and DCQL (Digital Credentials Query Language)
+<img src="../.gitbook/assets/releases/3.0.0/Release_3.0.0_Portal_DCQLSupport.png" alt="DCQL editor in the Create Verification Template page" width="80%">
 
 - Added support to view DCQL Query verification responses
 - Added support for viewing `Verification Templates` with DCQL Query format
