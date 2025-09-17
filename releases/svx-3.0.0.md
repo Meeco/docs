@@ -1,8 +1,8 @@
 # SVX 3.0.0 Release Notes
 
-**Software Release Date:** XX September 2025
+**Software Release Date:** 17 September 2025
 
-**Summary:** 
+**Summary:**
 
 SVX 3.0.0 is a major release that introduces **SVX Verify**, expands standards support, and delivers operational improvements across the platform. With this release, we continue our commitment to providing a future-proof foundation for high-assurance digital identity and credential exchange.
 
@@ -64,7 +64,7 @@ Below is a journey that shows how SVX Verify can be used in hotels to enable onl
 </p>
 
 ### Bridging today and tomorrow
-SVX Verify is designed to fully embrace the new generation of secure, privacy-preserving digital credentials. As governments worldwide adopt standards such as ISO Mobile Documents and IETF SD-JWT VCs, SVX Verify provides organisations with a pathway to accept these high-assurance credentials as they roll out.
+SVX Verify is designed to fully embrace the new generation of secure, privacy-preserving digital credentials. As governments and private sectors worldwide adopt standards such as ISO Mobile Documents and IETF SD-JWT VCs, SVX Verify provides organisations with a pathway to accept these high-assurance credentials as they roll out.
 
 At the same time, adoption will vary by country and ecosystem. Many markets already offer digital identity services through APIs and regulated identity providers. SVX Verify includes a bridge component that connects to these account-based ecosystems, allowing organisations to accept trusted identities today while creating derived credentials for use across their own networks.
 
@@ -105,14 +105,14 @@ Below are some notable new features that are supported:
 ### Support for DCQL
 DCQL is defined in section 6 of the [OpenID for Verifiable Presentations v1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l) specification:
 
-> The Digital Credentials Query Language (DCQL, pronounced [ˈdakl̩]) is a JSON-encoded query language that allows the Verifier to request Presentations that match the query. 
+> The Digital Credentials Query Language (DCQL, pronounced [ˈdakl̩]) is a JSON-encoded query language that allows the Verifier to request Presentations that match the query.
 
 DCQL simplifies the complexity of Presentation Exchange (PEX) by focusing on real-world use cases, offering a simpler design, practical features, and a specification tailored to the OpenID4VP protocol. For more information about DCQL, refer to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). Refer to [Appendix A](#appendix-a---dcql-query-examples) for examples of DCQL Query.
 
 Note that DIF Presentation Exchange (PEX) implementation remains unchanged and can still be used.
 
 ### Support for DPoP
-As recommended in the OpenID4VCI specification, under [Best Current Practice for OAuth 2.0 Security](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-best-current-practice-for-o), support for DPoP has been added to both the Organisation Wallet and the Holder Wallet. 
+As recommended in the OpenID4VCI specification, under [Best Current Practice for OAuth 2.0 Security](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-best-current-practice-for-o), support for DPoP has been added to both the Organisation Wallet and the Holder Wallet.
 DPoP support is optional and can be enabled via component configuration.
 
 Demonstrating Proof of Possession (DPoP) allows securing an access token by binding a cryptographic key into it. Usage of the access token is only allowed when a valid proof JWT is sent alongside in the request header. For more information about DPoP, refer to [RFC 9449: OAuth 2.0 Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449).
@@ -138,8 +138,8 @@ As part as our commitment to follow and support most used credential formats in 
 
 The most notable change introduced in this draft is a new credential format identifier:
 
-- **From** `vc+sd-jwt` 
-- **To** `dc+sd-jwt` 
+- **From** `vc+sd-jwt`
+- **To** `dc+sd-jwt`
 
 # Operating Updates
 ## Unified (JSON-based) Configuration Framework
@@ -186,13 +186,13 @@ Portal has been updated to support DCQL query creation and processing.
 - Changed `Disclosure Frame` to be editable for `Credential Templates`.
 
 ### Removed
-- Removed support for creating credentials types and presentation templates using `vc+sd-jwt` format identifier. Replaced with `dc+sd-jwt` to align with OpenID4VI V1.0
+- Removed support for creating credentials types and presentation templates using `vc+sd-jwt` format identifier. Replaced with `dc+sd-jwt` to align with OpenID4VCI V1.0
 - Removed the ability to add end-users to a tenant from the portal.
 - Removed the `Pending End Users` tab from the End Users page, along with all related pages and functionalities.
 
 ### Bug Fixes
 - Fixed parsing of non-array `vp_tokens` to show older verification_results correctly.
-- Fixed an issue where the copied icon was not displaying correctly for copied values. 
+- Fixed an issue where the copied icon was not displaying correctly for copied values.
 - Removed duplicated ID field for global admin details in the View Administrator page.
 - Removed the Edit button for archived schemas to prevent unintended modifications.
 - Trimmed search input to remove unnecessary whitespace for `Tenants`, `Organisations`, `Credential Schemas`, `Credential Templates`, `Verification Templates`, and `Verification Responses`.
@@ -214,10 +214,10 @@ Portal has been updated to support DCQL query creation and processing.
 
 ## SVX API
 ### OpenID4VP v1.0 Support
-- Added new parameters to `POST /presentation_definitions` to add support for DCQL Query  
+- Added new parameters to `POST /presentation_definitions` to add support for DCQL Query
   - `type` - `'pex' | 'dcql'`
-- Added new properties to `POST /presentation_request` response  
-  - `parameters.dcql_query`  
+- Added new properties to `POST /presentation_request` response
+  - `parameters.dcql_query`
   - `parameters.presentation_definition_type`
 - Added new `model_version` value `dcql-openid4vp-v1` to `PresentationDefinition`
 - Added `type` query parameter to `GET /presentation_definitions` endpoint
@@ -256,7 +256,7 @@ Portal has been updated to support DCQL query creation and processing.
 - Updated password minimum length requirement to 12 characters.
 
 ### Removed
-- Removed support for OpenID4VP draft-18:  
+- Removed support for OpenID4VP draft-18:
 - `openid4vp-draft18` presentation requests created in the past are still returned by the API, but there is no way to create new ones. Use `protocol_version = openid4vp-v1`.
 - Removed `client_id_scheme` payload parameter from `POST /openid/presentations/requests`.
 
@@ -273,13 +273,13 @@ Portal has been updated to support DCQL query creation and processing.
 ## Organisation Wallet
 ### SVX Verify
 - Added SVX Verify with the following pages:
-  - `/identity/verification/:id` SessionStep = Index    
+  - `/identity/verification/:id` SessionStep = Index
     Verifier landing page
-  - `/identity/verification/:id` SessionStep = Share  
+  - `/identity/verification/:id` SessionStep = Share
     Displays the QR code for wallet based flows or a *Sharing Credentials...* screen for account based flows
-  - `/identity/verification/:id` SessionStep = Complete  
+  - `/identity/verification/:id` SessionStep = Complete
     Displays the results of the verification process, success
-  - `/identity/verification/:id` SessionStep = Error  
+  - `/identity/verification/:id` SessionStep = Error
     Displays the results of any errors that occur, with the following information: `error_code`, `error_description` and `error_tips`.
 
 - Endpoints:
@@ -412,10 +412,10 @@ Portal has been updated to support DCQL query creation and processing.
 
 ### Bug Fixes
 - Added validation for `POST /openid/presentations/requests/:requestId/submissions` to check whether `vp_token` is an empty array represented as `'[]'`
-- Fixed application crash when `credential_types` selection was blank on `/test/issue` form:  
-  - Added backend validation for missing `credential_types` and claims  
+- Fixed application crash when `credential_types` selection was blank on `/test/issue` form:
+  - Added backend validation for missing `credential_types` and claims
   - Enforced required selection in the frontend
-- Fixed `x5chain` in `COSE_Sign1` for issued `mso_mdoc`:  
+- Fixed `x5chain` in `COSE_Sign1` for issued `mso_mdoc`:
   - Single certificate is included as a byte array string instead of an array of single byte array string
 - Fixed error handling on bad JSON payload: now returns HTTP 400 instead of HTTP 500
 - Fixed security declaration of public endpoints in `api-spec.yaml`
@@ -479,8 +479,8 @@ Portal has been updated to support DCQL query creation and processing.
 
 # Deprecations and EOL
 - The use of the credential format identifier `vc+sd-jwt` is deprecated
-- Removed `openid4vp-draft18` protocol version support for OID4VP protocol; `openid4vp-v1` should be used instead
-- Removed `openid4vci-draft13` protocol version support for OID4VCI protocol; `openid4vci-v1` should be used instead
+- Removed `openid4vp-draft18` protocol version support for OpenID4VP protocol; `openid4vp-v1` should be used instead
+- Removed `openid4vci-draft13` protocol version support for OpenID4VCI protocol; `openid4vci-v1` should be used instead
 
 # Appendix
 ## Appendix A - DCQL Query Examples
@@ -624,5 +624,5 @@ The expected response is of the following format:
 // object containing claims
 "claims": {
   "foo": "bar",
-}, 
+},
 ````
