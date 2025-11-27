@@ -20,7 +20,35 @@ We made security enhancements to SVX Verify, including fixing cookie security vu
 ## X.509 Certificate-Based Client Authentication for Verifiable Presentations
 Added support for X.509 certificate-based client authentication in presentation requests. Verifiers can now authenticate using X.509 certificates, with the client_id derived from the certificate's Subject Alternative Name (DNS) or certificate hash.
 
+## Enhanced Flexibility for Presentation Definitions
+We delivered several improvements to make managing and using presentation definitions more flexible and reliable. Teams can now update existing presentation definitions without recreating them, search and filter definitions more easily using date ranges.
+
 # Component Updates
+## SVX API
+### X.509 certificate-based client authentication for VP
+- Added x509_hash as a valid client prefix value for presentation requests
+
+### Enhanced Flexibility for Presentation Definitions
+- Added `PATCH /presentation_definitions/:id` endpoint to update presentation definitions
+  - Update `name`, `purpose`, `input_descriptors` (PEX type only), or `dcql_query` (DCQL type only)
+  - Following cannot be updated:
+    - Archived definitions
+    - `type` field
+- Added date range filtering support for `GET /presentation_definitions` endpoint
+  - `created_at_from` and `created_at_to` parameters for filtering by creation date
+  - `updated_at_from` and `updated_at_to` parameters for filtering by update date
+- Changed `presentation_definition.purpose` from require to optional. Affected endpoints: `POST /presentation_definitions` and `PATCH /presentation_definitions/:id`.
+- Fixed type filter not being applied to `GET /presentation_definitions` endpoint for archived presentation definitions
+- Fixed uncaught error during creation of presentation definition with invalid DCQL query
+- Fixed presentation verification for DCQL Query with `credential_sets`
+- Fixed `GET /presentation_definitions` endpoint, Swagger documentation for all query parameters including pagination
+
+### Changed
+- Upgraded dcql-ts to version `1.0.1`
+
+### Fixed
+- Fixed pagination query parameters to be of type integer instead of number in Swagger documentation as Krakend gateway expects it to be an integer and not number.
+
 ## Organisation Wallet
 ### SVX Verify
 - Added new OPTIONAL configuration `credential_issuer.save_issued_credential_to_vault` to allow issuing credentials without saving into the SVX Vault.
