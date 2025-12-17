@@ -105,6 +105,7 @@
 ***
 
 * [Releases](releases/README.md)
+  * [3.2.0](releases/svx-3.2.0.md)
   * [3.1.1](releases/svx-3.1.1.md)
   * [3.1.0](releases/svx-3.1.0.md)
   * [3.0.0](releases/svx-3.0.0.md)
