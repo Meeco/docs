@@ -6,51 +6,30 @@
 
 This release introduces multiple enhancements for SVX Verify including session security protections, performance improvements for credential operations, and user experience improvements. It also adds support for X.509 certificate-based authentication for verifiable presentations, Redis state management, and PostgreSQL TLS/SSL support.
 
-# Highlights
-## Enhancements for SVX Verify
-### Session Protection
-We added an extra layer of security to SVX Verify sessions by storing a signed cookie for the session ID in the client's browser. The application verifies this cookie to ensure the session is accessed from the correct device and restricts other devices from accessing it. To enable cookie signing, you need to add svx_verify.cookie_secret to the configuration.
+## Organisation Wallet
 
-### Optional Vault Storage for Credentials
-By allowing the bridge wallet to issue/verify without saving to vault, it reduces the operational steps which improves the performance. This can be controlled using the optional configuration `credential_issuer.save_issued_credential_to_vault`.
+Added support for X.509 certificate-based client authentication in presentation requests as defined in [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html). Verifiers can now authenticate to wallet providers using X.509 certificates and mechanisms described in Client Identifier Prefixes `x509_san_dns` and `x509_hash`.
 
-### Security Enhancements
-We made security enhancements to SVX Verify, including fixing cookie security vulnerabilities by automatically adding the `Secure` attribute to all cookies when HTTPS is detected, with proper trust proxy settings for load balancers. We also improved Content Security Policy by removing `unsafe-inline` for scripts and styles, added `rel="noopener noreferrer"` to external links, and implemented payload validation for the POST `/identity/sessions endpoint`.
+- Added `x509_hash` client id prefix support for presentation requests.
+- Added optional `presentation.request.x509_client_id_prefix` configuration. Defaults to `x509_san_dns` if `include_x5c` is set to true.
 
-## X.509 Certificate-Based Client Authentication for Verifiable Presentations
-Added support for X.509 certificate-based client authentication in presentation requests. Verifiers can now authenticate using X.509 certificates, with the client_id derived from the certificate's Subject Alternative Name (DNS) or certificate hash.
-
-## Enhanced Flexibility for Presentation Definitions
-We delivered several improvements to make managing and using presentation definitions more flexible and reliable. Teams can now update existing presentation definitions without recreating them, search and filter definitions more easily using date ranges.
-
-# Component Updates
-## SVX API
-### X.509 certificate-based client authentication for VP
-- Added x509_hash as a valid client prefix value for presentation requests
-
-### Enhanced Flexibility for Presentation Definitions
-- Added `PATCH /presentation_definitions/:id` endpoint to update presentation definitions
-  - Update `name`, `purpose`, `input_descriptors` (PEX type only), or `dcql_query` (DCQL type only)
-  - Following cannot be updated:
-    - Archived definitions
-    - `type` field
-- Added date range filtering support for `GET /presentation_definitions` endpoint
-  - `created_at_from` and `created_at_to` parameters for filtering by creation date
-  - `updated_at_from` and `updated_at_to` parameters for filtering by update date
-- Changed `presentation_definition.purpose` from require to optional. Affected endpoints: `POST /presentation_definitions` and `PATCH /presentation_definitions/:id`.
-- Fixed type filter not being applied to `GET /presentation_definitions` endpoint for archived presentation definitions
-- Fixed uncaught error during creation of presentation definition with invalid DCQL query
-- Fixed presentation verification for DCQL Query with `credential_sets`
-- Fixed `GET /presentation_definitions` endpoint, Swagger documentation for all query parameters including pagination
-
-### Changed
-- Upgraded dcql-ts to version `1.0.1`
+### Added
+- System endpoints
+  - Changed error responses to return JSON instead of HTML for consistency with success responses
+- (Gateway) Added new configuration parameter `cors_allowed_origins` to make CORS allowed origins configurable via `env.json`. Defaults to ["*"] if not provided for backward compatibility.
 
 ### Fixed
-- Fixed pagination query parameters to be of type integer instead of number in Swagger documentation as Krakend gateway expects it to be an integer and not number.
+- `DELETE /presentations/requests/:requestId`
+  - Fixed to remove the corresponding presentation request in Redis, ensuring the deleted presentation request is no longer accessible after deletion
+- Fixed service crash when credential_issuer.oidc_clients was missing from configuration, preventing a runtime TypeError: jsonConfig.credential_issuer.oidc_clients is not iterable
+- Fixed multiple redis connection that were created by using RedisStateManager. Now it is one, shared connection per application.
 
-## Organisation Wallet
-### SVX Verify
+## SVX Verify
+
+We enhanced security for SVX Verify by adding session protection through signed cookies and addressing multiple security vulnerabilities. The application now stores a signed cookie for the session ID in the client's browser, verifying this cookie to ensure sessions are accessed from the correct device and restricting access from other devices. To enable cookie signing, you need to add svx_verify.cookie_secret to the configuration. Additional security improvements include automatically adding the `Secure` attribute to all cookies when HTTPS is detected with proper trust proxy settings for load balancers, improved Content Security Policy by removing `unsafe-inline` for scripts and styles, adding `rel="noopener noreferrer"` to external links, and implementing payload validation for the POST `/identity/sessions` endpoint.
+
+By allowing the bridge wallet to issue/verify without saving to vault, it reduces storing unnecessary PII and improves the performance. This optional configuration can be controlled via the `credential_issuer.save_issued_credential_to_vault` setting.
+
 - Added new OPTIONAL configuration `credential_issuer.save_issued_credential_to_vault` to allow issuing credentials without saving into the SVX Vault.
 - Added Session Cookies for SVX Verify to protect session.
   - 401 will be returned for attempts to access the session URL without the correct cookie
@@ -69,20 +48,24 @@ We delivered several improvements to make managing and using presentation defini
   - Cookies are properly cleared with matching secure flag to prevent cookie leakage
   - Global `trust proxy` setting added to ensure correct HTTPS detection behind load balancers
 
-### X.509 certificate-based client authentication for VP
-- Added `x509_hash` client id prefix support for presentation requests.
-- Added optional `presentation.request.x509_client_id_prefix` configuration. Defaults to `x509_san_dns` if `include_x5c` is set to true.
+## SVX API
 
-### Added
-- System endpoints
-  - Changed error responses to return JSON instead of HTML for consistency with success responses
+Presentation definitions can now be edited. We felt that the flexibility this provides greatly benefits testing and development. As a result, presentation requests linked to it, not necessarily used the most recent version of the definition.
+
+- Added `PATCH /presentation_definitions/:id` endpoint to update presentation definitions
+  - Update `name`, `purpose`, `input_descriptors` (PEX type only), or `dcql_query` (DCQL type only)
+  - Following cannot be updated:
+    - Archived definitions
+    - `type` field
+- Added date range filtering support for `GET /presentation_definitions` endpoint
+  - `created_at_from` and `created_at_to` parameters for filtering by creation date
+  - `updated_at_from` and `updated_at_to` parameters for filtering by update date
+- Changed `presentation_definition.purpose` from require to optional. Affected endpoints: `POST /presentation_definitions` and `PATCH /presentation_definitions/:id`.
+- Fixed type filter not being applied to `GET /presentation_definitions` endpoint for archived presentation definitions
+- Fixed uncaught error during creation of presentation definition with invalid DCQL query
+- Fixed presentation verification for DCQL Query with `credential_sets`
+- Fixed `GET /presentation_definitions` endpoint, Swagger documentation for all query parameters including pagination
 
 ### Fixed
-- `DELETE /presentations/requests/:requestId`
-  - Fixed to remove the corresponding presentation request in Redis, ensuring the deleted presentation request is no longer accessible after deletion
-- Fixed service crash when credential_issuer.oidc_clients was missing from configuration, preventing a runtime TypeError: jsonConfig.credential_issuer.oidc_clients is not iterable
-- Fixed multiple redis connection that were created by using RedisStateManager. Now it is one, shared connection per application.
 
-## Organisation Wallet Gateway
-### Added
-- Added new configuration parameter `cors_allowed_origins` to make CORS allowed origins configurable via `env.json`. Defaults to ["*"] if not provided for backward compatibility.
+- Fixed pagination query parameters to be of type integer instead of number in Swagger documentation as Krakend gateway expects it to be an integer and not number.
