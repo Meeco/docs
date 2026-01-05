@@ -1,4 +1,26 @@
-To onboard to Secure Value Exchange (SVX) you will first need to sign up. Navigate to our [sign up form](https://www.meeco.me/signup) to gain access to our Sandbox. Once your access has been approved, you will be able to [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login). From here you can:
+To onboard to Secure Value Exchange (SVX) you will first need to sign up.  
+
+## Signup to SVX
+1. Navigate to our [sign up form](https://login-sandbox.securevalueexchange.com/signup) 
+<div align="center">
+  <img src="/.gitbook/assets/guides/onboarding_signup.png" alt="Sign up to SVX form" width="80%">
+</div>
+
+2. Fill in the form.
+3. Review the Privacy Policy and Terms and Conditions, then accept them.
+4. Click the **Create account** button.
+5. Check your email and verify your email address using the link provided.
+6. After verification, log in by providing your password. Click **Verify and Continue**.
+<div align="center">
+  <img src="/.gitbook/assets/guides/onboarding_verify_email.png" alt="Verify your email address screen" width="80%">
+</div>
+
+7. Onboarding is complete and you are taken to the tenant admin page. A tenant is created under your company name, and you are added as a tenant admin.
+<div align="center">
+  <img src="/.gitbook/assets/guides/onboarding_complete.png" alt="Onboarding completed. The user is taken to the tenant admin page." width="80%">
+</div>
+
+From here you can:
 * Use the Portal UI to manage workflows, and
 * Directly access the SVX Sandbox API.
 
