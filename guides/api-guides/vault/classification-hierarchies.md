@@ -21,7 +21,7 @@ All classification nodes can be queried by `GET /classification_nodes`:
 
 ```bash
 curl --request GET \
-  "https://sandbox.meeco.me/classification_nodes" \
+  "https://api-sandbox.svx.exchange/classification_nodes" \
   -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
   -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID"
 ```
@@ -53,7 +53,7 @@ You must use `tag` as the default scheme.
 You can create a Classification node as follows
 
 ```bash
-  curl --request POST "https://sandbox.meeco.me/classification_nodes" \
+  curl --request POST "https://api-sandbox.svx.exchange/classification_nodes" \
        -H "authorization: Bearer $VAULT_ACCESS_TOKEN" \
        -H "content-type: application/json" \
        -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
@@ -106,7 +106,7 @@ Classification Nodes can be applied to Item Templates, Items and Slots. Most pro
 Single Classification Nodes may be applied to Item Templates:
 
 ```bash
-  curl --request POST "https://sandbox.meeco.me/item_templates" \
+  curl --request POST "https://api-sandbox.svx.exchange/item_templates" \
        -H "authorization: Bearer $VAULT_ACCESS_TOKEN" \
        -H "content-type: application/json" \
        -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY" \
@@ -162,7 +162,7 @@ Result
 This has two effects. First, the Item Template can be found via its Classification Node or Scheme name, e.g. queries `GET /item_templates?by_classification=tag`, or `GET /item_templates?by_classification=new_tag` should include the template. Second, new Items created with the Item Template will be classified with the Classification Node.
 
 ```bash
-  curl --request POST "https://sandbox.meeco.me/items" \
+  curl --request POST "https://api-sandbox.svx.exchange/items" \
        -H "content-type: application/json" \
        -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
        -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
@@ -234,7 +234,7 @@ Classification nodes are added to Items by passing `classification_nodes_attribu
 Classification Node can be applied to both the Item and the Slots it contains. Unlike Item Templates, Items may have multiple classifications.
 
 ```bash
-  curl --request POST "https://sandbox.meeco.me/items" \
+  curl --request POST "https://api-sandbox.svx.exchange/items" \
        -H "content-type: application/json" \
        -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
        -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
@@ -303,7 +303,7 @@ Note that even if the Classification Node `name` property matches an existing No
 Classification Nodes can be added to Slots too:
 
 ```bash
-    curl --request POST "https://sandbox.meeco.me/items" \
+    curl --request POST "https://api-sandbox.svx.exchange/items" \
          -H "content-type: application/json" \
          -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
          -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY" \
