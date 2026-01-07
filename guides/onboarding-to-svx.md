@@ -1,10 +1,10 @@
 To onboard to Secure Value Exchange (SVX) you will first need to sign up.  
 
 ## Signup to SVX
-To sign up to SVX, navigate to the [sign up form](https://login-sandbox.securevalueexchange.com/signup). You will be presented with the SVX signup screen where you can enter your details, review Meeco’s Privacy Policy and Terms and Conditions, and create your account.
+To sign up to SVX, navigate to our [sign up form](https://login-sandbox.securevalueexchange.com/signup). You will be presented with the SVX signup screen where you can enter your details, review Meeco’s Privacy Policy and Terms and Conditions, and create your account.
 <div align="center"> <img src="/.gitbook/assets/guides/onboarding_signup.png" alt="Sign up to SVX form" width="80%"> </div>
 
-After submitting the form, an email will be sent to the address you provided. Follow the link in this email to verify your email address, then set your password if prompted and log in to SVX by entering your email and password and selecting Verify and Continue.
+After submitting the form, an email will be sent to the address you provided. Follow the link in this email to verify your email address, then enter your email and password and select *Verify and Continue*.
 <div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email01.png" alt="Verify your email address screen" width="80%"> </div>
 <div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email02.png" alt="Verify your email address screen" width="80%"> </div>
 
