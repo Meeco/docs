@@ -1,21 +1,14 @@
 To onboard to Secure Value Exchange (SVX) you will first need to sign up.  
 
 ## Signup to SVX
-1. Navigate to our [sign up form](https://login-sandbox.securevalueexchange.com/signup) 
-<div align="center">
-  <img src="/.gitbook/assets/guides/onboarding_signup.png" alt="Sign up to SVX form" width="80%">
-</div>
+To sign up to SVX, navigate to the [sign up form](https://login-sandbox.securevalueexchange.com/signup). You will be presented with the SVX signup screen where you can enter your details, review Meeco’s Privacy Policy and Terms and Conditions, and create your account.
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_signup.png" alt="Sign up to SVX form" width="80%"> </div>
 
-2. Fill in the form.
-3. Review the Privacy Policy and Terms and Conditions, then accept them.
-4. Click the **Create account** button.
-5. Check your email and verify your email address using the link provided.
-6. After verification, log in by providing your password. Click **Verify and Continue**.
-<div align="center">
-  <img src="/.gitbook/assets/guides/onboarding_verify_email.png" alt="Verify your email address screen" width="80%">
-</div>
+After submitting the form, an email will be sent to the address you provided. Follow the link in this email to verify your email address, then set your password if prompted and log in to SVX by entering your email and password and selecting Verify and Continue.
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email01.png" alt="Verify your email address screen" width="80%"> </div>
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email02.png" alt="Verify your email address screen" width="80%"> </div>
 
-7. Onboarding is complete and you are taken to the tenant admin page. A tenant is created under your company name, and you are added as a tenant admin.
+Once verification is complete, you will land on the tenant admin page. A tenant is created under your company name and you are added as a tenant administrator for that tenant.
 <div align="center">
   <img src="/.gitbook/assets/guides/onboarding_complete.png" alt="Onboarding completed. The user is taken to the tenant admin page." width="80%">
 </div>
