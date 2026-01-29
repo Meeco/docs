@@ -20,12 +20,12 @@ sequenceDiagram
   P->>+API: POST /end-users/invitations
   API-->>-P: 201 invitation object containing request_uri
   Note over H,P: There are different ways a holder can receive this link<br>- QR code that can be scanned<br>-Deeplink to click on
-  P->>P: Render QR for request <br> openid://request_uri=https://svx-api-sandbox.meeco.me/oidc/presentations/requests/{id}/jwt
+  P->>P: Render QR for request <br> openid://request_uri=https://api-sandbox.svx.exchange/oidc/presentations/requests/{id}/jwt
 
   TA-->>H: Email QR code / deeplink
 
   H->>W: Scan QR Code
-  W->>+API: GET https://svx-api-sandbox.meeco.me/oidc/presentations/requests/{id}/jwt
+  W->>+API: GET https://api-sandbox.svx.exchange/oidc/presentations/requests/{id}/jwt
   API-->>-W: return request_jwt
   W->>+W: Extract state and reciret_uri attributes from the request request_jwt
   W->>+API: POST /end_users/invitations/short_lived_access_token (token: state)

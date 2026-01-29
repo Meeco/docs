@@ -19,14 +19,14 @@ For more information on Vault-specific terminology, see the [Vault overview](../
 Items are created from templates, so we begin by listing all available Item templates:
 
 ```bash
-curl --request GET 'https://sandbox.meeco.me/vault/item_templates' \
+curl --request GET "https://api-sandbox.svx.exchange/item_templates" \
      -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
-     -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY"
+     -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID"
 ```
 
 [API docs](https://api-reference-sandbox.svx.exchange/)
 
-(Get `API_SUBSCRIPTION_KEY` by [signing up](https://www.meeco.me/signup) for the API, then use the CLI tool to [generate a User and access token](<https://github.com/Meeco/js-sdk/tree/master/packages/cli>).)
+If you don’t have access to the SVX API, follow the steps in [Onboarding to SVX](../../../guides/onboarding-to-svx.md), obtain an access token, and create an organisation.
 
 The response JSON object lists Templates under the `item_templates` key. Each Template object has a `slot_ids` list, which references Slots in the top-level `slots` list.
 
@@ -120,9 +120,9 @@ Here's a sample of Item Templates you might get:
 You can get a specific Template using its `id` (replace `ITEM-TEMPLATE-ID`):
 
 ```bash
-curl --request GET 'https://sandbox.meeco.me/vault/item_templates/ITEM-TEMPLATE-ID' \
-     -H 'Authorization: Bearer $VAULT_ACCESS_TOKEN' \
-     -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
+curl --request GET "https://api-sandbox.svx.exchange/item_templates/ITEM-TEMPLATE-ID" \
+     -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
+     -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID"
 ```
 
 [API docs](https://api-reference-sandbox.svx.exchange/)
@@ -130,9 +130,9 @@ curl --request GET 'https://sandbox.meeco.me/vault/item_templates/ITEM-TEMPLATE-
 Or, to search Item Templates by matching `label` text (replace `SEARCH_TEXT`):
 
 ```bash
-curl --request GET 'https://sandbox.meeco.me/vault/item_templates?like=SEARCH_TEXT' \
-     -H 'Authorization: Bearer $VAULT_ACCESS_TOKEN' \
-     -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY'
+curl --request GET "https://api-sandbox.svx.exchange/item_templates?like=SEARCH_TEXT" \
+     -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
+     -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID"
 ```
 
 [API docs](https://api-reference-sandbox.svx.exchange/)
@@ -155,10 +155,10 @@ For now the new Item's Slots are left empty. A [later section](#encryption-of-us
 To create an Item you must give the name of an existing Item Template, and a label:
 
 ```bash
-  curl --request POST 'https://sandbox.meeco.me/vault/items' \
-       -H 'Authorization: Bearer $VAULT_ACCESS_TOKEN' \
-       -H 'content-type: application/json' \
-       -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY' \
+  curl --request POST "https://api-sandbox.svx.exchange/items" \
+       -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
+       -H "content-type: application/json" \
+       -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
        --data \
 '{
   "template_name": "vehicle",
@@ -284,10 +284,10 @@ It is possible to create a Custom Template which we can use to create our own It
 Only the `label` property is required, it will auto-generate a `name` (as described above). Since Item Templates are referenced by their name, the generated name must be unique. You can specify it separately if the label does not generate a unique name.
 
 ```bash
-    curl --request POST "https://sandbox.meeco.me/vault/item_templates" \
+    curl --request POST "https://api-sandbox.svx.exchange/item_templates" \
          -H "Content-Type: application/json" \
-         -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY" \
          -H "authorization: Bearer $VAULT_ACCESS_TOKEN" \
+         -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID"\
          --data \
  '{
   "name": "example_custom_template",
@@ -359,10 +359,10 @@ The new Template will look like this:
 Then, you can create an item from your new template:
 
 ```bash
-  curl --request POST "https://sandbox.meeco.me/vault/items" \
+  curl --request POST "https://api-sandbox.svx.exchange/items" \
         -H "content-type: application/json" \
         -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
-        -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY" \
+        -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
         --data \
 '{
   "item": {
@@ -493,13 +493,13 @@ As the Vault cannot inspect the data, it is just a suggestion to the user. Type 
 Slots are created either by cloning an Item Template, or via the `slots_attributes` property when creating an Item. Since they are keyed by `name`, either `label` or `name` must be non-empty on creation.
 
 
-Slots are updated by calling `PUT /vault/items` with the new data in `slots_attributes`:
+Slots are updated by calling `PUT /items` with the new data in `slots_attributes`:
 
 ```bash
-curl --request PUT "https://sandbox.meeco.me/vault/items/bef961af-aa1f-4f1c-ac95-cdb41b3682db" \
+curl --request PUT "https://api-sandbox.svx.exchange/items/bef961af-aa1f-4f1c-ac95-cdb41b3682db" \
      -H "content-type: application/json" \
      -H "Authorization: Bearer $VAULT_ACCESS_TOKEN" \
-     -H "Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY" \
+     "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
      --data \
   '{
   "item": {
@@ -606,10 +606,10 @@ Thanks to the Item Template our new Item already has a list of empty Slots, and 
 
 ```bash
 curl --request PUT \
- 'https://sandbox.meeco.me/vault/items/049740cb-ad1f-43d9-9254-ae25eba30f47' \
-  -H 'Authorization: $VAULT_ACCESS_TOKEN' \
-  -H 'content-type: application/json' \
-  -H 'Meeco-Subscription-Key: $API_SUBSCRIPTION_KEY' \
+ "https://api-sandbox.svx.exchange/items/049740cb-ad1f-43d9-9254-ae25eba30f47" \
+  -H "Authorization: $VAULT_ACCESS_TOKEN" \
+  -H "content-type: application/json" \
+  -H "Meeco-Organisation-Id: $YOUR_ORGANISATION_ID" \
   -d '
     {
       "item": {
@@ -670,7 +670,7 @@ The page on [Connections and Sharing](../vault/connections-and-sharing.md) cover
 
 ### Receiving A Share
 
-You receive a shared item by calling `PUT https://sandbox.meeco.me/vault/incoming_shares/{share_id}/accept`. (This indicates you accept the share terms, if any). Next call `GET https://sandbox.meeco.me/vault/incoming_shares/{share_id}/item` and view the Item that has been created in your Vault. Note that `share.item_id` is the <span class="underline">original</span> Item's id, not the one in your Vault!
+You receive a shared item by calling `PUT https://api-sandbox.svx.me/incoming_shares/{share_id}/accept`. (This indicates you accept the share terms, if any). Next call `GET https://api-sandbox.svx.me/incoming_shares/{share_id}/item` and view the Item that has been created in your Vault. Note that `share.item_id` is the <span class="underline">original</span> Item's id, not the one in your Vault!
 
 
 ### Owners
@@ -683,6 +683,6 @@ An Item's owner is its original creator. The following table summarizes the how 
 | `original_id` | null        | `share.item_id` |
 | `share_id`    | null        | `share.id`      |
 
-As a result, if `item.share_id` is non-null, then it is a share you received, and you can view the share via `GET https://sandbox.meeco.me/vault/incoming_shares/{item.share_id}`.
+As a result, if `item.share_id` is non-null, then it is a share you received, and you can view the share via `GET https://api-sandbox.svx.exchange/incoming_shares/{item.share_id}`.
 
 Owners have the ability to push updates of shared data, and can share the Item with anyone. Receivers of a shared Item can only share that Item if `item.sharing_mode` is `anyone`.

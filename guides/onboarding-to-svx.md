@@ -1,10 +1,27 @@
-To onboard to Secure Value Exchange (SVX) you will first need to sign up. Navigate to our [sign up form](https://www.meeco.me/signup) to gain access to our Sandbox. Once your access has been approved, you will be able to [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login). From here you can:
+To onboard to Secure Value Exchange (SVX) you will first need to sign up.  
+
+## Signup to SVX
+To sign up to SVX, navigate to our [sign up form](https://login-sandbox.securevalueexchange.com/signup). You will be presented with the SVX signup screen where you can enter your details, review Meeco’s Privacy Policy and Terms and Conditions, and create your account.
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_signup.png" alt="Sign up to SVX form" width="80%"> </div>
+
+After submitting the form, an email will be sent to the address you provided. Follow the link in this email to verify your email address by selecting the *Verify your email address* button.
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email01.png" alt="Verify your email address screen" width="80%"> </div>
+
+A new browser tab will open. Enter the password associated with your email address. You would have entered this on the initial sign up screen. When ready, select the *Verify and Continue* button.
+<div align="center"> <img src="/.gitbook/assets/guides/onboarding_verify_email02.png" alt="Verify your email address screen" width="80%"> </div>
+
+Once verification is complete, you will land on the Tenant Dashboard page. A Tenant is created with your company name and you are added as the first Tenant Administrator.
+<div align="center">
+  <img src="/.gitbook/assets/guides/onboarding_complete.png" alt="Onboarding completed. The user is taken to the tenant admin page." width="80%">
+</div>
+
+From here you can:
 * Use the Portal UI to manage workflows, and
 * Directly access the SVX Sandbox API.
 
 ## Using the Portal UI
 
-Navigate to the [Portal login page](https://portal-sandbox.securevalueexchange.com/login) and log in using your SVX credentials. Refer to the [Portal tutorials](/guides/portal-tutorials/README.md) where you can find step-by-step instructions to navigate the Portal and manage a Tenancy and / or an Organisation.
+If you are not already logged in, navigate to the [Portal login page](https://portal-sandbox.securevalueexchange.com/login) and log in using your SVX credentials. Refer to the [Portal tutorials](/guides/portal-tutorials/README.md) where you can find step-by-step instructions to navigate the Portal and manage a Tenancy and / or an Organisation.
 
 ## Accessing the SVX Sandbox API
 

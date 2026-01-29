@@ -8,12 +8,12 @@ description: What you need to know about using our sandbox APIs
 
 ## Developer Policy <a id="qd4yB"></a>
 
-Please read this policy to understand Meeco’s terms and conditions for the use of our APIs in the Developer Sandbox Environment at [https://www.meeco.me/signup](https://www.meeco.me/signup).
+Please read this policy to understand Meeco’s terms and conditions for the use of our APIs in the Developer Sandbox Environment at [https://login-sandbox.securevalueexchange.com/signup](https://login-sandbox.securevalueexchange.com/signup).
 
 ### Sign Up <a id="tTeUy"></a>
 
-* Signing up allows you to create Subscription Keys which are used to authenticate you in all Sandbox API calls.
-* Without active subscription keys it is not possible to use the portal to receive the correct responses from the Meeco Sandbox APIs.
+* Signing up creates tenant admin access for you, which allows you to authenticate Sandbox API calls.
+* Without this access, you will not be able to access Sandbox SVX APIs.
 * You must provide accurate information about you and your organization while registering. By signing up to the Meeco portal you agree to our terms and conditions and usage restrictions contained therein.
 
 ### System Availability & API Upgrade <a id="zSDCZ"></a>
