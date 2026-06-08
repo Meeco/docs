@@ -42,6 +42,7 @@
     * [Issue Credentials](guides/api-guides/credentials/issue-credentials.md)
     * [Presentation Definitions](guides/api-guides/credentials/presentation-definitions.md)
     * [Presentations](guides/api-guides/credentials/presentations.md)
+  * [Certificates](guides/api-guides/certificates/certificates.md)
   * [DIDs](guides/api-guides/dids/README.md)
     * [DID Resolver](guides/api-guides/dids/did-resolution.md)
     * [DID Registrar](guides/api-guides/dids/did-registration.md)
