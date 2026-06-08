@@ -168,7 +168,7 @@ POST /issuer/schemas
 Use the following example to create a schema with the Admin API:
 
 ```bash
-curl -X POST "$SVX_BASE_URL/issuer/schemas" \
+curl -X POST "$SVX_WALLET_BASE_URL/issuer/schemas" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
