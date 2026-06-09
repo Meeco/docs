@@ -172,7 +172,7 @@ curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/csrs/$(jq -r '.csr.id
 
 ## Import Trust Anchor Certificates
 
-Trust anchor certificates allow the wallet to validate incoming certificate chains from external issuers or verifiers. They can be imported either as PEM/DER certificate chains or as a VICAL binary file.
+Trust anchor certificates allow the wallet to validate incoming certificate chains from external issuers or verifiers.
 
 Import a trust anchor certificate chain:
 
@@ -181,17 +181,6 @@ curl -X POST "$SVX_WALLET_BASE_URL/system/certificates/import" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d "{\"x5c\":[\"$(openssl x509 -in root-ca.cert.pem -outform DER | openssl base64 -A)\"]}"
-```
-
-Import a VICAL file:
-
-VICAL (Vehicle Information and Communication Alliance List) is a binary format used in the ISO 18013-5 mDL ecosystem to distribute a list of trusted IACA root certificates. Importing a VICAL is a convenience operation — the API parses the file and imports each certificate it contains into the trust anchor store individually.
-
-```bash
-curl -X POST "$SVX_WALLET_BASE_URL/system/certificates/import" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H "Content-Type: application/octet-stream" \
-  --data-binary "@/path/to/vical-file.vical"
 ```
 
 ## Remaining endpoints
