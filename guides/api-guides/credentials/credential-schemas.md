@@ -6,7 +6,7 @@ Using schemas in the credential workflow allows Tenants, Organisations and users
 - Agree on the structure of data and facilitate data exchange
 - Extract information from the schema
 
-It is possible to create a credential without specifying a schema via the API, however, when using Meeco's SVX Wallet to create credentials, this step is mandatory. In the Meeco SVX Wallet, a user is required to define a credential schema which is then used to validate incoming credential claims.
+In Meeco's SVX Wallet to create credentials, this step is mandatory. In the Meeco SVX Wallet, a user is required to define a credential schema which is then used to validate incoming credential claims.
 
 A credential schema, once published is made available via a public URL. This allows anyone to validate it at any point in time.
 
@@ -47,7 +47,7 @@ Below is an example JSON schema. Note that all the attributes contained within a
 
 Note that the `$id` property of the JSON Schema is set by the platform. When one is present in the schema, it will be overridden.
 
-Also note that `https://json-schema.org/draft/2020-12/schema` a prefferred version but `https://json-schema.org/draft/2019-09/schema` and `https://json-schema.org/draft-07/schema` are supported as well.
+Also note that `https://json-schema.org/draft/2020-12/schema` a preferred version but `https://json-schema.org/draft/2019-09/schema` and `https://json-schema.org/draft-07/schema` are supported as well.
 
 ### Verifiable Credential formats
 

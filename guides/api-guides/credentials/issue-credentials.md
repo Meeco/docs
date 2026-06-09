@@ -91,6 +91,7 @@ Authorization Server endpoints:
 - `GET /authorize` - Authorization endpoint.
 - `POST /par` - Pushed Authorization Request endpoint (when required).
 - `POST /token` - Token endpoint.
+- `POST /challenge` - Challenge endpoint.
 
 Use the following example to create a credential offer for issuer-initiated OID4VCI flow using Pre-Authorized Code:
 
