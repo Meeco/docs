@@ -154,20 +154,20 @@ openssl x509 -req -sha256 \
 
 ## Import Signed Certificates
 
-Once signed, import each leaf certificate back to the corresponding CSR in the SVX Wallet API. The certificate must be DER-encoded and base64-encoded in the `x5c` field.
+Once signed, import each leaf certificate the SVX Wallet API. The certificate must be DER-encoded and base64-encoded in the `x5c` field.
 
 ```bash
 # Import credential leaf certificate
-curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/csrs/$(jq -r '.csr.id' credential-csr.json)/import_certificate" \
+curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/import" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
-  -d "{\"x5c\":[\"$(openssl x509 -in credential-leaf.cert.pem -outform DER | openssl base64 -A)\"]}" | jq
+  -d "{\"key_name\":\"CredentialKey\",\"x5c\":[\"$(openssl x509 -in credential-leaf.cert.pem -outform DER | openssl base64 -A)\"]}" | jq
 
 # Import presentation request leaf certificate
-curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/csrs/$(jq -r '.csr.id' request-csr.json)/import_certificate" \
+curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/import" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
-  -d "{\"x5c\":[\"$(openssl x509 -in request-leaf.cert.pem -outform DER | openssl base64 -A)\"]}" | jq
+  -d "{\"key_name\":\"PresentationRequestKey\",\"x5c\":[\"$(openssl x509 -in request-leaf.cert.pem -outform DER | openssl base64 -A)\"]}" | jq
 ```
 
 ## Import Trust Anchor Certificates
@@ -185,9 +185,7 @@ curl -X POST "$SVX_WALLET_BASE_URL/system/certificates/import" \
 
 ## Remaining endpoints
 
-The following endpoints are used to maintain and read certificate and CSR information:
+The following endpoints are used to maintain and read certificate information:
 
 - `GET /system/certificates` - List all imported trust anchor certificates.
 - `DELETE /system/certificates/{certificate_id}` - Delete a trust anchor certificate.
-- `GET /system/certificates/csrs` - List all CSRs.
-- `DELETE /system/certificates/csrs/{csr_id}` - Delete a CSR.
