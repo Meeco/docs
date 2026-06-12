@@ -128,10 +128,10 @@
    * [Security](guides/wallet-tutorials/security.md)
    * [Wallet Recovery](guides/wallet-tutorials/wallet-recovery.md)
 
-## Tools
+## Other Products
 
-* [Meeco SDK & CLI](tools/meeco-cli.md)
-* [Cryppo SDK & CLI](tools/cryppo.md)
+* [Meeco SDK & CLI](other-products/meeco-cli.md)
+* [Cryppo SDK & CLI](other-products/cryppo.md)
 
 ## Policies
 
