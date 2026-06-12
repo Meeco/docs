@@ -5,7 +5,7 @@ Presentation definitions define which credential(s) a Verifier requests and for 
 ## Prerequisites
 
 * [Verifiable Credential JSON Schema](credential-schemas.md)
-* [Issuer DID](dids/did-methods.md) (optional)
+* [Issuer DID](../dids.md) (optional)
 
 ## Who can undertake this operation?
 

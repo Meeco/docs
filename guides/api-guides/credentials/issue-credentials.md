@@ -14,7 +14,7 @@ The following items are required in order for a credential to be created and iss
 
 * [Credential Schema](credential-schemas.md) – the [data schema](https://www.w3.org/TR/vc-data-model/#data-schemas) of the credential
 * [Credential Type](credential-types.md)
-* [DID](../dids/did-methods.md)
+* [DID](../dids.md)
 
 ## Who can undertake this operation?
 
