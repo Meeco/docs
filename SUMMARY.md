@@ -24,8 +24,6 @@
 * [Decentralised Identifiers (DIDs)](platform/did.md)
 * [Keys](platform/keys.md)
 * [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
-* [Vault](platform/vault/README.md)
-  * [Enterprise Vault](platform/vault/enterprise-vault.md)
 * [Portal](platform/portal.md)
 * [Wallets](platform/wallet.md)
   * [Holder Wallet](platform/wallet/holder-wallet.md)
@@ -130,6 +128,8 @@
 
 ## Other Products
 
+* [Vault](other-products/vault/README.md)
+  * [Enterprise Vault](other-products/vault/enterprise-vault.md)
 * [Meeco SDK & CLI](other-products/meeco-cli.md)
 * [Cryppo SDK & CLI](other-products/cryppo.md)
 
