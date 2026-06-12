@@ -77,10 +77,12 @@ The requestee is expected to send a response to the following endpoint:
 `POST {SVX_WALLET_BASE_URL}/verifier/requests/{id}/responses`
 
 The SVX Wallet supports the following response_types:
-- `direct_post`
+- `direct_post` 
 - `direct_post.jwt` for encrypted responses
 
 ### `direct_post`
+
+[OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-8.2)
 
 Example of a presentation response sent to the Verifier (SVX Wallet).
 ```
@@ -93,6 +95,8 @@ Content-Type: application/x-www-form-urlencoded
 ```
 
 ### `direct_post.jwt` - encrypted response
+
+[OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-8.3.1)
 
 The required information for the requestee to derive the shared secret are included in the request object.<br>
 And similarly for the verifier as a requestor, the information to derive the shared secret is included in the encrypted response.
