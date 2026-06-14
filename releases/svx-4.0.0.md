@@ -16,16 +16,16 @@ Besides the new architecture we bring the following features to you faster.
 
 ## Breaking Changes
 
-> **Important:** SVX 4.0 introduces breaking changes across the API surface. Please review the relevant sections carefully before upgrading.
+**Important:** SVX 4.0 introduces breaking changes across the API surface. Please review the relevant sections carefully before upgrading.
 
-- The Organisation Wallet (OW) is merged into the new unified Wallet service.
-- The Holder Wallet (HW) is merged into the new unified Wallet service.
-- Restructuring of OW and HW API endpoints in the new unified Wallet service.
-- Vault and Keystore APIs are removed. Encrypted credential storage and key management are now handled directly within the Wallet service.
-- The VC service API is removed. Schema management, credential type management, presentation definition management, and credential operations are now available through the Wallet API.
-- The authorize endpoint for bridge installations is split off and hosted at `/bridge/authorize`. The callback endpoint `/authorize/receive/callback` becomes `/bridge/authorize/receive/callback`.
-- ISO Mobile Document credential storage format has changed. Credentials are now stored as `IssuerSigned` rather than `DeviceResponse`. There is no automatic migration of previously stored credentials.
-- Wallet configuration is no longer exclusively file-based. Most configuration is now managed at runtime, persisted in the application database, and accessible via the Wallet API or the Wallet Admin UI.
+- The **Organisation Wallet** (OW) is merged into the new unified **Wallet** service.
+- The **Holder Wallet** (HW) is merged into the new unified **Wallet** service.
+- Restructuring of OW and HW API endpoints in the new unified **Wallet** service.
+- **Vault and Keystore APIs are removed.** Encrypted credential storage and key management are now handled directly within the Wallet service.
+- **The VC service API is removed.** Schema management, credential type management, presentation definition management, and credential operations are now available through the Wallet API.
+- **The** `authorize` **endpoint for bridge installations is split off and hosted at** `/bridge/authorize`. The callback endpoint `/authorize/receive/callback` becomes `/bridge/authorize/receive/callback`.
+- **ISO Mobile Document credential storage format has changed.** Credentials are now stored as `IssuerSigned` rather than `DeviceResponse`. There is no automatic migration of previously stored credentials.
+- **Wallet configuration is no longer exclusively file-based.** Most configuration is now managed at runtime, persisted in the application database, and accessible via the Wallet API or the Wallet Admin UI.
 
 ## New Features
 
@@ -144,6 +144,7 @@ POST /issuer/nonce
 ```
 
 ### OAuth Authorization Server
+Authorization server to support access token creation for credential issuance.
 ```
 GET  /authorize
 POST /par
@@ -159,6 +160,7 @@ POST /verifier/requests/{id}/responses
 ```
 
 ### Well-Known Endpoint
+Various well-known endpoints for standard support remain unchanged.
 ```
 GET /.well-known/oauth-authorization-server
 GET /.well-known/openid-configuration
@@ -172,6 +174,7 @@ GET /.well-known/appspecific/selectid.rp
 The Wallet supports the following issuer identifier types: URL, DID, and X.509. Supported DID methods are `did:key` (including the EBSI variant) and `did:jwk`.
 
 ### Wallet x509 Certificate Management
+New endpoints manage x509 certificates. Certificates pair with signing keys and, once linked, include in the token's `x5c` header. A separate certificate type, called `trust_anchor`, exists. Configuring Wallet to verify credential and presentation request trust chains uses these certificates to ensure trust among parties.
 ```
 GET    /system/certificates
 POST   /system/certificates/import
@@ -183,6 +186,7 @@ POST   /system/certificates/csrs/{csr_id}/import_certificate
 ```
 
 ### Application API Key
+New endpoints enable application-level access to the Wallet API. Each record contains a client_id and client_secret pair, exchangeable for a token valid until expiration.
 ```
 POST   /application/applications
 GET    /application/applications
@@ -191,6 +195,9 @@ POST   /application/token
 ```
 
 ### Admin Login via Passkeys Endpoint
+The Wallet API enables internal admin management. It provides endpoints for admin account management and login. Passkeys authenticate admins.
+
+Alternatively, an external IDP can be used. In both cases, the gateway must be configured to accept tokens from the chosen source.
 ```
 GET    /admin/accounts
 DELETE /admin/accounts/{id}
@@ -205,6 +212,9 @@ POST   /admin/sessions/refresh
 ```
 
 ### Image assets upload
+The Wallet now provides built-in storage for image assets such as credential logos and credential background. Images are uploaded once via the API (or from the Wallet Dashboard when editing display settings and credential templates) and stored in the Wallet database. The returned asset URL can then be referenced anywhere a logo or image URI is accepted.
+
+Supported formats are PNG, JPEG, and WebP. Uploads require admin authentication and are validated before being persisted: a configurable maximum file size (2 MiB by default), verification that the file content matches its declared image type, and an optional ClamAV virus scan (enabled by default). Retrieval is unauthenticated so that stored images can be served directly to wallets and verifier UIs.
 ```
 POST /assets/images
 GET  /assets/images/{id}
@@ -214,59 +224,118 @@ Supported formats are PNG, JPEG, and WebP. Uploads require admin authentication.
 
 ### Wallet Dashboard
 
-A new browser-based Wallet Dashboard is now served directly by the Wallet service. It replaces the credential and verification management screens previously hosted in the Portal.
+A new browser-based Wallet Dashboard is now served directly by the Wallet service. It replaces the credential and verification management screens previously hosted in the Portal, giving wallet operators a dedicated interface for managing their deployment without needing access to the broader platform Portal.
 
 Functionality available in the Wallet Dashboard:
 
-- Credential Schemas
-- Credential Templates
-- Verification Templates
-- Issued Credentials
-- Presentation Requests and Submissions
-- Verify sessions and reporting
-- Manage API Keys
-- Wallet configuration
+**Credential Schemas**
+
+![Credential Schemas](../.gitbook/assets/Release_4.0.0_Credential_Schemas.png)
+
+**Credential Templates**
+
+![Credential Templates](../.gitbook/assets/Release_4.0.0_Credential_Templates.png)
+
+**Verification Templates**
+
+![Verification Templates](../.gitbook/assets/Release_4.0.0_Verification_Templates.png)
+
+**Issued Credentials**
+
+![Issued Credentials](../.gitbook/assets/Release_4.0.0_Issued_Credentials.png)
+
+**Presentation Requests and Submissions**
+
+![Presentation Requests and Submissions](../.gitbook/assets/Release_4.0.0_Presentation_Requests_and_Submissions.png)
+
+**Verify sessions and reporting**
+
+![Verify sessions and reporting](../.gitbook/assets/Release_4.0.0_Verification_Sessions_and_Reporting.png)
+
+**Manage API Keys**
+
+![Manage API Keys](../.gitbook/assets/Release_4.0.0_Manage_API_Keys.png)
+
+**Wallet configuration**
+
+![Wallet configuration](../.gitbook/assets/Release_4.0.0_Wallet_Configurations.png)
 
 ### Wallet KMS Integration
 
-Cryptographic Keys required for base functionalities no longer need to be provided via configuration. Keys will be automatically generated and stored by the Wallet KMS.
+Cryptographic Keys are a core part for any credential platform. They are used, amongst others, for signing access tokens, encrypting presentation responses, binding credential to wallets and securing credentials. Managing these keys as such is critical. In this version we’ve put in place a completely revised key management solutions that provides more freedom how and where keys are managed.
+
+Cryptographic Keys required for base functionalities no longer need to be provided via configuration.
+Keys will be automatically generated and stored by the Wallet KMS.
+
+Keys are split out based on its role. The role determines what the key is used for, for example credential signing or database encryption, and can be individually configured to use a different KMS backend via the supported adapters.
 
 #### Key adapters
-
-- **Local KMS Adapter** — keys are stored in the attached database service. Suitable for development and environments without an external KMS.
+The currently supported adapters are listed below. Each cryptographic key can be individually configured to use a different adapter.
+- **Local KMS Adapter** — keys are stored in the attached database service. 
+Private key material are stored encrypted using a Master Encryption Key, an AES key, provided via configuration. Suitable for development and environments without an external KMS.
 - **AWS KMS Adapter** — keys are stored in AWS KMS. Cryptographic operations such as signing are done via API calls to AWS KMS.
 
 #### Key roles
 
-- Credential Issuance
-- Credential signing
-- Access token signing
-- Presentation Verification
-- Presentation Request object signing
-- Database Encryption
-- Key Encryption Key (KEK)
-- Utility Keys
-- Admin Dashboard access token signing
+The following is the list of key roles in the application:
+
+- **Credential Issuance**
+  - Credential signing
+  - Access token signing
+- **Presentation Verification**
+  - Presentation Request object signing
+- **Database Encryption**
+  - Key Encryption Key (KEK)
+- **Utility Keys**
+  - Admin Dashboard access token signing
+- **Optional Keys** - generated and used when respective configuration is enabled
+  - Client Assertion Key
+  - Client Attestation Key
 
 ### Wallet Encrypted Storage
 
-Data is encrypted at rest using envelope encryption using Meeco's Cryppo library. Each record is encrypted with a unique Data Encryption Key (DEK). The default encryption algorithm is AES-256-GCM.
+Data is encrypted at rest using **envelope encryption** using Meeco’s Cryppo library, using keys managed by the Wallet KMS.
+
+Each record is encrypted with a unique **Data Encryption Key (DEK)** generated at write time. The DEK itself is then encrypted by a **Key Encryption Key (KEK)** managed by a key provider. Only the encrypted DEK is persisted alongside the ciphertext — the plaintext DEK exists only in memory during the operation and is never stored.
+
+The default encryption algorithm for data is **AES-256-GCM**, which provides both confidentiality and authenticated integrity.
 
 #### KMS Key providers
 
-- **Local KMS provider** — the KEK is generated using Cryppo and stored in the database.
-- **AWS KMS provider** — uses GenerateDataKey to atomically create and wrap the DEK in a single KMS API call.
+- **Local KMS provider** — the KEK is generated using Cryppo and stored in the database. DEKs are generated using Cryppo and encrypted using the generated KEK. All private key materials are stored encrypted in the database.
+- **AWS KMS provider** — uses `GenerateDataKey` to atomically create and wrap the DEK in a single KMS API call. The plaintext DEK returned by the API call is not stored.
 
 ### New Wallet Configuration Approach
 
-SVX 4.0 restructures configuration into two clearly separated layers:
+Configuring a Wallet deployment previously meant maintaining a large service configuration file covering everything from infrastructure settings to credential display text. SVX 4.0 restructures configuration into two clearly separated layers under a single contract:
 
-- **Static configuration:** a minimal file reduced to what the service genuinely needs before it can start.
-- **Runtime settings:** all mutable business and application settings live in the database and are managed via the Wallet API or Dashboard.
+- **Static configuration:** a minimal file the deployment owner manages, reduced to what the service genuinely needs before it can start; application host, database and Redis connections, logging, module enablement, and secret material supplied by the operator. Cryptographic keys are no longer part of configuration at all; they are generated and managed by the configured KMS (see Wallet KMS Integration).
+- **Runtime settings:** all mutable business and application settings (display metadata, supported credentials, issuance and verification policies, trust configuration) live in the database and are managed via the Wallet API or Dashboard (see Application Runtime Configuration).
+
+Both layers are governed by published JSON Schemas that define every available option, its constraints, and its default value. The static file is validated at startup and runtime documents are validated on every write. Environment variable overrides have been reduced to database credentials only.
+
+The outcome: customer-managed deployment configuration shrinks to a small, stable bootstrap file; day-to-day settings changes need no redeployment; and the effective deployed configuration is always observable with secrets redacted.
 
 #### Application Runtime Configuration
 
-Mutable application settings are organised into five namespaces: system, issuer, verifier, bridge, and holder.
+Most Wallet configuration is no longer fixed at deployment time, managed in a configuration file. Mutable application settings are now managed at runtime, persisted in the Wallet database, and organised into five namespaces: system, issuer, verifier, bridge, and holder. Each namespace is a JSON document that can be read and updated through the new `/system/settings` and `/system/settings/{namespace}` endpoints or through the configuration screens in the Wallet Dashboard.
+
+![Application Runtime Configuration](../.gitbook/assets/Release_4.0.0_Application_Runtime_Configuration.png)
+<p align="center">Runtime configuration editor</p>
+
+Every runtime document, similar to static configuration, is validated against a published JSON Schema before it is accepted; invalid updates are rejected with detailed error messages, so it is not possible to persist a configuration the service cannot run with. Defaults are applied centrally from the same schema, and deleting a namespace resets it to defaults.
+
+Updates use optimistic concurrency: each write carries the expected revision number and is rejected with a conflict error if another operator has changed the namespace in the meantime. 
+
+#### Effective Configuration
+
+The effective configuration is the merged result of static deployment config (i.e. config file), runtime settings, and schema defaults. It can be inspected at any time via `GET /system/settings/effective`. This enables administrators to see the current application configuration state at any point, leaving the guesswork out on which configuration is used at any point in time.
+
+Secret values (database and Redis passwords, private key material, client secrets) are redacted in this view, making it safe to use for support and diagnostics.
+
+**Configuration Endpoints**
+
+Below are new endpoints related to configuration.
 ```
 GET    /system/settings
 GET    /system/settings/effective
@@ -275,23 +344,185 @@ PUT    /system/settings/{namespace}
 DELETE /system/settings/{namespace}
 ```
 
-#### Effective Configuration
-
-The effective configuration can be inspected at any time via `GET /system/settings/effective`.
-
 ## Changes and Removals
 
-### Portal Changes
+### SVX API Changes
 
+The following endpoints related to secure storage have been removed.
+```
+POST   /classification_nodes
+GET    /classification_nodes
+GET    /classification_nodes/{id}
+
+POST   /connections
+GET    /connections
+GET    /connections/{id}
+DELETE /connections/{id}
+
+POST   /invitations
+GET    /invitations
+GET    /invitations/{invitation_id}
+DELETE /invitations/{invitation_id}
+POST   /invitations/{invitation_id}/accept
+DELETE /invitations/{invitation_id}/cancel
+POST   /invitations/{invitation_id}/confirm
+DELETE /invitations/{invitation_id}/reject
+
+POST   /child_users
+POST   /delegation_invitations
+GET    /delegation_invitations/incoming
+GET    /delegation_invitations/outgoing
+DELETE /delegation_invitations/{id}
+GET    /delegation_invitations/{id}
+PUT    /delegation_invitations/{id}/accept
+DELETE /delegation_invitations/{id}/reject
+DELETE /delegations/{connection_id}
+PUT    /delegations/{connection_id}
+
+GET    /activities
+GET    /event_feed
+
+GET    /attachments_folders
+POST   /attachments_folders
+DELETE /attachments_folders/{id}
+GET    /attachments_folders/{id}
+GET    /blobs/attachment/{id}/{d}
+GET    /blobs/public/{id}/{d}
+GET    /client_task_queue
+PUT    /client_task_queue
+POST   /direct/attachments
+POST   /direct/attachments/upload_url
+DELETE /direct/attachments/{id}
+GET    /direct/attachments/{id}
+GET    /images/{id}
+GET    /item_templates
+GET    /items
+POST   /items
+DELETE /items/{item_id}
+GET    /items/{item_id}
+PUT    /items/{item_id}
+GET    /slots/{id}/attachments_folder
+
+GET    /metrics/attachments
+GET    /metrics/connections
+GET    /metrics/items
+
+GET    /incoming_shares
+GET    /incoming_shares/{id}
+PUT    /incoming_shares/{id}/accept
+GET    /incoming_shares/{id}/item
+POST   /invitations/{invitation_id}/share_intents
+POST   /items/{item_id}/encrypt
+GET    /items/{item_id}/shares
+POST   /items/{item_id}/shares
+PUT    /items/{item_id}/shares
+GET    /outgoing_shares
+GET    /outgoing_shares/{id}
+GET    /share_intents
+PATCH  /shares
+PUT    /shares
+DELETE /shares/{id}
+```
+The following endpoints related to key storage have been removed.
+```
+POST   /data_encryption_keys
+DELETE /data_encryption_keys/{id}
+GET    /data_encryption_keys/{id}
+GET    /key_encryption_key
+POST   /key_encryption_key
+POST   /keypairs
+GET    /keypairs/external_id/{external_id}
+DELETE /keypairs/{id}
+GET    /keypairs/{id}
+PATCH  /keypairs/{id}
+GET    /passphrase_derivation_artefact
+POST   /passphrase_derivation_artefact
+```
+
+The following endpoints related to verifiable credential management have been moved to (and renamed in) the new Wallet service:
+```
+POST   /schemas
+GET    /schemas
+GET    /schemas/{id}
+PUT    /schemas/{id}
+GET    /schemas/{id}/{version}/schema.json
+POST   /schemas/{id}/archive
+POST   /schemas/{id}/restore
+
+POST   /credential_types
+GET    /credential_types
+GET    /credential_types/{id}
+POST   /credential_types/{id}/archive
+POST   /credential_types/{id}/restore
+
+POST   /presentation_definitions
+GET    /presentation_definitions
+GET    /presentation_definitions/{id}
+GET    /presentation_definitions/{id}/definition.json
+PATCH  /presentation_definitions/{id}
+POST   /presentation_definitions/{id}/archive
+POST   /presentation_definitions/{id}/restore
+
+GET    /credentials
+POST   /credentials/generate
+POST   /credentials/generate/validate_payload
+POST   /credentials/verify
+GET    /credentials/{id}
+
+POST   /credentials/status
+GET    /status_list/{id}
+
+GET    /.well-known/jwt-issuer
+GET    /openid/presentations/requests
+POST   /openid/presentations/requests
+GET    /openid/presentations/requests/{id}
+POST   /openid/presentations/requests/{id}/archive
+POST   /openid/presentations/requests/{id}/restore
+POST   /openid/presentations/response/verify
+POST   /presentations/generate
+POST   /presentations/verify
+```
+
+The following endpoints related to DID management have been removed. 
+```
+GET    /did-owner
+POST   /did/create
+POST   /did/deactivate
+POST   /did/update
+GET    /did/{identifier}
+```
+
+Wallet controls access to it itself. No need for SVX end users entity anymore. The following endpoints have been removed.
+```
+POST   /user_authorisation/authentication_requests
+POST   /user_authorisation/siop_sessions
+
+POST   /end_users/invitations
+GET    /end_users/invitations
+GET    /end_users/invitations/{id}
+DELETE /end_users/invitations/{id}
+POST   /end_users/invitations/{token}/accept
+POST   /end_users/invitations/short_lived_access_token
+
+GET    /end_users
+GET    /end_users/{id}
+POST   /end_users/{id}/deletion_queue
+
+GET    /end_user/whoami
+POST   /end_user/deletion_queue
+```
+
+
+### **Portal Changes**
 The Portal is now scoped to platform and scheme administration. Credential and verification management screens have moved to the new Wallet Dashboard.
-
 **Moved to Wallet Dashboard:**
-
 - Credential Schemas (including all sub-pages)
 - Credential Templates (including all sub-pages)
 - Verification Templates (including all sub-pages)
 - Credentials Issued (including all sub-pages)
 - Presentation Requests and Submissions (including all sub-pages)
+  
+![Portal Changes](../.gitbook/assets/Release_4.0.0_Portal_Changes.png)
 
 **Removed:**
 
@@ -314,7 +545,7 @@ Previously, issued ISO Mobile Document credentials were stored as `DeviceRespons
 
 ### Credential Data Stored in SVX API
 
-There is no automated migration of credential data currently stored in the SVX API to the new Wallet. New deployments should start with a clean state. This applies to:
+There is no automated migration of credential data currently stored in the SVX API to the new Wallet. New deployments should start with a clean state. If migration of existing data is required for your deployment, contact Meeco to discuss your options. This applies to
 
 - Credential schemas
 - Credential templates
@@ -325,4 +556,4 @@ There is no automated migration of credential data currently stored in the SVX A
 
 ### Existing Wallet Instances
 
-Because of the structural changes to the SVX platform, older Organisation and Holder Wallet services will not be compatible with the new SVX 4.0 release.
+Because of the structural changes to the SVX platform, older Organization and Holder Wallet services **will not be compatible** with the new SVX 4.0 release.
