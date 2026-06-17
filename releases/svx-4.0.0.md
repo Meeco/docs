@@ -253,9 +253,21 @@ Functionality available in the Wallet Dashboard:
 
 ![Verify sessions and reporting](../.gitbook/assets/Release_4.0.0_Verification_Sessions_and_Reporting.png)
 
+**SVX Verify Configuration**
+
+Configure how SVX Verify appears to end users and which identity providers are presented.
+
+<!-- TODO: Add screenshot for SVX Verify Configuration -->
+
 **Manage API Keys**
 
 ![Manage API Keys](../.gitbook/assets/Release_4.0.0_Manage_API_Keys.png)
+
+**Admin Accounts**
+
+Invite new administrators and manage existing admin access. Administrators authenticate using passkeys.
+
+<!-- TODO: Add screenshot for Admin Accounts -->
 
 **Wallet configuration**
 
