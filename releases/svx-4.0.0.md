@@ -331,7 +331,7 @@ The outcome: customer-managed deployment configuration shrinks to a small, stabl
 
 #### Application Runtime Configuration
 
-Most Wallet configuration is no longer fixed at deployment time, managed in a configuration file. Mutable application settings are now managed at runtime, persisted in the Wallet database, and organised into five namespaces: system, issuer, verifier, bridge, and holder. Each namespace is a JSON document that can be read and updated through the new `/system/settings` and `/system/settings/{namespace}` endpoints or through the configuration screens in the Wallet Dashboard.
+Most Wallet configuration is no longer managed in a static file fixed at deployment time. Mutable application settings are now managed at runtime, persisted in the Wallet database, and organised into five namespaces: system, issuer, verifier, bridge, and holder. Each namespace is a JSON document that can be read and updated through the new `/system/settings` and `/system/settings/{namespace}` endpoints or through the configuration screens in the Wallet Dashboard.
 
 ![Application Runtime Configuration](../.gitbook/assets/Release_4.0.0_Application_Runtime_Configuration.png)
 <p align="center">Runtime configuration editor</p>
