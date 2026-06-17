@@ -558,11 +558,11 @@ Previously, issued ISO Mobile Document credentials were stored as `DeviceRespons
 
 ### Credential Data Stored in SVX API
 
-There is no automated migration of credential data currently stored in the SVX API to the new Wallet. New deployments should start with a clean state. If migration of existing data is required for your deployment, contact Meeco to discuss your options. This applies to
+There is no automated migration of credential data from previous services (SVX API, Organisation Wallet, Holder Wallet) to the new Wallet. New deployments should start with a clean state. If migration of existing data is required for your deployment, contact Meeco to discuss your options. This applies to
 
 - Credential schemas
 - Credential templates
-- Presentation templates
+- Verifier templates (previously presentation templates)
 - Credentials issued (issuer)
 - Presentation responses received (verifier)
 - Credentials received (wallet)
