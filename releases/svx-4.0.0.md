@@ -305,7 +305,7 @@ Each key can be individually configured to use a different adapter. All keys def
 
 ### Wallet Encrypted Storage
 
-Data is encrypted at rest using **envelope encryption** using Meeco’s Cryppo library, using keys managed by the Wallet KMS.
+Data is encrypted at rest using **envelope encryption** using Meeco’s [Cryppo](https://github.com/Meeco/cryppo-js) library, using keys managed by the Wallet KMS.
 
 Each record is encrypted with a unique **Data Encryption Key (DEK)** generated at write time. The DEK itself is then encrypted by a **Key Encryption Key (KEK)** managed by a key provider. Only the encrypted DEK is persisted alongside the ciphertext; the plaintext DEK exists only in memory during the operation and is never stored.
 
@@ -315,6 +315,8 @@ The default encryption algorithm for data is **AES-256-GCM**, which provides bot
 
 - **Local KMS Adapter:** the KEK is generated using Cryppo and stored in the database. DEKs are generated using Cryppo and encrypted using the generated KEK. All private key materials are stored encrypted in the database.
 - **AWS KMS Adapter:** uses `GenerateDataKey` to atomically create and wrap the DEK in a single KMS API call. The plaintext DEK returned by the API call is not stored.
+
+When using the Local KMS Adapter, key material (KEK and other managed keys) is itself encrypted using a **Master Encryption Key (MEK)** configured under `kms.master_encryption_key` in the static config. If the MEK is not configured, key material is stored unencrypted in the database. Data remains encrypted, but the keys protecting it are not. Configuring the MEK is strongly recommended for anything but local development.
 
 ### New Wallet Configuration Approach
 
