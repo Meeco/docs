@@ -26,6 +26,7 @@ Using the new architecture we've included the following features.
 - **Vault and Keystore APIs are removed.** Encrypted credential storage and key management are now handled directly within the Wallet service.
 - **The VC service API is removed.** Schema management, credential type management, presentation definition management, and credential operations are now available through the Wallet API.
 - **The** `authorize` **endpoint for bridge installations is split off and hosted at** `/bridge/authorize`. The callback endpoint `/authorize/receive/callback` becomes `/bridge/authorize/receive/callback`.
+- **Credential and verification management has moved out of the Portal.** Credential schemas, credential templates, verification templates, issued credentials, and presentation requests/responses are now managed through the new Wallet Dashboard.
 - **ISO Mobile Document credential storage format has changed.** Credentials are now stored as `IssuerSigned` rather than `DeviceResponse`. There is no automatic migration of previously stored credentials.
 - **Wallet configuration is no longer exclusively file-based.** Most configuration is now managed at runtime, persisted in the application database, and accessible via the Wallet API or the Wallet Admin UI.
 
