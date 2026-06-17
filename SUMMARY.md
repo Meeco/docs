@@ -67,6 +67,7 @@
 * [SVX Wallet](guides/svx-wallet/README.md)
   * [Configuration](guides/svx-wallet/configuration.md)
   * [Add Credentials to a Wallet](guides/svx-wallet/add-credentials.md)
+  * [Present Credentials](guides/svx-wallet/present-credentials.md)
  * [Portal Tutorials](guides/portal-tutorials/README.md)
    * [Tenant Administrators](guides/portal-tutorials/tenant-administrators/README.md)
      * [Onboard to a Tenancy](guides/portal-tutorials/tenant-administrators/onboard-to-a-tenancy.md)
