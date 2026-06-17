@@ -18,7 +18,7 @@ In both cases the credential is stored in the wallet, encrypted at rest, and can
   { "external_reference": "wallet-240201" }
   ```
 
-* A **key** (or [DID](../../platform/did.md)) to bind the credential to the holder. Most credentials are issued against a holder key; create one with `POST /wallets/{walletId}/keys` and note the returned `kid`. See [Manage Keys](manage-keys.md).
+* A **key** (or [DID](../../../platform/did.md)) to bind the credential to the holder. Most credentials are issued against a holder key; create one with `POST /wallets/{walletId}/keys` and note the returned `kid`. See [Manage Keys](manage-keys.md).
 
   ```bash
   POST /wallets/{walletId}/keys
