@@ -54,7 +54,9 @@ Credential management, schema management, and verification template management a
 - `/verify/*`
 - `/bridge/*`
 
-Endpoints related to standards specifications, such as OAuth 2.0 and OpenID4VCI, are not prefixed.
+Endpoints related to the OAuth Authorization Server are not prefixed.
+
+Holder wallet endpoints (`/wallets/*`) are available unchanged from the previous Holder Credential Wallet (HCW).
 
 Below is an overview of the new endpoints:
 
@@ -77,7 +79,7 @@ DELETE /issuer/templates/{id}
 POST   /verifier/templates
 GET    /verifier/templates
 GET    /verifier/templates/{id}
-PUT    /verifier/templates/{id}
+PATCH  /verifier/templates/{id}
 DELETE /verifier/templates/{id}
 ```
 
@@ -182,10 +184,7 @@ New endpoints manage x509 certificates. Certificates pair with signing keys and,
 GET    /system/certificates
 POST   /system/certificates/import
 DELETE /system/certificates/{certificate_id}
-GET    /system/certificates/csrs
 POST   /system/certificates/csrs
-DELETE /system/certificates/csrs/{csr_id}
-POST   /system/certificates/csrs/{csr_id}/import_certificate
 ```
 
 ### Application API Key
@@ -209,9 +208,9 @@ GET    /admin/invitations
 DELETE /admin/invitations/{id}
 POST   /admin/invitations/accept/options
 POST   /admin/invitations/accept
-POST   /admin/sessions/options
-POST   /admin/sessions
-POST   /admin/sessions/refresh
+POST   /admin/session/options
+POST   /admin/session
+POST   /admin/session/refresh
 ```
 
 ### Image assets upload
