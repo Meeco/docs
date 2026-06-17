@@ -567,6 +567,68 @@ There is no automated migration of credential data currently stored in the SVX A
 - Presentation responses received (verifier)
 - Credentials received (wallet)
 
+### Wallet Configuration
+
+The previous Organisation and Holder Wallet services used file-based configuration. The new Wallet service uses a different configuration structure with a minimal static config file and runtime settings managed via the API or Dashboard. Existing configuration files are not compatible and cannot be migrated automatically. Operators must rebuild their configuration against the new static config schema and re-apply runtime settings through the Wallet API or Dashboard.
+
+Below is a minimal static configuration file for a deployment with issuer and verifier enabled. Bridge-specific and integration-specific fields are only required when those features are enabled.
+
+```json
+{
+  "system": {
+    "app_host": "https://wallet.example.com",
+    "postgres": {
+      "host": "localhost",
+      "database": "svx_wallet",
+      "username": "postgres",
+      "password": "change-me"
+    },
+    "redis": {
+      "host": "localhost",
+      "database_number": 0,
+      "password": "change-me",
+      "tls": false
+    },
+    "logging": {
+      "log_level": "info",
+      "log_redact_properties": []
+    },
+    "kms": {
+      "master_encryption_key": {
+        "keys": [
+          { "key_id": "key-1", "key": "<base64-encoded-aes-256-key>" }
+        ],
+        "active_key_id": "key-1"
+      }
+    },
+    "admin": {
+      "enabled": true
+    }
+  },
+  "bridge": {
+    "enabled": false
+  },
+  "issuer": {
+    "enabled": true,
+    "internal_authorization_server": {
+      "supported_client_auth_methods": ["none"],
+      "clients": []
+    }
+  },
+  "verifier": {
+    "enabled": true,
+    "svx_verify": {
+      "enabled": true,
+      "cookie_secret": "change-me"
+    }
+  }
+}
+```
+
+The `kms.master_encryption_key` is strongly recommended for all non-development deployments. Without it, managed key material is stored unencrypted in the database (see [Wallet KMS Integration](#wallet-kms-integration)).
+
+For production deployments, we recommend using the AWS KMS adapter to manage the different signing keys and KEK. Adapters for other KMS platforms can be added easily.
+
 ### Existing Wallet Instances
 
 Because of the structural changes to the SVX platform, older Organization and Holder Wallet services **will not be compatible** with the new SVX 4.0 release.
