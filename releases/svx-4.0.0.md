@@ -280,29 +280,28 @@ Cryptographic Keys are a core part for any credential platform. They are used, a
 Cryptographic Keys required for base functionalities no longer need to be provided via configuration.
 Keys will be automatically generated and stored by the Wallet KMS.
 
-Keys are split out based on their role. The role determines what the key is used for, for example credential signing or database encryption, and can be individually configured to use a different KMS backend via the supported adapters.
+Keys are split out based on their role. The role determines what the key is used for, for example credential signing or database encryption.
 
 #### Key adapters
-The currently supported adapters are listed below. Each cryptographic key can be individually configured to use a different adapter.
+The currently supported adapters are listed below.
 - **Local KMS Adapter:** keys are stored in the attached database service. Private key material is stored encrypted using a Master Encryption Key, an AES key, provided via configuration. Suitable for development and environments without an external KMS.
 - **AWS KMS Adapter:** keys are stored in AWS KMS. Cryptographic operations such as signing are done via API calls to AWS KMS.
 
 #### Key roles
 
-The following is the list of key roles in the application:
+Each key can be individually configured to use a different adapter. All keys default to the Local adapter. Signing keys support ES256 (default) and EdDSA as alternative algorithms.
 
-- **Credential Issuance**
-  - Credential signing
-  - Access token signing
-- **Presentation Verification**
-  - Presentation Request object signing
-- **Database Encryption**
-  - Key Encryption Key (KEK)
-- **Utility Keys**
-  - Admin Dashboard access token signing
-- **Optional Keys** - generated and used when respective configuration is enabled
-  - Client Assertion Key
-  - Client Attestation Key
+| Key | Description | Default Algorithm |
+|-----|-------------|-------------------|
+| CredentialKey | Credential signing | ES256 |
+| AccessTokenKey | Access token signing | ES256 |
+| PresentationRequestKey | Presentation Request object signing | ES256 |
+| KeyEncryptionKey | Database encryption (KEK) | AES-256-GCM |
+| AdminSigningKey | Admin UI access token and Resource Hook payload signing | ES256 |
+| ClientAssertionKey ¹ | Signing wallet client Assertion for JWT Bearer | ES256 |
+| HolderClientAttestationKey ¹ | Self-signed Client Attestation | ES256 |
+
+¹ Optional: generated and used only when the respective feature is enabled.
 
 ### Wallet Encrypted Storage
 
