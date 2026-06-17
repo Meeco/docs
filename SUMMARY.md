@@ -66,6 +66,7 @@
   * [Machine-2-Machine Communication](guides/api-guides/machine-2-machine-communication.md)
   * [Wallet](guides/api-guides/wallet/README.md)
     * [Configuration](guides/api-guides/wallet/configuration.md)
+    * [Manage Wallets and Keys](guides/api-guides/wallet/manage-wallets.md)
     * [Add Credentials to a Wallet](guides/api-guides/wallet/add-credentials.md)
     * [Present Credentials](guides/api-guides/wallet/present-credentials.md)
  * [Portal Tutorials](guides/portal-tutorials/README.md)

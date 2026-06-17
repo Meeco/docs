@@ -66,7 +66,7 @@ The wallet resolves and verifies the request and returns the `state` along with 
 
 ## 2. Set the credentials to present
 
-Choose which stored credential answers each part of the request and which claims to reveal. Find a suitable credential among the wallet's stored credentials with `GET /wallets/{walletId}/credentials` (see [Manage Credentials](manage-credentials.md)), and use its `id` and the `kid` of the key it is bound to.
+Choose which stored credential answers each part of the request and which claims to reveal. Find a suitable credential among the wallet's stored credentials with `GET /wallets/{walletId}/credentials` (see [Credentials](../credentials/README.md)), and use its `id` and the `kid` of the key it is bound to.
 
 Each entry links a stored credential to a requested credential. For a Presentation Exchange request, match on `input_descriptor_id` (the `id` from the request's `input_descriptors`). For a DCQL request, match on `credential_query_id` instead.
 
