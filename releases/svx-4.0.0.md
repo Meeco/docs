@@ -4,15 +4,17 @@
 
 ## Summary
 
-SVX 4.0 is a major architectural release representing the most significant restructuring of the SVX platform since its inception in April 2023. This release consolidates the platform from more than ten (micro)services into four core services, reducing operational complexity. The key outcomes are faster development velocity, a smaller attack surface for personally identifiable information (PII), simplified deployments, and a unified wallet service that can serve as issuer, verifier, and wallet provider simultaneously.
+SVX 4.0 is a major architectural release representing the most significant restructuring of the SVX platform since its inception in April 2023. This release consolidates the platform's internal architecture from more than ten microservices into four, reducing operational complexity. The key outcomes are faster development velocity, a smaller attack surface for personally identifiable information (PII), simplified deployments, and a unified wallet service that can serve as issuer, verifier, and wallet provider simultaneously.
 
 - Unified, standalone Wallet Service
 - PII never leaves Wallet service; encrypted storage with envelope encryption (AES-256-GCM).
 - Cost and reliability: fewer runtimes, no RabbitMQ (DB-driven queues), simpler deployments.
 
-Besides the new architecture we bring the following features to you faster. 
+Using the new architecture we've included the following features.
+
 - Wallet KMS Integration
 - Wallet Simplified Configuration
+- Wallet Admin Login via Passkeys
 
 ## Breaking Changes
 
