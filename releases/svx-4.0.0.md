@@ -275,18 +275,17 @@ Invite new administrators and manage existing admin access. Administrators authe
 
 ### Wallet KMS Integration
 
-Cryptographic Keys are a core part for any credential platform. They are used, amongst others, for signing access tokens, encrypting presentation responses, binding credential to wallets and securing credentials. Managing these keys as such is critical. In this version we’ve put in place a completely revised key management solutions that provides more freedom how and where keys are managed.
+Cryptographic Keys are a core part for any credential platform. They are used, amongst others, for signing access tokens, encrypting presentation responses, binding credential to wallets and securing credentials. Managing these keys as such is critical. In this version we’ve put in place a completely revised key management solution that provides more freedom how and where keys are managed.
 
 Cryptographic Keys required for base functionalities no longer need to be provided via configuration.
 Keys will be automatically generated and stored by the Wallet KMS.
 
-Keys are split out based on its role. The role determines what the key is used for, for example credential signing or database encryption, and can be individually configured to use a different KMS backend via the supported adapters.
+Keys are split out based on their role. The role determines what the key is used for, for example credential signing or database encryption, and can be individually configured to use a different KMS backend via the supported adapters.
 
 #### Key adapters
 The currently supported adapters are listed below. Each cryptographic key can be individually configured to use a different adapter.
-- **Local KMS Adapter** — keys are stored in the attached database service. 
-Private key material are stored encrypted using a Master Encryption Key, an AES key, provided via configuration. Suitable for development and environments without an external KMS.
-- **AWS KMS Adapter** — keys are stored in AWS KMS. Cryptographic operations such as signing are done via API calls to AWS KMS.
+- **Local KMS Adapter:** keys are stored in the attached database service. Private key material is stored encrypted using a Master Encryption Key, an AES key, provided via configuration. Suitable for development and environments without an external KMS.
+- **AWS KMS Adapter:** keys are stored in AWS KMS. Cryptographic operations such as signing are done via API calls to AWS KMS.
 
 #### Key roles
 
