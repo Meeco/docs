@@ -222,7 +222,6 @@ POST /assets/images
 GET  /assets/images/{id}
 ```
 
-Supported formats are PNG, JPEG, and WebP. Uploads require admin authentication. Retrieval is unauthenticated so that stored images can be served directly to wallets and verifier UIs.
 
 ### Wallet Dashboard
 
