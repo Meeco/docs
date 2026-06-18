@@ -287,19 +287,29 @@ The currently supported adapters are listed below.
 - **Local KMS Adapter:** keys are stored in the attached database service. Private key material is stored encrypted using a Master Encryption Key, an AES key, provided via configuration. Suitable for development and environments without an external KMS.
 - **AWS KMS Adapter:** keys are stored in AWS KMS. Cryptographic operations such as signing are done via API calls to AWS KMS.
 
+All cryptographic operations are handled within this Key Manager module, allowing for a more defined boundary and interface. This allows the SVX Wallet to abstract away its use of cryptographic keys and simplify integration with KMS such as AWS KMS.
+
+An internal service (shown in the diagram below as KeyManagerService) handles the orchestration of fetching or calling cryptographic function to the KMS. It does so by connecting to the KMS backend via the adapter using the reference ID stored in the Key Registry.
+
+Key Registry (shown in the diagram below) is a register of keys stored in the database. It stores the reference id and other metadata such as the public key part. Some keys such as the Access Token Key require its public key to be exposed via endpoint such as `/jwks`. Storing it in the database removes the need to constantly fetch it from the KMS backend.
+
+The Adapters role is to then call the appropriate API of the KMS backend and transform the response as required. For example, during database encryption, the Key Manager Service will request a Data Encryption Key (DEK) from the adapter. If AWS KMS Adapter is used. It will then call the AWS KMS API GenerateDataKey to obtain the DEK. In this process, the logic that does the envelope encryption for the encrypted data is not directly aware of how the DEK is obtained.
+
+![Key Manager Module](../.gitbook/assets/Release_4.0.0_Key_Manager_Module.png)
+
 #### Key roles
 
 Each key can be individually configured to use a different adapter. All keys default to the Local adapter. Signing keys support ES256 (default) and EdDSA as alternative algorithms.
 
-| Key | Description | Default Algorithm |
+| Key | Role | Default Algorithm |
 |-----|-------------|-------------------|
-| CredentialKey | Credential signing | ES256 |
-| AccessTokenKey | Access token signing | ES256 |
-| PresentationRequestKey | Presentation Request object signing | ES256 |
-| KeyEncryptionKey | Database encryption (KEK) | AES-256-GCM |
-| AdminSigningKey | Admin UI access token and Resource Hook payload signing | ES256 |
-| ClientAssertionKey ¹ | Signing wallet client Assertion for JWT Bearer | ES256 |
-| HolderClientAttestationKey ¹ | Self-signed Client Attestation | ES256 |
+| CredentialKey | Signs and verifies access tokens issued during credential issuance via OID4VCI protocol | ES256 |
+| AccessTokenKey | Signs issued Verifiable Credentials. Public key is exposed via well known endpoint to allow for verification of the issued credentials. | ES256 |
+| PresentationRequestKey | Signs Presentation Request object | ES256 |
+| KeyEncryptionKey | Sensitive information and data are stored in the database encrypted using a generated Data Encryption Key (DEK). This Key Encryption Key encrypts the DEK so that it can be stored alongside the ciphertext in the database. Decryption of the encrypted data is also performed using this Key Encryption Key. | AES-256-GCM |
+| AdminSigningKey | Signs and verifies access tokens issued for dashboard access. | ES256 |
+| HolderClientAssertionKey ¹ | Self Signs a Client Assertion for Holder Wallet Client Authentication. Used when Holder Wallet is configured to use Client Assertion | ES256 |
+| HolderClientAttestationKey ¹ | Self Signs a Client Attestation for Holder Wallet Client Authentication. Used when Holder Wallet is configured to use Client Attestation | ES256 |
 
 ¹ Optional: generated and used only when the respective feature is enabled.
 
