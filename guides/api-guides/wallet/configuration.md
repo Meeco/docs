@@ -9,6 +9,46 @@ Both layers are governed by JSON Schemas that ship with the service (`config/con
 
 The result is that deployment configuration stays small and stable, day-to-day settings changes need no redeployment, and the effective deployed configuration is always observable with secrets redacted.
 
+## Key terms
+
+The configuration is organised around the capabilities the SVX Wallet can provide. A few terms recur throughout:
+
+| Term | Meaning |
+| --- | --- |
+| **Module** | A capability that can be switched on or off per deployment. The `bridge`, `issuer` and `verifier` modules each have an `enabled` flag; holder wallet functionality is always available. |
+| **Holder** | The wallet-holding role: storing credentials, receiving them from issuers, and presenting them to verifiers. Configured under `holder`. |
+| **Issuer** | The role that issues credentials to holders. Configured under `issuer`. |
+| **Verifier** | The role that requests and verifies presentations from holders. Configured under `verifier`. |
+| **KMS** | Key Management Service — the system that generates, stores and uses cryptographic keys on the service's behalf. Keys live in the KMS, never in the configuration file. |
+| **Bridge** | An optional module that connects the wallet to external identity providers to bootstrap wallets and credentials. Most deployments leave it disabled. |
+| **SVX Verify** | A hosted verification experience (part of the verifier capability) that walks an end user through presenting credentials. |
+| **Attestation** | Evidence a client app presents to prove its integrity when it talks to the wallet. Configured under `holder.client_attestation`. |
+| **Trust configuration** | The set of issuers/verifiers a deployment is willing to trust (for example, accepted issuer keys or certificates). Configured per role under runtime settings. |
+| **Namespace** | One of the five runtime-settings documents (`system`, `issuer`, `verifier`, `holder`, `bridge`), each holding the mutable settings for that area. |
+
+## What you need to configure
+
+All five top-level blocks (`system`, `holder`, `bridge`, `issuer`, `verifier`) must be present in the static file. What you put in them depends on which capabilities the deployment provides:
+
+* **`system` is always required** — every deployment needs an application host, database, Redis and logging. This is the bulk of a minimal configuration.
+* **`holder` is always active** — holder wallet functionality cannot be switched off. For a basic deployment its settings can be left empty (`{}`).
+* **`issuer`, `verifier` and `bridge` are opt-in** — they are gated by an `enabled` flag (`issuer` and `verifier` default to `false`). Set `enabled: true` only for the capabilities the deployment provides; leave the others disabled.
+
+So a **holder-only wallet** needs little more than a populated `system` block, an empty `holder`, and the `issuer`/`verifier`/`bridge` blocks present but disabled. A deployment that also **issues** credentials enables and configures `issuer`; one that **verifies** enables `verifier`; and so on.
+
+## Configure your first deployment
+
+A typical path from nothing to a running service:
+
+1. **Start the static file.** Create `config/config.json` and declare the schema so your editor validates and autocompletes it (`"$schema": "./config.schema.json"`).
+2. **Fill in `system`.** Set `app_host` and the `postgres`, `redis` and `logging` settings — see the [minimal example](#static-configuration) below. Supply database credentials here or via [environment variables](#environment-variable-overrides).
+3. **Choose your capabilities.** Leave `holder` as `{}`, and enable `issuer` and/or `verifier` only if this deployment issues or verifies credentials. Leave `bridge` disabled unless you are integrating an external identity provider.
+4. **Start the service.** The static file is validated at startup; the service will not start if it is invalid, and the error will point at the offending option.
+5. **Adjust business settings at runtime.** Display metadata, supported credentials, issuance and verification policies and trust live in [runtime settings](#runtime-settings), not the file — set them through the Wallet API or Dashboard without redeploying.
+6. **Verify what's running.** Inspect the merged [effective configuration](#effective-configuration) at any time to confirm the service is running with the settings you expect (secrets are redacted).
+
+The sections below describe each layer in detail. For the full list of every option, its constraints and default, consult the JSON Schemas that ship with the service — they are the authoritative reference.
+
 ## Static configuration
 
 The static configuration is a single JSON file (`config/config.json`) that covers what must be known before the service can start: the application host, database and Redis connections, logging, module enablement, KMS settings, and secret material supplied by the operator.
