@@ -14,9 +14,9 @@ Every request must include an access token as a `Bearer` token in the `Authoriza
 Authorization: Bearer <access_token>
 ```
 
-Access tokens are issued by the **identity provider (IdP) configured for your SVX Wallet deployment**. How you obtain a token depends on that provider; your administrator provides the IdP's token endpoint and the credentials to use with it.
+Access tokens are issued by the **identity provider (IdP) configured for your SVX Wallet deployment** — the same IdP you use to sign in to the deployment. How you obtain a token depends on that provider; your administrator provides the IdP details for your deployment.
 
-Obtain a token from your configured IdP, then send it as the `Authorization: Bearer` header on every subsequent request. The token identifies your integration to the wallet (it carries an `application` role).
+Authenticate against your deployment's IdP to obtain a token, then send it as the `Authorization: Bearer` header on every subsequent request. The token is scoped to the deployment it was issued for, so use a token obtained for the deployment you are calling.
 
 Tokens are short-lived. When a token expires, requests are rejected with `401 Unauthorized`; obtain a new token from the IdP and retry.
 
