@@ -14,9 +14,45 @@ Every request must include an access token as a `Bearer` token in the `Authoriza
 Authorization: Bearer <access_token>
 ```
 
-Access tokens are issued by the **identity provider (IdP) configured for your SVX Wallet deployment** — the same IdP you use to sign in to the deployment. How you obtain a token depends on that provider; your administrator provides the IdP details for your deployment.
+Tokens are obtained with a **client credentials** exchange using an application's `client_id` and `client_secret`.
 
-Authenticate against your deployment's IdP to obtain a token, then send it as the `Authorization: Bearer` header on every subsequent request. The token is scoped to the deployment it was issued for, so use a token obtained for the deployment you are calling.
+> **Note**
+> The `client_id` and `client_secret` identify an *application* registered with the deployment. An administrator registers the application and provides you with its credentials. The token is scoped to the deployment it was issued for, so use a token obtained for the deployment you are calling.
+
+### Get an access token
+
+Exchange your application credentials for an access token.
+
+**Endpoint**
+
+```bash
+POST /application/token
+```
+
+**Request**
+
+```json
+{
+  "grant_type": "client_credentials",
+  "client_id": "<client_id>",
+  "client_secret": "<client_secret>"
+}
+```
+
+**Response**
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiI…",
+  "token_type": "Bearer",
+  "expires_in": 900
+}
+```
+
+Send the returned `access_token` as the `Authorization: Bearer` header on every subsequent request. When a token expires (`expires_in` is its lifetime in seconds), requests are rejected with `401 Unauthorized`; repeat the exchange to obtain a new one.
+
+> **Note**
+> Some deployments issue tokens through an external identity provider instead of the built-in endpoint above. In that case, obtain a token from your deployment's configured provider — your administrator provides the details — and use it the same way.
 
 Tokens are short-lived. When a token expires, requests are rejected with `401 Unauthorized`; obtain a new token from the IdP and retry.
 
