@@ -17,7 +17,7 @@ Authorization: Bearer <access_token>
 Tokens are obtained with a **client credentials** exchange using an application's `client_id` and `client_secret`.
 
 > **Note**
-> The `client_id` and `client_secret` identify an *application* registered with the deployment. An administrator registers the application and provides you with its credentials. The token is scoped to the deployment it was issued for, so use a token obtained for the deployment you are calling.
+> The `client_id` and `client_secret` come from an **API key** registered in the SVX Wallet Dashboard. If you have access to the Dashboard you can register one yourself; otherwise an administrator provides the credentials. The token is scoped to the deployment it was issued for, so use a token obtained for the deployment you are calling.
 
 ### Get an access token
 
