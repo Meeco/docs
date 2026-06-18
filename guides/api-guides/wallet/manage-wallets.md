@@ -1,6 +1,6 @@
 # Manage Wallets and Keys
 
-A wallet is the container the SVX Wallet manages on behalf of a holder — a collection of cryptographic keys, [DIDs](../../../platform/did.md) and credentials. This guide covers the lifecycle of a wallet and of the keys it holds.
+A wallet is the container the SVX Wallet manages on behalf of a holder — a collection of cryptographic keys, [DIDs](../dids.md) and credentials. This guide covers the lifecycle of a wallet and of the keys it holds.
 
 ## Wallets
 
@@ -94,7 +94,7 @@ A successful deletion returns an empty `204 No Content` response.
 
 ## Manage keys
 
-Each key in a wallet is a key pair generated and held by the service. Keys are used to control [DIDs](../../../platform/did.md), to bind credentials to the holder, and to sign verifiable presentations. A key is identified by its `kid`.
+Each key in a wallet is a key pair generated and held by the service. Keys are used to control [DIDs](../dids.md), to bind credentials to the holder, and to sign verifiable presentations. A key is identified by its `kid`.
 
 ### Create a key
 
@@ -215,6 +215,6 @@ POST /wallets/{walletId}/keys/{kid}/sign
 
 ## Related
 
-* [DIDs](../../../platform/did.md) — create and use DIDs derived from a wallet's keys.
+* [DIDs](../dids.md) — create and use DIDs derived from a wallet's keys.
 * [Add Credentials to a Wallet](add-credentials.md) — receive or import credentials into a wallet.
 * [Credentials](../credentials/README.md) — work with credentials once stored.
