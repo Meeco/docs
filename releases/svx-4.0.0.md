@@ -29,6 +29,11 @@ Using the new architecture we've included the following features.
 - **Credential and verification management has moved out of the Portal.** Credential schemas, credential templates, verification templates, issued credentials, and presentation requests/responses are now managed through the new Wallet Dashboard.
 - **ISO Mobile Document credential storage format has changed.** Credentials are now stored as `IssuerSigned` rather than `DeviceResponse`. There is no automatic migration of previously stored credentials.
 - **Wallet configuration is no longer exclusively file-based.** Most configuration is now managed at runtime, persisted in the application database, and accessible via the Wallet API or the Wallet Admin UI.
+- **Removed Organisation Wallet endpoints:**
+  - `GET /presentations/requests/{requestId}/status` - was not used, presentation request status can be fetched by using private API.
+  - `GET /system/svx/reload_data` - at this point Wallet does not depend on SVX and no data needs to be reloaded.
+  - `GET /system/wallet` - partially replaced by the `GET /system/settings/effective` endpoint.
+  - `POST /presentations/response/verify` - was not used.
 
 ## New Features
 
@@ -179,8 +184,10 @@ GET /.well-known/appspecific/selectid.rp
 The Wallet supports the following issuer identifier types: URL, DID, and X.509. Supported DID methods are `did:key` (including the EBSI variant) and `did:jwk`.
 
 ### Wallet x509 Certificate Management
-New endpoints manage x509 certificates. Certificates pair with signing keys and, once linked, include in the token's `x5c` header. A separate certificate type, called `trust_anchor`, exists. Configuring Wallet to verify credential and presentation request trust chains uses these certificates to ensure trust among parties.
-```
+
+Wallet extends the certificate management functionality that previously existed in Holder Wallet under the `GET` and `POST /system/trusted_certificates` endpoints. Previously, that capability was limited to managing `trust_anchor` certificates only. In SVX 4.0, certificate management is expanded to support broader x509 certificate handling, including certificates that pair with signing keys and, once linked, are included in the token's `x5c` header. Trust anchors remain supported and are used to configure verification trust chains for credentials and presentation requests.
+
+```text
 GET    /system/certificates
 POST   /system/certificates/import
 DELETE /system/certificates/{certificate_id}
