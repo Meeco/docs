@@ -8,4 +8,17 @@ All cryptographic keys are managed by the service on behalf of its wallets (cust
 
 The SVX Wallet implements the leading standards in the space, with a focus on the OpenID4VC family of specifications (OpenID4VCI for issuance, OpenID4VP for presentation), JWT-based credential formats, and optionally DIDs.
 
-Administrators can manage a deployment through the SVX Wallet Dashboard, a web application served by the service at `/admin`, or directly through the Wallet API. To learn how a deployment is configured, see [Configuration](configuration.md).
+Administrators can manage a deployment through the SVX Wallet Dashboard, a web application served by the service at `/admin`, or directly through the Wallet API.
+
+## Integrating with the API
+
+If you are building against an SVX Wallet deployment, the typical path is:
+
+1. **Authenticate** — obtain an access token. See [Using the Wallet API](using-the-api.md).
+2. **Create a wallet and a key** — set up the wallet and the holder key credentials bind to. See [Manage Wallets and Keys](manage-wallets.md).
+3. **Add credentials** — receive credentials from an issuer or import them directly. See [Add Credentials to a Wallet](add-credentials.md).
+4. **Present credentials** — respond to a verifier's request with a verifiable presentation. See [Present Credentials](present-credentials.md).
+
+## Deploying the service
+
+If you are standing up or operating an SVX Wallet deployment, see [Configuration](configuration.md) for the static configuration file and runtime settings.

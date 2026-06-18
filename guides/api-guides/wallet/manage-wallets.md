@@ -2,6 +2,8 @@
 
 A wallet is the container the SVX Wallet manages on behalf of a holder — a collection of cryptographic keys, [DIDs](../dids.md) and credentials. This guide covers the lifecycle of a wallet and of the keys it holds.
 
+All requests require a `Bearer` access token — see [Using the Wallet API](using-the-api.md).
+
 ## Wallets
 
 ### Create a wallet

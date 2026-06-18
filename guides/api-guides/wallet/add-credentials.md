@@ -9,6 +9,7 @@ In both cases the credential is stored in the wallet, encrypted at rest, and can
 
 ## Prerequisites
 
+* An **access token** — all requests require a `Bearer` token. See [Using the Wallet API](using-the-api.md).
 * An existing **wallet**. A wallet is identified by its `walletId` and is created with `POST /wallets`. See [Manage Wallets](manage-wallets.md).
 
   ```bash

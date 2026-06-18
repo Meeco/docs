@@ -10,6 +10,7 @@ Presenting a credential is a sequence of three calls, each returning a `state` v
 
 ## Prerequisites
 
+* An **access token** — all requests require a `Bearer` token. See [Using the Wallet API](using-the-api.md).
 * An existing **wallet**, identified by its `walletId`. See [Manage Wallets](manage-wallets.md).
 * At least one **stored credential** that satisfies the verifier's request, together with the holder key it is bound to. Credentials are added to a wallet by receiving or importing them — see [Add Credentials to a Wallet](add-credentials.md).
 

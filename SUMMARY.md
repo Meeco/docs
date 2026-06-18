@@ -57,6 +57,7 @@
     * [Account Delegation](guides/api-guides/vault/account-delegation.md)
   * [Machine-2-Machine Communication](guides/api-guides/machine-2-machine-communication.md)
   * [Wallet](guides/api-guides/wallet/README.md)
+    * [Using the Wallet API](guides/api-guides/wallet/using-the-api.md)
     * [Configuration](guides/api-guides/wallet/configuration.md)
     * [Manage Wallets and Keys](guides/api-guides/wallet/manage-wallets.md)
     * [Add Credentials to a Wallet](guides/api-guides/wallet/add-credentials.md)
