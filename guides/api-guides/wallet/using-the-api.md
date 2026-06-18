@@ -14,46 +14,11 @@ Every request must include an access token as a `Bearer` token in the `Authoriza
 Authorization: Bearer <access_token>
 ```
 
-Tokens are obtained with a **client credentials** exchange using an application's `client_id` and `client_secret`.
+Access tokens are issued by the **identity provider (IdP) configured for your SVX Wallet deployment**. How you obtain a token depends on that provider; your administrator provides the IdP's token endpoint and the credentials to use with it.
 
-> **Note**
-> The `client_id` and `client_secret` identify an *application* registered with the deployment. An administrator registers the application in the SVX Wallet Dashboard and provides you with its `client_id` and `client_secret`. The secret is shown only once, so store it securely.
+Obtain a token from your configured IdP, then send it as the `Authorization: Bearer` header on every subsequent request. The token identifies your integration to the wallet (it carries an `application` role).
 
-### Get an access token
-
-Exchange your application credentials for an access token.
-
-**Endpoint**
-
-```bash
-POST /application/token
-```
-
-**Request**
-
-```json
-{
-  "grant_type": "client_credentials",
-  "client_id": "<client_id>",
-  "client_secret": "<client_secret>"
-}
-```
-
-**Response**
-
-```json
-{
-  "access_token": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImF0K2p3dC…",
-  "token_type": "Bearer",
-  "expires_in": 900
-}
-```
-
-Send the returned `access_token` as the `Authorization: Bearer` header on every subsequent request.
-
-### Token expiry
-
-`expires_in` is the token's lifetime in seconds (15 minutes). When a token expires, requests are rejected with `401 Unauthorized`; obtain a new token by repeating the exchange. There is no refresh token — request a fresh token with the same credentials.
+Tokens are short-lived. When a token expires, requests are rejected with `401 Unauthorized`; obtain a new token from the IdP and retry.
 
 ## Request conventions
 
