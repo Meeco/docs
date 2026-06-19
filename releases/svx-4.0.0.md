@@ -264,7 +264,9 @@ Functionality available in the Wallet Dashboard:
 
 Configure how SVX Verify appears to end users and which identity providers are presented.
 
-<!-- TODO: Add screenshot for SVX Verify Configuration -->
+![SVX Verify Display Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_Display_Configuration.png)
+
+![SVX Verify IDP Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_IDP_Configuration.png)
 
 **Manage API Keys**
 
@@ -274,7 +276,7 @@ Configure how SVX Verify appears to end users and which identity providers are p
 
 Invite new administrators and manage existing admin access. Administrators authenticate using passkeys.
 
-<!-- TODO: Add screenshot for Admin Accounts -->
+![Admin Accounts](../.gitbook/assets/Release_4.0.0_Admin_Accounts.png)
 
 **Wallet configuration**
 
@@ -588,7 +590,7 @@ There is no automated migration of credential data from previous services (SVX A
 
 The previous Organisation and Holder Wallet services used file-based configuration. The new Wallet service uses a different configuration structure with a minimal static config file and runtime settings managed via the API or Dashboard. Existing configuration files are not compatible and cannot be migrated automatically. Operators must rebuild their configuration against the new static config schema and re-apply runtime settings through the Wallet API or Dashboard.
 
-Below is a minimal static configuration file for a deployment with wallet, issuer, and verifier enabled. All five top-level blocks (`system`, `wallets`, `bridge`, `issuer`, `verifier`) must be present. Integration-specific secret material (such as bridge identity-provider credentials) is only required when those features are enabled.
+Below is a minimal static configuration file for a deployment with issuer and verifier enabled. Bridge-specific and integration-specific fields are only required when those features are enabled.
 
 ```json
 {
@@ -622,13 +624,8 @@ Below is a minimal static configuration file for a deployment with wallet, issue
       "enabled": true
     }
   },
-  "wallets": {
-    "enabled": true
-  },
   "bridge": {
-    "enabled": false,
-    "external_reference": "svx-wallet",
-    "wallet_key_type": { "kty": "EC", "crv": "P-256" }
+    "enabled": false
   },
   "issuer": {
     "enabled": true,
