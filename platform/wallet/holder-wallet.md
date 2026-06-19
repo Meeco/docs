@@ -2,7 +2,7 @@ The Holder Wallet (HW) is a key component of Meeco’s SVX Platform, designed to
 
 ### Creating a HW
 
-To create a HW a user must first sign up to Meeco’s SVX Platform and register as a Tenant Administrator (TA). After receiving SVX login credentials, access to the SVX API and the Portal will be possible. The TA will need to create an Application, see the [Machine-2-Machine Communication](../../guides/api-guides/machine-2-machine-communication.md) guide for API access or the [Applications](../../guides/portal-tutorials/tenant-administrators/applications.md) guide if using the Portal. Once an Application has been created, a TA will need to provide Meeco’s SVX team with the following information:
+To create a HW a user must first sign up to Meeco’s SVX Platform and register as a Tenant Administrator (TA). After receiving SVX login credentials, access to the SVX API and the Portal will be possible. The TA will need to create an Application, see the [Applications](../../guides/portal-tutorials/tenant-administrators/applications.md) guide for more information. Once an Application has been created, a TA will need to provide Meeco’s SVX team with the following information:
 - Client ID
 - Client Secret
 

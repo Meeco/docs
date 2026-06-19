@@ -2,7 +2,7 @@ The Organisation Wallet (OW) is a component of Meeco’s SVX Platform that enabl
 
 ### Accessing an Organisation Wallet
 
-To access an OW a user must first sign up to Meeco’s SVX Platform. After receiving SVX login credentials, access to the OW API will be granted. When setting up the OW, the creation of an Application will be required. See the [Machine-2-Machine Communication](./machine-2-machine-communication.md) guide for API access or the [Applications](./portal-tutorials/organisation-adminsitrators/applications.md) guide if using the Portal.
+To access an OW a user must first sign up to Meeco’s SVX Platform. After receiving SVX login credentials, access to the OW API will be granted. When setting up the OW, the creation of an Application will be required. See the [Applications](../../guides/portal-tutorials/organisation-administrators/applications.md) guide for more information.
 
 ### Verifiable Credentials (VCs)
 

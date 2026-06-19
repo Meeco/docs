@@ -63,7 +63,6 @@
     * [Attachments](guides/api-guides/vault/attachments.md)
     * [On-sharing & Client Tasks](guides/api-guides/vault/on-sharing-and-client-tasks.md)
     * [Account Delegation](guides/api-guides/vault/account-delegation.md)
-  * [Machine-2-Machine Communication](guides/api-guides/machine-2-machine-communication.md)
  * [Portal Tutorials](guides/portal-tutorials/README.md)
    * [Tenant Administrators](guides/portal-tutorials/tenant-administrators/README.md)
      * [Onboard to a Tenancy](guides/portal-tutorials/tenant-administrators/onboard-to-a-tenancy.md)
