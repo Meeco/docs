@@ -31,7 +31,7 @@ The flow centres around the creation and exchange of a Request and a Response ob
 
 ## Prerequisites
 
-- [DID](../dids/did-methods.md)
+- [DID](../dids.md)
 - [Presentation](../credentials/presentations.md)
 
 ## Who can undertake this operation?
@@ -58,7 +58,7 @@ POST /oidc/presentations/requests
 * Name – Title string
 * Description – Explains the purpose for which the request is created
 * Verifier
-  * [DID](../dids/did-methods.md)
+  * [DID](../dids.md)
   * Name
 * Expiration Date – Timestamp the request token expires
 * Redirect Base URI
