@@ -91,7 +91,7 @@ When a wallet requests a credential via [OpenID Connect](openid-connect/README.m
 - For the `jwt_vc_json` format, the DID becomes the `credentialSubject.id` of the issued credential.
 - For the `dc+sd-jwt` format, DIDs are not supported as holder binding; the holder's key is embedded as a `cnf.jwk` claim instead.
 
-During presentation ([OpenID4VP](oidc/oidc4vp.md)), the wallet signs the presentation with the key controlled by the DID, and the Verifier validates the signature by resolving the DID to its public key.
+During presentation (OpenID4VP), the wallet signs the presentation with the key controlled by the DID, and the Verifier validates the signature by resolving the DID to its public key.
 
 ## DIDs as Issuer and Verifier identifiers
 
