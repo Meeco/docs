@@ -588,7 +588,7 @@ There is no automated migration of credential data from previous services (SVX A
 
 The previous Organisation and Holder Wallet services used file-based configuration. The new Wallet service uses a different configuration structure with a minimal static config file and runtime settings managed via the API or Dashboard. Existing configuration files are not compatible and cannot be migrated automatically. Operators must rebuild their configuration against the new static config schema and re-apply runtime settings through the Wallet API or Dashboard.
 
-Below is a minimal static configuration file for a deployment with issuer and verifier enabled. Bridge-specific and integration-specific fields are only required when those features are enabled.
+Below is a minimal static configuration file for a deployment with wallet, issuer, and verifier enabled. All five top-level blocks (`system`, `wallets`, `bridge`, `issuer`, `verifier`) must be present. Integration-specific secret material (such as bridge identity-provider credentials) is only required when those features are enabled.
 
 ```json
 {
@@ -622,8 +622,13 @@ Below is a minimal static configuration file for a deployment with issuer and ve
       "enabled": true
     }
   },
+  "wallets": {
+    "enabled": true
+  },
   "bridge": {
-    "enabled": false
+    "enabled": false,
+    "external_reference": "svx-wallet",
+    "wallet_key_type": { "kty": "EC", "crv": "P-256" }
   },
   "issuer": {
     "enabled": true,
