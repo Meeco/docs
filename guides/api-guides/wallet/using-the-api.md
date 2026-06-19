@@ -54,8 +54,6 @@ Send the returned `access_token` as the `Authorization: Bearer` header on every 
 > **Note**
 > Some deployments issue tokens through an external identity provider instead of the built-in endpoint above. In that case, obtain a token from your deployment's configured provider — your administrator provides the details — and use it the same way.
 
-Tokens are short-lived. When a token expires, requests are rejected with `401 Unauthorized`; obtain a new token from the IdP and retry.
-
 ## Request conventions
 
 * **JSON** — request and response bodies are JSON. Send `Content-Type: application/json` on requests with a body.
