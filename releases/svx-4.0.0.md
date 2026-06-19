@@ -257,7 +257,9 @@ Functionality available in the Wallet Dashboard:
 
 Configure how SVX Verify appears to end users and which identity providers are presented.
 
-<!-- TODO: Add screenshot for SVX Verify Configuration -->
+![SVX Verify Display Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_Display_Configuration.png)
+
+![SVX Verify IDP Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_IDP_Configuration.png)
 
 **Manage API Keys**
 
@@ -267,7 +269,7 @@ Configure how SVX Verify appears to end users and which identity providers are p
 
 Invite new administrators and manage existing admin access. Administrators authenticate using passkeys.
 
-<!-- TODO: Add screenshot for Admin Accounts -->
+![Admin Accounts](../.gitbook/assets/Release_4.0.0_Admin_Accounts.png)
 
 **Wallet configuration**
 
