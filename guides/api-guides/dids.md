@@ -86,7 +86,7 @@ A successful deletion returns an empty `204 No Content` response.
 
 ## DIDs in credential flows
 
-When a wallet requests a credential via [OpenID Connect](openid-connect/README.md) (OpenID4VCI), the holder binding can reference either a DID or a raw key (`kid`) — exactly one of the two:
+When a wallet requests a credential via OpenID4VCI, the holder binding can reference either a DID or a raw key (`kid`) — exactly one of the two:
 
 - For the `jwt_vc_json` format, the DID becomes the `credentialSubject.id` of the issued credential.
 - For the `dc+sd-jwt` format, DIDs are not supported as holder binding; the holder's key is embedded as a `cnf.jwk` claim instead.

@@ -13,7 +13,6 @@
   * [Verification Requests](guides/api-guides/credentials/verification-requests.md)
 * [Certificates](guides/api-guides/certificates/certificates.md)
 * [DIDs](guides/api-guides/dids.md)
-* [OpenID Connect](guides/api-guides/openid-connect/README.md)
 * [Wallet](guides/api-guides/wallet/README.md)
   * [Using the Wallet API](guides/api-guides/wallet/using-the-api.md)
   * [Configuration](guides/api-guides/wallet/configuration.md)
