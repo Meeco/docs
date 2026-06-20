@@ -5,7 +5,7 @@ Digital credentials are becoming more commonly used to assert and transfer infor
 VCs are compiled of a set of claims made about a Holder / Subject. They can be imagined as digital equivalents of physical documents (e.g. driver licences, passports, birth certificates). What differentiates them from physical documents and other non-secure forms of digital data is that they are tamper-resistant and can be cryptographically verified. In addition to this, VCs:
 
 * Are based on international standards such as those published by the [W3C](https://www.w3.org/TR/vc-data-model/)
-* Include decentralised identifiers [DIDs](../platform/did.md) (for all actors)
+* Include decentralised identifiers (DIDs) (for all actors)
 * Are designed to be globally interoperable
 * Require cryptographic proof throughout the credential lifecycle
 * Can be used across ecosystems

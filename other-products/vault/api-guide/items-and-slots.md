@@ -11,7 +11,7 @@ This guide describes creating Items and Item Templates using the Meeco API.
 -   **Item Template** — A list of empty slots with a label and a name. Each Item is created by cloning such a template and filling in the slots.
 -   **Item** — Contains one or more slots with filled in values.
 
-For more information on Vault-specific terminology, see the [Vault overview](../platform/vault/README.md) page.
+For more information on Vault-specific terminology, see the [Vault overview](../README.md) page.
 
 
 ## Browsing Item Templates

@@ -1,6 +1,6 @@
 # Decentralised Identifiers (DIDs)
 
-A [Decentralised Identifier (DID)](../../platform/did.md) is a globally unique identifier that can be cryptographically verified without relying on a central authority. In SVX, DIDs are handled by the SVX Wallet: a service that manages wallets, each holding keys, DIDs and credentials, and that also provides the issuance and verification capabilities.
+A Decentralised Identifier (DID) is a globally unique identifier that can be cryptographically verified without relying on a central authority. In SVX, DIDs are handled by the SVX Wallet: a service that manages wallets, each holding keys, DIDs and credentials, and that also provides the issuance and verification capabilities.
 
 DIDs are optional in SVX. The standard issuance and verification flows do not require them, holder binding is typically achieved with a raw key (`cnf.jwk`), and Issuers / Verifiers are typically identified by a URL or X.509 certificate. However, DIDs remain fully supported: they can be created and held in a wallet, and used as the identifier of an Issuer or Verifier, where an ecosystem requires them.
 

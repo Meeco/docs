@@ -62,13 +62,12 @@
 ## Platform
 
 * [Secure Value Exchange](platform/README.md)
-* [Authorisation, Tenant & Organisation Manager (ATOM)](platform/atom.md)
-* [Credential Service](platform/credential-service.md)
-* [Decentralised Identifiers (DIDs)](platform/did.md)
-* [Keys](platform/keys.md)
+* [Platform API](platform/platform-api.md)
+* [Verifiable Digital Credentials](platform/verifiable-digital-credentials.md)
+* [Cryptographic Keys](platform/cryptographic-keys.md)
 * [Tenants, Organisations, and End-Users](platform/tenants-organisations-and-end-users.md)
 * [Portal](platform/portal.md)
-* [Wallet Service](platform/wallet/wallet-service.md)
+* [Wallet](platform/wallet.md)
 * [Supported Standards](platform/supported-standards.md)
 * [Releases](platform/releases/README.md)
   * [4.0.0](platform/releases/svx-4.0.0.md)

@@ -12,7 +12,7 @@ Deepen your understanding of digital identity concepts.
 
 Embark on your journey and harness the full potential of the platform's capabilities.
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Introducing SVX</strong></td><td>Composable platform to manage a data network</td><td></td><td><a href="platform/README.md">overview.md</a></td></tr><tr><td><strong>Wallet Service</strong></td><td>Issue, present and verify credentials with the unified Wallet</td><td></td><td><a href="platform/wallet/wallet-service.md">wallet-service.md</a></td></tr><tr><td><strong>Vault</strong></td><td>Meeco's secure, end-to-end encrypted storage</td><td></td><td><a href="other-products/vault/README.md">README.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Introducing SVX</strong></td><td>Composable platform to manage a data network</td><td></td><td><a href="platform/README.md">overview.md</a></td></tr><tr><td><strong>Wallet Service</strong></td><td>Issue, present and verify credentials with the unified Wallet</td><td></td><td><a href="platform/wallet.md">wallet-service.md</a></td></tr><tr><td><strong>Vault</strong></td><td>Meeco's secure, end-to-end encrypted storage</td><td></td><td><a href="other-products/vault/README.md">README.md</a></td></tr></tbody></table>
 
 ## Tools
 
