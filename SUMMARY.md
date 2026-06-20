@@ -45,20 +45,6 @@
   * [Security](guides/wallet-tutorials/security.md)
   * [Wallet Recovery](guides/wallet-tutorials/wallet-recovery.md)
 
-## Concepts
-
-* [Digital Identity and Why It's Important](concepts/digital-identity.md)
-* [Digital Wallets](concepts/digital-wallets.md)
-* [Ecosystems](concepts/ecosystems.md)
-* [Information Security](concepts/information-security.md)
-* [Personal Data & Attributes](concepts/personal-data-and-attributes.md)
-* [Privacy- and Security-by-design](concepts/privacy-and-security-by-design.md)
-* [Secure Data Storage](concepts/secure-data-storage.md)
-* [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
-* [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
-* [Verifiable Credentials](concepts/verifiable-credentials.md)
-* [Terminology](concepts/terminology.md)
-
 ## Platform
 
 * [Secure Value Exchange](platform/README.md)
@@ -102,8 +88,6 @@
   * [1.0.0](platform/releases/svx-1.0.0.md)
   * [Legacy API-of-Me](platform/releases/api-of-me-releases.md)
 
-
-
 ## Other Products
 
 * [Vault](other-products/vault/README.md)
@@ -116,6 +100,20 @@
     * [Account Delegation](other-products/vault/api-guide/account-delegation.md)
     * [Organizations](other-products/vault/api-guide/organizations.md)
 * [Cryppo SDK & CLI](other-products/cryppo.md)
+
+## Concepts
+
+* [Digital Identity and Why It's Important](concepts/digital-identity.md)
+* [Digital Wallets](concepts/digital-wallets.md)
+* [Ecosystems](concepts/ecosystems.md)
+* [Information Security](concepts/information-security.md)
+* [Personal Data & Attributes](concepts/personal-data-and-attributes.md)
+* [Privacy- and Security-by-design](concepts/privacy-and-security-by-design.md)
+* [Secure Data Storage](concepts/secure-data-storage.md)
+* [Selective Disclosure / ZKP](concepts/selective-disclosure.md)
+* [Tokens and Tokenisation](concepts/tokens-and-tokenisation.md)
+* [Verifiable Credentials](concepts/verifiable-credentials.md)
+* [Terminology](concepts/terminology.md)
 
 ## Policies
 
