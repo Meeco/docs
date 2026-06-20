@@ -2,7 +2,7 @@
 
 Within Meeco’s Secure Value Exchange (SVX) platform, different entities have been developed for different purposes. Understanding the difference between these entities, how it maps to users and organisations is important, as it will help you to understand the responsibilities of each.
 
-It is worth noting that regardless of whether you are using Meeco’s APIs, or if you are interacting via our [Portal](/platform/portal.md), the different users and organisations are consistent across both.
+It is worth noting that regardless of whether you are using Meeco’s APIs or interacting via the [Portal](/platform/portal.md) or [Wallet Dashboard](/platform/wallet.md#wallet-dashboard), these entities and their roles are consistent across all surfaces.
 
 ## Users and Organisations Explained
 
@@ -20,6 +20,6 @@ SVX network participants as follows:
 | Tenant Administrator | An individual (user) who has administrator access within a Tenant. A Tenant Administrator is responsible for the actions that take place within their Tenant, including the onboarding, management and governance of Organisations.
 | Organisation | An Organisation participating in the ecosystem will typically take the role of a credential or data Issuer, Verifier, or both. Organisations connect to End-users to exchange data.
 | Organisation Administrator | An individual (user) who has administrator access within an Organisation. An Organisation Administrator can use the Portal to manage the lifecycle of credentials and set up machine-to-machine access.
-| End-User | End-users are associated with a Tenant and benefit from services offered by that Tenant including the ability to connect to Issuers, Verifiers, and create a vault.
+| End-User | End-users are the Holders in a credential ecosystem. They interact with Issuers and Verifiers using a wallet application (such as the [SVX Wallet](/platform/wallet.md)) to receive, store, and present Verifiable Credentials.
 
 For more information on how users and organisations form an ecosystem, see our [Ecosystems](../concepts/ecosystems.md) page.

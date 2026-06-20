@@ -7,7 +7,7 @@ Tenant Administrators can add Organisations to their Tenancy by navigating to _O
 * Logo upload
 
 > **Note**
-> _Associated schemas:_ For more information on creating, managing and assigning schemas to Organisations, see the tutorial [Credential Schemas](./credential-schemas.md).
+> _Associated schemas:_ Credential schemas are created and managed through the [Wallet Dashboard](../../api-guides/wallet/configuration.md) or the [Wallet API](../../api-guides/credentials/credential-schemas.md). A Tenant Administrator can assign available schemas to Organisations.
 
 Once all required fields are complete select the _Add_ button and the Organisation will appear in the list.
 

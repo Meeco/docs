@@ -170,7 +170,7 @@ An authentication method that sends proof that a user knows their password witho
 ## Security Rights (SRs)
 The permissions an individual user or a computer application holds to read, write, modify, delete, or otherwise access a computer file; change configurations or settings, or add or remove applications. See reference [here](https://soffront.com/glossary/access-rights/). Within **SVX**, one can differentiate between two types of security rights:
 - External security rights, which are understood by other components in SVX.
-- Internal security rights, which [ATOM](https://www.meeco.me/platform#component-atom) uses to manage itself.
+- Internal security rights, which the Platform API uses to manage itself.
 
 
 ## Security Rights Token (SRT)

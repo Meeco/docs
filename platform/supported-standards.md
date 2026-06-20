@@ -18,6 +18,8 @@ Meeco is actively following, and where possible, contributing in standardisation
 | --- | --- | --- |
 | Credential Data Model | [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model) | W3C |
 | Credential Data Format | [JSON Web Token VC (JWT-VC)](https://www.w3.org/TR/vc-data-model/#json-web-token) - signed as JWS ([RFC7515](https://datatracker.ietf.org/doc/html/rfc7515)) | W3C, IETF |
+| Credential Data Format | [SD-JWT-based Verifiable Credentials](https://www.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/) (`dc+sd-jwt`) | IETF |
+| Credential Data Format | ISO/IEC 18013-5 mDOC (`mso_mdoc`) | ISO |
 | Credential Presentation | [Presentation Exchange v2](https://identity.foundation/presentation-exchange/spec/v2.0.0/) | DIF |
 | Credential Presentation <br/>Transfer Protocol | [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | OIDF |
 | Credential JSON Schema | [Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema/) | W3C |
@@ -64,9 +66,10 @@ The following algorithms are supported when encrypting other keys at rest and in
 
 The following keypair algorithms are supported for exchanging keys between parties. Used as defined in [NIST - Key pair](https://csrc.nist.gov/glossary/term/key_pair).
 
-| Key Type |
-| --- |
-| RSA-4096 |
+| `kty` | `crv` | JWS Algorithm | Use |
+| --- | --- | --- | --- |
+| `EC` | `P-256` | ES256 | Signing keys (KMS), DID creation, holder wallet keys |
+| `OKP` | `Ed25519` | EdDSA | Signing keys (KMS), DID creation, holder wallet keys |
 
 ### Data Encryption Algorithms
 

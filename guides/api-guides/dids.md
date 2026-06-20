@@ -1,6 +1,6 @@
 # Decentralised Identifiers (DIDs)
 
-A [Decentralised Identifier (DID)](../../platform/did.md) is a globally unique identifier that can be cryptographically verified without relying on a central authority. In SVX, DIDs are handled by the SVX Wallet: a service that manages wallets, each holding keys, DIDs and credentials, and that also provides the issuance and verification capabilities.
+A Decentralised Identifier (DID) is a globally unique identifier that can be cryptographically verified without relying on a central authority. In SVX, DIDs are handled by the SVX Wallet: a service that manages wallets, each holding keys, DIDs and credentials, and that also provides the issuance and verification capabilities.
 
 DIDs are optional in SVX. The standard issuance and verification flows do not require them, holder binding is typically achieved with a raw key (`cnf.jwk`), and Issuers / Verifiers are typically identified by a URL or X.509 certificate. However, DIDs remain fully supported: they can be created and held in a wallet, and used as the identifier of an Issuer or Verifier, where an ecosystem requires them.
 
@@ -86,12 +86,12 @@ A successful deletion returns an empty `204 No Content` response.
 
 ## DIDs in credential flows
 
-When a wallet requests a credential via [OpenID Connect](openid-connect/README.md) (OpenID4VCI), the holder binding can reference either a DID or a raw key (`kid`) — exactly one of the two:
+When a wallet requests a credential via OpenID4VCI, the holder binding can reference either a DID or a raw key (`kid`) — exactly one of the two:
 
 - For the `jwt_vc_json` format, the DID becomes the `credentialSubject.id` of the issued credential.
 - For the `dc+sd-jwt` format, DIDs are not supported as holder binding; the holder's key is embedded as a `cnf.jwk` claim instead.
 
-During presentation ([OpenID4VP](oidc/oidc4vp.md)), the wallet signs the presentation with the key controlled by the DID, and the Verifier validates the signature by resolving the DID to its public key.
+During presentation (OpenID4VP), the wallet signs the presentation with the key controlled by the DID, and the Verifier validates the signature by resolving the DID to its public key.
 
 ## DIDs as Issuer and Verifier identifiers
 

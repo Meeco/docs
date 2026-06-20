@@ -59,10 +59,6 @@ Convert data from onboarding to any product or service to a Vault to enable cust
 
 An End-user Vault is accessed, managed and controlled by one single user. End-user Vaults can be made available to participants within an ecosystem including, but not limited to: customers of a bank, students of an education institute, members of an association, or, individuals can manage their own Vault and establish Connections without being part of an established ecosystem.
 
-## Enterprise Vault
-
-An Enterprise Vault (EV) is a secure service similar to an End-user Vault but with added functionality tailored to enterprises. *Enterprise* refers to any entity, for example a company, government, or association. For further details on EVs, see the [Enterprise Vault](/platform/vault/enterprise-vault.md) information page.
-
 # Standards and Compliance
 
 For all European Union customers, data is hosted in Europe and is General Data Protection Regulation (GDPR) compliant. Speak to us about data sovereignty in other jurisdictions.

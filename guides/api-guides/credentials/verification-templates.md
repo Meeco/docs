@@ -6,7 +6,7 @@ SVX Wallet supports two flavours of verification template:
 - [Digital Credential Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)
 - [Presentation Exchange (PEX)](https://identity.foundation/presentation-exchange/spec/v1.0.0/)
 
-A DCQL verification template will inclue a `dcql_query` object that describes the required credential(s).
+A DCQL verification template will include a `dcql_query` object that describes the required credential(s).
 
 A PEX verification template will include an `input_descriptors` array that describes the required credential(s).
 
@@ -14,7 +14,7 @@ A PEX verification template will include an `input_descriptors` array that descr
 
 Verification templates can only be created and managed by people who have access to the SVX Wallet Dashboard and API.
 
-## Create Presentation Definition
+## Create Verification Template
 
 Creation of a verification template
 
