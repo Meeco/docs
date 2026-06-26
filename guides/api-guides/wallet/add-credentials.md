@@ -1,11 +1,12 @@
 # Add Credentials to a Wallet
 
-There are two ways a credential is added to an SVX Wallet:
+There are three ways a credential is added to an SVX Wallet:
 
-* **Receive from an issuer** using the OpenID4VCI flow — the wallet acts on a credential offer, obtains an access token, and collects the issued credential. This is the normal, issuer-driven path.
+* **Issuer-initiated issuance (OpenID4VCI)** — the wallet acts on a credential offer, obtains an access token, and collects the issued credential.
+* **Wallet-initiated issuance (OpenID4VCI)** - the wallet initiates the issuance by selecting an issuer and credential configuration before obtaining the credential.
 * **Direct import** — an already-issued, encoded credential is stored in the wallet in a single call.
 
-In both cases the credential is stored in the wallet, encrypted at rest, and can then be listed, viewed, presented, or deleted.
+In all cases the credential is stored in the wallet, encrypted at rest, and can then be listed, viewed, presented, or deleted.
 
 ## Prerequisites
 
@@ -28,9 +29,9 @@ In both cases the credential is stored in the wallet, encrypted at rest, and can
   { "key": { "kty": "EC", "crv": "P-256" } }
   ```
 
-## Receive a credential (OpenID4VCI)
+## Issuer-initiated issuance (OpenID4VCI)
 
-Receiving a credential from an issuer is a sequence of three calls. Each call returns a `state` value that links the steps of a single flow; pass it to the next call.
+Receiving a credential from an issuer via issuer-initiated issuance is a sequence of three calls. Each call returns a `state` value that links the steps of a single flow; pass it to the next call.
 
 ### 1. Register the credential offer
 
@@ -128,7 +129,121 @@ POST /wallets/{walletId}/receive/get_credential
 ```
 
 > **Note**
-> Provide exactly one of `kid` or `did`. For the `dc+sd-jwt` format the holder's key is embedded as a `cnf.jwk` claim; `did` is not supported for that format.
+> Provide exactly one of `kid` or `did`. <br>
+`did` is only supported for `jwt_vc_json` format. <br>
+For the `dc+sd-jwt` format the holder's key is embedded as a `cnf.jwk` claim. <br>
+For the `mso_mdoc` format the holder's key is embedded as `DeviceKeyInfo`.
+
+**Response**
+
+The credential is now stored in the wallet. `id` is the wallet's identifier for the stored credential, and `credential` is the issued credential in its encoded form.
+
+```json
+{
+  "id": "b3f1c0e2-1d4a-4b8e-9c2a-7f6d5e4c3b2a",
+  "state": "682c0278-da29-4f23-9f1c-165777bed32b",
+  "credential_id": "urn:uuid:58864fac-1857-40f8-9f37-8fdd4fe1cc2e",
+  "credential": "eyJ0eXAiOiJkYytzZC1qd3QiLCJhbGciOiJFUzI1NiJ9…"
+}
+```
+
+You can review in-progress and completed flows for a wallet with `GET /wallets/{walletId}/receive`, or a single flow with `GET /wallets/{walletId}/receive/{state}`.
+
+
+## Wallet-initiated issuance (OpenID4VCI)
+
+Obtaining a credential from an issuer via wallet-initiated issuance is a sequence of three calls. Each call returns a `state` value that links the steps of a single flow; pass it to the next call.
+
+Wallet-initiated issuance uses the OAuth 2.0 Authorization Code grant.
+
+### 1. Discover the issuer's supported credentials.
+
+Retrieve the Credential Issuer Metadata to determine the issuer identifier and the credential configuration (or scope) to request.
+
+The following values will be required for the next step:
+- `credential_issuer`
+- `supported_credential_configuration[].scope` of the desired credential
+
+**Endpoint**
+```bash
+GET {ISSUER}/.well-known/openid-credential-issuer
+```
+
+**Example Response**
+```json
+{
+  "credential_issuer": "<ISSUER URL>",
+  "credential_endpoit": "<ISSUER URL>/credential",
+  ...
+  "credential_configurations_supported": {
+    "identity_credential": {
+      "scope": "identity_vc",
+      "format": "dc+sd-jwt",
+      ...
+      "vct": "id-cred"
+    }
+  }
+}
+```
+
+### 2. Obtain an access token
+
+Start the authorization flow with the issuer.
+
+**Endpoint**
+
+```bash
+POST /wallets/{walletId}/receive/get_access_token
+```
+
+**Request**
+
+```json
+{
+  "credential_issuer": "<ISSUER URL>",
+  "scope": "identity_vc",
+  "redirect_uri": "<wallet-front-end>://redirect", 
+  "client_id": "<Your client ID with the issuer>" // if required
+}
+```
+
+The response returns an authorization_url.
+
+Open this URL in a browser and complete authentication with the issuer. Once authorization is complete, the issuer redirects back to the wallet, which then redirects to the `redirect_uri` supplied in the request. The wallet stores the resulting access token against the `state` for the next step.
+
+**Response**
+
+```json
+{
+  "state": "682c0278-da29-4f23-9f1c-165777bed32b",
+  "authorization_url": "<ISSUER AUTHORIZATION URL>"
+}
+```
+
+### 3. Collect the credential
+
+Request the credential, binding it to a holder key by `kid` (or to a `did`). The wallet stores the issued credential automatically and returns it.
+
+**Endpoint**
+
+```bash
+POST /wallets/{walletId}/receive/get_credential
+```
+
+**Request**
+
+```json
+{
+  "state": "682c0278-da29-4f23-9f1c-165777bed32b",
+  "kid": "lA5y6IC-aLCpHtf-NytvSbYGZWqAfbrgAoGn3F3l0NI"
+}
+```
+
+> **Note**
+> Provide exactly one of `kid` or `did`. <br>
+`did` is only supported for `jwt_vc_json` format. <br>
+For the `dc+sd-jwt` format the holder's key is embedded as a `cnf.jwk` claim. <br>
+For the `mso_mdoc` format the holder's key is embedded as `DeviceKeyInfo`.
 
 **Response**
 
