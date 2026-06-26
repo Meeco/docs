@@ -317,8 +317,8 @@ Each key can be individually configured to use a different adapter. All keys def
 | PresentationRequestKey | Signs Presentation Request object | ES256 |
 | KeyEncryptionKey | Sensitive information and data are stored in the database encrypted using a generated Data Encryption Key (DEK). This Key Encryption Key encrypts the DEK so that it can be stored alongside the ciphertext in the database. Decryption of the encrypted data is also performed using this Key Encryption Key. | AES-256-GCM |
 | AdminSigningKey | Signs and verifies access tokens issued for dashboard access. | ES256 |
-| HolderClientAssertionKey ¹ | Self Signs a Client Assertion for Holder Wallet Client Authentication. Used when Holder Wallet is configured to use Client Assertion | ES256 |
-| HolderClientAttestationKey ¹ | Self Signs a Client Attestation for Holder Wallet Client Authentication. Used when Holder Wallet is configured to use Client Attestation | ES256 |
+| ClientAssertionKey ¹ | JWT Bearer assertion key for private_key_jwt client authentication in token endpoint requests | ES256 |
+| WalletAttestationKey ¹ | Self-signed wallet attestation key for generating OAuth-Client-Attestation and OAuth-Client-Attestation-PoP headers on token endpoint calls | ES256 |
 
 ¹ Optional: generated and used only when the respective feature is enabled.
 
