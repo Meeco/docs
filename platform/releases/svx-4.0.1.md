@@ -23,5 +23,6 @@ This is a bugfix release covering the SVX Wallet and SVX Utilities components.
 
 ### Bug Fixes
 
-- Fixed handling of git conflicts during deployment: both rebase conflicts and push rejections are now detected. 
-- Git operations are now serialized via a simple GenServer queue.
+- Fixed problems with concurrent deployments:
+  - Fixed handling of git conflicts during deployment: both rebase conflicts and push rejections are now detected. 
+  - Git operations are now serialized via a simple GenServer queue.
