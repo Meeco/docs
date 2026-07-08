@@ -189,3 +189,22 @@ The following endpoints are used to maintain and read certificate information:
 
 - `GET /system/certificates` - List all imported trust anchor certificates.
 - `DELETE /system/certificates/{certificate_id}` - Delete a trust anchor certificate.
+
+
+## API References
+
+{% openapi-operation spec="svx-wallet-openapi" path="/system/certificates/import" method="post" %}
+[OpenAPI svx-wallet-openapi](https://raw.githubusercontent.com/Meeco/docs/refs/heads/main/openapi/svx-wallet-openapi.json)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="svx-wallet-openapi" path="/system/certificates" method="get" %}
+[OpenAPI svx-wallet-openapi](https://raw.githubusercontent.com/Meeco/docs/refs/heads/main/openapi/svx-wallet-openapi.json)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="svx-wallet-openapi" path="/system/certificates/{certificate_id}" method="delete" %}
+[OpenAPI svx-wallet-openapi](https://raw.githubusercontent.com/Meeco/docs/refs/heads/main/openapi/svx-wallet-openapi.json)
+{% endopenapi-operation %}
+
+{% openapi-schemas spec="svx-wallet-openapi" schemas="TrustedCertificateNotFoundError,InvalidTrustedCertificateFormatError,FailedToLoadCertificateError,CertificateAlreadyRegistered,CertificateSubjectDto,CreateCsrRequestDto,ImportCertificateRequestDto,CsrResponseDto" grouped="true" %}
+[OpenAPI svx-wallet-openapi](https://raw.githubusercontent.com/Meeco/docs/refs/heads/main/openapi/svx-wallet-openapi.json)
+{% endopenapi-schemas %}
