@@ -9,7 +9,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "/",
+      "url": "https://zyfla-wallet-sandbox.meeco.cloud",
       "description": "SVX Wallet deployment (relative)"
     }
   ],
