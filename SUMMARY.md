@@ -118,15 +118,13 @@
 
 ## OpenAPI Docs
 
-***
-
 * [SVX API](svx-api/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
       downloadLink: true
       grouping: by-tag
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
@@ -135,11 +133,11 @@
     ```
 * [SVX Wallet](svx-wallet/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
       downloadLink: true
       grouping: by-tag
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
