@@ -118,7 +118,7 @@
 
 ## OpenAPI Docs
 
-* [SVX API](svx-api/README.md)
+* [SVX API](openapi-docs/svx-api/README.md)
   * ```yaml
     props:
       models: true
@@ -131,7 +131,7 @@
           kind: openapi
           spec: svx-wallet-openapi
     ```
-* [SVX Wallet](svx-wallet/README.md)
+* [SVX Wallet](openapi-docs/svx-wallet/README.md)
   * ```yaml
     props:
       models: true
