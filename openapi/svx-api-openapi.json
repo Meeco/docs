@@ -1,0 +1,6293 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SVX API",
+    "version": "4.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://api-sandbox.svx.exchange"
+    }
+  ],
+  "paths": {
+    "/applications": {
+      "post": {
+        "description": "Create application agent",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Meeco-Organisation-Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Application created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "application": {
+                      "properties": {
+                        "id": {
+                          "description": "Agent ID",
+                          "format": "uuid",
+                          "type": "string"
+                        },
+                        "description": {
+                          "description": "Agent description",
+                          "maxLength": 256,
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Agent name",
+                          "maxLength": 72,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "security_rights": {
+                          "description": "list of security rights",
+                          "items": {
+                            "example": "vk:org:delegation",
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": ["description", "name", "id"],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object",
+                  "required": ["application"]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "application": {
+                    "properties": {
+                      "description": {
+                        "description": "description of the agent",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "name of the agent",
+                        "type": "string"
+                      },
+                      "security_rights": {
+                        "description": "list of security rights",
+                        "example": ["vk:org:delegation"],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object",
+                    "required": ["description", "name", "security_rights"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Organisations"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      },
+      "get": {
+        "description": "Load all application agents",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Meeco-Organisation-Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applications loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "applications": {
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "name": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "description": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "type": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "secret": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "scopes": {
+                            "type": "string",
+                            "default": null
+                          },
+                          "redirects": {
+                            "default": [],
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "logout_redirects": {
+                            "default": [],
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "is_active": {
+                            "type": "boolean",
+                            "default": null
+                          },
+                          "created_at": {
+                            "format": "date-time",
+                            "type": "string",
+                            "default": null
+                          },
+                          "updated_at": {
+                            "format": "date-time",
+                            "type": "string",
+                            "default": null
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "description",
+                          "type",
+                          "secret",
+                          "scopes",
+                          "redirects",
+                          "logout_redirects",
+                          "is_active",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object",
+                  "required": ["applications"]
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Organisations"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      }
+    },
+    "/applications/{id}": {
+      "get": {
+        "description": "Get application agent information",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Meeco-Organisation-Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One application read",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "application": {
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "name": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "description": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "type": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "secret": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "scopes": {
+                          "type": "string",
+                          "default": null
+                        },
+                        "redirects": {
+                          "default": [],
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "logout_redirects": {
+                          "default": [],
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "is_active": {
+                          "type": "boolean",
+                          "default": null
+                        },
+                        "created_at": {
+                          "format": "date-time",
+                          "type": "string",
+                          "default": null
+                        },
+                        "updated_at": {
+                          "format": "date-time",
+                          "type": "string",
+                          "default": null
+                        }
+                      },
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "name",
+                        "description",
+                        "type",
+                        "secret",
+                        "scopes",
+                        "redirects",
+                        "logout_redirects",
+                        "is_active",
+                        "created_at",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": ["application"]
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Organisations"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      },
+      "put": {
+        "description": "Update application agent",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Meeco-Organisation-Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Application updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "application": {
+                      "properties": {
+                        "id": {
+                          "description": "Agent ID",
+                          "format": "uuid",
+                          "type": "string"
+                        },
+                        "description": {
+                          "description": "Agent description",
+                          "maxLength": 256,
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Agent name",
+                          "maxLength": 72,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "security_rights": {
+                          "description": "list of security rights",
+                          "items": {
+                            "example": "vk:org:delegation",
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": ["description", "name", "id"],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object",
+                  "required": ["application"]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "application": {
+                    "properties": {
+                      "description": {
+                        "description": "description of the agent",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "name of the agent",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object",
+                    "required": ["description", "name"]
+                  }
+                },
+                "type": "object",
+                "required": ["application"]
+              }
+            }
+          }
+        },
+        "tags": ["Organisations"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      },
+      "delete": {
+        "description": "Delete application agent",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Meeco-Organisation-Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Application agent deleted"
+          }
+        },
+        "tags": ["Organisations"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      }
+    },
+    "/alive/atom": {
+      "get": {
+        "callbacks": {},
+        "description": "Return the API version",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMApplicationVersion"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Return the API version",
+        "tags": ["Monitoring"],
+        "security": []
+      }
+    },
+    "/alive/atom-int": {
+      "get": {
+        "callbacks": {},
+        "description": "Return the API version",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMApplicationVersion"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Return the API version",
+        "tags": ["Monitoring"],
+        "security": []
+      }
+    },
+    "/alive/svx-utilities": {
+      "get": {
+        "callbacks": {},
+        "description": "Return the API version",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesApplicationVersion"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Return the API version",
+        "tags": ["Monitoring"],
+        "security": []
+      }
+    },
+    "/alive/platform": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Monitoring"],
+        "security": []
+      }
+    },
+    "/blobs": {
+      "post": {
+        "callbacks": {},
+        "description": "  Create a signed upload URL for one of the supported file storages. This endpoint is the first step in creating a file.\n\n  SVX Utilities generates a random key under which a file will be registered, and creates a record in the database where\n  the key is stored along with the filename and the content type.\n  A client is then expected to use a signed URL present in response field `upload_url` to upload a file to a cloud file storage.\n  This URL is only valid for a short period of time specified in response field `upload_url_expires_in_seconds`.\n\n  Uploading is done via HTTP method `PUT`. The response of this endpoint contains a list of headers which much be included in\n  the `PUT` request.\n\n  The following is an example curl command to upload a file:\n\n  ```\n  curl --location --request PUT \\\n  'https://meecodevstorage0.blob.core.windows.net/dev/66c35456-eb64-42fb-a31a-806530786fe2?se=2023-01-23T08%3A49%3A29Z&sig=mzuonk01F8L%2F0q7avsMvvenk2NwLFVXYsyWJeu5Jdgc%3D&sp=rw&sr=b&sv=2018-11-09' \\\n  --header 'x-ms-blob-type: BlockBlob' \\\n  --data-binary '@/home/john/file.jpg'\n  ```\n\n  After the file is uploaded to Azure Blob Storage, the client is supposed to confirm this upload calling `PUT /blobs/{key}`.\n\n  The response to `POST /blobs` also contains a URL to retrieve the file, but that functionality is only available after the upload has been confirmed, otherwise it will result in `404 NotFound`.\n\n  All expired and not confirmed records created with this endpoint will be removed after a while.\n",
+        "parameters": [
+          {
+            "description": "Name of the file storage. This parameter so optional, if no name is specified, the default file storage is used",
+            "in": "query",
+            "name": "storage_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UtilitiesBlobUploadUrlRequest"
+              }
+            }
+          },
+          "description": "File name and content type",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesBlobInfoResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Obtain a signed upload URL",
+        "tags": ["Helpers"]
+      }
+    },
+    "/blobs/{id}": {
+      "get": {
+        "callbacks": {},
+        "description": "  Redirect to a file in a cloud file storage.\n\n  This endpoint is public and it only requires the file key in the URL.\n\n  The `Content Disposition` header in the response is hardcoded to be `inline` for now, but it can be made a parameter to this endpoint in future if needed.\n  The filename and the content type included in `Content Disposition` are taken from the database record created in `POST /blobs`.\"\n",
+        "parameters": [
+          {
+            "description": "Blob key",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Found"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "NotFound"
+          }
+        },
+        "summary": "Redirect to a file in a cloud file storage",
+        "tags": ["Helpers"],
+        "security": []
+      },
+      "put": {
+        "callbacks": {},
+        "description": "  Confirm a blob upload.\n\n  After a client retrieves an uploads URL via `POST /blobs` and uploads a file to that URL, a client is expected to inform SVX Utilities that the upload is successful.\n  The file is not accessible unless the upload is confirmed.\n\n  This call may only be performed by the same user who retrieved the upload URL.\n\n  The response to the endpoint contains one more upload URL. A client can use it to upload a newer version of the file under the same key.\n  No confirmation is required in this case.\n\n  See documentation for `POST /blobs` for more information.\n",
+        "parameters": [
+          {
+            "description": "Blob key",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesBlobInfoResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Confirm a blob upload",
+        "tags": ["Helpers"]
+      }
+    },
+    "/blobs/{id}/info": {
+      "get": {
+        "callbacks": {},
+        "description": "  View information about the file.\n\n  This call may only be performed by the same user who retrieved the upload URL and uploaded the file.\n\n  Along with a URL to read the file the response to the endpoint contains one more upload URL.\n  A client can use it to upload a newer version of the file under the same key. No confirmation is required in this case.\n\n  See documentation for `POST /blobs` for more information.\n",
+        "parameters": [
+          {
+            "description": "Blob key",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesBlobInfoResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "View blob info",
+        "tags": ["Helpers"]
+      }
+    },
+    "/blobs/{id}/public_info": {
+      "get": {
+        "callbacks": {},
+        "description": "  View public information about the file.\n\n  See documentation for `POST /blobs` for more information.\n",
+        "parameters": [
+          {
+            "description": "Blob key",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesBlobPublicInfoResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [],
+        "summary": "View blob info",
+        "tags": ["Helpers"]
+      }
+    },
+    "/deployments/wallets/orgs/{org_id}": {
+      "get": {
+        "callbacks": {},
+        "description": "Returns a paginated list of SVX Wallet deployments for a specific organisation",
+        "parameters": [
+          {
+            "description": "Organisation ID",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of deployments per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Page number",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Order direction: asc or desc",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesPaginatedDeployments"
+                }
+              }
+            },
+            "description": "Deployments"
+          }
+        },
+        "summary": "List SVX Wallet deployments for an organisation",
+        "tags": ["Helpers"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      },
+      "post": {
+        "callbacks": {},
+        "description": "Create an SVX Wallet deployment",
+        "parameters": [
+          {
+            "description": "Organisation ID",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "description": "Optional human-readable description for this SVX Wallet instance.",
+                    "type": "string"
+                  },
+                  "version_series": {
+                    "description": "Version series to deploy (e.g. \"0.1\"). Defaults to the configured default_version_series if omitted.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "Deployment request",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesWalletDeploymentCreated"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "summary": "Create an SVX Wallet deployment",
+        "tags": ["Helpers"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      }
+    },
+    "/deployments/wallets/{id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "Deletes a specific SVX Wallet deployment by instance ID",
+        "parameters": [
+          {
+            "description": "Instance ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "No Content"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "summary": "Delete an SVX Wallet deployment by instance ID",
+        "tags": ["Helpers"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "Returns a specific SVX Wallet deployment by instance ID",
+        "parameters": [
+          {
+            "description": "Instance ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesDeploymentWithoutLog"
+                }
+              }
+            },
+            "description": "Deployment"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesError"
+                }
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get an SVX Wallet deployment by instance ID",
+        "tags": ["Helpers"],
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ]
+      }
+    },
+    "/orgs/{org_id}/logo": {
+      "get": {
+        "callbacks": {},
+        "description": "Redirect to the logo of an organisation.\n\n  This endpoint is public and it only requires the organisation ID in the URL.\n",
+        "parameters": [
+          {
+            "description": "Organisation ID",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Found"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "NotFound"
+          }
+        },
+        "summary": "Redirect to the logo of an organisation",
+        "tags": ["Helpers"],
+        "security": []
+      }
+    },
+    "/tenants/{tenant_id}/logo": {
+      "get": {
+        "callbacks": {},
+        "description": "Redirect to the logo of a tenant.\n\n  This endpoint is public and it only requires the tenant ID in the URL.\n",
+        "parameters": [
+          {
+            "description": "Tenant ID",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Found"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "NotFound"
+          }
+        },
+        "summary": "Redirect to the logo of a tenant",
+        "tags": ["Helpers"],
+        "security": []
+      }
+    },
+    "/orgs/{org_id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Delete an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:create_org` for the tenant of the organisation.\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Delete an organisation",
+        "tags": ["Organisations"]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "  Show an organisation.\n\n  In order to execute this action the current user must have\n\n  * global security `atom:global:view_all_orgs` or\n  * security right `atom:tenant:view_tenant_orgs` for the tenant\n  * security right `atom:org:view_org` for the org with the ID in parameter `org_id`\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "View an organisation",
+        "tags": ["Organisations"]
+      },
+      "put": {
+        "callbacks": {},
+        "description": "  Update an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:create_org` for the tenant with the ID in parameter `tenant_id`.\n\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMCreateOrUpdateOrgRequest"
+              }
+            }
+          },
+          "description": "Organisation attributes",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Update an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/admins": {
+      "get": {
+        "callbacks": {},
+        "description": "  List admins of an organisation.\n\n  It is also possible to request a list of archived admins of the organisation, that is, users who used to have organisation security rights for the given organisation, but do not have them now.\n\n  In order to execute this action the current user must have\n\n   * security right `atom:org:list_org_admins` for the organisation with the ID in parameter `org_id` or\n   * security right `atom:tenant:list_admins_of_all_orgs_of_tenant` for the parent tenant of the organisation `org_id` or\n   * global security right `atom:global:list_admins_of_all_orgs\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "admin status: `active`, or `archived`",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": ["active", "archived"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "search admins by their email address. Currenty works only with status=archived",
+            "in": "query",
+            "name": "email",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "number of admins per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "  Number of the page to serve. This parameter activates classic page-based pagination\n  and cannot be used with parameter `next_page_after` which activates cursor-based pagination.\n",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "order admins by given name in ascending or descending order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "  When cursor based pagination is used, each paginated response has value `next_page_after` which, if submitted\n  as a parameter, allows to retrieve the next page. `next_page_after` is `null` is there is no next page.\n  `next_page_after` cannot be used together with parameter `page`. `page` activates classic page-based pagination.\n",
+            "in": "query",
+            "name": "next_page_after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMPaginatedAdminList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List admins of an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/admins/{org_admin_id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "Remove all organisation security rights from user.\n\nIn order to execute this action the current user must one of the following security rights:\n\n* `atom:global:assign_org_sr_to_user`\n* `atom:tenant:assign_org_sr_to_user`\n* `atom:org:assign_org_sr_to_user`\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove all organisation security rights from user",
+        "tags": ["Organisations"]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "  Show an admin of a given organisation.\n\n  In order to execute this action the current user must have\n\n   * security right `atom:org:list_org_admins` for the organisation with the ID in parameter `org_id` or\n   * security right `atom:tenant:list_admins_of_all_orgs_of_tenant` for the parent tenant of the organisation `org_id` or\n   * global security right `atom:global:list_admins_of_all_orgs\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show an admin of a given organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/admins/{org_admin_id}/archive": {
+      "post": {
+        "callbacks": {},
+        "description": "Remove a user from admins of the given organisation, and put the admin into the registry of former admins of that organisation.\n\nIn order to execute this action the current user must one of the following security rights:\n\n* `atom:global:assign_org_sr_to_user`\n* `atom:tenant:assign_org_sr_to_user`\n* `atom:org:assign_org_sr_to_user`\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Archive an organisation admin",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/admins/{org_admin_id}/restore": {
+      "post": {
+        "callbacks": {},
+        "description": "Reinstate an archived user and make him/her a org admin again.\n\nIn order to execute this action the current user must one of the following security rights:\n\n* `atom:org:assign_org_sr_to_user`\n* `atom:tenant:assign_org_sr_to_user`\n* `atom:global:assign_org_sr_to_user`\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Restore an archived organisation admin",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/admins/{org_admin_id}/security_rights": {
+      "get": {
+        "callbacks": {},
+        "description": "  List organisation security rights of a organisation admin.\n\n  In order to execute this action the current user must have security right `atom:org:list_org_admin_sr` for the organisation with the ID in parameter `org_id` or `atom:tenant:list_org_admin_sr` for the tenant that the organisation belongs to, or global security right `atom:global:list_admin_sr_of_any_admin`\"\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of an organisation admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMSecurityRights"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List security rights of an organisation admin",
+        "tags": ["Organisations"]
+      },
+      "post": {
+        "callbacks": {},
+        "description": "  Assign organisation security rights to a user.\n\n  The endpoint can process security rights of 2 categories:\n\n  * `for_org = true` and `for_tenant = false`\n  * `for_org = true` and `for_tenant = true`, in this case the security right will be assigned to the tenant which organisation belongs to\n\n  In order to execute this action the current user must have one of the following security rights:\n\n  * security right `atom:org:assign_org_sr_to_user` for the organisation with the ID in parameter `org_id`\n  * security right `atom:tenant:assign_org_sr_to_user` for the tenant that the organisation belongs to\n  * global security right `atom:global:assign_org_sr_to_user`\"\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of an organisation admin",
+            "in": "path",
+            "name": "org_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMAssignSecurityRightsRequest"
+              }
+            }
+          },
+          "description": "list of security rights",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Assign organisation security rights to a user",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/archive": {
+      "post": {
+        "callbacks": {},
+        "description": "  Archive an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:create_org` for the tenant of the organisation.\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Archive an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/restore": {
+      "post": {
+        "callbacks": {},
+        "description": "  Restore an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:create_org` for the tenant of the organisation.\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Restore an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/security_rights": {
+      "post": {
+        "callbacks": {},
+        "description": "  Add security rights to an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:assign_sr_to_org` for the tenant which the organisation belongs to.\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMAssignSecurityRightsRequest"
+              }
+            }
+          },
+          "description": "list of security rights",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Add security rights to an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/orgs/{org_id}/security_rights/{security_rights}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Remove security rights from an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:assign_sr_to_org` for the tenant which the organisation belongs to.\n",
+        "parameters": [
+          {
+            "description": "ID of the organisation",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated security rights to remove",
+            "in": "path",
+            "name": "security_rights",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove security rights from an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/tenants/{tenant_id}/orgs": {
+      "get": {
+        "callbacks": {},
+        "description": "  List organisations in a tenant.\n\n  In order to execute this action the current user must have global security `atom:global:view_all_orgs` or security right `atom:tenant:view_tenant_orgs` for the tenant with the ID in parameter `tenant_id`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "org status: `active`, `archived`, or `all`",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": ["active", "archived", "all"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "number of organisations per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "order organisations by name in ascending or descending order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Number of the page to serve. This parameter activates classic page-based pagination\n  and cannot be used with parameter `next_page_after` which activates cursor-based pagination.\n",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "  When cursor based pagination is used, each paginated response has value `next_page_after` which, if submitted\n  as a parameter, allows to retrieve the next page. `next_page_after` is `null` is there is no next page.\n  `next_page_after` cannot be used together with parameter `page`. `page` activates classic page-based pagination.\n",
+            "in": "query",
+            "name": "next_page_after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Search organisations whose names contains the given string.\n",
+            "in": "query",
+            "name": "filter_by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMPaginatedOrgList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List organisation in a tenant",
+        "tags": ["Organisations"]
+      },
+      "post": {
+        "callbacks": {},
+        "description": "  Create an organisation.\n\n  In order to execute this action the current user must have security right `atom:tenant:create_org` for the tenant with the ID in parameter `tenant_id`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "  If true, the current user will not become the first admin of the organisation, and the organisation will have not admins.\n  By default the current user becomes the first admin of the organisation\n",
+            "in": "query",
+            "name": "no_first_user",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "  By default only all internal org-level security rights of the parent tenant are added to a new organisation\n  If this parameter is true, also all external org-level security rights of the parent tenant are added to a new organisation.\n",
+            "in": "query",
+            "name": "add_all_external_security_rights",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMCreateOrUpdateOrgRequest"
+              }
+            }
+          },
+          "description": "Organisation attributes",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneOrg"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Create an organisation",
+        "tags": ["Organisations"]
+      }
+    },
+    "/visible_orgs": {
+      "get": {
+        "callbacks": {},
+        "description": "  Show a list of organisations which the current user can see. These are the following organisations:\n\n  * If the current user has global security right `atom:global:view_all_tenants`, all organisations are shown\n  * Organisations of all tenants for which the current user has tenant security right `atom:tenant:view_tenant_orgs`\n  * Organisations for which current user is an admin and has security right `atom:org:view_org`\n\n  Can take optional parameter `tenant_id` which will restrict the list of organisations to one tenant only.\n",
+        "parameters": [
+          {
+            "description": "This parameter is the ID of a tenant and if present it restricts the list of organisations to one tenant only.",
+            "in": "query",
+            "name": "tenant_id",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOrgList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show a list of organisations which current user can see.",
+        "tags": ["Organisations"]
+      }
+    },
+    "/global_admins": {
+      "get": {
+        "callbacks": {},
+        "description": "  List all users with global security rights.\n\n  It is also possible to request a list of archived global admins, that is, users who used to have global security rights, but do not have them now.\n\n  In order to execute this action the current user must have \"security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "search admins by their email address",
+            "in": "query",
+            "name": "email",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "admin status: `active` or `archived`",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": ["active", "archived"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "number of admins per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "order admins by name in ascending or descending order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Number of the page to serve. This parameter activates classic page-based pagination\n  and cannot be used with parameter `next_page_after` which activates cursor-based pagination.\n",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "  When cursor based pagination is used, each paginated response has value `next_page_after` which, if submitted\n  as a parameter, allows to retrieve the next page. `next_page_after` is `null` is there is no next page.\n  `next_page_after` cannot be used together with parameter `page`. `page` activates classic page-based pagination.\n",
+            "in": "query",
+            "name": "next_page_after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMPaginatedAdminList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List all users with global security rights",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/global_admins/{id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Remove a user from global admins, that is, remove all global security rights from a user.\n\n  In order to execute this action the current user must have security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove all global security rights from a user",
+        "tags": ["Security Rights"]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "  Show a user with global security rights\n\n  In order to execute this action the current user must have \"security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show a user with global security rights",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/global_admins/{id}/archive": {
+      "post": {
+        "callbacks": {},
+        "description": "  Remove a user from global admins, and put the admin into the registry of former global admins.\n\n  In order to execute this action the current user must have security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Archive a global admin",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/global_admins/{id}/restore": {
+      "post": {
+        "callbacks": {},
+        "description": "  Reinstate an archived user and make him/her a global admin again.\n\n  In order to execute this action the current user must have security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Restore an archived global admin",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/global_admins/{id}/security_rights": {
+      "post": {
+        "callbacks": {},
+        "description": "  Assign global security rights to a user.\n\n  The user we are assigning security rights to does not need to be known by ATOM.\n\n  In order to execute this action the current user must have security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of a user to whom security rights are assigned",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMAssignSecurityRightsRequest"
+              }
+            }
+          },
+          "description": "list of security rights",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Assign global security rights to a user",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/global_admins/{id}/security_rights/{security_rights}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Remove global security rights from a user.\n\n  In order to execute this action the current user must have security right `atom:global:assign_global_sr_to_user`.\n",
+        "parameters": [
+          {
+            "description": "ID of a user from whom security rights are removed",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "List of comma-separated security rights to remove",
+            "in": "path",
+            "name": "security_rights",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove global security rights from a user",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/security_rights": {
+      "get": {
+        "callbacks": {},
+        "description": "Show all security rights of the current user for all active tenants and organizations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMSecurityRightsOfUser"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "All security rights of the current user",
+        "tags": ["Security Rights"]
+      }
+    },
+    "/security_rights_registry": {
+      "get": {
+        "callbacks": {},
+        "description": "Show all security rights known to ATOM",
+        "parameters": [
+          {
+            "description": "By default only active security rights are fetched.\n`with_inactive` allows to retrieve all security rights including inactive.\n",
+            "in": "query",
+            "name": "with_inactive",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMSecurityRightsRegistry"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Show all security rights known to ATOM",
+        "tags": ["Security Rights"],
+        "security": []
+      }
+    },
+    "/tenants": {
+      "get": {
+        "callbacks": {},
+        "description": "  List all tenants.\n\n  In order to execute this action the current user must have security right `atom:global:view_all_tenants`.\n",
+        "parameters": [
+          {
+            "description": "tenant status: `active`, `archived`, or `all`",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": ["active", "archived", "all"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "number of tenants per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "order tenants by name in ascending or descending order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Number of the page to serve. This parameter activates classic page-based pagination\n  and cannot be used with parameter `next_page_after` which activates cursor-based pagination.\n",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "  When cursor based pagination is used, each paginated response has value `next_page_after` which, if submitted\n  as a parameter, allows to retrieve the next page. `next_page_after` is `null` is there is no next page.\n  `next_page_after` cannot be used together with parameter `page`. `page` activates classic page-based pagination.\n",
+            "in": "query",
+            "name": "next_page_after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Search tenants whose names contains the given string, or by their ID.\n",
+            "in": "query",
+            "name": "filter_by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMPaginatedTenantList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List all tenants",
+        "tags": ["Tenants"]
+      },
+      "post": {
+        "callbacks": {},
+        "description": "  Create a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:create_tenant`.\n  The current user becomes the first admin of the tenant.\n",
+        "parameters": [
+          {
+            "description": "By default new tenants receive all internal security rights only.\n`with_external_security_rights` also adds all external security rights to the tenant.\n",
+            "in": "query",
+            "name": "with_external_security_rights",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMCreateOrUpdateTenantRequest"
+              }
+            }
+          },
+          "description": "Tenant attributes",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneTenant"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Create a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Delete a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:create_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Frobidden"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Delete a tenant",
+        "tags": ["Tenants"]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "  Show a tenant.\n\n  In order to execute this action the current user must have either global security right  `atom:global:view_all_tenants` or tenant security right `atom:tenant:view_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show a tenant",
+        "tags": ["Tenants"]
+      },
+      "put": {
+        "callbacks": {},
+        "description": "  Update a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:create_tenant`.\n\n  It is possible to modify 3 fields:\n\n  * `name`\n  * `logo_url`\n  * `color`\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMCreateOrUpdateTenantRequest"
+              }
+            }
+          },
+          "description": "Tenant attributes",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneTenant"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Frobidden"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Update a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/admins": {
+      "get": {
+        "callbacks": {},
+        "description": "  List admins of a tenant.\n\n  In order to execute this action the current user must have\n\n  In order to execute this action the current user must have security right `atom:tenant:list_tenant_admins` for the tenant with the ID in parameter `tenant_id`\n",
+        "parameters": [
+          {
+            "description": "admin status: `active` or `archived`",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": ["active", "archived"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "search admins by their email address. Currenty works only with status=archived",
+            "in": "query",
+            "name": "email",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "number of admins per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "order admins by given name in ascending or descending order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "enum": ["asc", "desc"],
+              "type": "string"
+            }
+          },
+          {
+            "description": "  Number of the page to serve. This parameter activates classic page-based pagination\n  and cannot be used with parameter `next_page_after` which activates cursor-based pagination.\n",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "  When cursor based pagination is used, each paginated response has value `next_page_after` which, if submitted\n  as a parameter, allows to retrieve the next page. `next_page_after` is `null` is there is no next page.\n  `next_page_after` cannot be used together with parameter `page`. `page` activates classic page-based pagination.\n",
+            "in": "query",
+            "name": "next_page_after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMPaginatedAdminList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List admins of a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/admins/{tenant_admin_id}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Remove tenant admin privileges from a tenant admin.\n\n  In order to execute this action the current user must have one of the following security rights:\n\n  * `atom:global:assign_tenant_sr_to_tenant_admin`\n  * `atom:tenant:assign_tenant_sr_to_tenant_admin`\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "tenant_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove all tenant security rights from a user",
+        "tags": ["Tenants"]
+      },
+      "get": {
+        "callbacks": {},
+        "description": "  Show an admin of a given tenant\n\n  In order to execute this action the current user must have security right `atom:tenant:list_tenant_admins` for the tenant with the ID in parameter `tenant_id`\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "tenant_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show an admin of a given tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/admins/{tenant_admin_id}/archive": {
+      "post": {
+        "callbacks": {},
+        "description": "  Remove a user from admins of the given tenant, and put the admin into the registry of former admins of that tenant.\n\n  In order to execute this action the current user must have one of the following security rights:\n\n  * `atom:global:assign_tenant_sr_to_tenant_admin`\n  * `atom:tenant:assign_tenant_sr_to_tenant_admin`\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "tenant_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Archive a tenant admin",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/admins/{tenant_admin_id}/restore": {
+      "post": {
+        "callbacks": {},
+        "description": "  Reinstate an archived user and make him/her a tenant admin again.\n\n  In order to execute this action the current user must have one of the following security rights:\n\n  * `atom:tenant:assign_tenant_sr_to_tenant_admin`\n  * `atom:global:assign_tenant_sr_to_tenant_admin`\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the admin",
+            "in": "path",
+            "name": "tenant_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMAdmin"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Restore an archived tenant admin",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/admins/{tenant_admin_id}/security_rights": {
+      "post": {
+        "callbacks": {},
+        "description": "  Assign tenant security rights to a user.\n\n  The user we are assigning security rights to does not need to be known by ATOM.\n\n  In order to execute this action the current user must have security right `atom:tenant:assign_tenant_sr_to_tenant_admin` for the tenant with the ID in parameter `tenant_id`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of a tenant admin",
+            "in": "path",
+            "name": "tenant_admin_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMAssignSecurityRightsRequest"
+              }
+            }
+          },
+          "description": "list of security rights",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Assign tenant security rights to a user",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/archive": {
+      "post": {
+        "callbacks": {},
+        "description": "  Archive a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:create_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneTenant"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Archive a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/restore": {
+      "post": {
+        "callbacks": {},
+        "description": "  Restore a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:create_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneTenant"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Restore a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/security_rights": {
+      "post": {
+        "callbacks": {},
+        "description": "  Add security rights to a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:assign_sr_to_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ATOMAssignSecurityRightsRequest"
+              }
+            }
+          },
+          "description": "list of security rights",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMOneTenant"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Add security rights to a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/tenants/{tenant_id}/security_rights/{security_rights}": {
+      "delete": {
+        "callbacks": {},
+        "description": "  Remove security rights from a tenant.\n\n  In order to execute this action the current user must have security right `atom:global:assign_sr_to_tenant`.\n",
+        "parameters": [
+          {
+            "description": "ID of the tenant",
+            "in": "path",
+            "name": "tenant_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated security rights to remove",
+            "in": "path",
+            "name": "security_rights",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Remove security rights from a tenant",
+        "tags": ["Tenants"]
+      }
+    },
+    "/my_orgs": {
+      "get": {
+        "callbacks": {},
+        "description": "  Show a list of organisations the current user is an admin of.\n  Can take optional parameter `tenant_id` which restricts the list of organisations to one tenant only.\n",
+        "parameters": [
+          {
+            "description": "This parameter is the ID of a tenant and if present it restricts the list of organisations to one tenant only.",
+            "in": "query",
+            "name": "tenant_id",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMActiveAndArchivedOrgList"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show a list of organisations the current user is an admin of",
+        "tags": ["Users"]
+      }
+    },
+    "/users/invitations": {
+      "get": {
+        "description": "<h4>Requires no security rights</h4><br /><p>Endpoint works for a tenant and organisation user based on the <b>Meeco-Organisation-ID</b> header.</p><p>Returns a list of invitations available to the caller.</p><p>In case of tenant context, endpoint returns all invitations available in the tenancy.</p><p>In case of organization context, endpoint returns all invitations available in the organisations.</p>",
+        "parameters": [
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Filter invitation by <code>status</code> attribute: e.g. <code>pending,expired</code>. <br />Available values: <code>pending</code>, <code>accepted</code>, <code>expired</code>. <br />To filter by more than one status separate values by using comma.",
+            "schema": {
+              "example": "pending",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Meeco-Organisation-ID",
+            "in": "header",
+            "description": "Specify Organisation ID to set request context to organisation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8b673177-6ba0-4d26-97d1-4fdc8c45f90f"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order invitation, Default ordering: `DESC` (Supported: `ASC`, `DESC`) ",
+            "schema": {
+              "enum": ["ASC", "DESC"],
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "required": false,
+            "in": "query",
+            "description": "order invitation for `columnName`, defaults column: `created_at` (Supported: `given_name`)",
+            "schema": {
+              "enum": ["given_name"],
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "required": false,
+            "in": "query",
+            "description": "Number of records per page",
+            "schema": {
+              "example": 10,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number (starting from 1)",
+            "schema": {
+              "example": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invitations successfully listed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformInvitationsResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "List invitations",
+        "tags": ["Users"]
+      },
+      "post": {
+        "description": "<p>Creates an invitation for user to join the platform. If user already exists, he/she will be added to the target organisation or tenant.</p><p>Payload example to invite an admin:</p><pre><code>{ <br />  \"invitation\": { <br />    \"email\": \"email@meeco.me\", <br />    \"given_name\": \"Peter\", <br />    \"family_name\": \"Peterson\", <br />  } <br />} <br /></code></pre><p> Tenant admin will be invited to is determined by the <code>tid</code> attribute value inside the JWT token & empty the <code>Meeco-Organisation-ID</code> query param value in request. </p><p> Org admin will be invited to is determined by the <code>tid</code> attribute value inside the JWT token & <code>Meeco-Organisation-ID</code> query param value in request. </p><p> Global admin will be invited to is determined by the empty value in <code>tid</code> attribute value inside the JWT token & <code>Meeco-Organisation-ID</code> query param value in request. </p><p> The user who is sending the invitations can only invite other users within the tenant or organization they have selected. </p><p> For example, if the user is in the tenant context, they can only manage tenant users and invitations. Similarly, in the org context, they can only manage org users and invitations, and in the global context, they can only manage global users and invitations. </p>",
+        "parameters": [
+          {
+            "name": "Meeco-Organisation-ID",
+            "in": "header",
+            "description": "Specify Organisation ID to set request context to organisation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8b673177-6ba0-4d26-97d1-4fdc8c45f90f"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlatformCreateInvitationPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User successfully invited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformInvitationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Invite admin to join the platform",
+        "tags": ["Users"]
+      }
+    },
+    "/users/invitations/{id}": {
+      "delete": {
+        "description": "Deletes a pending or expired invitation.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Meeco-Organisation-ID",
+            "in": "header",
+            "description": "Specify Organisation ID to set request context to organisation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8b673177-6ba0-4d26-97d1-4fdc8c45f90f"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Invitation successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Delete the invitation",
+        "tags": ["Users"]
+      },
+      "get": {
+        "description": "Fetch information about the invitation.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Meeco-Organisation-ID",
+            "in": "header",
+            "description": "Specify Organisation ID to set request context to organisation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8b673177-6ba0-4d26-97d1-4fdc8c45f90f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invitation information successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformInvitationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Fetch information about the invitation",
+        "tags": ["Users"]
+      }
+    },
+    "/users/invitations/{id}/resend": {
+      "post": {
+        "description": "Resend invitation email to the user.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Meeco-Organisation-ID",
+            "in": "header",
+            "description": "Specify Organisation ID to set request context to organisation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8b673177-6ba0-4d26-97d1-4fdc8c45f90f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invitation successfuly send",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformInvitationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorsResponseModelDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Resend invitation",
+        "tags": ["Users"]
+      }
+    },
+    "/users/me": {
+      "put": {
+        "description": "This endpoint updates a user detail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlatformUpdateUserPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfuly updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformUserResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A problem with the input fields has occurred. Additional state information plus metadata may be available in the response body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error has occurred. Additional state information plus metadata may be available in the response body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Update a user detail",
+        "tags": ["Users"]
+      }
+    },
+    "/users/me/password": {
+      "put": {
+        "description": "This endpoint updates a user password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlatformUpdatePasswordPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User password successfuly updated"
+          },
+          "400": {
+            "description": "A problem with the input fields has occurred. Additional state information plus metadata may be available in the response body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error has occurred. Additional state information plus metadata may be available in the response body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Change user password",
+        "tags": ["Users"]
+      }
+    },
+    "/whoami": {
+      "get": {
+        "callbacks": {},
+        "description": "  Show information about the user with a valid JWT:\n\n  * User ID from the JWT (taken from `sub`)\n  * Tenant name\n  * Whether the user is known to ATOM\n",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMWhoAmI"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ATOMError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "SVX-JWT": []
+          }
+        ],
+        "summary": "Show info about the current user",
+        "tags": ["Users"]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlatformUserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_verified": {
+            "type": "boolean"
+          },
+          "did": {
+            "type": "string"
+          },
+          "jwk_thumbprint_uri": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "given_name": {
+            "type": "string"
+          },
+          "family_name": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "email_verified",
+          "did",
+          "jwk_thumbprint_uri",
+          "name",
+          "given_name",
+          "family_name",
+          "is_active",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "PlatformUserResponseDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/PlatformUserDto"
+          }
+        },
+        "required": ["user"]
+      },
+      "PlatformErrorResponseDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PlatformUpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "given_name": {
+            "type": "string"
+          },
+          "family_name": {
+            "type": "string"
+          }
+        }
+      },
+      "PlatformUpdateUserPayloadDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/PlatformUpdateUserDto"
+          }
+        },
+        "required": ["user"]
+      },
+      "PlatformUpdatePasswordDto": {
+        "type": "object",
+        "properties": {
+          "old_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          },
+          "confirm_password": {
+            "type": "string"
+          }
+        },
+        "required": ["old_password", "new_password", "confirm_password"]
+      },
+      "PlatformUpdatePasswordPayloadDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/PlatformUpdatePasswordDto"
+          }
+        },
+        "required": ["user"]
+      },
+      "PlatformErrorResponseModel": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "error_type"
+          },
+          "message": {
+            "type": "object",
+            "example": "Error message"
+          },
+          "http_code": {
+            "type": "number",
+            "example": 500
+          },
+          "extra_info": {
+            "type": "object"
+          },
+          "requested_language": {
+            "type": "string",
+            "example": "en"
+          },
+          "message_in_requested_language": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "error",
+          "message",
+          "http_code",
+          "extra_info",
+          "requested_language",
+          "message_in_requested_language"
+        ]
+      },
+      "PlatformErrorsResponseModelDto": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlatformErrorResponseModel"
+            }
+          }
+        },
+        "required": ["errors"]
+      },
+      "PlatformCreateInvitationDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "user@meeco.me"
+          },
+          "given_name": {
+            "type": "string",
+            "example": "Peter"
+          },
+          "family_name": {
+            "type": "string",
+            "example": "Peterson"
+          },
+          "message": {
+            "type": "string",
+            "example": "Welcome message",
+            "nullable": true
+          }
+        },
+        "required": ["email", "given_name", "family_name"]
+      },
+      "PlatformCreateInvitationPayloadDto": {
+        "type": "object",
+        "properties": {
+          "invitation": {
+            "$ref": "#/components/schemas/PlatformCreateInvitationDto"
+          }
+        },
+        "required": ["invitation"]
+      },
+      "PlatformInvitationResponseModelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "accepted", "expired"]
+          },
+          "token": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "accepted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "tenant_id": {
+            "type": "string"
+          },
+          "org_id": {
+            "type": "string"
+          },
+          "presentation_request_url": {
+            "type": "string",
+            "deprecated": true
+          },
+          "open_id_presentation_request_url": {
+            "type": "string",
+            "deprecated": true
+          },
+          "given_name": {
+            "type": "string"
+          },
+          "family_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "to",
+          "status",
+          "token",
+          "user_id",
+          "created_at",
+          "accepted_at",
+          "expires_at",
+          "message",
+          "tenant_id",
+          "org_id",
+          "presentation_request_url",
+          "open_id_presentation_request_url",
+          "given_name",
+          "family_name",
+          "email"
+        ]
+      },
+      "PlatformInvitationResponseDto": {
+        "type": "object",
+        "properties": {
+          "invitation": {
+            "$ref": "#/components/schemas/PlatformInvitationResponseModelDto"
+          }
+        },
+        "required": ["invitation"]
+      },
+      "PlatformMeta": {
+        "type": "object",
+        "properties": {
+          "order_by": {
+            "type": "string",
+            "example": "name"
+          },
+          "order": {
+            "type": "string",
+            "example": "ASC",
+            "enum": ["ASC", "DESC"]
+          },
+          "order_from_params": {
+            "type": "boolean",
+            "example": true
+          },
+          "per_page": {
+            "type": "number",
+            "example": 10
+          },
+          "per_page_from_params": {
+            "type": "boolean",
+            "example": true
+          },
+          "records_count": {
+            "type": "number",
+            "example": 100
+          },
+          "page": {
+            "type": "number",
+            "example": 1
+          },
+          "page_count": {
+            "type": "number",
+            "example": 10
+          }
+        },
+        "required": [
+          "order_by",
+          "order",
+          "order_from_params",
+          "per_page",
+          "per_page_from_params",
+          "records_count",
+          "page",
+          "page_count"
+        ]
+      },
+      "PlatformInvitationsResponseDto": {
+        "type": "object",
+        "properties": {
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlatformInvitationResponseModelDto"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PlatformMeta"
+          }
+        },
+        "required": ["invitations", "meta"]
+      },
+      "UtilitiesBlobUploadUrlRequest": {
+        "example": {
+          "content_type": "image/jpeg",
+          "filename": "logo.jpg"
+        },
+        "properties": {
+          "content_type": {
+            "description": "content type of the file to be uploaded",
+            "type": "string"
+          },
+          "filename": {
+            "description": "name of the file to be uploaded",
+            "type": "string"
+          }
+        },
+        "required": ["filename"],
+        "type": "object"
+      },
+      "UtilitiesWalletDeploymentCreated": {
+        "example": {
+          "instance_id": "550e8400-e29b-41d4-a716-446655440000"
+        },
+        "properties": {
+          "instance_id": {
+            "description": "The SVX Wallet instance ID",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": ["instance_id"],
+        "type": "object"
+      },
+      "UtilitiesDeploymentWithoutLog": {
+        "example": {
+          "all_workflows_successful": null,
+          "current_user_id": null,
+          "description": "Acme Corp production wallet",
+          "error": null,
+          "external_idp_client_id": "some-client-id",
+          "git_workflow": null,
+          "git_workflow_duration": null,
+          "git_workflow_log": [
+            {
+              "status": "4.config_files_added",
+              "timestamp": "2023-12-01T10:30:00Z"
+            },
+            {
+              "status": "3.repo_cloned",
+              "timestamp": "2023-12-01T10:25:00Z"
+            }
+          ],
+          "inserted_at": "2023-12-01T10:00:00Z",
+          "instance_config_for_workflow_retries": null,
+          "instance_id": "xbkm9-vxnve",
+          "internal_domain": "acme.wallet.internal",
+          "online_at": null,
+          "online_check_counter": 0,
+          "online_status_checked_at": null,
+          "public_domain": "acme.meeco.app",
+          "redis_db": 3,
+          "status": "config_values_generated",
+          "versions": {
+            "deployed_version": "0.1.0",
+            "version_history": null,
+            "version_series": "0.1"
+          },
+          "workflow_reports": null
+        },
+        "properties": {
+          "all_workflows_successful": {
+            "description": "Whether all workflows completed successfully",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "current_user_id": {
+            "description": "Current user ID",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "db_name": {
+            "description": "PostgreSQL database name for the SVX Wallet instance",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Optional human-readable description for this SVX Wallet instance",
+            "nullable": true,
+            "type": "string"
+          },
+          "error": {
+            "description": "Error message",
+            "nullable": true,
+            "type": "string"
+          },
+          "external_idp_client_id": {
+            "description": "External IdP client ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "git_workflow": {
+            "description": "Git workflow status",
+            "nullable": true,
+            "type": "string"
+          },
+          "git_workflow_duration": {
+            "description": "Git workflow duration in milliseconds",
+            "nullable": true,
+            "type": "integer"
+          },
+          "git_workflow_log": {
+            "description": "Git workflow event log",
+            "items": {
+              "$ref": "#/components/schemas/UtilitiesWorkflowEvent"
+            },
+            "type": "array"
+          },
+          "inserted_at": {
+            "description": "Creation timestamp",
+            "format": "date-time",
+            "type": "string"
+          },
+          "instance_config_for_workflow_retries": {
+            "description": "Config data for workflow retries",
+            "nullable": true,
+            "type": "object"
+          },
+          "instance_id": {
+            "description": "SVX Wallet instance ID",
+            "type": "string"
+          },
+          "internal_domain": {
+            "description": "Internal domain for the deployment",
+            "nullable": true,
+            "type": "string"
+          },
+          "online_at": {
+            "description": "Timestamp when deployment went online",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "online_check_counter": {
+            "default": 0,
+            "description": "Counter for online status checks",
+            "type": "integer"
+          },
+          "online_status_checked_at": {
+            "description": "Timestamp when online status was last checked",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "org_id": {
+            "description": "Organisation ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "org_name": {
+            "description": "Organisation name",
+            "nullable": true,
+            "type": "string"
+          },
+          "public_domain": {
+            "description": "Public domain URL for the deployment",
+            "nullable": true,
+            "type": "string"
+          },
+          "redis_db": {
+            "description": "Redis database number",
+            "type": "integer"
+          },
+          "status": {
+            "description": "Current deployment status",
+            "type": "string"
+          },
+          "tenant_id": {
+            "description": "Tenant ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenant_name": {
+            "description": "Tenant name",
+            "nullable": true,
+            "type": "string"
+          },
+          "versions": {
+            "description": "Version information for this deployment",
+            "nullable": true,
+            "properties": {
+              "deployed_version": {
+                "description": "Full semver of the currently deployed version (e.g. \"0.1.0\")",
+                "nullable": true,
+                "type": "string"
+              },
+              "version_history": {
+                "description": "History of deployed versions and upgrades",
+                "items": {
+                  "type": "object"
+                },
+                "nullable": true,
+                "type": "array"
+              },
+              "version_series": {
+                "description": "Version series this deployment is locked to (e.g. \"0.1\")",
+                "nullable": true,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "workflow_reports": {
+            "description": "Reports from workflow executions",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "instance_id",
+          "redis_db",
+          "status",
+          "git_workflow_log",
+          "online_check_counter",
+          "inserted_at"
+        ],
+        "type": "object"
+      },
+      "UtilitiesBlobInfoResponse": {
+        "properties": {
+          "blob": {
+            "$ref": "#/components/schemas/UtilitiesBlobInfo"
+          }
+        },
+        "required": ["blob"],
+        "type": "object"
+      },
+      "UtilitiesPaginationMeta": {
+        "properties": {
+          "order": {
+            "description": "Order direcction: desc or asc",
+            "example": "desc",
+            "type": "string"
+          },
+          "order_by": {
+            "description": "Field by which ordering is done",
+            "example": "occurred_at",
+            "type": "string"
+          },
+          "order_from_params": {
+            "description": "Defines whether the ordering direction is taken from request parameters or is the default value",
+            "example": true,
+            "type": "boolean"
+          },
+          "page": {
+            "description": "Page number",
+            "example": 3,
+            "type": "integer"
+          },
+          "page_count": {
+            "description": "Total number of pages",
+            "example": 12,
+            "type": "integer"
+          },
+          "per_page": {
+            "description": "Records per page",
+            "example": 20,
+            "type": "integer"
+          },
+          "per_page_from_params": {
+            "description": "Defines whether the the number of recors is taken from request parameters or is the default value",
+            "example": false,
+            "type": "boolean"
+          },
+          "records_count": {
+            "description": "Total number of metrics",
+            "example": 110,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "order",
+          "order_by",
+          "order_from_params",
+          "page",
+          "page_count",
+          "per_page",
+          "per_page_from_params",
+          "records_count"
+        ],
+        "type": "object"
+      },
+      "UtilitiesError": {
+        "example": {
+          "error": "unauthorized",
+          "extra_info": {
+            "reason": "invalid_jwt"
+          },
+          "http_code": 401,
+          "message": null
+        },
+        "properties": {
+          "args": {
+            "description": "Request parameters",
+            "type": "object"
+          },
+          "error": {
+            "description": "Error code",
+            "type": "string"
+          },
+          "extra_info": {
+            "description": "Extra info about the error",
+            "type": "object"
+          },
+          "file": {
+            "description": "Source file where the error originated in",
+            "type": "string"
+          },
+          "http_code": {
+            "description": "HTTP code",
+            "type": "integer"
+          },
+          "line": {
+            "description": "Line number in the file where the error originated in",
+            "type": "integer"
+          },
+          "message": {
+            "description": "Error code",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "extra_info",
+          "http_code",
+          "message",
+          "file",
+          "line",
+          "args"
+        ],
+        "type": "object"
+      },
+      "UtilitiesDeployment": {
+        "example": {
+          "all_workflows_successful": null,
+          "current_user_id": null,
+          "db_name": "develop-wallet-acme-instance-id",
+          "description": "Acme Corp production wallet",
+          "error": null,
+          "external_idp_client_id": "some-client-id",
+          "git_workflow": null,
+          "git_workflow_duration": null,
+          "inserted_at": "2023-12-01T10:00:00Z",
+          "instance_config_for_workflow_retries": null,
+          "instance_id": "xbkm9-vxnve",
+          "internal_domain": "acme.wallet.internal",
+          "online_at": null,
+          "online_check_counter": 0,
+          "online_status_checked_at": null,
+          "public_domain": "acme.meeco.app",
+          "redis_db": 3,
+          "status": "config_values_generated",
+          "versions": {
+            "deployed_version": "0.1.0",
+            "version_history": null,
+            "version_series": "0.1"
+          },
+          "workflow_reports": null
+        },
+        "properties": {
+          "all_workflows_successful": {
+            "description": "Whether all workflows completed successfully",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "current_user_id": {
+            "description": "Current user ID",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "db_name": {
+            "description": "PostgreSQL database name for the SVX Wallet instance",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Optional human-readable description for this SVX Wallet instance",
+            "nullable": true,
+            "type": "string"
+          },
+          "error": {
+            "description": "Error message",
+            "nullable": true,
+            "type": "string"
+          },
+          "external_idp_client_id": {
+            "description": "External IdP client ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "git_workflow": {
+            "description": "Git workflow status",
+            "nullable": true,
+            "type": "string"
+          },
+          "git_workflow_duration": {
+            "description": "Git workflow duration in milliseconds",
+            "nullable": true,
+            "type": "integer"
+          },
+          "inserted_at": {
+            "description": "Creation timestamp",
+            "format": "date-time",
+            "type": "string"
+          },
+          "instance_config_for_workflow_retries": {
+            "description": "Config data for workflow retries",
+            "nullable": true,
+            "type": "object"
+          },
+          "instance_id": {
+            "description": "SVX Wallet instance ID",
+            "type": "string"
+          },
+          "internal_domain": {
+            "description": "Internal domain for the deployment",
+            "nullable": true,
+            "type": "string"
+          },
+          "online_at": {
+            "description": "Timestamp when deployment went online",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "online_check_counter": {
+            "default": 0,
+            "description": "Counter for online status checks",
+            "type": "integer"
+          },
+          "online_status_checked_at": {
+            "description": "Timestamp when online status was last checked",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "org_id": {
+            "description": "Organisation ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "org_name": {
+            "description": "Organisation name",
+            "nullable": true,
+            "type": "string"
+          },
+          "public_domain": {
+            "description": "Public domain URL for the deployment",
+            "nullable": true,
+            "type": "string"
+          },
+          "redis_db": {
+            "description": "Redis database number",
+            "type": "integer"
+          },
+          "status": {
+            "description": "Current deployment status",
+            "type": "string"
+          },
+          "tenant_id": {
+            "description": "Tenant ID",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenant_name": {
+            "description": "Tenant name",
+            "nullable": true,
+            "type": "string"
+          },
+          "versions": {
+            "description": "Version information for this deployment",
+            "nullable": true,
+            "properties": {
+              "deployed_version": {
+                "description": "Full semver of the currently deployed version (e.g. \"0.1.0\")",
+                "nullable": true,
+                "type": "string"
+              },
+              "version_history": {
+                "description": "History of deployed versions and upgrades",
+                "items": {
+                  "type": "object"
+                },
+                "nullable": true,
+                "type": "array"
+              },
+              "version_series": {
+                "description": "Version series this deployment is locked to (e.g. \"0.1\")",
+                "nullable": true,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "workflow_reports": {
+            "description": "Reports from workflow executions",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "instance_id",
+          "redis_db",
+          "status",
+          "online_check_counter",
+          "inserted_at"
+        ],
+        "type": "object"
+      },
+      "UtilitiesWorkflowEvent": {
+        "example": {
+          "status": "4.config_files_added",
+          "timestamp": "2023-12-01T10:30:00Z"
+        },
+        "properties": {
+          "status": {
+            "description": "Event status",
+            "type": "string"
+          },
+          "timestamp": {
+            "description": "Event timestamp",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": ["status", "timestamp"],
+        "type": "object"
+      },
+      "UtilitiesBlobPublicInfo": {
+        "properties": {
+          "content_type": {
+            "description": "file content type",
+            "type": "string"
+          },
+          "filename": {
+            "description": "file name",
+            "type": "string"
+          },
+          "key": {
+            "description": "the key under which the file will be stored in the cloud",
+            "type": "string"
+          },
+          "read_url": {
+            "description": "the URL to which a client can upload a file. The upload is done via `PUT` and there should be header `x-ms-blob-type: BlockBlob`",
+            "format": "uri",
+            "type": "string"
+          },
+          "storage_backend_name": {
+            "description": "name of the cloud storage configuration",
+            "type": "string"
+          },
+          "storage_backend_type": {
+            "description": "which cloud provider the file is stored in",
+            "type": "string"
+          },
+          "uploaded": {
+            "description": "",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "key",
+          "filename",
+          "content_type",
+          "uploaded",
+          "storage_backend_name",
+          "storage_backend_type"
+        ],
+        "type": "object"
+      },
+      "UtilitiesComponent": {
+        "example": {
+          "api_version": "30.2.1",
+          "git_commit": "be8eec45ce88c807851ba1e4fd51190662b9502b",
+          "name": "Product Metrics"
+        },
+        "properties": {
+          "api_version": {
+            "description": "API version",
+            "type": "string"
+          },
+          "git_commit": {
+            "description": "Git commit hash",
+            "type": "string"
+          },
+          "name": {
+            "description": "API name",
+            "type": "string"
+          }
+        },
+        "required": ["name", "api_version", "git_commit"],
+        "type": "object"
+      },
+      "UtilitiesBlobInfo": {
+        "properties": {
+          "content_type": {
+            "description": "file content type",
+            "type": "string"
+          },
+          "filename": {
+            "description": "file name",
+            "type": "string"
+          },
+          "key": {
+            "description": "the key under which the file will be stored in the cloud",
+            "type": "string"
+          },
+          "read_url": {
+            "description": "the URL to which a client can upload a file. The upload is done via `PUT` and there should be header `x-ms-blob-type: BlockBlob`",
+            "format": "uri",
+            "type": "string"
+          },
+          "storage_backend_name": {
+            "description": "name of the cloud storage configuration",
+            "type": "string"
+          },
+          "storage_backend_type": {
+            "description": "which cloud provider the file is histed at",
+            "type": "string"
+          },
+          "upload_headers": {
+            "description": "HTTP headers which must be added to the HTTP upload call",
+            "type": "object"
+          },
+          "upload_url": {
+            "description": "the URL to which a client can upload a file. The upload is done via `PUT` and there should be header `x-ms-blob-type: BlockBlob`",
+            "format": "uri",
+            "type": "string"
+          },
+          "upload_url_expires_in_seconds": {
+            "description": "seconds during which the upload URL is valid",
+            "type": "integer"
+          },
+          "uploaded": {
+            "description": "",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "key",
+          "filename",
+          "content_type",
+          "uploaded",
+          "storage_backend_name",
+          "storage_backend_type"
+        ],
+        "type": "object"
+      },
+      "UtilitiesApplicationVersion": {
+        "example": {
+          "component": {
+            "git_commit": "be8eec45ce88c807851ba1e4fd51190662b9502b",
+            "name": "Product Metrics",
+            "version": "30.2.1"
+          }
+        },
+        "properties": {
+          "component": {
+            "$ref": "#/components/schemas/UtilitiesComponent"
+          }
+        },
+        "required": ["component"],
+        "type": "object"
+      },
+      "UtilitiesBlobPublicInfoResponse": {
+        "properties": {
+          "blob": {
+            "$ref": "#/components/schemas/UtilitiesBlobPublicInfo"
+          }
+        },
+        "required": ["blob"],
+        "type": "object"
+      },
+      "UtilitiesPaginatedDeployments": {
+        "example": {
+          "deployments": [
+            {
+              "all_workflows_successful": null,
+              "current_user_id": null,
+              "git_workflow": null,
+              "git_workflow_duration": null,
+              "inserted_at": "2023-12-01T10:00:00Z",
+              "instance_config_for_workflow_retries": null,
+              "instance_id": "xbkm9-vxnve",
+              "public_domain": "acme.meeco.app",
+              "redis_db": 3,
+              "status": "config_values_generated",
+              "workflow_reports": null
+            }
+          ],
+          "meta": {
+            "order": "desc",
+            "order_by": "inserted_at",
+            "order_from_params": false,
+            "page": 1,
+            "page_count": 5,
+            "per_page": 20,
+            "per_page_from_params": false,
+            "records_count": 100
+          }
+        },
+        "properties": {
+          "deployments": {
+            "items": {
+              "$ref": "#/components/schemas/UtilitiesDeployment"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/UtilitiesPaginationMeta"
+          }
+        },
+        "required": ["meta", "deployments"],
+        "type": "object"
+      },
+      "ATOMUser": {
+        "example": {
+          "archived": false,
+          "email": "peter@peterson.com",
+          "family_name": "Peterson",
+          "given_name": "Peter",
+          "id": "9de00c4f-e1d9-4a7e-8b9e-38b3f5648ee2"
+        },
+        "properties": {
+          "archived": {
+            "nullable": false,
+            "type": "boolean"
+          },
+          "email": {
+            "description": "user email",
+            "nullable": true,
+            "type": "string"
+          },
+          "family_name": {
+            "description": "user family name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "given_name": {
+            "description": "user given name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "User ID",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": ["id"],
+        "type": "object"
+      },
+      "ATOMSecurityRightsOfUser": {
+        "properties": {
+          "orgs": {
+            "description": "Names and IDs of organizations referenced in `security_rights`.",
+            "items": {
+              "$ref": "#/components/schemas/ATOMOrgDescription"
+            },
+            "type": "array"
+          },
+          "security_rights": {
+            "description": "Security rights assigned to the user",
+            "items": {
+              "$ref": "#/components/schemas/ATOMSecurityRightsGroup"
+            },
+            "type": "array"
+          },
+          "tenants": {
+            "description": "Names and IDs of tenants referenced in `security_rights`.",
+            "items": {
+              "$ref": "#/components/schemas/ATOMTenantDescription"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["security_rights", "tenants", "orgs"],
+        "type": "object"
+      },
+      "ATOMPaginatedAdminList": {
+        "properties": {
+          "admins": {
+            "description": "List of users",
+            "items": {
+              "$ref": "#/components/schemas/ATOMUser"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ATOMMeta"
+          },
+          "next_page_after": {
+            "description": "A value which allows to retrieve the next page. (Cursor-based pagination)",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": ["admins"],
+        "type": "object"
+      },
+      "ATOMTenant": {
+        "properties": {
+          "archived": {
+            "format": "uuid",
+            "type": "boolean"
+          },
+          "authorised_officer_email": {
+            "description": "Authorised officer email",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_first_name": {
+            "description": "Authorised officer first name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_last_name": {
+            "description": "Authorised officer last name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "business_address": {
+            "description": "Business address",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "maxLength": 20,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "company_number": {
+            "description": "Company number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When the organisation was created",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "description": "Tenant ID",
+            "format": "uuid",
+            "type": "string"
+          },
+          "legal_name": {
+            "description": "Legal number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "lei_number": {
+            "description": "Legal entity identification number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Tenant name",
+            "type": "string"
+          },
+          "security_rights": {
+            "description": "list of all security rights assigned to the tenant",
+            "items": {
+              "example": "atom:org:assign_org_sr_to_user",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status_in_tenant": {
+            "description": "Status: signed legal agreement received or proof of concept",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "trading_name": {
+            "description": "Trading number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": ["id", "archived", "name", "security_rights"],
+        "type": "object"
+      },
+      "ATOMSecurityRights": {
+        "example": {
+          "security_rights": [
+            "atom:org:assign_org_sr_to_user",
+            "atom:org:view_org",
+            "atom:org:list_org_admins"
+          ]
+        },
+        "properties": {
+          "security_rights": {
+            "description": "list of security rights",
+            "items": {
+              "example": "atom:org:assign_org_sr_to_user",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["security_rights"],
+        "type": "object"
+      },
+      "ATOMTenantInJwtForWhoAmI": {
+        "properties": {
+          "tenant_id": {
+            "description": "Tenant ID",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenant_known_to_atom": {
+            "description": "Whether the tenant is registered in ATOM",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "tenant_name": {
+            "description": "Tenant name",
+            "nullable": true,
+            "type": "string"
+          },
+          "user_became_tenant_admin_at": {
+            "description": "When the user became an admin of the tenant",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "tenant_name",
+          "tenant_id",
+          "tenant_known_to_atom",
+          "user_became_tenant_admin_at"
+        ],
+        "type": "object"
+      },
+      "ATOMSecurityRightSpecInRegistry": {
+        "example": {
+          "active": true,
+          "description": "Create an organisation",
+          "for_org": false,
+          "for_tenant": true,
+          "internal_atom_security_right": false
+        },
+        "properties": {
+          "active": {
+            "description": "Whether the security right is actively used",
+            "type": "boolean"
+          },
+          "assigned_by_default": {
+            "description": "Whether the security right should be assigned by default",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "Description of the security right",
+            "type": "string"
+          },
+          "for_org": {
+            "description": "Whether the security right can only assigned to a user for a specific organisation",
+            "type": "boolean"
+          },
+          "for_tenant": {
+            "description": "Whether the security right can only assigned to a user for a specific tenant",
+            "type": "boolean"
+          },
+          "internal_atom_security_right": {
+            "description": "Whether the security right is an internal ATOM securuty right",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "description",
+          "for_org",
+          "for_tenant",
+          "internal_atom_security_right",
+          "active",
+          "assigned_by_default"
+        ],
+        "type": "object"
+      },
+      "ATOMAssignSecurityRightsRequest": {
+        "properties": {
+          "security_rights": {
+            "description": "list of security rights",
+            "items": {
+              "example": "atom:org:assign_org_sr_to_user",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["security_rights"],
+        "type": "object"
+      },
+      "ATOMCreateOrUpdateOrgRequest": {
+        "properties": {
+          "authorised_officer_email": {
+            "description": "Authorised officer email",
+            "type": "string"
+          },
+          "authorised_officer_first_name": {
+            "description": "Authorised officer first name",
+            "type": "string"
+          },
+          "authorised_officer_last_name": {
+            "description": "Authorised officer last name",
+            "type": "string"
+          },
+          "business_address": {
+            "description": "Business address",
+            "type": "string"
+          },
+          "color": {
+            "description": "The color associated with the organisation in the hex format. Used for the UI.",
+            "type": "string"
+          },
+          "company_number": {
+            "description": "Company number",
+            "type": "string"
+          },
+          "company_url": {
+            "description": "URL of the company",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "legal_name": {
+            "description": "Legal number",
+            "type": "string"
+          },
+          "lei_number": {
+            "description": "Legal entity identification number",
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the organisation to create",
+            "type": "string"
+          },
+          "status_in_tenant": {
+            "description": "Status: signed legal agreement received or proof of concept",
+            "type": "string"
+          },
+          "trading_name": {
+            "description": "Trading number",
+            "type": "string"
+          }
+        },
+        "required": ["name"],
+        "type": "object"
+      },
+      "ATOMSecurityRightsRegistry": {
+        "properties": {
+          "security_rights": {
+            "description": "security rights known to ATOM",
+            "items": {
+              "$ref": "#/components/schemas/ATOMSecurityRightInRegistry"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["security_rights"],
+        "type": "object"
+      },
+      "ATOMError": {
+        "example": {
+          "error": "unauthorized",
+          "extra_info": {
+            "reason": "invalid_jwt"
+          },
+          "file": "lib/source/file.ex",
+          "http_code": 401,
+          "line": 85,
+          "message": null
+        },
+        "properties": {
+          "args": {
+            "description": "Request parameters",
+            "type": "object"
+          },
+          "error": {
+            "description": "Error code",
+            "type": "string"
+          },
+          "extra_info": {
+            "description": "Extra info about the error",
+            "type": "object"
+          },
+          "file": {
+            "description": "Source file where the error originated in",
+            "type": "string"
+          },
+          "http_code": {
+            "description": "HTTP code",
+            "type": "integer"
+          },
+          "line": {
+            "description": "Line number in the file where the error originated in",
+            "type": "integer"
+          },
+          "message": {
+            "description": "Error code",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "extra_info",
+          "args",
+          "http_code",
+          "message",
+          "file",
+          "line"
+        ],
+        "type": "object"
+      },
+      "ATOMPaginatedTenantList": {
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/ATOMMeta"
+          },
+          "next_page_after": {
+            "description": "A value which allows to retrieve the next page. (Cursor-based pagination)",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenants": {
+            "description": "List of tenants",
+            "items": {
+              "$ref": "#/components/schemas/ATOMTenant"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["tenants"],
+        "type": "object"
+      },
+      "ATOMOrg": {
+        "example": {
+          "archived": false,
+          "color": "#C0C0C0",
+          "id": "9de00c4f-e1d9-4a7e-8b9e-38b3f5648ee2",
+          "logo_url": "http://url.to.logo.image.com/logo.jpg",
+          "name": "vela",
+          "security_rights": [
+            "atom:org:assign_org_sr_to_user",
+            "atom:org:view_org",
+            "atom:org:list_org_admins"
+          ],
+          "tenant_id": "be2070e5-0510-45a4-8d5b-5817442cdc98",
+          "tenant_name": "bhp"
+        },
+        "properties": {
+          "archived": {
+            "format": "uuid",
+            "type": "boolean"
+          },
+          "authorised_officer_email": {
+            "description": "Authorised officer email",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_first_name": {
+            "description": "Authorised officer first name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_last_name": {
+            "description": "Authorised officer last name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "business_address": {
+            "description": "Business address",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "maxLength": 20,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "company_number": {
+            "description": "Company number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "company_url": {
+            "description": "URL of the company",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When the organisation was created",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "description": "Organisation ID",
+            "format": "uuid",
+            "type": "string"
+          },
+          "legal_name": {
+            "description": "Legal number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "lei_number": {
+            "description": "Legal entity identification number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Organisation name",
+            "type": "string"
+          },
+          "security_rights": {
+            "description": "list of all security rights assigned to the organisation",
+            "items": {
+              "example": "atom:org:assign_org_sr_to_user",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status_in_tenant": {
+            "description": "Status: signed legal agreement received or proof of concept",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "tenant_id": {
+            "description": "Tenant ID",
+            "format": "uuid",
+            "type": "string"
+          },
+          "tenant_name": {
+            "description": "Tenant name",
+            "minLength": 1,
+            "type": "string"
+          },
+          "trading_name": {
+            "description": "Trading number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": ["id", "archived", "name", "tenant_id"],
+        "type": "object"
+      },
+      "ATOMTenantIdAndName": {
+        "properties": {
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "type": "string"
+          },
+          "id": {
+            "description": "ID of a tenant",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the tenant",
+            "example": "tenant name",
+            "type": "string"
+          }
+        },
+        "required": ["id", "name", "logo_url", "color"],
+        "type": "object"
+      },
+      "ATOMMeta": {
+        "properties": {},
+        "type": "object"
+      },
+      "ATOMSecurityRightInRegistry": {
+        "example": {
+          "security_right": "atom:global:assign_sr_to_tenant",
+          "spec": {
+            "active": true,
+            "description": "Assign a security right to a tenant",
+            "for_org": false,
+            "for_tenant": false,
+            "internal_atom_security_right": true
+          }
+        },
+        "properties": {
+          "security_right": {
+            "description": "security right",
+            "type": "string"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/ATOMSecurityRightSpecInRegistry"
+          }
+        },
+        "required": ["security_right", "spec"],
+        "type": "object"
+      },
+      "ATOMActiveAndArchivedOrgList": {
+        "properties": {
+          "archived_orgs": {
+            "description": "List of archived orgs",
+            "items": {
+              "$ref": "#/components/schemas/ATOMOrg"
+            },
+            "type": "array"
+          },
+          "orgs": {
+            "description": "List of active orgs",
+            "items": {
+              "$ref": "#/components/schemas/ATOMOrg"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["orgs"],
+        "type": "object"
+      },
+      "ATOMSecurityRightsGroup": {
+        "properties": {
+          "scope": {
+            "$ref": "#/components/schemas/ATOMSecurityRightGroupSpec"
+          },
+          "security_rights": {
+            "description": "list of all security rights",
+            "items": {
+              "example": "atom:org:assign_org_sr_to_user",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["scope", "security_rights"],
+        "type": "object"
+      },
+      "ATOMComponent": {
+        "example": {
+          "api_version": "30.2.1",
+          "git_commit": "be8eec45ce88c807851ba1e4fd51190662b9502b",
+          "name": "ATOM"
+        },
+        "properties": {
+          "api_version": {
+            "description": "API version",
+            "type": "string"
+          },
+          "git_commit": {
+            "description": "Git commit hash",
+            "type": "string"
+          },
+          "name": {
+            "description": "API name",
+            "type": "string"
+          }
+        },
+        "required": ["name", "api_version", "git_commit"],
+        "type": "object"
+      },
+      "ATOMAdministeredOrg": {
+        "properties": {
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "type": "string"
+          },
+          "id": {
+            "description": "ID of an organisation",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the organisation",
+            "example": "organisation name",
+            "type": "string"
+          },
+          "tenant_active": {
+            "type": "boolean"
+          },
+          "tenant_id": {
+            "description": "ID of the tenant of the organisation",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          },
+          "user_became_org_admin_at": {
+            "description": "When the user became an admin of the organisation",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": ["id", "name", "tenant_id", "logo_url", "color"],
+        "type": "object"
+      },
+      "ATOMOneTenant": {
+        "properties": {
+          "tenant": {
+            "$ref": "#/components/schemas/ATOMTenant"
+          }
+        },
+        "required": ["tenant"],
+        "type": "object"
+      },
+      "ATOMSecurityRightGroupSpec": {
+        "properties": {
+          "org_id": {
+            "description": "ID of an organisation",
+            "example": "a483a0f8-144d-4657-8d08-071653d25b7f",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenant_id": {
+            "description": "ID of a tenant",
+            "example": "0361dd6e-db21-4cb2-910a-5cf4d30d0dd2",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": ["tenant_id", "org_id"],
+        "type": "object"
+      },
+      "ATOMTenantDescription": {
+        "properties": {
+          "id": {
+            "description": "ID of a tenant",
+            "example": "bf15d4be-8e8d-48a8-af49-df615844fa4d",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of a tenant",
+            "example": "a tenant name",
+            "type": "string"
+          }
+        },
+        "required": ["id", "name"],
+        "type": "object"
+      },
+      "ATOMAdministeredArchivedOrg": {
+        "properties": {
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "type": "string"
+          },
+          "id": {
+            "description": "ID of an organisation",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the organisation",
+            "example": "organisation name",
+            "type": "string"
+          },
+          "tenant_active": {
+            "type": "boolean"
+          },
+          "tenant_id": {
+            "description": "ID of the tenant of the organisation",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          }
+        },
+        "required": ["id", "name", "tenant_id", "logo_url", "color"],
+        "type": "object"
+      },
+      "ATOMOrgDescription": {
+        "properties": {
+          "id": {
+            "description": "ID of an organisation",
+            "example": "3bd00941-6e5b-4852-aefd-3c55f5660592",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of an organisation",
+            "example": "organisation name",
+            "type": "string"
+          }
+        },
+        "required": ["id", "name"],
+        "type": "object"
+      },
+      "ATOMCreateOrUpdateTenantRequest": {
+        "properties": {
+          "authorised_officer_email": {
+            "description": "Authorised officer email",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_first_name": {
+            "description": "Authorised officer first name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "authorised_officer_last_name": {
+            "description": "Authorised officer last name",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "business_address": {
+            "description": "Business address",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "color": {
+            "description": "The color associated with the tenant. Used for the UI.",
+            "maxLength": 20,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "company_number": {
+            "description": "Company number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "ID of the tenant. This parameter is optional. If missing, ATOM will choose a random UUID",
+            "format": "uuid",
+            "type": "string"
+          },
+          "legal_name": {
+            "description": "Legal number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "lei_number": {
+            "description": "Legal entity identification number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "logo_url": {
+            "description": "URL to a logo image",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the tenant",
+            "type": "string"
+          },
+          "status_in_tenant": {
+            "description": "Status: signed legal agreement received or proof of concept",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "trading_name": {
+            "description": "Trading number",
+            "maxLength": 72,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": ["name"],
+        "type": "object"
+      },
+      "ATOMOneOrg": {
+        "properties": {
+          "org": {
+            "$ref": "#/components/schemas/ATOMOrg"
+          }
+        },
+        "required": ["org"],
+        "type": "object"
+      },
+      "ATOMPaginatedOrgList": {
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/ATOMMeta"
+          },
+          "next_page_after": {
+            "description": "A value which allows to retrieve the next page. (Cursor-based pagination)",
+            "nullable": true,
+            "type": "string"
+          },
+          "orgs": {
+            "description": "List of orgs",
+            "items": {
+              "$ref": "#/components/schemas/ATOMOrg"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["orgs"],
+        "type": "object"
+      },
+      "ATOMWhoAmI": {
+        "properties": {
+          "administered_archived_orgs": {
+            "description": "Names and IDs of the archived organizations the user administered",
+            "items": {
+              "$ref": "#/components/schemas/ATOMAdministeredArchivedOrg"
+            },
+            "type": "array"
+          },
+          "administered_archived_tenants": {
+            "description": "Names and IDs of the archived tenants the user administered",
+            "items": {
+              "$ref": "#/components/schemas/ATOMTenantIdAndName"
+            },
+            "type": "array"
+          },
+          "administered_orgs": {
+            "description": "Names and IDs of the organizations the user administers",
+            "items": {
+              "$ref": "#/components/schemas/ATOMAdministeredOrg"
+            },
+            "type": "array"
+          },
+          "administered_tenants": {
+            "description": "Names and IDs of the tenants the user administers",
+            "items": {
+              "$ref": "#/components/schemas/ATOMTenantIdAndName"
+            },
+            "type": "array"
+          },
+          "family_name": {
+            "description": "User family name",
+            "nullable": true,
+            "type": "string"
+          },
+          "given_name": {
+            "description": "User given name",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "User ID from the JWT (taken from `sub`)",
+            "format": "uuid",
+            "type": "string"
+          },
+          "tenant_in_jwt": {
+            "$ref": "#/components/schemas/ATOMTenantInJwtForWhoAmI"
+          },
+          "user_known_to_atom": {
+            "description": "Whether the user is known to ATOM",
+            "type": "boolean"
+          },
+          "user_type": {
+            "description": "user, tenant-agent, or org-agent",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "user_known_to_atom",
+          "user_type",
+          "family_name",
+          "given_name",
+          "tenant_in_jwt",
+          "administered_orgs",
+          "administered_tenants"
+        ],
+        "type": "object"
+      },
+      "ATOMAdmin": {
+        "properties": {
+          "admin": {
+            "$ref": "#/components/schemas/ATOMUser"
+          }
+        },
+        "required": ["admin"],
+        "type": "object"
+      },
+      "ATOMApplicationVersion": {
+        "example": {
+          "component": {
+            "git_commit": "be8eec45ce88c807851ba1e4fd51190662b9502b",
+            "name": "ATOM",
+            "version": "30.2.1"
+          }
+        },
+        "properties": {
+          "component": {
+            "$ref": "#/components/schemas/ATOMComponent"
+          }
+        },
+        "required": ["component"],
+        "type": "object"
+      },
+      "ATOMOrgList": {
+        "properties": {
+          "orgs": {
+            "description": "List of orgs",
+            "items": {
+              "$ref": "#/components/schemas/ATOMOrg"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["orgs"],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "SVX-JWT": {
+        "bearerFormat": "JWT",
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  }
+}
