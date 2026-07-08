@@ -103,8 +103,6 @@
   * [1.0.0](platform/releases/svx-1.0.0.md)
   * [Legacy API-of-Me](platform/releases/api-of-me-releases.md)
 
-
-
 ## Other Products
 
 * [Vault](other-products/vault/README.md)
@@ -117,6 +115,37 @@
     * [Account Delegation](other-products/vault/api-guide/account-delegation.md)
     * [Organizations](other-products/vault/api-guide/organizations.md)
 * [Cryppo SDK & CLI](other-products/cryppo.md)
+
+## OpenAPI Docs
+
+***
+
+* [SVX API](svx-api/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: true
+      downloadLink: true
+      grouping: by-tag
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: svx-wallet-openapi
+    ```
+* [SVX Wallet](svx-wallet/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: true
+      downloadLink: true
+      grouping: by-tag
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: svx-wallet-openapi
+    ```
 
 ## Policies
 
