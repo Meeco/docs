@@ -1,4 +1,4 @@
-To onboard to Secure Value Exchange (SVX) you will first need to sign up. Navigate to our [sign up form](https://www.meeco.me/signup) to gain access to our Sandbox. Once your access has been approved, you will be able to [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login). From here you can:
+To onboard to Secure Value Exchange (SVX) you will first need to sign up. Navigate to our [sign up form](https://login-sandbox.securevalueexchange.com/signup) to gain access to our Sandbox. Signup is automatic — no approval is required — and once complete you will be taken directly to your Tenant. You can also [log in to the SVX Portal](https://portal-sandbox.securevalueexchange.com/login) at any time. From here you can:
 * Use the Portal UI to manage workflows, and
 * Directly access the SVX Sandbox API.
 
@@ -56,7 +56,7 @@ curl 'https://login-sandbox.securevalueexchange.com/oauth2/token' \
   --data-raw 'grant_type=refresh_token&refresh_token=existing_token&client_id=ed3d2366-0fb6-406e-ae72-afd7634e6c9f&tenant_id=32a08dc4-ad7f-491a-a06c-3284592a3737' \
   --compressed
 ```
-Make sure to replace `existing_token`, `client_id`, and `tenant_id` with your specific values.
+Make sure to replace `existing_token`, `client_id`, and `tenant_id` with your specific values. You can find your Tenant ID in the Portal under **Manage Tenancy → Account Settings → Tenant ID**.
 
 #### 4. Access the SVX Sandbox API
 
@@ -71,6 +71,6 @@ With the obtained personal access token, you can now use the SVX Sandbox API. Fo
 
 ```
 
-Replace `YOUR_ORGANISATION_ID` with the relevant ID for your organisation, and `YOUR_ACCESS_TOKEN` with the token obtained in the previous step. You should now be able to successfully access the SVX Sandbox API using the provided authorisation token. 
+Replace `YOUR_ORGANISATION_ID` with the relevant ID for your organisation, and `YOUR_ACCESS_TOKEN` with the token obtained in the previous step. You can find your Organisation ID in the Portal under **Manage Organisation → Account Settings → Organisation ID**. You should now be able to successfully access the SVX Sandbox API using the provided authorisation token. 
 
 For additional support, review the [API Guides](/guides/api-guides/README.md) or contact the [Service Desk](https://meecosystem.atlassian.net/servicedesk/customer/portal/4).
