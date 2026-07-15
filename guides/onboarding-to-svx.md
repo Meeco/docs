@@ -73,4 +73,4 @@ With the obtained personal access token, you can now use the SVX Sandbox API. Fo
 
 Replace `YOUR_ORGANISATION_ID` with the relevant ID for your organisation, and `YOUR_ACCESS_TOKEN` with the token obtained in the previous step. You can find your Organisation ID in the Portal under **Manage Organisation → Account Settings → Organisation ID**. You should now be able to successfully access the SVX Sandbox API using the provided authorisation token. 
 
-For additional support, review the [API Guides](/guides/api-guides/README.md) or contact the [Service Desk](https://meecosystem.atlassian.net/servicedesk/customer/portal/4).
+For additional support, review the [SVX API reference](/openapi-docs/svx-api/README.md) or contact the [Service Desk](https://meecosystem.atlassian.net/servicedesk/customer/portal/4).
