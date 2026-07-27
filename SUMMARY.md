@@ -131,7 +131,7 @@
       spec:
         ref:
           kind: openapi
-          spec: svx-wallet-openapi
+          spec: svx-api-openapi
     ```
 * [SVX Wallet](openapi-docs/svx-wallet/README.md)
   * ```yaml
