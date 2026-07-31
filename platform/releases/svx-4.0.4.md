@@ -1,4 +1,4 @@
-# SVX 4.0.3 Release Notes
+# SVX 4.0.4 Release Notes
 
 **Software Release Date:** 29 July 2026
 
