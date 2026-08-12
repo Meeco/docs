@@ -9,12 +9,20 @@ This is a feature release for the SVX Platform, led by several new Wallet capabi
 ## New Features
 
 - SVX Verify sessions can now report the specific cryptographic key a presentation was bound to, making it easier for integrators to confirm proof of possession.
-- **Transaction Data support** (per the [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) specification): Verifiers can now attach additional context to a presentation request, and wallets can restrict which types of this data they are willing to accept. Verifiers can confirm that the credential presentation returned by a wallet was genuinely bound to the requested context, adding an extra layer of assurance to verification flows.
 - Certificate management now shows which signing key a managed certificate belongs to, and certificate listings support filtering and pagination.
 - Signing requests can now accept base64url-encoded input, in addition to plain text.
 - Session data used by the authorization server can now be stored in Postgres as an alternative to Redis.
 - OAuth clients can now be marked as native or web applications, enabling correct authentication behavior for native app integrations.
+- **Transaction Data support** (per the [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) specification): Verifiers can now attach additional context to a presentation request, and wallets can restrict which types of this data they are willing to accept. Verifiers can confirm that the credential presentation returned by a wallet was genuinely bound to the requested context, adding an extra layer of assurance to verification flows.
 
+
+### How to use Transaction Data
+
+**On the verifier side:** you can now add an optional `transaction_data` array to `POST /verifier/requests` (each entry: `{ type, credential_ids }`), in order to bind a presentation request to extra context — for example, "this presentation also authorizes payment X" — scoped to specific credentials via `credential_ids`. That context is echoed back on `GET /verifier/requests/{id}` and embedded in the signed request JWT served from `GET /verifier/requests/{id}/jwt`. Once a response comes back, `POST /verifier/requests/{id}/responses` automatically checks it against the hash the wallet produced, giving you assurance the presentation was genuinely made in response to that specific context — not just any valid credential.
+
+**On the wallet side:** a new runtime setting, `wallets.trust.allowed_transaction_data_types`, lets a wallet declare which `transaction_data` types it's willing to honor, so it can decline anything unrecognized rather than blindly accepting arbitrary context from a verifier. This check happens at `POST /:walletId/send`, and the same `transaction_data` is also surfaced on `GET /:walletId/send/{state}`, `GET /:walletId/send`, and `POST /:walletId/send/set_credentials`, so a client app can inspect what it's being asked to bind to at any point in the flow. Then, at `POST /:walletId/send/submit`, the hash-binding itself happens automatically — no extra input needed from the caller — by including `transaction_data_hashes` in the Key Binding JWT of any `dc+sd-jwt` credential the context was scoped to.
+
+Existing integrations that don't use `transaction_data` are unaffected — it's entirely optional.
 
 ## Improvements
 
