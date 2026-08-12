@@ -11,8 +11,8 @@ This is a feature release for the SVX Platform, led by several new Wallet capabi
 - SVX Verify sessions can now report the specific cryptographic key a presentation was bound to, making it easier for integrators to confirm proof of possession.
 - Certificate management now shows which signing key a managed certificate belongs to, and certificate listings support filtering and pagination.
 - Signing requests can now accept base64url-encoded input, in addition to plain text.
-- Session data used by the authorization server can now be stored in Postgres as an alternative to Redis. Redis remains the recommended option for production deployments; the Postgres option is intended to simplify deployment for research and development purposes.
-- OAuth clients can now be marked as native or web applications, enabling correct authentication behavior for native app integrations.
+- Session data used by the SVX IDP can now be stored in Postgres as an alternative to Redis. Redis remains the recommended option for production deployments; the Postgres option is intended to simplify deployment for research and development purposes.
+- SVX IDP: OAuth clients can now be registered as native or web applications (per the [OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata) `application_type` metadata), defaulting to web. This lets the SVX IDP apply the correct security requirements for native app integrations.
 - **Transaction Data support** (per the [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) specification): Verifiers can now attach additional context to a presentation request, and wallets can restrict which types of this data they are willing to accept. Verifiers can confirm that the credential presentation returned by a wallet was genuinely bound to the requested context, adding an extra layer of assurance to verification flows.
 
 
