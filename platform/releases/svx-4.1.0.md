@@ -16,6 +16,69 @@ This is a feature release for the SVX Platform, led by several new Wallet capabi
 - **Transaction Data support** (per the [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) specification): Verifiers can now attach additional context to a presentation request, and wallets can restrict which types of this data they are willing to accept. Verifiers can confirm that the credential presentation returned by a wallet was genuinely bound to the requested context, adding an extra layer of assurance to verification flows.
 
 
+### How to list certificates
+
+`GET /system/certificates` now returns the `kid` of the signing key a `managed` certificate is bound to, alongside the existing `key_name`, and accepts query parameters for filtering, sorting and pagination.
+
+**Filtering by type:** pass `type` to narrow the list to `managed` (bound to a managed signing key), `trust_anchor` (imported for external chain validation), or `iaca` (Issuer Authority Certificate Authority). An unrecognised value is rejected with `400`.
+
+```bash
+curl -sS -G "$SVX_WALLET_BASE_URL/system/certificates" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  --data-urlencode "type=managed" | jq
+```
+
+Each entry now carries the signing key it belongs to — `key_name` and `kid` (the JWK thumbprint of the key's public JWK) are populated for `managed` certificates, and are `null` for `trust_anchor` and `iaca` ones:
+
+```json
+{
+  "certificates": [
+    {
+      "id": "6f0a2c4e-3c1a-4d2b-9a4f-8e1b7c5d0a11",
+      "type": "managed",
+      "key_name": "CredentialKey",
+      "kid": "NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs",
+      "x5c": ["MIIB4TCCAYigAwIBAgIU..."],
+      "fingerprint256": null,
+      "created_at": "2026-08-07T02:14:33.512Z"
+    }
+  ],
+  "meta": {
+    "order_by": "created_at",
+    "order": "DESC",
+    "order_from_params": true,
+    "per_page": 50,
+    "per_page_from_params": true,
+    "records_count": 1,
+    "page": 1,
+    "page_count": 1
+  }
+}
+```
+
+**Paginating and sorting:** `page` and `per_page` select the page, and `order_by` with `order` control the sort. `order_by` accepts `created_at` (the default) and `type`; `order` accepts `ASC` or `DESC`, defaulting to `DESC` — so without any parameters you get the 50 most recently imported certificates. `per_page` is clamped to the range 1–50, and a non-numeric `page` or `per_page`, or a `page` below 1, is rejected with a `400` `invalid_pagination_param` error.
+
+```bash
+# Second page of 10, oldest first
+curl -sS -G "$SVX_WALLET_BASE_URL/system/certificates" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  --data-urlencode "page=2" \
+  --data-urlencode "per_page=10" \
+  --data-urlencode "order_by=created_at" \
+  --data-urlencode "order=ASC" | jq
+```
+
+Sorting by `type` groups the three kinds together, which is a convenient way to audit which signing key each managed certificate is bound to:
+
+```bash
+curl -sS -G "$SVX_WALLET_BASE_URL/system/certificates" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  --data-urlencode "order_by=type" \
+  --data-urlencode "order=ASC" | jq '.certificates[] | {type, key_name, kid, created_at}'
+```
+
+Use `meta.records_count` and `meta.page_count` to drive iteration over larger sets. The Certificates API guide covers the full certificate lifecycle, from creating a CSR through to importing the signed chain.
+
 ### How to use Transaction Data
 
 **On the verifier side:** you can now add an optional `transaction_data` array to `POST /verifier/requests` (each entry: `{ type, credential_ids }`), in order to bind a presentation request to extra context — for example, "this presentation also authorizes payment X" — scoped to specific credentials via `credential_ids`. That context is echoed back on `GET /verifier/requests/{id}` and embedded in the signed request JWT served from `GET /verifier/requests/{id}/jwt`. Once a response comes back, `POST /verifier/requests/{id}/responses` automatically checks it against the hash the wallet produced, giving you assurance the presentation was genuinely made in response to that specific context — not just any valid credential.
