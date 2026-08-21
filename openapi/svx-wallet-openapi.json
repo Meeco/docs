@@ -7329,9 +7329,56 @@
     "/system/certificates": {
       "get": {
         "summary": "List certificates",
-        "description": "Returns a list of imported certificates and metadata.\n\nCertificates are stored by type:\n- `managed`: bound to a managed signing key (`key_name` present), may contain a full `x5c` chain,\n  and has `fingerprint256 = null`.\n- `trust_anchor`: imported without `key_name`, must contain exactly one certificate in `x5c`, and has\n  a non-null `fingerprint256`.\n\nThe response includes certificate id, type, associated `key_name` (when bound), the stored `x5c`,\nand `fingerprint256` according to the certificate type rules above.\n",
+        "description": "Returns a paginated list of imported certificates and metadata. The list can be filtered by `type`,\nsorted, and paginated by using the available query parameters.\n\nCertificates are stored by type:\n- `managed`: bound to a managed signing key (`key_name` present), may contain a full `x5c` chain,\n  and has `fingerprint256 = null`.\n- `trust_anchor`: imported without `key_name`, must contain exactly one certificate in `x5c`, and has\n  a non-null `fingerprint256`.\n- `iaca`: Issuer Authority Certificate Authority certificate.\n\nThe response includes certificate id, type, associated `key_name` (when bound), the stored `x5c`,\nand `fingerprint256` according to the certificate type rules above.\n",
         "operationId": "CertificatesController_listCertificates",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "description": "Filters the list to certificates of the given type.",
+            "schema": {
+              "type": "string",
+              "enum": ["trust_anchor", "managed", "iaca"]
+            }
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["ASC", "DESC"]
+            }
+          },
+          {
+            "in": "query",
+            "name": "order_by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Certificates list retrieved",
@@ -7339,6 +7386,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CertificatesResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query params",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidPaginationParamError"
                 }
               }
             }
@@ -11587,9 +11644,20 @@
           },
           "type": {
             "type": "string",
-            "enum": ["trust_anchor", "managed"]
+            "enum": ["trust_anchor", "managed", "iaca"]
           },
           "key_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kid": {
+            "description": "Key identifier of the signing key. Present for `managed`; `null` for `trust_anchor`.",
             "anyOf": [
               {
                 "type": "string"
@@ -11648,9 +11716,12 @@
             "items": {
               "$ref": "#/components/schemas/CertificateModelDto"
             }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": ["certificates"]
+        "required": ["certificates", "meta"]
       },
       "Meta": {
         "type": "object",
