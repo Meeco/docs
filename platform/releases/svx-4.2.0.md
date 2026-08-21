@@ -4,18 +4,52 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform, with a privacy fix for batch credential issuance and a new setting to control credential timestamp precision.
+This is a feature release for the SVX Platform: a new setting lets you control the precision of credential issuance timestamps, which also closes a privacy gap where credentials issued together in a batch could be linked back to the same issuance via their time claims.
 
 ## New Features
 
-- You can now control how precise the timestamps on issued credentials are, via the new `issuer.issuance_policy.time_claims_granularity` setting. By default they're rounded to the nearest hour (3600 seconds), but you can change that window or set it to `1` for second-precision timestamps. This is configurable from the issuance policy section of the Admin UI.
+### Issuance: control credential timestamp precision
+
+A new runtime setting, `issuer.issuance_policy.time_claims_granularity` (integer seconds, minimum `1`, default `3600`), controls how precisely an issued credential's time claims are stamped. It rounds `iat`, `nbf` and `exp` (and, for `mso_mdoc`, `signed`/`validFrom`/`validUntil`) down to the nearest multiple of this many seconds from the Unix epoch. This applies to every credential issued via `POST /issuer/credential`, not only when several come out of one request.
+
+The default of `3600` means a credential's timestamps land on the hour rather than the exact second it was issued.
+
+```json
+PUT /system/settings/issuer
+{
+  "issuance_policy": {
+    "time_claims_granularity": 1
+  }
+}
+```
+
+Also configurable from the issuance policy section of the Admin UI.
+
+This setting also closes a privacy gap in batch issuance: previously, every credential produced by a single `POST /issuer/credential` call got its own precise issuance instant, so a request that produced several credentials at once left a cluster of near-identical, high-entropy `iat`/`nbf`/`exp` values (and `signed`/`validFrom`/`validUntil` for `mso_mdoc`) that let a colluding verifier work out which presentations came from the same issuance and correlate them back to one holder. All credentials produced by one request now share a single issuance instant, rounded down using `time_claims_granularity`, with expiry and validity claims derived from that same rounded instant; the `jwt_vc_json` `issuanceDate` claim is no longer stamped to millisecond precision either. This satisfies [RFC 9901 §10.1](https://www.rfc-editor.org/rfc/rfc9901#section-10.1) conformance requirement.
 
 ## Improvements
 
-- The configuration reference now documents a few OAuth/OIDC client settings that were already supported but not written down anywhere.
+- The configuration JSON schema now documents a few OAuth/OIDC client settings that were already supported but not written down anywhere.
 
 ## Bug Fixes
 
-- Fixed a privacy issue in batch credential issuance. When several credentials were issued together in one request, each one got its own precise issuance timestamp. Because those timestamps were so close together and so specific, a verifier could use them to work out which credentials came from the same batch and link presentations back to the same person. Credentials issued together now all get the same, rounded timestamp, so they can no longer be singled out this way.
-- Verifiers can now include extra, type-specific fields when attaching transaction data to a presentation request, instead of having the request rejected.
+### Transaction data: type-specific extra properties allowed
+
+`POST /verifier/requests` previously rejected any `transaction_data` entry containing properties beyond `type` and `credential_ids`, since each entry was validated against a fixed shape. It now only requires a non-empty `type` string and a non-empty `credential_ids` array, so the type-specific fields a given `transaction_data` type defines (per OpenID4VP) pass through instead of causing a `400`.
+
+```json
+{
+  "transaction_data": [
+    {
+      "type": "urn:example:tx-auth",
+      "credential_ids": ["cred_1"],
+      "amount": "125.00",
+      "currency": "EUR"
+    }
+  ]
+}
+```
+
+Previously `amount` and `currency` here would have been rejected; now they're preserved and returned unchanged on `GET /verifier/requests/{id}` and in the signed request JWT.
+
 - Metrics requests no longer get written to the logs, cutting down on noise.
