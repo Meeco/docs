@@ -238,49 +238,49 @@ Functionality available in the Wallet Dashboard:
 
 **Credential Schemas**
 
-![Credential Schemas](../.gitbook/assets/Release_4.0.0_Credential_Schemas.png)
+![Credential Schemas](/.gitbook/assets/Release_4.0.0_Credential_Schemas.png)
 
 **Credential Templates**
 
-![Credential Templates](../.gitbook/assets/Release_4.0.0_Credential_Templates.png)
+![Credential Templates](/.gitbook/assets/Release_4.0.0_Credential_Templates.png)
 
 **Verification Templates**
 
-![Verification Templates](../.gitbook/assets/Release_4.0.0_Verification_Templates.png)
+![Verification Templates](/.gitbook/assets/Release_4.0.0_Verification_Templates.png)
 
 **Issued Credentials**
 
-![Issued Credentials](../.gitbook/assets/Release_4.0.0_Issued_Credentials.png)
+![Issued Credentials](/.gitbook/assets/Release_4.0.0_Issued_Credentials.png)
 
 **Presentation Requests and Submissions**
 
-![Presentation Requests and Submissions](../.gitbook/assets/Release_4.0.0_Presentation_Requests_and_Submissions.png)
+![Presentation Requests and Submissions](/.gitbook/assets/Release_4.0.0_Presentation_Requests_and_Submissions.png)
 
 **Verify sessions and reporting**
 
-![Verify sessions and reporting](../.gitbook/assets/Release_4.0.0_Verification_Sessions_and_Reporting.png)
+![Verify sessions and reporting](/.gitbook/assets/Release_4.0.0_Verification_Sessions_and_Reporting.png)
 
 **SVX Verify Configuration**
 
 Configure how SVX Verify appears to end users and which identity providers are presented.
 
-![SVX Verify Display Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_Display_Configuration.png)
+![SVX Verify Display Configuration](/.gitbook/assets/Release_4.0.0_SVX_Verify_Display_Configuration.png)
 
-![SVX Verify IDP Configuration](../.gitbook/assets/Release_4.0.0_SVX_Verify_IDP_Configuration.png)
+![SVX Verify IDP Configuration](/.gitbook/assets/Release_4.0.0_SVX_Verify_IDP_Configuration.png)
 
 **Manage API Keys**
 
-![Manage API Keys](../.gitbook/assets/Release_4.0.0_Manage_API_Keys.png)
+![Manage API Keys](/.gitbook/assets/Release_4.0.0_Manage_API_Keys.png)
 
 **Admin Accounts**
 
 Invite new administrators and manage existing admin access. Administrators authenticate using passkeys.
 
-![Admin Accounts](../.gitbook/assets/Release_4.0.0_Admin_Accounts.png)
+![Admin Accounts](/.gitbook/assets/Release_4.0.0_Admin_Accounts.png)
 
 **Wallet configuration**
 
-![Wallet configuration](../.gitbook/assets/Release_4.0.0_Wallet_Configurations.png)
+![Wallet configuration](/.gitbook/assets/Release_4.0.0_Wallet_Configurations.png)
 
 ### Wallet KMS Integration
 
@@ -304,7 +304,7 @@ Key Registry (shown in the diagram below) is a register of keys stored in the da
 
 The Adapters role is to then call the appropriate API of the KMS backend and transform the response as required. For example, during database encryption, the Key Manager Service will request a Data Encryption Key (DEK) from the adapter. If AWS KMS Adapter is used. It will then call the AWS KMS API GenerateDataKey to obtain the DEK. In this process, the logic that does the envelope encryption for the encrypted data is not directly aware of how the DEK is obtained.
 
-![Key Manager Module](../.gitbook/assets/Release_4.0.0_Key_Manager_Module.png)
+![Key Manager Module](/.gitbook/assets/Release_4.0.0_Key_Manager_Module.png)
 
 #### Key roles
 
@@ -352,7 +352,7 @@ The outcome: customer-managed deployment configuration shrinks to a small, stabl
 
 Most Wallet configuration is no longer managed in a static file fixed at deployment time. Mutable application settings are now managed at runtime, persisted in the Wallet database, and organised into five namespaces: system, issuer, verifier, bridge, and holder. Each namespace is a JSON document that can be read and updated through the new `/system/settings` and `/system/settings/{namespace}` endpoints or through the configuration screens in the Wallet Dashboard.
 
-![Application Runtime Configuration](../.gitbook/assets/Release_4.0.0_Application_Runtime_Configuration.png)
+![Application Runtime Configuration](/.gitbook/assets/Release_4.0.0_Application_Runtime_Configuration.png)
 <p align="center">Runtime configuration editor</p>
 
 Every runtime document, similar to static configuration, is validated against a published JSON Schema before it is accepted; invalid updates are rejected with detailed error messages, so it is not possible to persist a configuration the service cannot run with. Defaults are applied centrally from the same schema, and deleting a namespace resets it to defaults.
@@ -554,7 +554,7 @@ The Portal is now scoped to platform and scheme administration. Credential and v
 - Credentials Issued (including all sub-pages)
 - Presentation Requests and Submissions (including all sub-pages)
   
-![Portal Changes](../.gitbook/assets/Release_4.0.0_Portal_Changes.png)
+![Portal Changes](/.gitbook/assets/Release_4.0.0_Portal_Changes.png)
 
 **Removed:**
 

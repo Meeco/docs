@@ -79,9 +79,9 @@ How the key is resolved depends on credential format: for `dc+sd-jwt` and `jwt_v
 
 The demo credential issuance and verification pages have moved out of the old server-rendered views and into the React dashboard, at `/dashboard/test/issue` and `/dashboard/test/verify` (previously `/test/issue` and `/test/verify`). They sit under their own "Test" section in the sidebar with a unified look and feel with the rest of the dashboard.
 
-![Test issue: create a credential offer](../.gitbook/assets/Release_4.1.0_Test_Issue.png)
+![Test issue: create a credential offer](/.gitbook/assets/Release_4.1.0_Test_Issue.png)
 
-![Test verify: create a verification request](../.gitbook/assets/Release_4.1.0_Test_Verify.png)
+![Test verify: create a verification request](/.gitbook/assets/Release_4.1.0_Test_Verify.png)
 
 Access is still gated by the existing `system.test_endpoints_enabled` config flag, `false` by default. When enabled, these pages remain reachable without an admin login.
 
