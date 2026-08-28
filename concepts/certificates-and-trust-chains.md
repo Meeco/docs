@@ -1,12 +1,10 @@
 # Certificates and Trust Chains
 
-When a credential is presented, a Verifier faces a deceptively simple question: *did the organisation that claims to have issued this credential actually issue it?* Verifying the credential's signature requires the Issuer's public key — but knowing that a signature was made by a particular key is not the same as knowing that the key belongs to the organisation named in the credential.
-
-X.509 certificates close that gap. They bind a public key to a real-world identity, and allow that binding to be traced back to an authority the Verifier has already decided to trust. Certificates appear throughout [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) and [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) flows, establishing both who issued a credential and who is asking for one.
+When a credential or attestation is presented, a Verifier wants to authenticate the Issuer. It is trying to answer the question: *did the organisation that claims to have issued this credential actually issue it?*. *X.509 certificates* is a mechanism that does exactly that. It allows you to bind a public key to a real-world identity, and allow that binding to be traced back to an authority the Verifier has already decided to trust. Certificates are used in various credential specifications, including but not limited to [OpenID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) and [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) flows.
 
 ## What a Certificate Is
 
-An X.509 certificate is a signed statement binding a public key to an identity. It is not a secret, and not a credential in its own right — it is a public assertion, made by one party about another, that anyone can independently check.
+An X.509 certificate is a signed statement binding a public key to an identity. IIt is a public assertion, made by one party about another, that anyone can independently check.
 
 | Element | Purpose |
 |---|---|
@@ -19,16 +17,16 @@ An X.509 certificate is a signed statement binding a public key to an identity. 
 
 The Subject and public key identify *what* is vouched for. The extensions define the limits of that assertion, and they are what verification software actually enforces:
 
-* **`basicConstraints`** — whether the key may sign other certificates. Authorities are marked `CA:true`; end-entity certificates that sign data but not certificates are `CA:false`. The `pathlen` value limits how many further authorities may appear beneath.
-* **`keyUsage`** and **`extendedKeyUsage`** — which cryptographic operations are permitted, and for which application. A certificate used to sign mobile documents must carry the object identifier ISO/IEC 18013-5 defines for that purpose.
-* **`subjectKeyIdentifier`** and **`authorityKeyIdentifier`** — identifiers that let software match a certificate to the one that signed it.
-* **`subjectAlternativeName` (SAN)** — the identity matched at verification time. In modern practice it is the SAN, rather than the Distinguished Name, that a Verifier compares against the Issuer identifier the credential asserts.
+* **`basicConstraints`**: whether the key may sign other certificates. Authorities are marked `CA:true`; end-entity certificates that sign data but not certificates are `CA:false`. The `pathlen` value limits how many further authorities may appear beneath.
+* **`keyUsage`** and **`extendedKeyUsage`**: which cryptographic operations are permitted, and for which application. A certificate used to sign mobile documents must carry the object identifier ISO/IEC 18013-5 defines for that purpose.
+* **`subjectKeyIdentifier`** and **`authorityKeyIdentifier`**: identifiers that let software match a certificate to the one that signed it.
+* **`subjectAlternativeName` (SAN)**: the identity matched at verification time. In modern practice it is the SAN, rather than the Distinguished Name, that a Verifier compares against the Issuer identifier a credential or assertion asserts.
 
-Extensions are not metadata. A cryptographically valid certificate that carries the wrong extended key usage, or a SAN that does not match the credential's stated Issuer, must be rejected — otherwise any validly issued certificate could be used to vouch for any party.
+Extensions are not metadata. A cryptographically valid certificate that carries the wrong extended key usage, or a SAN that does not match the credential's stated Issuer, must be rejected.
 
 ## Trust Chains
 
-A single certificate only moves the question one step: it was signed by some Issuer, whose key needs vouching for in turn. A **trust chain** is the sequence of certificates that resolves this, each signed by the private key belonging to the certificate above it.
+A **trust chain** is a list of certificates, each signed by the private key belonging to the certificate above it (except for the last one). It allows a Verifier to check if the Public Key present in the target certificate (first certificate in the chain) actually belongs to the subject. As stated previously, the subject can be the issuer of a credential or the presentation requester, or any other assertion used in the different protocols. 
 
 ```
   Credential                Leaf certificate           Root certificate
@@ -45,7 +43,7 @@ If every link passes, the Verifier has established a chain of cryptographic asse
 
 ## Trust Anchors
 
-A **trust anchor** is a public key that a party has decided to trust for reasons outside the certificate system itself — published by a scheme operator, mandated by a regulator, or configured by an operator who knows where it came from.
+A **trust anchor** is a public key that a party has decided to trust for reasons outside the certificate system itself. It can be published by a scheme operator, mandated by a regulator, or configured by a platform operator (e.g. Apple, Google, Windows, etc).
 
 The distinguishing feature of an anchor is that its own signature proves nothing. A root certificate is self-signed, so anyone can generate one claiming any organisation's name. It will be internally consistent and completely worthless. What makes a particular root an anchor is that a Verifier deliberately installed it.
 
@@ -56,9 +54,9 @@ This gives a clean division of responsibility:
 
 Both are required, and validating a chain without terminating it at a configured anchor is among the most serious implementation errors in credential systems.
 
-Trust is therefore transitive but bounded. A Verifier trusts precisely those Issuers whose chains reach the anchors it holds. Deciding which anchors to install is a governance decision, not a technical one, and it is where an [ecosystem's](ecosystems.md) rules are ultimately enforced.
+A Verifier trusts precisely those Issuers whose chains reach the anchors it trusts. Deciding which anchors to to trust and install is a governance decision, not a technical one, and it is where an [ecosystem's](ecosystems.md) rules are ultimately enforced.
 
-Note what this establishes and what it does not. Anchors authenticate organisations — the Issuer and the Verifier — and say nothing about the Holder: a credential can be perfectly chained to a trusted root and still be presented by someone who copied it. Confirming the presenter is the party the credential was issued to is [holder binding](/platform/verifiable-digital-credentials.md), a separate mechanism.
+Note that Anchors authenticate organisations that act as Issuer and/or Verifier, but are not generally say nothing about the Holder. Something can be perfectly chained to a trusted root and could still be presented by someone who copied it. Confirming the presenter is the party the credential was issued to uses a different mechanism called [cryptographic holder binding](/platform/verifiable-digital-credentials.md).
 
 ### Trust Lists
 
