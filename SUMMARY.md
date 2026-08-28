@@ -70,6 +70,7 @@
 * [Wallet](platform/wallet.md)
 * [Supported Standards](platform/supported-standards.md)
 * [Releases](platform/releases/README.md)
+  * [4.2.2](platform/releases/svx-4.2.2.md)
   * [4.2.1](platform/releases/svx-4.2.1.md)
   * [4.2.0](platform/releases/svx-4.2.0.md)
   * [4.1.0](platform/releases/svx-4.1.0.md)
