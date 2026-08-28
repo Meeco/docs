@@ -24,7 +24,7 @@ _Source: Liminal Research: “The Life of PIEs, The Journey to Personal Identity
 ## Participants and Components of an Ecosystem
 
 [SVX](../platform/README.md) delivers modular components to build an enterprise ecosystem. There are different ecosystem participants that act within various roles. Meeco has developed and defined participants and their roles within SVX as follows:
-* **Identity Providers (IDP)** together with trust anchors bootstrap the ecosystem by delivering verifiable data and promoting trusted relationships.
+* **Identity Providers (IDP)** together with [trust anchors](certificates-and-trust-chains.md) bootstrap the ecosystem by delivering verifiable data and promoting trusted relationships.
 * **Digital identity wallets** allow users to hold and manage their digital identity, assets, credentials, cryptographic keys and DID’s. 
 * **Secure data stores** enable enterprises to securely store their own and their customer’s data. They also allow wallet Holders to back up data from their identity wallet and securely store or share private data.
 * **Verifiable Data Registries (VDR)** allow Issuers and Verifiers to publish relevant information for stakeholders to view, including credential revocation transactions, credential schemas, and list other trusted Issuers and Verifiers.

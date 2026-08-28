@@ -47,6 +47,7 @@
 
 ## Concepts
 
+* [Certificates and Trust Chains](concepts/certificates-and-trust-chains.md)
 * [Digital Identity and Why It's Important](concepts/digital-identity.md)
 * [Digital Wallets](concepts/digital-wallets.md)
 * [Ecosystems](concepts/ecosystems.md)
