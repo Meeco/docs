@@ -7,6 +7,20 @@ SVX Wallet supports multiple key types, but the two most relevant for certificat
 - **Credential key** – used to sign credentials (for example `mso_mdoc` Document Signing Certificate, DSC).
 - **Presentation request key** – used to sign presentation requests by the verifier, establishing verifier identity.
 
+## How Trust Is Established
+
+A signature on its own does not identify a signer. A Verifier receiving a credential can check that it was signed by some key, but needs a reason to believe that key belongs to the Issuer named in the credential. The certificate chain supplies that reason: the signing key's certificate is signed by a root authority, and the Verifier accepts the credential only if that root is one it already trusts. The same applies in reverse when a wallet receives a presentation request and needs to establish which organisation is asking.
+
+Two consequences shape the steps below.
+
+**Two separate roots.** This guide creates one root authority for credential signing and another for presentation request signing. *Who may issue credentials* and *who may request them* are distinct decisions, often made by different governance bodies, so separate roots keep the two independent. In mobile document ecosystems the credential root is known as the IACA (Issuer Authority Certificate Authority).
+
+**Signing requests rather than key uploads.** Signing keys are generated inside the Wallet's key management system and their private halves are never exported. Certificates are therefore obtained by generating a Certificate Signing Request against a named key — proving possession of the private key without revealing it — signing that request with your root CA, and importing the result.
+
+For the concepts behind this, including how trust anchors and trust lists work, see [Certificates and Trust Chains](/concepts/certificates-and-trust-chains.md).
+
+## Setup Overview
+
 The typical setup flow is:
 
 1. Create a root CA locally.
