@@ -53,11 +53,14 @@ This is a feature release for the SVX Platform. The **holder wallet mobile app h
 - Ad-hoc issuance (`POST /issuer/credentials`) accepts optional `valid_at` / `expires_at` (ISO 8601) to override the template's validity for that issuance, across `dc+sd-jwt`, `jwt_vc_json` and `mso_mdoc`. Responses now include the issuer credential `id` for each credential.
 - `POST /issuer/offers` (and the demo endpoint) accept an optional `credential_offer_endpoint` that overrides the configured endpoint for that offer only, with a matching field on the Test Issue page.
 
+### DC API credential issuance
+
+- SVX can now issue credentials over the browser's **W3C Digital Credentials API**. A new wallet register-credential-offer endpoint accepts optional `credential_issuer_metadata` and `authorization_server_metadata` payload parameters to support the DC API issuance flow, and the demo Issue UI offers a DC API option when the browser supports it.
+
 ### Other additions
 
 - Admin display names can be edited via `PATCH /admin/accounts/{id}` and the Admin UI; passkeys show the display name instead of a UUID.
 - Test Verify page: exclude `state` from the request, set a verifier Redirect URI, and set an optional Request Name.
-- Demo UI gains a DC API issuance option when the browser supports it.
 - `POST /verifier/requests/{id}/responses` accepts an optional `options.expected_origin` used as the `origin:` audience and `mso_mdoc` session-transcript origin for DC API response modes.
 
 ## Changed
