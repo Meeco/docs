@@ -4,9 +4,16 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. It adds read-only **Keys and Certificates** management to the Admin UI and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Admin UI consistency work, bug fixes and security hardening.
+This is a feature release for the SVX Platform. The **holder wallet mobile app has been rebuilt natively** (Kotlin Multiplatform + Compose). On the wallet service it adds read-only **Keys and Certificates** management to the Admin UI and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Admin UI consistency work, bug fixes and security hardening. The API gateway and SVX Utilities gain supporting changes.
 
 ## New Features
+
+### Holder wallet app rebuilt natively
+
+- The holder wallet mobile app (**5.0.0**) has been rewritten from Ionic/Angular/Capacitor to a single **Kotlin Multiplatform + Compose Multiplatform** codebase shared by Android and iOS, keeping the same UI and features. Upgrading users sign in again; credentials stay in the Holder Cloud Wallet.
+- More reliable app start, login and unlock; smaller (minified) Android downloads; added Dutch translation.
+- DC API support moved into native modules shared by both platforms; the app runs on iOS 16+ (the DC API itself requires iOS 26). Wallets with more than 20 credentials now list all of them, and deleted credentials disappear immediately.
+- The web build, Playwright tests and nginx/Docker hosting have been removed in favour of the native apps.
 
 ### Keys and Certificates management
 
@@ -74,6 +81,11 @@ This is a feature release for the SVX Platform. It adds read-only **Keys and Cer
 - `POST /system/certificates/csrs` builds the CSR subject from its fields (keeps `,`, `+`, `=` in values); `POST /system/certificates/import` rejects invalid `x5c` items with `400` instead of `500`; `DELETE` rejects managed certificates that have ever been active with `409`.
 - Test Issue page surfaces the real validation error (instead of `[object Object]`) and seeds placeholder claims with type-correct defaults. Color fields accept 3-digit hex. `POST /:walletId/credentials/import` now whitelists `meta.kid` / `meta.did`. SelectID `client_uri` points to `/verify/information`.
 - **Admin UI consistency:** consistent human-readable credential-format labels, "Date …" column headings, copyable long identifiers, a shared em dash for empty values, Title Case labels, a single page description per page, stable table column widths (with horizontal scroll on narrow viewports), routed detail drawers that survive refresh, a working request-history refresh control, the official empty-state icon and "Powered by Meeco" footer, trimmed schema/template names, and clearer demo Issue/Verify copy.
+
+## Platform and infrastructure
+
+- **API gateway:** the gateway now proxies the new wallet endpoints — `GET /system/keys`, `GET /system/certificates/{id}`, `POST /system/certificates/{id}/activate` and `/deactivate`, `GET /issuer/status_lists` and `PATCH /admin/accounts/{id}` — and tracks API spec `1.2.3`.
+- **SVX Utilities:** now processes ATOM lifecycle jobs (`OrgArchived`, `OrgDeleted`, `TenantArchived`, `TenantDeleted`) to uninstall the corresponding wallets, driven by PostgreSQL LISTEN/NOTIFY. New config `auto_deployments.process_atom_jobs` and `postgres.direct_connection_port_for_listen_notify` (a direct, non-pooled connection for LISTEN/NOTIFY); job-queue state is reported under `GET /system/status`.
 
 ## Security
 
