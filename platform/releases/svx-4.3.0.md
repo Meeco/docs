@@ -4,7 +4,7 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds read-only **Keys and Certificates** management to the Admin UI and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Admin UI consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
+This is a feature release for the SVX Platform. On the wallet service it adds read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
 ⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
 
@@ -27,13 +27,13 @@ This is a feature release for the SVX Platform. On the wallet service it adds re
   - `POST /verifier/reader/certify` — issues reader authentication certificates for a batch of CSRs, signed by `ReaderCAKey` (configurable leaf validity and batch size).
   - `GET /verifier/reader/issuing-ca.pem` / `.der` — publishes the issuing CA certificate for wallets to trust.
   - `GET /verifier/reader/crl` — publishes a signed (empty) CRL referenced by every reader certificate.
-- Admin UI: a **Reader authentication** section under Settings › Verifier (enable, certificate lifetime, certificates per request) showing the active signing certificate. New metric `reader_ca_certifications_total{result}`.
+- Dashboard: a **Reader authentication** section under Settings › Verifier (enable, certificate lifetime, certificates per request) showing the active signing certificate. New metric `reader_ca_certifications_total{result}`.
 
 ![Reader authentication settings](/.gitbook/assets/Release_4.3.0_Reader_Authentication.png)
 
 ### `device_request` verification templates
 
-- New verification template type storing `doc_requests`, the JSON equivalent of ISO 18013-5 DocRequests, with an IntentToRetain flag per data element. These templates cannot be used to create presentation requests. The dashboard JSON editor offers a Device Request starter and an mDL sample with structure checks, and hides these templates from the Test Verify and SVX Verify pickers.
+- New verification template type storing `doc_requests`, the JSON equivalent of ISO 18013-5 DocRequests, with an IntentToRetain flag per data element. These templates cannot be used to create presentation requests. The Dashboard JSON editor offers a Device Request starter and an mDL sample with structure checks, and hides these templates from the Test Verify and SVX Verify pickers.
 
 ![Device Request starter in the verification template JSON editor](/.gitbook/assets/Release_4.3.0_Device_Request_Template.png)
 
@@ -54,14 +54,14 @@ This is a feature release for the SVX Platform. On the wallet service it adds re
 
 ### Other additions
 
-- Admin display names can be edited via `PATCH /admin/accounts/{id}` and the Admin UI; passkeys show the display name instead of a UUID.
+- Admin display names can be edited via `PATCH /admin/accounts/{id}` and the Dashboard; passkeys show the display name instead of a UUID.
 - Test Verify page: exclude `state` from the request, set a verifier Redirect URI, and set an optional Request Name.
 - `POST /verifier/requests/{id}/responses` accepts an optional `options.expected_origin` used as the `origin:` audience and `mso_mdoc` session-transcript origin for DC API response modes.
 - SVX Verify receipts can show an optional HTTPS `contact_url`.
 
 ## Changed
 
-- **Admin authentication is now static config.** `system.admin.auth_method` / `system.admin.idp` move from runtime settings to `config.json` and are no longer editable in the dashboard (`auth_method` defaults to `passkey`). A migration removes these keys from stored settings — **OIDC deployments must set them in `config.json` before upgrading** (and remove `admin` from Helm `runtimeBootstrap.systemDocument`).
+- **Admin authentication is now static config.** `system.admin.auth_method` / `system.admin.idp` move from runtime settings to `config.json` and are no longer editable in the Dashboard (`auth_method` defaults to `passkey`). A migration removes these keys from stored settings — **OIDC deployments must set them in `config.json` before upgrading** (and remove `admin` from Helm `runtimeBootstrap.systemDocument`).
 - **Dashboard navigation redesign:** SVX Design System icons, reordered sections (Dashboard, Credentials, SVX Verify, Administration, Test, Devtools), "Admin Accounts" → "Accounts", and Keys/Certificates added under Administration.
 - **SVX Verify configuration consolidated:** session policy and Bridge integration moved from Settings › Verifier onto a single SVX Verify **Settings** page (`/svx-verify/configuration` redirects to `/svx-verify/settings`); the setup checklist and an amber "incomplete" marker live there. An incomplete SVX Verify setup no longer blocks saving verifier settings; `POST /verify/sessions` returns `409 svx_verify_not_configured` with the missing fields until setup is complete.
 - SVX Verify contact **phone and email are now optional** (receipt shows a localised placeholder).
@@ -71,7 +71,7 @@ This is a feature release for the SVX Platform. On the wallet service it adds re
 - Credential configuration is cached in-memory per instance instead of Redis, bounded by a new `issuer.credential_configuration_cache_ttl` setting (default 300s). Settings and credential-configuration change notifications are now raised by PostgreSQL triggers.
 - Public SVX Verify and authorization pages now send a CSP `form-action` directive (configurable via `system.security.headers.content_security_policy.form_action`); known redirect targets are allowed automatically.
 - OpenID4VP credential selection honours the DCQL `require_cryptographic_holder_binding` requirement. DC API response origin now comes from `options.expected_origin` (falling back to `system.app_host`) rather than request headers.
-- Admin UI forms mark required fields with `*` and show allowed-character / max-length hints. The verification success screen button now reads "Continue".
+- Dashboard forms mark required fields with `*` and show allowed-character / max-length hints. The verification success screen button now reads "Continue".
 
 ## Bug Fixes
 
@@ -79,7 +79,7 @@ This is a feature release for the SVX Platform. On the wallet service it adds re
 - `mso_mdoc` credentials from a template with no expiry no longer get a hardcoded 1-year `validUntil`; a far-future sentinel is used. Credential Template previews and the Test Issue page no longer show a fabricated "today" validity and now reflect the template's actual saved validity. Issuer metadata `display` returns the template's real validity fields.
 - `POST /system/certificates/csrs` builds the CSR subject from its fields (keeps `,`, `+`, `=` in values); `POST /system/certificates/import` rejects invalid `x5c` items with `400` instead of `500`; `DELETE` rejects managed certificates that have ever been active with `409`.
 - Test Issue page surfaces the real validation error (instead of `[object Object]`) and seeds placeholder claims with type-correct defaults. Color fields accept 3-digit hex. `POST /:walletId/credentials/import` now whitelists `meta.kid` / `meta.did`. SelectID `client_uri` points to `/verify/information`.
-- **Admin UI consistency:** consistent human-readable credential-format labels, "Date …" column headings, copyable long identifiers, a shared em dash for empty values, Title Case labels, a single page description per page, stable table column widths (with horizontal scroll on narrow viewports), routed detail drawers that survive refresh, a working request-history refresh control, the official empty-state icon and "Powered by Meeco" footer, trimmed schema/template names, and clearer demo Issue/Verify copy.
+- **Dashboard consistency:** consistent human-readable credential-format labels, "Date …" column headings, copyable long identifiers, a shared em dash for empty values, Title Case labels, a single page description per page, stable table column widths (with horizontal scroll on narrow viewports), routed detail drawers that survive refresh, a working request-history refresh control, the official empty-state icon and "Powered by Meeco" footer, trimmed schema/template names, and clearer demo Issue/Verify copy.
 - **Meeco Portal:** creating an organization or tenant now redirects to the new entity's dashboard instead of the list page; viewing an Application no longer shows a spurious "Leave site?" prompt when the page is refreshed or closed.
 
 ## Platform and infrastructure
