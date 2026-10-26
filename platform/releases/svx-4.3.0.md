@@ -127,8 +127,8 @@ Activating a certificate deactivates the key's previously active one in the same
 
 - New runtime setting `verifier.reader_ca.enabled` (requires `verifier.enabled`) and an optional ES256 managed key `ReaderCAKey`. The issuing CA certificate is signed outside SVX and imported via `POST /system/certificates/import` (strict validation of CA certificates; others rejected with `invalid_reader_ca_certificate`).
 - New endpoints (enabled only when the setting is on):
-  - `POST /verifier/reader/certify` — issues reader authentication certificates for a batch of CSRs, signed by `ReaderCAKey` (configurable leaf validity and batch size).
-  - `GET /verifier/reader/issuing-ca.pem` / `.der` — publishes the issuing CA certificate for wallets to trust.
+  - `POST /verifier/reader/certify` — issues reader authentication certificates for a batch of CSRs, signed by `ReaderCAKey` (configurable leaf validity and batch size). Leaf validity is set by `verifier.reader_ca.leaf_validity_hours` (default `24`) and batch size by `verifier.reader_ca.max_csrs_per_request` (default `10`). The certificate's CN comes from the CSR, and CSRs without one are rejected; C, O and OU come from the issuing CA. Each result, in request order, is either `{ "x5c": [reader certificate, issuing CA, ...] }` or a per-CSR `{ "error": ... }`.
+  - `GET /verifier/reader/issuing-ca.pem` / `.der` — publishes the issuing CA certificate for wallets to trust, with an `X-Certificate-Fingerprint-SHA256` header.
   - `GET /verifier/reader/crl` — publishes a signed (empty) CRL referenced by every reader certificate.
 - Dashboard: a **Reader authentication** section under Settings › Verifier (enable, certificate lifetime, certificates per request) showing the active signing certificate. New metric `reader_ca_certifications_total{result}`.
 
