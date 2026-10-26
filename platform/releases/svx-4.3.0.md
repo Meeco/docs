@@ -4,7 +4,7 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
+This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, with status lists cached by the verifier, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
 ⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
 
@@ -71,6 +71,28 @@ The CWT form carries the certificate chain registered for `StatusListKey` as `x5
 - Status list credentials are signed with the new `StatusListKey` and served as `application/vc+jwt`.
 - Status list entries are allocated at random positions instead of sequentially, so a credential's index no longer reveals the order in which it was issued. To make this possible, status lists now hold 262,144 (2^18) entries, above the minimum size the W3C specification mandates.
 - Status lists are encoded as multibase base64url, and `statusListIndex` in a credential is now a string.
+
+### Status lists: caching and `ttl`
+
+The verifier now caches verified status lists, both W3C and IETF, so it no longer downloads and verifies the same list, and fetches the issuer's keys, for every credential. A list is cached until `iat + ttl` when it has a `ttl`, otherwise for a fallback period, and never past its `exp`.
+
+Published lists now carry a `ttl`: the `ttl` claim (in seconds) of IETF Status List Tokens, and `credentialSubject.ttl` (in milliseconds) of W3C lists.
+
+New runtime settings, also editable in the Dashboard Settings:
+
+- `issuer.status_list.ttl_seconds`: the published `ttl` (default `300`; `0` publishes none).
+- `verifier.status_list_cache.enabled`: default `true`.
+- `verifier.status_list_cache.fallback_ttl_seconds`: default `300`.
+
+```json
+PUT /system/settings/verifier
+{
+  "status_list_cache": {
+    "enabled": true,
+    "fallback_ttl_seconds": 600
+  }
+}
+```
 
 ### Keys and Certificates management
 
