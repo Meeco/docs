@@ -6,7 +6,7 @@
 
 This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, with status lists cached by the verifier, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, **import of ISO 18013-5 verifications** performed outside SVX, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
-⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
+⚠️ **This release contains breaking changes.** Most importantly for OIDC deployments, admin authentication moves to `config.json` and must be set there before upgrading. Review [Breaking Changes](#breaking-changes) before upgrading.
 
 ## New Features
 
@@ -157,6 +157,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ## Breaking Changes
 
+- **Admin authentication is now static config.** `system.admin.auth_method` / `system.admin.idp` move from runtime settings to `config.json` and are no longer editable in the Dashboard (`auth_method` defaults to `passkey`). A migration removes these keys from stored settings — **OIDC deployments must set them in `config.json` before upgrading** (and remove `admin` from Helm `runtimeBootstrap.systemDocument`).
 - **ConnectID must be explicitly enabled.** ConnectID now only runs when `bridge.integrations.connect_id.enabled` is `true`, as SelectID already did. The field is required, so existing `connect_id` blocks in `config.json` need `"enabled": true`. Setting it to `false` while runtime ConnectID settings are saved prevents the server from starting.
 - **`mso_mdoc` credential templates must have an expiry.** Creating or updating an mdoc template without `expires_at` or `expires_in` fails with `validation_error`, and issuing from an existing mdoc template without one fails with `mso_mdoc_expiry_required` instead of falling back to a far-future date. The expiry also cannot be later than the signing (DS) certificate's `notAfter`; issuance fails with `mso_mdoc_expiry_exceeds_certificate` otherwise. "No expiry" is disabled for mdoc templates in the Dashboard.
 - **OpenAPI document and Swagger UI moved.** The OpenAPI document is served at `GET /openapi` and the Swagger UI at `/openapi/ui` (previously `/api-json` and `/api`). The document is always served; `system.swagger_ui_enabled` now controls only the UI.
@@ -167,7 +168,6 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ## Changed
 
-- **Admin authentication is now static config.** `system.admin.auth_method` / `system.admin.idp` move from runtime settings to `config.json` and are no longer editable in the Dashboard (`auth_method` defaults to `passkey`). A migration removes these keys from stored settings — **OIDC deployments must set them in `config.json` before upgrading** (and remove `admin` from Helm `runtimeBootstrap.systemDocument`).
 - **Dashboard navigation redesign:** SVX Design System icons, reordered sections (Dashboard, Credentials, SVX Verify, Administration, Test, Devtools), "Admin Accounts" → "Accounts", and Keys/Certificates added under Administration.
 - **SVX Verify configuration consolidated:** session policy and Bridge integration moved from Settings › Verifier onto a single SVX Verify **Settings** page (`/svx-verify/configuration` redirects to `/svx-verify/settings`); the setup checklist and an amber "incomplete" marker live there. An incomplete SVX Verify setup no longer blocks saving verifier settings; `POST /verify/sessions` returns `409 svx_verify_not_configured` with the missing fields until setup is complete.
 - SVX Verify contact **phone and email are now optional** (receipt shows a localised placeholder).
