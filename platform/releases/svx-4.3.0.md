@@ -52,13 +52,14 @@ The catalog can be hidden with the runtime setting `system.credential_catalog.vi
 
 SVX now supports the IETF Token Status List ([draft-ietf-oauth-status-list](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/)) alongside the W3C Bitstring Status List, so `dc+sd-jwt` and `mso_mdoc` credentials can now be revoked and suspended.
 
-**Choosing a status list:** each credential template selects its status list with `status_list`:
+**Choosing a status list:** when you create or edit a credential template in the Dashboard, the **Revocable** checkbox controls whether credentials issued from it can be revoked. With it off, credentials get no status list entry and cannot be revoked. With it on, the status list depends on the template's credential format:
 
-- `ietf_list`: available for all formats; the default for `dc+sd-jwt` and `mso_mdoc`.
-- `w3c_list`: `jwt_vc_json` only; the default for `jwt_vc_json`.
-- `none`: credentials are not revocable.
+- **IETF SD-JWT VC** and **ISO mdoc**: the status list is always the IETF Token Status List, which the form shows but doesn't let you change.
+- **W3C VCDM (JWT)**: you choose between the W3C Bitstring Status List and the IETF Token Status List.
 
-The setting is available in the Dashboard template forms. It replaces `issuer.issuance_policy.revocable`, which is now deprecated and ignored.
+Changing either setting only affects credentials issued afterwards.
+
+In the API, the same choice is the credential template's `status_list` field: `ietf_list` (all formats), `w3c_list` (`jwt_vc_json` only) or `none` (not revocable). It replaces `issuer.issuance_policy.revocable`, which is now deprecated and ignored.
 
 **Issuing:** credentials issued from `ietf_list` templates reference their status list entry with a `status` claim: top-level in `jwt_vc_json`, always disclosed in `dc+sd-jwt`, and inside the signed MSO in `mso_mdoc`. Entries can be 1, 2, 4 or 8 bits.
 
@@ -180,7 +181,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 - **Presentation request fields are nullable.** To support [imported ISO 18013-5 verifications](#iso-18013-5-verification-import), `response_type`, `response_mode`, `nonce` and `expires_at` can now be `null` in `GET /verifier/requests` and `GET /verifier/requests/{id}`. This is a type change in the generated SDKs.
 - **Issuer-controlled claims cannot be supplied.** Claims the issuer sets itself (for example `nbf`, `exp`, `iat`, `iss`, `status` or `credentialStatus`) are rejected with a `400` naming the claim when supplied in offers or ad-hoc issuance. `jwt_vc_json` and `dc+sd-jwt` schemas can no longer define them, and claims with these names from resource hooks and claim mappings are ignored.
 - **Name uniqueness.** Credential schema and credential template names are now unique per format, and verification template names unique per type (`pex`, `dcql`, `device_request`), rather than globally. A custom credential configuration id can only be used by one credential template (see [Bug Fixes](#bug-fixes)). API key names are limited to 100 characters (previously 255).
-- **`issuer.issuance_policy.revocable` is deprecated and ignored**, replaced by the per-template `status_list` setting. See [IETF Token Status List support](#status-lists-ietf-token-status-list-support).
+- **`issuer.issuance_policy.revocable` is deprecated and ignored**, replaced by the per-template **Revocable** and status list settings in the Dashboard (`status_list` in the API). See [IETF Token Status List support](#status-lists-ietf-token-status-list-support).
 
 ## Changed
 
