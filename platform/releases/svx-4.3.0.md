@@ -46,6 +46,8 @@ Verification presets are a fixed set, in this order: Age over 18, Age over 18 + 
 
 **In the Dashboard:** the new Credentials › Catalog page, also reachable with **Add from catalog** on the Credential Templates page, installs catalog entries. The install sheet shows the schema and templates already installed for the chosen format, pre-selects only what is missing, and prevents installing a part again under the name of an existing template. On the Test Issue page, claims can be filled in from one of the samples of the template's catalog entry.
 
+![Credentials › Catalog](/.gitbook/assets/Release_4.3.0_Catalog.png)
+
 The catalog can be hidden with the runtime setting `system.credential_catalog.visible` (default `true`, Administration › Settings › System › Credential catalog). When hidden, the Dashboard removes the Catalog page and **Add from catalog**, and the `/catalog` endpoints return `404 catalog_not_visible`. Templates already installed from the catalog keep working.
 
 ### Status lists: IETF Token Status List support
@@ -58,6 +60,10 @@ SVX now supports the IETF Token Status List ([draft-ietf-oauth-status-list](http
 - **W3C VCDM (JWT)**: you choose between the W3C Bitstring Status List and the IETF Token Status List.
 
 Changing either setting only affects credentials issued afterwards.
+
+![A revocable IETF SD-JWT VC template, where the status list is always the IETF Token Status List](/.gitbook/assets/Release_4.3.0_Status_List_IETF.png)
+
+![A revocable W3C VCDM (JWT) template, where you choose between the two status lists](/.gitbook/assets/Release_4.3.0_Status_List_W3C.png)
 
 In the API, the same choice is the credential template's `status_list` field: `ietf_list` (all formats), `w3c_list` (`jwt_vc_json` only) or `none` (not revocable). It replaces `issuer.issuance_policy.revocable`, which is now deprecated and ignored.
 
