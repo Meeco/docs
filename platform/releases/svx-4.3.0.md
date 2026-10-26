@@ -110,6 +110,15 @@ PUT /system/settings/verifier
 - Certificate responses (`GET /system/certificates`, `GET /system/certificates/{id}`, `POST /system/certificates/import`) now include a parsed `chain`: subject, issuer, serial, validity, public key, SANs, CA/self-signed flags and SHA-256 fingerprint. The list can be filtered by `type`, `status` and `key_name`.
 - New read-only **Administration › Certificates** page lists managed, trust-anchor and IACA certificates with the full chain, copy-as-PEM actions and links to the bound key. Certificates can be **imported** (trust anchors, or managed chains bound to a signing key) and **activated/deactivated** from the UI and API (`POST /system/certificates/{id}/activate` / `/deactivate`). A key may hold several certificates but only one active.
 
+**Certificate activation and renewal:** the active certificate is the one attached as `x5c` to what the key signs. The first certificate imported for a key is active on import; later ones, such as a renewal, are imported inactive. This lets you import a renewed certificate ahead of time and activate it when needed:
+
+```bash
+curl -sS -X POST "$SVX_WALLET_BASE_URL/system/certificates/$CERTIFICATE_ID/activate" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" | jq '.certificate | {id, active, activated_at}'
+```
+
+Activating a certificate deactivates the key's previously active one in the same step. Only `managed` certificates can be activated (`certificate_activation_not_supported` otherwise), and not when their key version has been retired by rotation (`certificate_key_retired`). Certificate responses include `active`, `activated_at` and `deactivated_at`.
+
 ![Administration › Keys](/.gitbook/assets/Release_4.3.0_Keys.png)
 
 ![Administration › Certificates](/.gitbook/assets/Release_4.3.0_Certificates.png)
