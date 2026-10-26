@@ -139,7 +139,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ### Issuance
 
-- Ad-hoc issuance (`POST /issuer/credentials`) accepts optional `valid_at` / `expires_at` (ISO 8601) to override the template's validity for that issuance, across `dc+sd-jwt`, `jwt_vc_json` and `mso_mdoc`. Responses now include the issuer credential `id` for each credential.
+- Ad-hoc issuance (`POST /issuer/credentials`) accepts optional `valid_at` / `expires_at` (ISO 8601) to override the template's validity for that issuance, across `dc+sd-jwt`, `jwt_vc_json` and `mso_mdoc`. They set `nbf` / `exp` for `dc+sd-jwt` and `jwt_vc_json`, and `ValidityInfo.validFrom` / `validUntil` for `mso_mdoc`. Either can be given on its own; the side that isn't set still comes from the template. Requests whose resulting validity ends before it starts, or has already ended, are rejected with `invalid_request`. Responses now include the issuer credential `id` for each credential (`credentials: [{ id, credential }]`), so it can be used directly with endpoints such as `PATCH /issuer/credentials/{id}/status`.
 - `POST /issuer/offers` (and `POST /demo/issuer/offers`) accept an optional `credential_offer_endpoint` that overrides the configured endpoint for that offer only, with a matching field on the Test Issue page.
 
 ### DC API credential issuance
