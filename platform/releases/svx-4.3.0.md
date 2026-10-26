@@ -4,7 +4,7 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, with status lists cached by the verifier, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
+This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, with status lists cached by the verifier, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, **import of ISO 18013-5 verifications** performed outside SVX, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
 ⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
 
@@ -114,6 +114,16 @@ PUT /system/settings/verifier
 - Dashboard: a **Reader authentication** section under Settings › Verifier (enable, certificate lifetime, certificates per request) showing the active signing certificate. New metric `reader_ca_certifications_total{result}`.
 
 ![Reader authentication settings](/.gitbook/assets/Release_4.3.0_Reader_Authentication.png)
+
+### ISO 18013-5 verification import
+
+`POST /verifier/requests/import` imports ISO 18013-5 verifications performed outside SVX, for example by mdoc readers, so they can be stored and reviewed alongside verifications made through SVX. Each record contains `record_reference_id`, `device_request`, `device_response`, `requested_at`, the reported `verification_result` and an optional `session_transcript`, and is stored as an imported presentation request and response with protocol `iso_mdoc`. The verification result is reported by the uploader and is not re-verified by SVX.
+
+- A record without `device_response` and `verification_result` but with a past `expires_at` represents a request that expired unanswered. It is stored as a `pending` imported request without a response, like an expired OpenID4VP request.
+- Imports are idempotent on `record_reference_id`, and stored records are never updated. A different record under an existing `record_reference_id` is rejected as `reference_conflict` with the id of the stored record; to replace it, delete it and import again.
+- The runtime setting `verifier.request_import.max_records_per_request` (default `100`) caps the number of records per request. It is editable in the new Request import section of Administration › Settings › Verifier.
+
+Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `imported` flag, and `iso_mdoc` requests carry `record_reference_id` and `doc_requests`. Presentation responses gain `device_response` and `session_transcript`. Verification results gain an optional `device_response` part for ISO 18013-5 DeviceResponses (response-level `checks`, `warnings` and `errors`, and `documents` with a `doc_type` each), which holds the reported result of an imported request. `GET /verifier/requests/{id}/jwt` and `POST /verifier/requests/{id}/responses` return `404 not_found` for `iso_mdoc` requests.
 
 ### `device_request` verification templates
 
