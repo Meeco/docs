@@ -205,7 +205,12 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ## Platform and infrastructure
 
-- **API gateway:** the gateway now proxies the new wallet endpoints — `GET /system/keys`, `GET /system/certificates/{id}`, `POST /system/certificates/{id}/activate` and `/deactivate`, `GET /issuer/status_lists` and `PATCH /admin/accounts/{id}`.
+- **API gateway:** the gateway now proxies the new wallet endpoints:
+  - Catalog: `GET /catalog`, `GET /catalog/{id}`, `POST /catalog/{id}/install`, `GET /issuer/templates/{id}/samples` and the public `GET /demo/issuer/templates/{id}/samples`.
+  - Keys and certificates: `GET /system/keys`, `GET /system/certificates/{id}`, `POST /system/certificates/{id}/activate` and `/deactivate`.
+  - ISO 18013-5: `POST /verifier/requests/import`, `POST /verifier/reader/certify`, and the public `GET /verifier/reader/issuing-ca.pem`, `GET /verifier/reader/issuing-ca.der` and `GET /verifier/reader/crl`.
+  - Other: `GET /issuer/status_lists` and `PATCH /admin/accounts/{id}`.
+  - `/openapi` and `/openapi/ui` are passed through to SVX Wallet.
 - **SVX Utilities:** now automatically uninstalls an organization's or tenant's wallets when it is archived or deleted, so wallets are cleaned up without manual intervention. Two new **mandatory** config fields: `auto_deployments.process_atom_jobs` enables or disables this processing, and `postgres.direct_connection_port_for_listen_notify` points to a direct, non-pooled PostgreSQL port for the queue's LISTEN/NOTIFY connection, since connection poolers such as PgBouncer don't relay it reliably. `GET /system/status` reports the queue state under `job_queues.atom_to_svx_utilities_queue`.
 - **ATOM:** crashed handlers and projectors are restarted automatically, retry failed event store subscriptions with exponential backoff, and re-register after a registry restart. Commands dispatched with strong consistency no longer return stale data when no handler is registered for their event type. ATOM can now run as multiple full-mode instances in a cluster, and the `presence` key has been removed from its `GET /system/status`.
 - **Runtime upgrades:** SVX Platform to Node.js 24.22.1, SVX Wallet Gateway and SVX Gateway to KrakenD 2.13.10 and 2.13.11, ATOM and SVX Utilities to Erlang 29.1.2, and SVX Utilities to Elixir 1.20.4.
