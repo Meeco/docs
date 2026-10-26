@@ -144,7 +144,8 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ### DC API credential issuance
 
-- SVX can now issue credentials over the browser's **W3C Digital Credentials API**. A new wallet register-credential-offer endpoint accepts optional `credential_issuer_metadata` and `authorization_server_metadata` payload parameters to support the DC API issuance flow, and the demo Issue UI offers a DC API option when the browser supports it.
+- SVX can now issue credentials over the browser's **W3C Digital Credentials API** (experimental). The credential offer registered with the existing `POST /wallets/{walletId}/receive` endpoint can now include `credential_issuer_metadata` and `authorization_server_metadata` inline. When present, they are used instead of `.well-known` discovery; this is required for offers delivered through the DC API, because the wallet-selection matcher has no network access.
+- The demo Issue page offers a DC API option when the browser supports it, and shows errors the browser reports. In cross-device flows the browser can report an error even when issuance succeeded, so check the wallet; the same-device flow works as expected.
 
 ### Other additions
 
