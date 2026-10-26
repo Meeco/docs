@@ -94,16 +94,6 @@ New runtime settings, also editable in the Dashboard Settings:
 - `verifier.status_list_cache.enabled`: default `true`.
 - `verifier.status_list_cache.fallback_ttl_seconds`: default `300`.
 
-```json
-PUT /system/settings/verifier
-{
-  "status_list_cache": {
-    "enabled": true,
-    "fallback_ttl_seconds": 600
-  }
-}
-```
-
 ### Keys and Certificates management
 
 - `GET /system/keys` lists the deployment's KMS keys, including keys retired by rotation: algorithm, purpose, adapter, key ID, public JWK, use count, bound certificates and creation/retirement dates. A new read-only **Administration › Keys** page gives an overview with a detail panel (bound certificates, previous versions) and a copy-as-JWKS action.
