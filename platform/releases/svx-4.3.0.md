@@ -200,6 +200,8 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ## Security
 
+- Fixed `did:jwk` DIDs created by the wallet (`POST /wallets/{id}/dids`) containing the private key. They were built from the full generated JWK, so the private key (`d`) was embedded in the DID and in everything derived from it, such as key IDs, proof JWTs, issued credentials and presentations. Only the public JWK is encoded now. **DIDs created before this release are not updated and still contain the private key.**
+- The production images of SVX Wallet and SVX Platform no longer contain application source code or source maps: the backend is bundled and obfuscated.
 - Dependency upgrades to close known vulnerabilities. DM Sans is now self-hosted: the Content Security Policy no longer allows `fonts.googleapis.com` / `fonts.gstatic.com`, and server-rendered pages use a system sans-serif stack.
 - Upgraded `@meeco/sd-jwt` (1.3.1) and `@meeco/sd-jwt-vc` (2.4.0): SD-JWT presentation verification now checks the Key Binding JWT's `typ`, `sd_hash` and `iat` in the library.
 - **Meeco Portal:** the application Client Secret is no longer stored in `localStorage`, and dependency vulnerabilities were reduced by upgrading 31 vulnerable packages.
