@@ -4,7 +4,7 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
+This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, **IETF Token Status List** support so credentials in every format can be revoked and suspended, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
 ⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
 
@@ -37,6 +37,40 @@ Verification presets are a fixed set, in this order: Age over 18, Age over 18 + 
 **In the Dashboard:** the new Credentials › Catalog page, also reachable with **Add from catalog** on the Credential Templates page, installs catalog entries. The install sheet shows the schema and templates already installed for the chosen format, pre-selects only what is missing, and prevents installing a part again under the name of an existing template. On the Test Issue page, claims can be filled in from one of the samples of the template's catalog entry.
 
 The catalog can be hidden with the runtime setting `system.credential_catalog.visible` (default `true`, Administration › Settings › System › Credential catalog). When hidden, the Dashboard removes the Catalog page and **Add from catalog**, and the `/catalog` endpoints return `404 catalog_not_visible`. Templates already installed from the catalog keep working.
+
+### Status lists: IETF Token Status List support
+
+SVX now supports the IETF Token Status List ([draft-ietf-oauth-status-list](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/)) alongside the W3C Bitstring Status List, so `dc+sd-jwt` and `mso_mdoc` credentials can now be revoked and suspended.
+
+**Choosing a status list:** each credential template selects its status list with `status_list`:
+
+- `ietf_list`: available for all formats; the default for `dc+sd-jwt` and `mso_mdoc`.
+- `w3c_list`: `jwt_vc_json` only; the default for `jwt_vc_json`.
+- `none`: credentials are not revocable.
+
+The setting is available in the Dashboard template forms. It replaces `issuer.issuance_policy.revocable`, which is now deprecated and ignored.
+
+**Issuing:** credentials issued from `ietf_list` templates reference their status list entry with a `status` claim: top-level in `jwt_vc_json`, always disclosed in `dc+sd-jwt`, and inside the signed MSO in `mso_mdoc`. Entries can be 1, 2, 4 or 8 bits.
+
+**Publishing:** IETF lists are published as Status List Tokens at `GET /issuer/status_list/{id}`, in one of two forms chosen by content negotiation: a JWT (`application/statuslist+jwt`, the default) or a CWT (`application/statuslist+cwt`, COSE_Sign1) when the `Accept` header prefers it. Both are signed with the new `StatusListKey`.
+
+```bash
+curl -sS "$SVX_WALLET_BASE_URL/issuer/status_list/$STATUS_LIST_ID" \
+  -H "Accept: application/statuslist+cwt" --output status_list.cwt
+```
+
+The CWT form carries the certificate chain registered for `StatusListKey` as `x5chain`. For mdoc verifiers to accept it, the `StatusListKey` certificate must be issued by the same IACA as the `CredentialKey` certificate.
+
+**Verifying:** the verifier checks IETF status list entries for all three formats, using the JWT form for `jwt_vc_json` and `dc+sd-jwt` and the CWT form for `mso_mdoc`. It verifies the token's signature, `typ`, that `sub` matches the credential's `uri`, and `exp`. Revoked and suspended credentials fail verification.
+
+- JWT lists are verified with the key the issuer publishes at `/.well-known/jwt-vc-issuer`, selected by `kid`.
+- CWT lists follow ISO 18013-5: the CWT must contain an `x5chain`, the key is taken from its leaf certificate, and the chain is accepted only if its top-level certificate is signed by the `certificate` in the MSO's status list reference or, without one, by the issuer of the MSO's certificate (the IACA), found in the MSO or among the registered IACA certificates.
+
+**W3C Bitstring Status List changes:**
+
+- Status list credentials are signed with the new `StatusListKey` and served as `application/vc+jwt`.
+- Status list entries are allocated at random positions instead of sequentially, so a credential's index no longer reveals the order in which it was issued. To make this possible, status lists now hold 262,144 (2^18) entries, above the minimum size the W3C specification mandates.
+- Status lists are encoded as multibase base64url, and `statusListIndex` in a credential is now a string.
 
 ### Keys and Certificates management
 
@@ -95,7 +129,6 @@ The catalog can be hidden with the runtime setting `system.credential_catalog.vi
 - SVX Verify contact **phone and email are now optional** (receipt shows a localised placeholder).
 - Credential schema names are now unique **per format** rather than globally.
 - Admin display names are now **required** (`POST /admin/invitations`) and **unique** (migration renames/suffixes duplicates).
-- **W3C Bitstring Status List** rework: larger lists, multibase base64url encoding, string `statusListIndex`, randomly allocated entries, and a dedicated `StatusListKey` signing key.
 - Credential configuration is cached in-memory per instance instead of Redis, bounded by a new `issuer.credential_configuration_cache_ttl` setting (default 300s). Settings and credential-configuration change notifications are now raised by PostgreSQL triggers.
 - Public SVX Verify and authorization pages now send a CSP `form-action` directive (configurable via `system.security.headers.content_security_policy.form_action`); known redirect targets are allowed automatically.
 - OpenID4VP credential selection honours the DCQL `require_cryptographic_holder_binding` requirement. DC API response origin now comes from `options.expected_origin` (falling back to `system.app_host`) rather than request headers.
