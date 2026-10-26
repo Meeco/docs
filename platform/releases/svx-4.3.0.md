@@ -4,11 +4,39 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
+This is a feature release for the SVX Platform. On the wallet service it adds a **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step, read-only **Keys and Certificates** management to the Dashboard and API, an **ISO 18013-5 Reader CA** for issuing reader authentication certificates, a new **`device_request`** verification template type, and **search** across the main Dashboard tables. It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
 ⚠️ **Breaking change for OIDC deployments:** admin authentication moves to `config.json`. Set it there before upgrading — see [Changed](#changed).
 
 ## New Features
+
+### Credential catalog
+
+A catalog of standard credentials makes it possible to set up issuance and verification for well-known credential types without writing schemas and DCQL queries by hand. Each catalog entry defines, per format (`dc+sd-jwt`, `mso_mdoc`), the credential schema, credential template defaults and verification presets.
+
+| Entry | Specification | Formats |
+| --- | --- | --- |
+| mDL | ISO 18013-5 | `dc+sd-jwt`, `mso_mdoc` |
+| EU PID | ARF PID Rulebook (Annex 3.01) | `dc+sd-jwt`, `mso_mdoc` |
+| German PID | German PID Rulebook 1.0.0 draft (`urn:eudi:pid:de:1`, namespace `eu.europa.ec.eudi.pid.de.1`) | `dc+sd-jwt`, `mso_mdoc` |
+| Age Verification | | `dc+sd-jwt`, `mso_mdoc` |
+| Photo ID | ISO/IEC TS 23220-4 (data elements of ISO/IEC 23220-2) | `dc+sd-jwt`, `mso_mdoc` |
+| Digital Payment Credential | EMV DPC Schema Framework v1.0 draft (`com.emvco.dpc.card`) | `dc+sd-jwt`, `mso_mdoc` |
+| Mobile Vehicle Registration | ISO/IEC DTS 7367-2 (doctype `org.iso.7367.1.mVC`) | `mso_mdoc` |
+
+The EU PID rulebook defines no age attestations, so "age over 18" comes from the Age Verification entry. The catalog schemas are a first version and will be refined in future releases.
+
+**Installing from the catalog:** `POST /catalog/{id}/install` creates, in one call, the schema and credential template (`issuance`, default `true`) and/or one verification template per chosen preset (`verification_presets`). Choosing neither returns `catalog_nothing_to_install`. Issuing `mso_mdoc` credentials requires a certificate on `CredentialKey` (`catalog_prerequisite_not_met` otherwise); installing verification templates only does not.
+
+Verification presets are a fixed set, in this order: Age over 18, Age over 18 + portrait, one extra preset per format, Mandatory data elements, and All data elements. The last two are generated from the schema.
+
+**Browsing the catalog:** `GET /catalog` lists the entries together with the credential templates and verification templates (`installed_verification_templates`) installed from them. `GET /catalog/{id}` returns the schema, template defaults, verification presets (with their DCQL queries) and prerequisites for each format. Credential and verification templates installed from the catalog carry a `catalog` object with the entry id, its version and, for verification templates, the preset id.
+
+**Sample data:** each catalog entry has one or more samples, such as a holder, a payment card or a vehicle. `GET /issuer/templates/{id}/samples` (and `GET /demo/issuer/templates/{id}/samples`) returns them with claims in the template's format, valid against its schema, and with dates relative to today. Templates not installed from the catalog, or installed from a different version of their entry, have no samples.
+
+**In the Dashboard:** the new Credentials › Catalog page, also reachable with **Add from catalog** on the Credential Templates page, installs catalog entries. The install sheet shows the schema and templates already installed for the chosen format, pre-selects only what is missing, and prevents installing a part again under the name of an existing template. On the Test Issue page, claims can be filled in from one of the samples of the template's catalog entry.
+
+The catalog can be hidden with the runtime setting `system.credential_catalog.visible` (default `true`, Administration › Settings › System › Credential catalog). When hidden, the Dashboard removes the Catalog page and **Add from catalog**, and the `/catalog` endpoints return `404 catalog_not_visible`. Templates already installed from the catalog keep working.
 
 ### Keys and Certificates management
 
