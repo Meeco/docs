@@ -16,7 +16,7 @@ This is a feature release for the SVX Platform. On the wallet service it adds:
 
 It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
 
-⚠️ **This release contains breaking changes.** Most importantly for OIDC deployments, admin authentication moves to `config.json` and must be set there before upgrading. Review [Breaking Changes](#breaking-changes) before upgrading.
+⚠️ **Before upgrading, review the [Upgrade Notes](#upgrade-notes).** Several changes need action at deploy time — most importantly for OIDC deployments, admin authentication moves to `config.json` and must be set there before upgrading.
 
 ## New Features
 
@@ -172,7 +172,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 - `GET /wallets/{walletId}/send` filters presentation states by submission status with the `status` query param (`pending`, `failed`, `success`), as a comma-separated list or a repeated param; other values are rejected with `invalid_status_filter_value`.
 - Devtools › API Documentation opens the Swagger UI in a new tab when `system.swagger_ui_enabled` is set.
 
-## Breaking Changes
+## Upgrade Notes
 
 - **Admin authentication is now static config.** `system.admin.auth_method` / `system.admin.idp` move from runtime settings to `config.json` and are no longer editable in the Dashboard (`auth_method` defaults to `passkey`). A migration removes these keys from stored settings — **OIDC deployments must set them in `config.json` before upgrading** (and remove `admin` from Helm `runtimeBootstrap.systemDocument`).
 - **DCQL holder binding is now enforced.** OpenID4VP verification previously accepted every presentation regardless of the DCQL query's `require_cryptographic_holder_binding`, and a query that omitted the flag was treated as not requiring binding. The specification default (`true`) is now applied, and binding is derived from the presentation itself: a Key Binding JWT verified against the credential's `cnf.jwk` for `dc+sd-jwt`, a holder key or subject DID tied to the presentation signer for `jwt_vc_json`, and device authentication for `mso_mdoc`. **Presentations without holder binding are now rejected unless the credential query sets `"require_cryptographic_holder_binding": false`.** Verification results record a new `holder_binding` check. On the wallet side, `set_credentials` returns an error when a selected credential cannot satisfy the requirement.
