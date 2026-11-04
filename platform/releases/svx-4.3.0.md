@@ -4,14 +4,14 @@
 
 **Summary:**
 
-This is a feature release for the SVX Platform. On the wallet service it adds:
+This is a feature release for the SVX Platform. Most of the changes apply to the SVX Wallet, where it adds:
 
-- A **credential catalog** for installing standard credentials (mDL, EU PID, Age Verification and more) in one step.
-- **IETF Token Status List** support, so credentials in every format can be revoked and suspended, with status lists cached by the verifier.
+- A **Credential Catalog** for installing widely used, standard credentials (mDL, EU PID, Age Verification and more) in one step.
+- **IETF Token Status List** support, so credentials in every format can be revoked and suspended with status lists.
 - **Keys and Certificates** management in the Dashboard and API, including certificate import and activation.
-- An **ISO 18013-5 Reader CA** for issuing reader authentication certificates.
-- **Import of ISO 18013-5 verifications** performed outside SVX.
-- A new **`device_request`** verification template type.
+- **Reader CA** endpoints for issuing reader authentication certificates.
+- **Import of verifications** performed outside SVX.
+- A new **`device_request`** verification template type that aligns to ISO 18013-5.
 - **Search** across the main Dashboard tables.
 
 It also consolidates SVX Verify configuration into a single Settings page, enforces DCQL cryptographic holder binding correctly, and includes a broad round of Dashboard consistency work, bug fixes and security hardening. The API gateway, SVX Utilities and Meeco Portal gain supporting changes.
@@ -20,21 +20,19 @@ It also consolidates SVX Verify configuration into a single Settings page, enfor
 
 ## New Features
 
-### Credential catalog
+### Credential Catalog
 
 A catalog of standard credentials makes it possible to set up issuance and verification for well-known credential types without writing schemas and DCQL queries by hand. Each catalog entry defines, per format (`dc+sd-jwt`, `mso_mdoc`), the credential schema, credential template defaults and verification presets.
 
 | Entry | Specification | Formats |
 | --- | --- | --- |
-| mDL | ISO 18013-5 | `dc+sd-jwt`, `mso_mdoc` |
+| Mobile Driving License | ISO 18013-5 | `dc+sd-jwt`, `mso_mdoc` |
 | EU PID | ARF PID Rulebook (Annex 3.01) | `dc+sd-jwt`, `mso_mdoc` |
 | German PID | German PID Rulebook 1.0.0 draft (`urn:eudi:pid:de:1`, namespace `eu.europa.ec.eudi.pid.de.1`) | `dc+sd-jwt`, `mso_mdoc` |
-| Age Verification | | `dc+sd-jwt`, `mso_mdoc` |
-| Photo ID | ISO/IEC TS 23220-4 (data elements of ISO/IEC 23220-2) | `dc+sd-jwt`, `mso_mdoc` |
-| Digital Payment Credential | EMV DPC Schema Framework v1.0 draft (`com.emvco.dpc.card`) | `dc+sd-jwt`, `mso_mdoc` |
-| Mobile Vehicle Registration | ISO/IEC DTS 7367-2 (doctype `org.iso.7367.1.mVC`) | `mso_mdoc` |
-
-The EU PID rulebook defines no age attestations, so "age over 18" comes from the Age Verification entry. The catalog schemas are a first version and will be refined in future releases.
+| Age Verification | EU Age Verification Blueprint | `dc+sd-jwt`, `mso_mdoc` |
+| Photo ID | ISO/IEC TS 23220-4 | `dc+sd-jwt`, `mso_mdoc` |
+| Digital Payment Credential | EMV DPC Schema Framework v1.0 draft | `dc+sd-jwt`, `mso_mdoc` |
+| Mobile Vehicle Registration | ISO/IEC DTS 7367-2 | `mso_mdoc` |
 
 **Installing from the catalog:** `POST /catalog/{id}/install` creates, in one call, the schema and credential template (`issuance`, default `true`) and/or one verification template per chosen preset (`verification_presets`). Choosing neither returns `catalog_nothing_to_install`. Issuing `mso_mdoc` credentials requires a certificate on `CredentialKey` (`catalog_prerequisite_not_met` otherwise); installing verification templates only does not.
 
@@ -44,7 +42,9 @@ Verification presets are a fixed set, in this order: Age over 18, Age over 18 + 
 
 **Sample data:** each catalog entry has one or more samples, such as a holder, a payment card or a vehicle. `GET /issuer/templates/{id}/samples` (and `GET /demo/issuer/templates/{id}/samples`) returns them with claims in the template's format, valid against its schema, and with dates relative to today. Templates not installed from the catalog, or installed from a different version of their entry, have no samples.
 
-**In the Dashboard:** the new Credentials › Catalog page, also reachable with **Add from catalog** on the Credential Templates page, installs catalog entries. The install sheet shows the schema and templates already installed for the chosen format, pre-selects only what is missing, and prevents installing a part again under the name of an existing template. On the Test Issue page, claims can be filled in from one of the samples of the template's catalog entry.
+**In the Dashboard:** the new Credentials › Catalog page, also reachable with **Add from catalog** on the Credential and Verification Templates pages, installs catalog entries. The install sheet shows the schema and templates already installed for the chosen format, pre-selects only what is missing, and prevents installing a part again under the name of an existing template. 
+
+On the Test Issue page, claims can be filled in from one of the samples of the template's catalog entry. This ensures quick setup and tests.
 
 ![Credentials › Catalog](/.gitbook/assets/Release_4.3.0_Catalog.png)
 
@@ -52,12 +52,12 @@ The catalog can be hidden with the runtime setting `system.credential_catalog.vi
 
 ### Status lists: IETF Token Status List support
 
-SVX now supports the IETF Token Status List ([draft-ietf-oauth-status-list](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/)) alongside the W3C Bitstring Status List, so `dc+sd-jwt` and `mso_mdoc` credentials can now be revoked and suspended.
+SVX now supports the IETF Token Status List ([draft-ietf-oauth-status-list](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/)) alongside the W3C Bitstring Status List ([](https://www.w3.org/TR/vc-bitstring-status-list/)), so `dc+sd-jwt` and `mso_mdoc` credentials can now be revoked and suspended.
 
 **Choosing a status list:** when you create or edit a credential template in the Dashboard, the **Revocable** checkbox controls whether credentials issued from it can be revoked. With it off, credentials get no status list entry and cannot be revoked. With it on, the status list depends on the template's credential format:
 
 - **IETF SD-JWT VC** and **ISO mdoc**: the status list is always the IETF Token Status List, which the form shows but doesn't let you change.
-- **W3C VCDM (JWT)**: you choose between the W3C Bitstring Status List and the IETF Token Status List.
+- **W3C VCDM (JWT)**: you choose between the W3C Bitstring Status List (recommended option) and the IETF Token Status List.
 
 Changing either setting only affects credentials issued afterwards.
 
@@ -105,7 +105,7 @@ New runtime settings, also editable in the Dashboard Settings:
 
 - `GET /system/keys` lists the deployment's KMS keys, including keys retired by rotation: algorithm, purpose, adapter, key ID, public JWK, use count, bound certificates and creation/retirement dates. A new read-only **Administration › Keys** page gives an overview with a detail panel (bound certificates, previous versions) and a copy-as-JWKS action.
 - Certificate responses (`GET /system/certificates`, `GET /system/certificates/{id}`, `POST /system/certificates/import`) now include a parsed `chain`: subject, issuer, serial, validity, public key, SANs, CA/self-signed flags and SHA-256 fingerprint. The list can be filtered by `type`, `status` and `key_name`.
-- New read-only **Administration › Certificates** page lists managed, trust-anchor and IACA certificates with the full chain, copy-as-PEM actions and links to the bound key. Certificates can be **imported** (trust anchors, or managed chains bound to a signing key) and **activated/deactivated** from the UI and API (`POST /system/certificates/{id}/activate` / `/deactivate`). A key may hold several certificates but only one active.
+- New **Administration › Certificates** page lists managed, trust-anchor and IACA certificates with the full chain, copy-as-PEM actions and links to the bound key. Certificates can be **imported** (trust anchors, or managed chains bound to a signing key) and **activated/deactivated** from the UI and API (`POST /system/certificates/{id}/activate` / `/deactivate`). A key may hold several certificates but only one active.
 
 **Certificate activation and renewal:** the active certificate is the one attached as `x5c` to what the key signs. The first certificate imported for a key is active on import; later ones, such as a renewal, are imported inactive. This lets you import a renewed certificate ahead of time and activate it when needed:
 
@@ -120,7 +120,9 @@ Activating a certificate deactivates the key's previously active one in the same
 
 ![Administration › Certificates](/.gitbook/assets/Release_4.3.0_Certificates.png)
 
-### ISO 18013-5 Reader CA
+### Reader CA
+
+This is preparation for future functionality supporting proximity readers.
 
 - New runtime setting `verifier.reader_ca.enabled` (requires `verifier.enabled`) and an optional ES256 managed key `ReaderCAKey`. The issuing CA certificate is signed outside SVX and imported via `POST /system/certificates/import` (strict validation of CA certificates; others rejected with `invalid_reader_ca_certificate`).
 - New endpoints (enabled only when the setting is on):
@@ -131,9 +133,9 @@ Activating a certificate deactivates the key's previously active one in the same
 
 ![Reader authentication settings](/.gitbook/assets/Release_4.3.0_Reader_Authentication.png)
 
-### ISO 18013-5 verification import
+### Verification Import
 
-`POST /verifier/requests/import` imports ISO 18013-5 verifications performed outside SVX, for example by mdoc readers, so they can be stored and reviewed alongside verifications made through SVX. Each record contains `record_reference_id`, `device_request`, `device_response`, `requested_at`, the reported `verification_result` and an optional `session_transcript`, and is stored as an imported presentation request and response with protocol `iso_mdoc`. The verification result is reported by the uploader and is not re-verified by SVX.
+`POST /verifier/requests/import` imports verifications (currently limited to ISO 18013-5 `device_request` and `device_response`) performed outside SVX, for example by mdoc readers, so they can be stored and reviewed alongside verifications made through SVX. Each record contains `record_reference_id`, `device_request`, `device_response`, `requested_at`, the reported `verification_result` and an optional `session_transcript`, and is stored as an imported presentation request and response with protocol `iso_mdoc`. The verification result is reported by the uploader and is not re-verified by SVX.
 
 - A record without `device_response` and `verification_result` but with a past `expires_at` represents a request that expired unanswered. It is stored as a `pending` imported request without a response, like an expired OpenID4VP request.
 - Imports are idempotent on `record_reference_id`, and stored records are never updated. A different record under an existing `record_reference_id` is rejected as `reference_conflict` with the id of the stored record; to replace it, delete it and import again.
@@ -143,7 +145,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ### `device_request` verification templates
 
-- New verification template type storing `doc_requests`, the JSON equivalent of ISO 18013-5 DocRequests, with an IntentToRetain flag per data element. These templates cannot be used to create presentation requests. The Dashboard JSON editor offers a Device Request starter and an mDL sample with structure checks, and hides these templates from the Test Verify and SVX Verify pickers.
+- New verification template type storing `doc_requests`, the JSON equivalent of ISO 18013-5 DocRequests, with an Intent To Retain flag per data element. These templates cannot be used to create presentation requests. The Dashboard JSON editor offers a Device Request starter and an mDL sample with structure checks, and hides these templates from the Test Verify and SVX Verify pickers.
 
 ![Device Request starter in the verification template JSON editor](/.gitbook/assets/Release_4.3.0_Device_Request_Template.png)
 
@@ -153,15 +155,15 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ![Search on the View Credentials page](/.gitbook/assets/Release_4.3.0_Credential_Search.png)
 
-### Issuance
+### Issuance - Date and URL Overrides
 
 - Ad-hoc issuance (`POST /issuer/credentials`) accepts optional `valid_at` / `expires_at` (ISO 8601) to override the template's validity for that issuance, across `dc+sd-jwt`, `jwt_vc_json` and `mso_mdoc`. They set `nbf` / `exp` for `dc+sd-jwt` and `jwt_vc_json`, and `ValidityInfo.validFrom` / `validUntil` for `mso_mdoc`. Either can be given on its own; the side that isn't set still comes from the template. Requests whose resulting validity ends before it starts, or has already ended, are rejected with `invalid_request`. Responses now include the issuer credential `id` for each credential (`credentials: [{ id, credential }]`), so it can be used directly with endpoints such as `PATCH /issuer/credentials/{id}/status`.
 - `POST /issuer/offers` (and `POST /demo/issuer/offers`) accept an optional `credential_offer_endpoint` that overrides the configured endpoint for that offer only, with a matching field on the Test Issue page.
 
-### DC API credential issuance
+### DC API Credential Issuance Support (experimental)
 
 - SVX can now issue credentials over the browser's **W3C Digital Credentials API** (experimental). The credential offer registered with the existing `POST /wallets/{walletId}/receive` endpoint can now include `credential_issuer_metadata` and `authorization_server_metadata` inline. When present, they are used instead of `.well-known` discovery; this is required for offers delivered through the DC API, because the wallet-selection matcher has no network access.
-- The demo Issue page offers a DC API option when the browser supports it, and shows errors the browser reports. In cross-device flows the browser can report an error even when issuance succeeded, so check the wallet; the same-device flow works as expected.
+- The demo Issue page offers a DC API option when the browser supports it (e.g. Chromium based browsers), and shows errors the browser reports. In cross-device flows the browser can report an error even when issuance succeeded, so check the wallet; the same-device flow works as expected.
 
 ### Other additions
 
@@ -174,7 +176,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 
 ## Upgrade Notes
 
-- **OpenAPI document and Swagger UI moved.** The OpenAPI document is served at `GET /openapi` and the Swagger UI at `/openapi/ui` (previously `/api-json` and `/api`). The document is always served; `system.swagger_ui_enabled` now controls only the UI. **This affects direct API consumers only — requests through the gateway are unaffected.**
+
 - **`issuer.issuance_policy.revocable` is deprecated and ignored**, replaced by the per-template **Revocable** and status list settings in the Dashboard (`status_list` in the API). See [IETF Token Status List support](#status-lists-ietf-token-status-list-support).
 
 ## Changed
@@ -201,6 +203,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 - **Name uniqueness.** Credential schema and credential template names are now unique per format, and verification template names unique per type (`pex`, `dcql`, `device_request`), rather than globally. A custom credential configuration id can only be used by one credential template (see [Bug Fixes](#bug-fixes)). API key names are limited to 100 characters (previously 255).
 - **Dashboard consistency:** consistent human-readable credential-format labels, "Date …" column headings, copyable long identifiers, a shared em dash for empty values, Title Case labels, a single page description per page, stable table column widths (with horizontal scroll on narrow viewports), the official empty-state icon and "Powered by Meeco" footer, trimmed schema/template names, and clearer demo Issue/Verify copy.
 - **Dashboard credential schemas:** editing a schema re-checks the JSON against its format as you type and disables Save while it doesn't match; server-side validation errors are listed in the error toast.
+- **OpenAPI document and Swagger UI moved.** The OpenAPI document is served by default at `GET /openapi` and the Swagger UI at `/openapi/ui`. The previous endpoints (`/api-json` and `/api`) redirect to the new ones and will be deprecated with the next major release. If you were using the gateway, this change doesn't affect you.
 
 ## Bug Fixes
 
@@ -219,6 +222,7 @@ Presentation requests now have a `protocol` (`openid4vp` or `iso_mdoc`) and an `
 - Dashboard credential templates: Type is now optional for `jwt_vc_json`, as in the API, so templates created with only `VerifiableCredential` can be edited and saved.
 - Dashboard: detail drawers are routed so they survive a page refresh, and the request-history refresh control now works.
 - **Meeco Portal:** creating an organization or tenant now redirects to the new entity's dashboard instead of the list page; viewing an Application no longer shows a spurious "Leave site?" prompt when the page is refreshed or closed.
+- The configuration `system.swagger_ui_enabled` caused the service to not return the OpenAPI document. The OpenAPI document is always served now and `system.swagger_ui_enabled` now controls only the UI.
 
 ## Platform and infrastructure
 
